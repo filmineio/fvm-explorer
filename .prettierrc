@@ -1,0 +1,19 @@
+{
+  "trailingComma": "es5",
+  "tabWidth": 2,
+  "semi": true,
+  "singleQuote": false,
+  "importOrder": [
+    "node_modules",
+    "@/ui/components",
+    "@/ui/modules",
+    "@/ui/hooks",
+    "@/ui/state",
+    "@/ui",
+    "@/types",
+    "@/api",
+    "@/utils"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}

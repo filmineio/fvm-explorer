@@ -1,0 +1,183 @@
+@import '~react-toastify/dist/ReactToastify.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@media screen and (max-width: 639px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .leftside.toggles {
+        left: 0;
+        z-index: 999;
+    }
+
+    .overlay-canvas-nav {
+        content: '';
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease 0s;
+    }
+
+    .leftside {
+        background-color: #141620;
+        width: 100px;
+        left: -100px;
+        transition: 0.5s;
+    }
+
+    body.toggles .overlay-canvas-nav {
+        opacity: 1;
+        visibility: visible;
+        z-index: 99;
+    }
+}
+
+body {
+    background-color: black;
+}
+
+/* Button 10 */
+#button-10 .knobs:after {
+    content: 'or';
+    font-family: 'IBM Plex Mono', 'monospace';
+    font-weight: 500;
+    top: 0;
+    line-height: 1;
+}
+
+#button-10 .checkbox:checked + .knobs:before {
+    left: 55px;
+    background-color: #596184
+}
+
+#button-10 .checkbox:checked + .knobs:after {
+    color: #fff;
+}
+
+.state.bg-yellowrgba svg {
+    transform: rotate(92deg);
+}
+
+.tol .text {
+    display: none;
+    width: 200px;
+    top: -108px;
+}
+
+.tol:hover span.text {
+    display: block;
+}
+
+.user ul li {
+    display: none;
+}
+
+.molte .eidte {
+    visibility: hidden;
+}
+
+.molte:hover .eidte {
+    visibility: visible;
+}
+
+.allmenu .toolteap {
+    display: none;
+    right: -110px;
+    top: 0;
+}
+
+.allmenu:hover .toolteap {
+    display: block;
+}
+
+.allmenu::after {
+    content: "";
+    border-right: 2px solid #d5ff64;
+    position: absolute;
+    height: 40px;
+    left: -10px;
+    top: 0;
+    display: none;
+}
+
+.menu ul li.active .allmenu::after {
+    display: block;
+}
+
+.visibablhiden {
+    visibility: hidden;
+}
+
+.custome:hover .visibablhiden {
+    visibility: visible;
+}
+
+.nav-tabs .nav-link.active {
+    color: #d5ff64;
+    border-color: #d5ff64;
+}
+
+.list li ul.drop-down {
+    display: none;
+    border-radius: 10px;
+    padding: 10px;
+    position: absolute;
+    width: 180px;
+    text-align: center;
+    top: 28px;
+    left: 10px;
+}
+
+a.customr.textnone span.towspan {
+    display: block;
+}
+
+a.customr span.towspan {
+    display: none;
+}
+
+a.customr.textnone span.onespan {
+    display: none;
+}
+
+#editor {
+    background-color: #141620;
+    position: relative;
+}
+
+.ace_mobile-menu {
+    display: none;
+}
+
+.ace-monokai .ace_print-margin {
+    width: 0px;
+    background-color: transparent;
+}
+
+.ace-monokai .ace_gutter {
+    background: transparent;
+}
+
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+
+
+    100% {
+        opacity: 1;
+    }
+}
