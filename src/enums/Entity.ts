@@ -5,4 +5,5 @@ export enum Entity {
   Contract = "contract",
   Project = "project",
   ContractMeta = "metadata",
+  UserMeta = "usermeta",
 }

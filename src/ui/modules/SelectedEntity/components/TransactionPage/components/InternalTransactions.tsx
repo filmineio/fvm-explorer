@@ -32,6 +32,10 @@ export const InternalTransactions = ({
         "messageRctExitCode",
         "messageRctGasUsed",
         "value",
+        "from",
+        "robustFrom",
+        "to",
+        "robustTo",
       ],
     });
   }, []);

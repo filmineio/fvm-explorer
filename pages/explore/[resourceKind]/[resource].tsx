@@ -14,14 +14,14 @@ import { dataAPI } from "@/ui/external/data";
 import { filtersToResourceQuery } from "@/ui/utils/filtersToResourceQuery";
 import { processResponse } from "@/ui/utils/processResponse";
 
-import { ApplicationData, ResponseStatus } from "@/types/ApiResponse";
+import { ApplicationData, OperationStatus } from "@/types/ApiResponse";
 import { AppQuery } from "@/types/AppQuery";
 
 import { isEnum } from "@/utils/isEnum";
 
 
 const Home: NextPage<{ data: ApplicationData }> = ({ data: serverData }) => {
-  if (serverData.status === ResponseStatus.Error) {
+  if (serverData.status === OperationStatus.Error) {
     return <SearchFeedback kind={serverData.kind} error />;
   }
 

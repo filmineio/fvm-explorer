@@ -34,7 +34,7 @@ export const TransactionEvents = ({
 
   if (loading)
     return (
-      <div className="flex flex-col">
+      <div className="flex flex-col text-lightgray">
         <Spinner />
       </div>
     );

@@ -1,3 +1,4 @@
+import { isPrivateResource } from "../../../src/util/isPrivateResource";
 import { Entity } from "@/enums/Entity";
 import { Network } from "@/enums/Network";
 import { NextApiRequest, NextApiResponse } from "next";
@@ -15,7 +16,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(400).json({ exception: "INVALID_NETWORK" });
   }
 
-  if (!isEnum(Entity, resource)) {
+  if (!isEnum(Entity, resource) || isPrivateResource(resource)) {
     return res.status(400).json({ exception: "INVALID_RESOURCE" });
   }
 

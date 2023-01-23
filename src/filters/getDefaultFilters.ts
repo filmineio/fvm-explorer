@@ -58,6 +58,8 @@ const getDefaultOrder = (kind: Entity): [string, "ASC" | "DESC"] => {
       return ["id", "DESC"];
     case Entity.ContractMeta:
       return ["contractAddress", "DESC"];
+    default:
+      return ["", "ASC"];
   }
 };
 

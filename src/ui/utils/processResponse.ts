@@ -1,7 +1,7 @@
 import { Entity } from "@/enums/Entity";
 import { AxiosResponse } from "axios";
 
-import { ApplicationData, ResponseStatus } from "@/types/ApiResponse";
+import { ApplicationData, OperationStatus } from "@/types/ApiResponse";
 
 export const processResponse = (
   response: AxiosResponse,
@@ -9,7 +9,7 @@ export const processResponse = (
 ): ApplicationData => {
   if (!response.data.exception) {
     return {
-      status: ResponseStatus.Ok,
+      status: OperationStatus.Ok,
       data: {
         ...response.data,
         kind,
@@ -18,7 +18,7 @@ export const processResponse = (
   }
 
   return {
-    status: ResponseStatus.Error,
+    status: OperationStatus.Error,
     data: response.data,
     kind,
   };

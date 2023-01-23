@@ -21,7 +21,15 @@ const clickhouseHyperspaceConfig: ClickhouseConfig = {
   database: process.env.HYPERSPACE_CLICKHOUSE_DATABASE as string,
 };
 
+const userdataConfig: ClickhouseConfig = {
+  host: process.env.USERDATA_CLICKHOUSE_HOST as string,
+  username: process.env.USERDATA_CLICKHOUSE_USER as string,
+  password: process.env.USERDATA_CLICKHOUSE_PASSWORD as string,
+  database: process.env.USERDATA_CLICKHOUSE_DATABASE as string,
+};
+
 export default {
   [Network.Wallaby]: clickhouseWallabyConfig,
   [Network.HyperSpace]: clickhouseHyperspaceConfig,
+  userdata: userdataConfig,
 };

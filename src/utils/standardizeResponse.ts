@@ -4,7 +4,7 @@ export const standardizeResponse = <
   T extends unknown & Record<"total", number>
 >(
   data: T[],
-  network: Network
+  network?: Network
 ) => {
   return {
     network,

@@ -11,7 +11,7 @@ import { setDataResultsTransformer } from "@/ui/state/transformers/data/setDataR
 import { uiCtx } from "@/ui/ctx/uiCtx";
 import { processResponse } from "@/ui/utils/processResponse";
 
-import { ApiResponse, ResponseStatus } from "@/types/ApiResponse";
+import { ApiResponse, OperationStatus } from "@/types/ApiResponse";
 import { ResourceQuery } from "@/types/AppQuery";
 
 import { cb } from "@/utils/cb";
@@ -55,7 +55,7 @@ export const useQuery = <T>() => {
       })
       .then((response) => {
         const data = processResponse(response, Entity.Event);
-        if (data.status === ResponseStatus.Error) {
+        if (data.status === OperationStatus.Error) {
           setState((p) => set(lensPath(["error"]), data.data.exception)(p));
         } else {
           setState((p) =>
@@ -83,7 +83,7 @@ export const useDataClient = () => {
       .get(resource, query)
       .then((response) => {
         const data = processResponse(response, resource);
-        if (data.status === ResponseStatus.Error) {
+        if (data.status === OperationStatus.Error) {
           mod(setDataErrorTransformer(data.data.exception));
         } else {
           mod(setDataResultsTransformer(data.data));

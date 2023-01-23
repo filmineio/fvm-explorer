@@ -29,7 +29,7 @@ import { filtersToResourceQuery } from "@/ui/utils/filtersToResourceQuery";
 import { processResponse } from "@/ui/utils/processResponse";
 import { updateRouteState } from "@/ui/utils/updateRouteState";
 
-import { ApplicationData, ResponseStatus } from "@/types/ApiResponse";
+import { ApplicationData, OperationStatus } from "@/types/ApiResponse";
 import { AppQuery } from "@/types/AppQuery";
 
 import { cb } from "@/utils/cb";
@@ -62,7 +62,7 @@ const Home: NextPage<{ data: ApplicationData }> = ({ data: serverData }) => {
   const handleServerData = useCallback(
     (serverResponse: ApplicationData) => {
       if (receivedServerData) return;
-      if (serverResponse.status === ResponseStatus.Ok)
+      if (serverResponse.status === OperationStatus.Ok)
         mod(
           setDataResultsTransformer(serverResponse.data),
           setDataLoadingTransformer(false),

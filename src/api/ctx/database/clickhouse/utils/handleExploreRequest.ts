@@ -14,7 +14,7 @@ export const handle = async (
   network: Network
 ) =>
   standardizeResponse(
-    await ctx.database.ch.chaindata[network].query(
+    await ctx.database.ch.data.chain[network].query(
       processQueryParams(req, kind)
     ),
     req.query.network as Network
