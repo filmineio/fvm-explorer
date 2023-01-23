@@ -8,4 +8,5 @@ export type ContractMeta = {
   sigCid: string;
   binCid: string;
   isPublic: boolean;
+  owner: string;
 };

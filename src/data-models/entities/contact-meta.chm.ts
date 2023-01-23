@@ -15,4 +15,5 @@ export const contactMetaChm: CHModel<ContractMeta> = {
   sigCid: { kind: "string" },
   binCid: { kind: "string" },
   isPublic: { kind: "bool" },
+  owner: { kind: "string" },
 };

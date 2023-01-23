@@ -9,4 +9,5 @@ export const projectChm: CHModel<Project> = {
   id: { kind: "string" },
   name: { kind: "string" },
   contracts: { kind: "string" },
+  owner: { kind: "string" },
 };

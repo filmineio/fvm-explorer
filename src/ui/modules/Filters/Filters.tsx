@@ -22,7 +22,7 @@ import {
 } from "@/ui/state/transformers/filters/setFiltersValueTransformer";
 
 export const Filters = ({ search }: { search: () => void }) => {
-  const [advancedSearchActive, _toggleAdvancedSearchld] = useState(false);
+  const [advancedSearchActive, _toggleAdvancedSearch] = useState(false);
   const query = useLocationQuery<NextParsedUrlQuery>();
   const {
     mod,
