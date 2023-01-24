@@ -23,10 +23,8 @@ import { setDataResultsTransformer } from "@/ui/state/transformers/data/setDataR
 import { resetFiltersToQueryTransformer } from "@/ui/state/transformers/filters/setFiltersValueTransformer";
 import { FilterState } from "@/ui/state/types/AppState";
 
-import { getHttpClient } from "@/ui/ctx/http/getHttpClient";
-import { dataAPI, useDataClient } from "@/ui/external/data";
+import { useDataClient } from "@/ui/external/data";
 import { filtersToResourceQuery } from "@/ui/utils/filtersToResourceQuery";
-import { processResponse } from "@/ui/utils/processResponse";
 import { updateRouteState } from "@/ui/utils/updateRouteState";
 
 import { ApplicationData, OperationStatus } from "@/types/ApiResponse";
@@ -133,16 +131,12 @@ export async function getServerSideProps({
     };
   }
 
-  const dataQuery = filtersToResourceQuery(resource, network, query);
-
-  const data = await dataAPI(getHttpClient(() => null)()).get(
-    resource,
-    dataQuery
-  );
-
   return {
     props: {
-      data: processResponse(data, resource),
+      data: {
+        status: OperationStatus.Ok,
+        data: { network, kind: resource, total: 0, rows: [] },
+      } as ApplicationData,
     },
   };
 }
