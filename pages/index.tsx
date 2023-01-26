@@ -1,5 +1,4 @@
 import { defaultNetwork } from "../src/filters/defaultNetwork";
-import { ResultsPresenter } from "../ui/modules/Results/components/ResultsPresenter";
 import { Entity } from "@/enums/Entity";
 import { Network } from "@/enums/Network";
 import type { NextPage } from "next";
@@ -11,6 +10,7 @@ import { Main } from "@/ui/components/Main/Main";
 import { Page } from "@/ui/components/Page/Page";
 
 import { Filters } from "@/ui/modules/Filters/Filters";
+import { ResultsPresenter } from "@/ui/modules/Results/components/ResultsPresenter";
 
 import { useLocationQuery } from "@/ui/hooks/useLocationQuery";
 
@@ -97,12 +97,7 @@ const Home: NextPage<{ data: ApplicationData }> = ({ data: serverData }) => {
   return (
     <Page showHeader showFooter>
       <Main>
-        <div className="filecoin py-7 space-y-5">
-          <h3 className="text-2xl font-bold leading-8 text-white">
-            Filecoin contracts explorer
-          </h3>
-          <Filters search={requestData} />
-        </div>
+        <Filters search={requestData} />
 
         <ResultsPresenter
           error={error}

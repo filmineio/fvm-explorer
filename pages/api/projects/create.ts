@@ -10,7 +10,6 @@ import { identifyUser } from "@/api/utils/identifyUser";
 
 import { standardizeResponse } from "@/utils/standardizeResponse";
 
-
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const ctx = await getCtx();
   const data = await identifyUser(ctx, req);
@@ -28,6 +27,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const result = await ctx.database.ch.data.users.create(
       projectChm,
       {
+        id: newProjectId,
         name: body.name,
         owner: data.email as string,
         contracts: JSON.stringify({}) as any,

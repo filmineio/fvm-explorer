@@ -4,7 +4,7 @@ import { CHModel } from "@/schema/types/CHModel";
 import { ContractMeta } from "@/types/data/ContractMeta";
 
 export const contactMetaChm: CHModel<ContractMeta> = {
-  kind: Entity.Transaction,
+  kind: Entity.ContractMeta,
   table: "contract_meta",
   contractAddress: { kind: "string" },
   abiCid: { kind: "string" },

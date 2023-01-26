@@ -1,4 +1,5 @@
 import { Entity } from "@/enums/Entity";
+import classNames from "classnames";
 import React, { useMemo } from "react";
 
 import { Pagination } from "@/ui/components/Pagination/Pagination";
@@ -40,8 +41,13 @@ export const Results = ({
   }, [kind]);
 
   return (
-    <div className="space-y-5 pt-5">
-      <div className="justify-start flex flex-wrap relative gap-6">
+    <div className="space-y-5 pt-5 flex-col">
+      <div
+        className={classNames("flex flex-wrap relative gap-6", {
+          "justify-center": rows.length > 2,
+          "justify-start px-20": rows.length < 3,
+        })}
+      >
         {rows.map((r) => (
           <Card
             data={r as never}
