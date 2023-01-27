@@ -12,13 +12,13 @@ import { cb } from "@/utils/cb";
 export const FiltersHeader = ({
   state,
   checked,
-  onChange,
   toggle,
+  search,
 }: {
   state: FilterState;
-  onChange: (v: string) => void;
   checked: boolean;
   toggle: (v: boolean) => void;
+  search: (v: string) => void;
 }) => {
   return (
     <div className={"flex justify-between items-center"}>
@@ -37,7 +37,7 @@ export const FiltersHeader = ({
           </span>{" "}
           <GhostSelect
             value={state.filteredBy}
-            onChange={onChange}
+            onChange={search}
             values={availableFilters}
           />
         </div>
@@ -52,7 +52,7 @@ export const FiltersHeader = ({
           </span>{" "}
           <GhostSelect
             value={state.network}
-            onChange={onChange}
+            onChange={search}
             values={availableNetworks}
           />
         </div>

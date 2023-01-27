@@ -9,12 +9,12 @@ export function isFiledQueryValid<T>(
   value: Record<string, unknown>
 ) {
   const field = model[key];
-  const allowedOperators = getAllowedOperators(field);
+  const allowedOperators = getAllowedOperators(field.kind);
   const operators = Object.entries(value);
   return operators.some(
     ([operator, value]) =>
       !(
-        allowedOperators.has(operator as CHMFiledOperator) ||
+        allowedOperators.includes(operator as CHMFiledOperator) ||
         isValidValue(field, operator, value)
       )
   );

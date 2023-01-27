@@ -1,5 +1,7 @@
 import { Entity } from "@/enums/Entity";
 import { Network } from "@/enums/Network";
+import { CHMFiledOperator } from "@/schema/types/CHMFiledOperator";
+import { getAllowedOperators } from "@/schema/validation/getAllowedOperators";
 import { NextParsedUrlQuery } from "next/dist/server/request-meta";
 
 import { FilterState } from "@/ui/state/types/AppState";
@@ -51,3 +53,76 @@ export const availableNetworks = AVAILABLE_NETWORKS.map((value) => ({
   value,
   label: capitalize(value),
 }));
+
+export enum ContractQueryField {
+  ContractAddress = "Contract Address",
+  ContractF4Address = "Contract f4 Address",
+  ContractEthAddress = "Contract ETH Address",
+  ContractActorId = "Contract ActorId",
+  ContractDeployedFromAddress = "Contract Deployed From Address",
+}
+
+export enum BlockQueryFields {
+  Height = "Height",
+  BlockCid = "BlockCid",
+  Miner = "Miner",
+}
+
+export enum TransactionQueryFields {
+  Block = "Block",
+  Cid = "Cid",
+  From = "From",
+  Height = "Height",
+  MessageRctEventsRoot = "Receipt Events Root",
+  MessageRctExitCode = "Receipt Exit Code",
+  MessageRctGasUsed = "Receipt Gas Used",
+  MessageRctReturn = "Receipt Return",
+  Method = "Method",
+  Nonce = "Nonce",
+  To = "To",
+  SubCallOf = "Sub Call Of",
+  Timestamp = "Timestamp",
+  Value = "Value",
+  Version = "Version",
+}
+
+export const getModelQueryFields = (kind: Entity) => {
+  switch (kind) {
+    case Entity.Block:
+      return Object.values(BlockQueryFields);
+    case Entity.Contract:
+      return Object.values(ContractQueryField);
+    case Entity.Transaction:
+      return Object.values(TransactionQueryFields);
+    default:
+      return [];
+  }
+};
+
+export const getQueryFieldOperators = ([entity, field]:
+  | [Entity.Block, BlockQueryFields]
+  | [Entity.Contract, ContractQueryField]
+  | [Entity.Transaction | TransactionQueryFields]): CHMFiledOperator[] => {
+  switch (entity) {
+    case Entity.Block:
+      switch (field) {
+        case BlockQueryFields.Height:
+          return getAllowedOperators("number");
+        default:
+          return getAllowedOperators("string");
+      }
+    case Entity.Contract:
+      return getAllowedOperators("string");
+    case Entity.Transaction:
+    case TransactionQueryFields.Height ||
+      TransactionQueryFields.MessageRctGasUsed ||
+      TransactionQueryFields.MessageRctExitCode ||
+      TransactionQueryFields.Version ||
+      TransactionQueryFields.Method ||
+      TransactionQueryFields.Nonce:
+      return getAllowedOperators("number");
+    default:
+      return getAllowedOperators("string");
+  }
+  return [];
+};

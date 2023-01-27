@@ -6,7 +6,7 @@ import {
   CHMStringOperator,
 } from "@/schema/types/CHMFiledOperator";
 
-const stringFieldOperators = new Set([
+const stringFieldOperators = [
   CHMBaseOperator.Is,
   CHMBaseOperator.Not,
   CHMBaseOperator.IsNull,
@@ -15,8 +15,8 @@ const stringFieldOperators = new Set([
   CHMStringOperator.Includes,
   CHMStringOperator.StartsWith,
   CHMStringOperator.EndsWith,
-]);
-const numberFieldOperators = new Set([
+];
+const numberFieldOperators = [
   CHMBaseOperator.Is,
   CHMBaseOperator.Not,
   CHMBaseOperator.IsNull,
@@ -26,33 +26,32 @@ const numberFieldOperators = new Set([
   CHMNumberOperator.GreaterThan,
   CHMNumberOperator.LessThan,
   CHMNumberOperator.LessThanOrEqual,
-]);
-const booleanFieldOperators = new Set([
+];
+const booleanFieldOperators = [
   CHMBaseOperator.Is,
   CHMBaseOperator.Not,
   CHMBaseOperator.IsNull,
-]);
-const enumFieldOperators = new Set([
-  CHMBaseOperator.Is,
-  CHMBaseOperator.Not,
-  CHMBaseOperator.IsNull,
-  CHMBaseOperator.In,
-  CHMBaseOperator.NotIn,
-]);
-const relationFieldOperators = new Set([
-  CHMBaseOperator.Is,
-  CHMBaseOperator.Not,
-]);
-const mapFieldOperators = new Set([CHMBaseOperator.Is, CHMBaseOperator.Not]);
-const arrayFieldOperators = new Set([
+];
+const enumFieldOperators = [
   CHMBaseOperator.Is,
   CHMBaseOperator.Not,
   CHMBaseOperator.IsNull,
   CHMBaseOperator.In,
   CHMBaseOperator.NotIn,
-]);
-export const getAllowedOperators = (field: CHMField): Set<CHMFiledOperator> => {
-  switch (field.kind) {
+];
+const relationFieldOperators = [CHMBaseOperator.Is, CHMBaseOperator.Not];
+const mapFieldOperators = [CHMBaseOperator.Is, CHMBaseOperator.Not];
+const arrayFieldOperators = [
+  CHMBaseOperator.Is,
+  CHMBaseOperator.Not,
+  CHMBaseOperator.IsNull,
+  CHMBaseOperator.In,
+  CHMBaseOperator.NotIn,
+];
+export const getAllowedOperators = (
+  field: CHMField["kind"]
+): CHMFiledOperator[] => {
+  switch (field) {
     case "string":
       return stringFieldOperators;
     case "number":

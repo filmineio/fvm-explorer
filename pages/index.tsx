@@ -50,8 +50,16 @@ const Home: NextPage<{ data: ApplicationData }> = ({ data: serverData }) => {
   const { get } = useDataClient();
 
   const requestData = useCallback(
-    (newPage?: number) => {
-      const page = typeof newPage === "number" ? newPage : filters.page;
+    (data?: number | Network | Entity) => {
+      if (isEnum(Network, data))
+        return updateRouteState(push, { ...filters, network: data as Network });
+      else if (isEnum(Entity, data))
+        return updateRouteState(push, {
+          ...filters,
+          filteredBy: data as Entity,
+        });
+
+      const page = typeof data === "number" ? data : filters.page;
       updateRouteState(push, { ...filters, page });
     },
     [filters, get, mod]
@@ -60,26 +68,21 @@ const Home: NextPage<{ data: ApplicationData }> = ({ data: serverData }) => {
   const handleServerData = useCallback(
     (serverResponse: ApplicationData) => {
       if (receivedServerData) return;
+
+      const common = [
+        setDataLoadingTransformer(false),
+        setDataReceivedFromServer(),
+      ];
+
       if (serverResponse.status === OperationStatus.Ok)
-        mod(
-          setDataResultsTransformer(serverResponse.data),
-          setDataLoadingTransformer(false),
-          setDataReceivedFromServer()
-        );
+        mod(...common, setDataResultsTransformer(serverResponse.data));
       else
-        mod(
-          setDataLoadingTransformer(false),
-          setDataErrorTransformer(serverResponse.data.exception),
-          setDataReceivedFromServer()
-        );
+        mod(...common, setDataErrorTransformer(serverResponse.data.exception));
     },
     [mod]
   );
 
-  useEffect(cb(mod, resetFiltersToQueryTransformer(query)), [query]);
-  useEffect(cb(handleServerData, serverData), [serverData]);
-
-  useEffect(() => {
+  const handleQuery = useCallback((query: FilterState) => {
     if (isEmpty(query)) {
       return updateRouteState(push, DEFAULT_FILTERS);
     }
@@ -92,7 +95,11 @@ const Home: NextPage<{ data: ApplicationData }> = ({ data: serverData }) => {
         query
       )
     );
-  }, [query]);
+  }, []);
+
+  useEffect(cb(mod, resetFiltersToQueryTransformer(query)), [query]);
+  useEffect(cb(handleServerData, serverData), [serverData]);
+  useEffect(cb(handleQuery, query), [query]);
 
   return (
     <Page showHeader showFooter>

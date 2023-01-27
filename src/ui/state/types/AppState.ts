@@ -16,7 +16,7 @@ export type Data = Record<"results", DataResult> &
 export type FilterState = {
   filteredBy: Entity;
   filterValue: string;
-  advancedFilter: Maybe<Record<string, CHMFieldQuery>>;
+  advancedFilter: Maybe<Record<string, CHMFieldQuery>[]>;
   network: Network;
   page: number;
 };

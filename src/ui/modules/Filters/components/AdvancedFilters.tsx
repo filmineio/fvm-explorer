@@ -1,11 +1,16 @@
+import { gt } from "ramda";
 import { PropsWithChildren, useMemo } from "react";
 
 import { AdvancedFiltersQueryGroup } from "@/ui/modules/Filters/components/AdvancedFiltersQueryGroup";
 import { ORMarker } from "@/ui/modules/Filters/components/ORMarker";
+import { getModelQueryFields } from "@/ui/modules/Filters/state/state";
 
 import { FilterState } from "@/ui/state/types/AppState";
 
 import { getModel } from "@/api/ctx/database/clickhouse/utils/getModel";
+
+import { cb } from "@/utils/cb";
+
 
 export const AdvancedQueryActions = () => {
   return (
@@ -40,19 +45,6 @@ export const InnerGroupWrapper = ({ children }: PropsWithChildren) => {
   );
 };
 
-enum ContractQueryField {
-  ContractAddress = "Contract  Address",
-  ContractF4Address = "Contract f4 Address",
-  ContractEthAddress = "Contract ETH Address",
-  ContractActorId = "Contract ActorId",
-  ContractDeployedFromAddress = "Contract Deployed From Address",
-}
-
-enum BlockQueryFields {
-  Height = "Height",
-  BlockCid = "BlockCid",
-  Miner = "Miner",
-}
 export const AdvancedFilters = ({
   handleChange,
   state,
@@ -62,23 +54,34 @@ export const AdvancedFilters = ({
   state: FilterState;
   onClick: () => void;
 }) => {
-  const model = useMemo(() => {
-    return getModel(state.filteredBy);
-  }, [state.filteredBy]);
+  const model = useMemo(cb(getModel, state.filteredBy), [state.filteredBy]);
+  const fields = useMemo(cb(getModelQueryFields, model.kind), [model]);
 
-  const fields = useMemo(() => {
-    switch (model.kind) {
-    }
-  }, [model]);
+  const queryGroups = useMemo(() => state.advancedFilter || [], []);
 
-  console.log(model);
+  const hasMultipleGroups = useMemo(cb(gt(1), queryGroups.length), []);
 
   return (
     <div className={"flex flex-col justify-center gap-3"}>
-      <AdvancedFiltersQueryGroup />
-      <InnerGroupWrapper>
-        <AdvancedFiltersQueryGroup />
-      </InnerGroupWrapper>
+      <AdvancedFiltersQueryGroup
+        removable={hasMultipleGroups}
+        group={queryGroups[0]}
+        index={0}
+        fields={fields}
+        kind={model.kind as never}
+      />
+      {queryGroups.slice(1).map((group, index) => (
+        <InnerGroupWrapper key={index}>
+          <AdvancedFiltersQueryGroup
+            removable={hasMultipleGroups}
+            group={group}
+            index={index}
+            fields={fields}
+            kind={model.kind as never}
+          />
+        </InnerGroupWrapper>
+      ))}
+
       <AdvancedQueryActions />
     </div>
   );

@@ -35,9 +35,9 @@ export const Filters = ({ search }: { search: () => void }) => {
     <div className="py-7 space-y-5 ">
       <FiltersHeader
         state={state}
-        onChange={change}
         checked={advancedSearchActive}
         toggle={toggleAdvancedSearch}
+        search={search}
       />
       {advancedSearchActive ? (
         <AdvancedFilters handleChange={change} state={state} onClick={search} />
