@@ -1,29 +1,11 @@
-import { useMemo } from "react";
+import { PropsWithChildren, useMemo } from "react";
 
 import { AdvancedFiltersQueryGroup } from "@/ui/modules/Filters/components/AdvancedFiltersQueryGroup";
+import { ORMarker } from "@/ui/modules/Filters/components/ORMarker";
 
 import { FilterState } from "@/ui/state/types/AppState";
 
 import { getModel } from "@/api/ctx/database/clickhouse/utils/getModel";
-
-
-export const ORMarker = () => {
-  return (
-    <div
-      className={
-        "flex items-center justify-center  w-full  mx-auto transform -translate-y-6 z-20"
-      }
-    >
-      <div
-        className={
-          "border-2 border-lightgray bg-black text-gray-text w-20 h-10 bg-black flex items-center justify-center"
-        }
-      >
-        OR
-      </div>
-    </div>
-  );
-};
 
 export const AdvancedQueryActions = () => {
   return (
@@ -47,11 +29,35 @@ export const AdvancedQueryActions = () => {
   );
 };
 
+export const InnerGroupWrapper = ({ children }: PropsWithChildren) => {
+  return (
+    <>
+      <ORMarker />
+      <div className={"flex flex-col justify-center gap-3 -mt-12 relative"}>
+        {children}
+      </div>
+    </>
+  );
+};
+
+enum ContractQueryField {
+  ContractAddress = "Contract  Address",
+  ContractF4Address = "Contract f4 Address",
+  ContractEthAddress = "Contract ETH Address",
+  ContractActorId = "Contract ActorId",
+  ContractDeployedFromAddress = "Contract Deployed From Address",
+}
+
+enum BlockQueryFields {
+  Height = "Height",
+  BlockCid = "BlockCid",
+  Miner = "Miner",
+}
 export const AdvancedFilters = ({
-                                  handleChange,
-                                  state,
-                                  onClick,
-                                }: {
+  handleChange,
+  state,
+  onClick,
+}: {
   handleChange: (v: string) => void;
   state: FilterState;
   onClick: () => void;
@@ -60,16 +66,19 @@ export const AdvancedFilters = ({
     return getModel(state.filteredBy);
   }, [state.filteredBy]);
 
+  const fields = useMemo(() => {
+    switch (model.kind) {
+    }
+  }, [model]);
 
   console.log(model);
 
   return (
     <div className={"flex flex-col justify-center gap-3"}>
       <AdvancedFiltersQueryGroup />
-      <ORMarker />
-      <div className={"flex flex-col justify-center gap-3 -mt-12 relative"}>
+      <InnerGroupWrapper>
         <AdvancedFiltersQueryGroup />
-      </div>
+      </InnerGroupWrapper>
       <AdvancedQueryActions />
     </div>
   );
