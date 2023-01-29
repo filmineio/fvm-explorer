@@ -4,7 +4,8 @@ import {
   CHMFiledOperator,
 } from "@/schema/types/CHMFiledOperator";
 import { CHMFieldQuery } from "@/schema/types/CHMQuery";
-import { useMemo, useState } from "react";
+import { lensPath, set } from "ramda";
+import { useCallback, useMemo, useState } from "react";
 
 import { AdvancedFilterRule } from "@/ui/modules/Filters/components/AdvancedFilterRule";
 import { FilterValue } from "@/ui/modules/Filters/components/FilterValue";
@@ -18,15 +19,18 @@ import {
 
 import { cb } from "@/utils/cb";
 import { toHumanReadable } from "@/utils/toHumanReadable";
+import { onChange } from "@/utils/unpack";
 
 export const AdvancedQueryFiledEditor = ({
   fields,
   kind,
   selectedField,
+  change,
 }: {
   fields: string[];
   selectedField: QueryEditorField;
   kind: Entity.Block | Entity.Transaction | Entity.Contract;
+  change: (k: keyof QueryEditorField) => (v: string) => void;
 }) => {
   const operators = useMemo(
     cb(getQueryFieldOperators, [kind, selectedField] as never),
@@ -41,6 +45,7 @@ export const AdvancedQueryFiledEditor = ({
             <select
               className="form-select appearance-none block w-full px-3 py-3 text-lightgray font-normal bg-gray-dark bg-clip-padding bg-no-repeat rounded-lg transition ease-in-out outline-none m-0 font-mono1 text-sm	 focus:text-white focus:bg-gray-dark  focus:outline-none"
               value={selectedField.field}
+              onChange={onChange(change("field"))}
             >
               {fields.map((f) => (
                 <option key={f} value={f}>
@@ -55,6 +60,7 @@ export const AdvancedQueryFiledEditor = ({
             <select
               className="form-select appearance-none block w-full px-3 py-3 font-normal text-white bg-gray-dark bg-clip-padding bg-no-repeat rounded-lg transition ease-in-out outline-none m-0 font-mono1 text-sm	 focus:text-white focus:bg-gray-dark  focus:outline-none"
               value={selectedField.operator}
+              onChange={onChange(change("operator"))}
             >
               {operators.map((o) => (
                 <option key={o} value={o}>
@@ -67,7 +73,7 @@ export const AdvancedQueryFiledEditor = ({
         <div className="relative xs:max-w-full max-w-calc2 flex-1 sm:max-w-lg text-xs">
           <div className="px-3 py-2.5  w-full rounded-lg bg-gray-dark flex gap-5 flex-wrap">
             <div className="rounded-md flex items-center">
-              <FilterValue />
+              {/*<FilterValue />*/}
             </div>
             <div className="flex">
               <input
@@ -75,6 +81,7 @@ export const AdvancedQueryFiledEditor = ({
                 placeholder="Enter value..."
                 className="bg-gray-dark text-white w-full border-0 focus:border-0 focus:outline-none focus:ring-0 py-1 px-0 font-mono1 text-sm transform translate-y-0.5"
                 value={selectedField.value}
+                onChange={onChange(change("value"))}
               />
             </div>
           </div>
@@ -92,6 +99,7 @@ export const AdvancedQueryFiledEditor = ({
 
 export type QueryEditorField = {
   value: string;
+  values: string[];
   operator: CHMFiledOperator;
   field: BlockQueryFields | ContractQueryField | TransactionQueryFields;
 };
@@ -102,6 +110,7 @@ const defaultState: (
   f: BlockQueryFields | ContractQueryField | TransactionQueryFields
 ) => ({
   value: "",
+  values: [],
   operator: CHMBaseOperator.Is,
   field: f,
 });
@@ -119,8 +128,15 @@ export const AdvancedFiltersQueryGroup = ({
   fields: string[];
   kind: Entity.Block | Entity.Transaction | Entity.Contract;
 }) => {
-  const [currentField, set] = useState<QueryEditorField>(
+  const [currentField, update] = useState<QueryEditorField>(
     defaultState(fields[0] as never)
+  );
+
+  const change = useCallback(
+    (k: keyof QueryEditorField) => (v: string) => {
+      update((p) => set(lensPath([k]), v)(p));
+    },
+    []
   );
 
   return (
@@ -132,10 +148,12 @@ export const AdvancedFiltersQueryGroup = ({
           <img className="w-auto" src="/images/close.png" alt={""} />
         </button>
       )}
+
       <AdvancedQueryFiledEditor
         fields={fields}
         selectedField={currentField}
         kind={kind}
+        change={change}
       />
 
       <AdvancedFilterRule />
