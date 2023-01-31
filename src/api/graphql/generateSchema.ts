@@ -88,7 +88,7 @@ const schemaQueries = Object.values(models).reduce((p, c) => {
           type: ResultLimitsInput,
         },
         order: {
-          type: ResultOrderInput,
+          type: new GraphQLNonNull(ResultOrderInput),
         },
       },
       resolve: resolveAll,

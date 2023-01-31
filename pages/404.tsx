@@ -14,7 +14,9 @@ export default function Error404Route(): ReactElement {
             Error 404 - Page Not Found
           </h1>
           <Link href={"/"}>
-            <span className={"text-white text-yellow"}>Back to Homepage</span>
+            <span className={"text-white text-yellow cursor-pointer"}>
+              Back to Homepage
+            </span>
           </Link>
         </div>
         <img src="/images/404illustration2.svg" alt="" />
