@@ -1,6 +1,5 @@
 import {
   CHMBaseOperator,
-  CHMLogical,
   CHMNumberOperator,
   CHMStringOperator,
 } from "@/schema/types/CHMFiledOperator";
@@ -38,7 +37,3 @@ export type CHMEnumQuery<T = unknown> =
   | CHMInQuery<T>
   | CHMNullishQuery<T>;
 export type CHMBooleanQuery = CHMIsNotQuery<boolean> | CHMNullishQuery<boolean>;
-export type CHMQuery = {
-  logical: CHMLogical;
-  query: CHMFieldQuery;
-};

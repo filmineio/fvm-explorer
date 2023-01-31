@@ -1,8 +1,8 @@
-export const FilterValue = () => {
+export const FilterValue = ({ value }: { value: string }) => {
   return (
     <div className="rounded-md flex items-center mr-1 bg-secect">
       <div className="px-2 py-1 text-sm font-mono1 font-medium text-white w-fit max-w-[100px] truncate">
-        Chris
+        {value}
       </div>
 
       <div className="p-2 w-fit select-none rounded-r-md cursor-pointer hover:bg-magma-orange-clear">

@@ -1,4 +1,3 @@
-import { isPrivateResource } from "../../../src/util/isPrivateResource";
 import { Entity } from "@/enums/Entity";
 import { Network } from "@/enums/Network";
 import { NextApiRequest, NextApiResponse } from "next";
@@ -7,6 +6,7 @@ import { getCtx } from "@/api/ctx/apiCtx";
 import { handle } from "@/api/ctx/database/clickhouse/utils/handleExploreRequest";
 
 import { isEnum } from "@/utils/isEnum";
+import { isPrivateResource } from "@/utils/isPrivateResource";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const resource: Entity = req.query.resource as Entity;

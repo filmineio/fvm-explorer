@@ -13,6 +13,7 @@ import {
   resetFiltersToQueryTransformer,
   setFiltersValueTransformer,
 } from "@/ui/state/transformers/filters/setFiltersValueTransformer";
+import { AdvancedFiltersState } from "@/ui/state/types/AppState";
 
 export const Filters = ({ search }: { search: () => void }) => {
   const [advancedSearchActive, toggleAdvancedSearch] = useState(false);
@@ -23,7 +24,10 @@ export const Filters = ({ search }: { search: () => void }) => {
   } = useStore();
 
   const change = useCallback(
-    (v: string) => mod(setFiltersValueTransformer(v)),
+    (v: string | AdvancedFiltersState) => {
+      console.log(v);
+      mod(setFiltersValueTransformer(v));
+    },
     [mod]
   );
 

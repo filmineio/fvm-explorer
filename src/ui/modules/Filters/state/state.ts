@@ -102,7 +102,7 @@ export const getModelQueryFields = (kind: Entity) => {
 export const getQueryFieldOperators = ([entity, field]:
   | [Entity.Block, BlockQueryFields]
   | [Entity.Contract, ContractQueryField]
-  | [Entity.Transaction | TransactionQueryFields]): CHMFiledOperator[] => {
+  | [Entity.Transaction, TransactionQueryFields]): CHMFiledOperator[] => {
   switch (entity) {
     case Entity.Block:
       switch (field) {
@@ -114,15 +114,17 @@ export const getQueryFieldOperators = ([entity, field]:
     case Entity.Contract:
       return getAllowedOperators("string");
     case Entity.Transaction:
-    case TransactionQueryFields.Height ||
-      TransactionQueryFields.MessageRctGasUsed ||
-      TransactionQueryFields.MessageRctExitCode ||
-      TransactionQueryFields.Version ||
-      TransactionQueryFields.Method ||
-      TransactionQueryFields.Nonce:
-      return getAllowedOperators("number");
-    default:
-      return getAllowedOperators("string");
+      switch (field) {
+        case TransactionQueryFields.Height:
+        case TransactionQueryFields.MessageRctGasUsed:
+        case TransactionQueryFields.MessageRctExitCode:
+        case TransactionQueryFields.Version:
+        case TransactionQueryFields.Method:
+        case TransactionQueryFields.Nonce:
+          return getAllowedOperators("number");
+        default:
+          return getAllowedOperators("string");
+      }
   }
   return [];
 };

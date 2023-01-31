@@ -1,10 +1,9 @@
 import { Entity } from "@/enums/Entity";
 import { Network } from "@/enums/Network";
-import { CHMFieldQuery } from "@/schema/types/CHMQuery";
 
 
 
-import { AppState, FilterState } from "@/ui/state/types/AppState";
+import { AdvancedFiltersState, AppState, FilterState } from "@/ui/state/types/AppState";
 import { StateTransformer } from "@/ui/state/types/transformers/StateTranformer";
 import { transformer } from "@/ui/state/utils/transformer";
 
@@ -17,7 +16,7 @@ import { isString } from "@/utils/isString";
 // TODO Simplify
 export const setFiltersValueTransformer: StateTransformer<
   AppState,
-  Entity | Network | Record<string, CHMFieldQuery> | string
+  Entity | Network | AdvancedFiltersState | string
 > = (v) => (s) => {
   if (isEnum(Entity, v)) {
     return {
@@ -54,7 +53,7 @@ export const setFiltersValueTransformer: StateTransformer<
     ...s,
     filters: {
       ...s.filters,
-      advancedFilter: v as Record<string, CHMFieldQuery>,
+      advancedFilter: v as AdvancedFiltersState,
       page: 1,
     },
   };
