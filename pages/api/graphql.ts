@@ -15,6 +15,7 @@ const apolloServer = new ApolloServer({
     ...schemaAutoGenTypes,
     ...schemaObjectTypes,
   } as any,
+  introspection: true,
 });
 
 const startServer = apolloServer.start();
