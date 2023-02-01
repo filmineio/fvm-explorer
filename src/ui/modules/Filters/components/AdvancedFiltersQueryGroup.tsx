@@ -106,14 +106,16 @@ export const AdvancedFiltersQueryGroup = ({
         onClear={clear}
       />
 
-      {groupRules.map(([field, v]) => (
-        <AdvancedFilterRule
-          key={field}
-          field={field}
-          value={v}
-          onRemove={removeRule(field)}
-        />
-      ))}
+      <div className={"flex flex-col gap-2"}>
+        {groupRules.map(([field, v]) => (
+          <AdvancedFilterRule
+            key={field}
+            field={field}
+            value={v}
+            onRemove={removeRule(field)}
+          />
+        ))}
+      </div>
     </div>
   );
 };
