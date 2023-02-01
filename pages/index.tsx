@@ -10,6 +10,7 @@ import { Main } from "@/ui/components/Main/Main";
 import { Page } from "@/ui/components/Page/Page";
 
 import { Filters } from "@/ui/modules/Filters/Filters";
+import { mapFieldQueryToApiQuery } from "@/ui/modules/Filters/state/state";
 import { ResultsPresenter } from "@/ui/modules/Results/components/ResultsPresenter";
 
 import { useLocationQuery } from "@/ui/hooks/useLocationQuery";
@@ -20,7 +21,7 @@ import { setDataErrorTransformer } from "@/ui/state/transformers/data/setDataErr
 import { setDataLoadingTransformer } from "@/ui/state/transformers/data/setDataLoading.transformer";
 import { setDataReceivedFromServer } from "@/ui/state/transformers/data/setDataReceivedFromServer";
 import { setDataResultsTransformer } from "@/ui/state/transformers/data/setDataResults.transformer";
-import { resetFiltersToQueryTransformer } from "@/ui/state/transformers/filters/setFiltersValueTransformer";
+import { resetFiltersToQueryTransformer } from "@/ui/state/transformers/filters/resetFiltersToQueryTransformer";
 import { FilterState } from "@/ui/state/types/AppState";
 
 import { useDataClient } from "@/ui/external/data";
@@ -31,7 +32,9 @@ import { ApplicationData, OperationStatus } from "@/types/ApiResponse";
 import { AppQuery } from "@/types/AppQuery";
 
 import { cb } from "@/utils/cb";
+import { fromHex, toHex } from "@/utils/hex";
 import { isEnum } from "@/utils/isEnum";
+import { parse } from "@/utils/parse";
 
 
 const Home: NextPage<{ data: ApplicationData }> = ({ data: serverData }) => {
@@ -60,7 +63,15 @@ const Home: NextPage<{ data: ApplicationData }> = ({ data: serverData }) => {
         });
 
       const page = typeof data === "number" ? data : filters.page;
-      updateRouteState(push, { ...filters, page });
+
+      console.log(JSON.stringify(filters.advancedFilter));
+      updateRouteState(push, {
+        ...filters,
+        page,
+        advancedFilter: filters.advancedFilter
+          ? (toHex(JSON.stringify(filters.advancedFilter)) as never)
+          : undefined,
+      });
     },
     [filters, get, mod]
   );
@@ -87,6 +98,10 @@ const Home: NextPage<{ data: ApplicationData }> = ({ data: serverData }) => {
       return updateRouteState(push, DEFAULT_FILTERS);
     }
 
+    query.advancedFilter = mapFieldQueryToApiQuery(
+      parse(fromHex(query.advancedFilter as never), undefined)
+    ) as never;
+
     get(
       query.filteredBy as Entity,
       filtersToResourceQuery(
@@ -97,7 +112,7 @@ const Home: NextPage<{ data: ApplicationData }> = ({ data: serverData }) => {
     );
   }, []);
 
-  useEffect(cb(mod, resetFiltersToQueryTransformer(query)), [query]);
+  useEffect(cb(mod, resetFiltersToQueryTransformer(query as never)), [query]);
   useEffect(cb(handleServerData, serverData), [serverData]);
   useEffect(cb(handleQuery, query), [query]);
 
@@ -119,8 +134,8 @@ const Home: NextPage<{ data: ApplicationData }> = ({ data: serverData }) => {
 };
 
 export async function getServerSideProps({
-  query,
-}: {
+                                           query,
+                                         }: {
   locale: string;
   query: AppQuery;
 }) {

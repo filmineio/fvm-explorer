@@ -12,11 +12,6 @@ export enum CHMBaseOperator {
   IsNull = "isNull",
 }
 
-export enum CHMLogical {
-  And = "and",
-  Or = "or",
-}
-
 export enum CHMNumberOperator {
   GreaterThan = "greaterThan",
   LessThan = "lessThan",
@@ -27,5 +22,4 @@ export enum CHMNumberOperator {
 export type CHMFiledOperator =
   | CHMStringOperator
   | CHMBaseOperator
-  | CHMLogical
   | CHMNumberOperator;

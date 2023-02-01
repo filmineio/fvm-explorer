@@ -32,37 +32,37 @@ export const AdvancedFilterRule = ({
           <div className="closebut pr-3">
             <button
               type="button"
-              className=" box-content w-32 py-1 font-normal px-2 text-center text-analogous border border-analogous  text-sm font-mono1  rounded-full focus:shadow-none focus:outline-none"
+              className=" box-content w-48 py-1 font-normal px-2 text-center text-analogous border border-analogous  text-sm font-mono1  rounded-full focus:shadow-none focus:outline-none"
             >
               {toHumanReadable(operator)}
             </button>
           </div>
-          <button
-            type="button"
-            className="box-content bg-analogous py-1 font-normal px-2 text-center text-white text-sm font-mono1  rounded-lg focus:shadow-none focus:outline-none"
-          >
-            {val as string}
-          </button>
-        </div>
-        <div className="flex gap-3">
-          {Array.isArray(value) ? (
-            value.map((v) => (
+          {Array.isArray(val) ? (
+            val.map((v) => (
               <button
                 key={v}
-                className="box-content w-4 h-4 p-2 text-center text-white border-none bg-secect rounded-lg focus:shadow-none focus:outline-none flex justify-center items-center"
-                onClick={onRemove}
+                type="button"
+                className="box-content bg-analogous py-1 font-normal px-2 text-center text-white text-sm font-mono1  rounded-lg focus:shadow-none focus:outline-none w-40 truncate"
               >
-                <img className="w-auto" src="/images/close.png" alt={""} />
+                {v as string}
               </button>
             ))
           ) : (
             <button
-              className="box-content w-4 h-4 p-2 text-center text-white border-none bg-secect rounded-lg focus:shadow-none focus:outline-none flex justify-center items-center"
-              onClick={onRemove}
+              type="button"
+              className="box-content bg-analogous py-1 font-normal px-2 text-center text-white text-sm font-mono1  rounded-lg focus:shadow-none focus:outline-none"
             >
-              <img className="w-auto" src="/images/close.png" alt={""} />
+              {val as string}
             </button>
           )}
+        </div>
+        <div className="flex gap-3">
+          <button
+            className="box-content w-4 h-4 p-2 text-center text-white border-none bg-secect rounded-lg focus:shadow-none focus:outline-none flex justify-center items-center"
+            onClick={onRemove}
+          >
+            <img className="w-auto" src="/images/close.png" alt={""} />
+          </button>
         </div>
       </div>
     </div>

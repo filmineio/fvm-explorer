@@ -56,15 +56,12 @@ export const FiltersHeader = ({
             values={availableNetworks}
           />
         </div>
-        {!checked ? (
-          <div />
-        ) : (
-          <AdvancedFilterToggle
-            checked={checked}
-            toggle={cb(toggle, !checked)}
-            label={"Advanced Search"}
-          />
-        )}
+
+        <AdvancedFilterToggle
+          checked={checked}
+          toggle={cb(toggle, !checked)}
+          label={"Advanced Search"}
+        />
       </div>
     </div>
   );

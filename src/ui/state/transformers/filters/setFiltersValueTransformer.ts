@@ -1,19 +1,12 @@
 import { Entity } from "@/enums/Entity";
 import { Network } from "@/enums/Network";
 
-
-
-import { AdvancedFiltersState, AppState, FilterState } from "@/ui/state/types/AppState";
+import { AdvancedFiltersState, AppState } from "@/ui/state/types/AppState";
 import { StateTransformer } from "@/ui/state/types/transformers/StateTranformer";
-import { transformer } from "@/ui/state/utils/transformer";
-
-
 
 import { isEnum } from "@/utils/isEnum";
 import { isString } from "@/utils/isString";
 
-
-// TODO Simplify
 export const setFiltersValueTransformer: StateTransformer<
   AppState,
   Entity | Network | AdvancedFiltersState | string
@@ -58,6 +51,3 @@ export const setFiltersValueTransformer: StateTransformer<
     },
   };
 };
-
-export const resetFiltersToQueryTransformer =
-  transformer<FilterState>("filters");

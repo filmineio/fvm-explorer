@@ -5,7 +5,6 @@ import dynamic from "next/dynamic";
 import Script from "next/script";
 import { GoogleAnalytics } from "nextjs-google-analytics";
 import NextNProgress from "nextjs-progressbar";
-import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 
 import Store from "@/ui/state/Store";
@@ -30,7 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <Store>
       <ToastContainer theme={"dark"} hideProgressBar={true} />
       <GoogleAnalytics trackPageViews />
-      <PostHog />
+      {/*<PostHog />*/}
       <NextNProgress nonce="my-nonce" color={"#add442"} showOnShallow={true} />
       <Component {...pageProps} />
     </Store>

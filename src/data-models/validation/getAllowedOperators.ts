@@ -8,46 +8,24 @@ import {
 
 const stringFieldOperators = [
   CHMBaseOperator.Is,
-  CHMBaseOperator.Not,
-  CHMBaseOperator.IsNull,
   CHMBaseOperator.In,
-  CHMBaseOperator.NotIn,
   CHMStringOperator.Includes,
   CHMStringOperator.StartsWith,
   CHMStringOperator.EndsWith,
 ];
 const numberFieldOperators = [
   CHMBaseOperator.Is,
-  CHMBaseOperator.Not,
-  CHMBaseOperator.IsNull,
   CHMBaseOperator.In,
-  CHMBaseOperator.NotIn,
   CHMNumberOperator.GreaterThanOrEqual,
   CHMNumberOperator.GreaterThan,
   CHMNumberOperator.LessThan,
   CHMNumberOperator.LessThanOrEqual,
 ];
-const booleanFieldOperators = [
-  CHMBaseOperator.Is,
-  CHMBaseOperator.Not,
-  CHMBaseOperator.IsNull,
-];
-const enumFieldOperators = [
-  CHMBaseOperator.Is,
-  CHMBaseOperator.Not,
-  CHMBaseOperator.IsNull,
-  CHMBaseOperator.In,
-  CHMBaseOperator.NotIn,
-];
+const booleanFieldOperators = [CHMBaseOperator.Is];
+const enumFieldOperators = [CHMBaseOperator.Is, CHMBaseOperator.In];
 const relationFieldOperators = [CHMBaseOperator.Is, CHMBaseOperator.Not];
 const mapFieldOperators = [CHMBaseOperator.Is, CHMBaseOperator.Not];
-const arrayFieldOperators = [
-  CHMBaseOperator.Is,
-  CHMBaseOperator.Not,
-  CHMBaseOperator.IsNull,
-  CHMBaseOperator.In,
-  CHMBaseOperator.NotIn,
-];
+const arrayFieldOperators = [CHMBaseOperator.Is, CHMBaseOperator.In];
 export const getAllowedOperators = (
   field: CHMField["kind"]
 ): CHMFiledOperator[] => {

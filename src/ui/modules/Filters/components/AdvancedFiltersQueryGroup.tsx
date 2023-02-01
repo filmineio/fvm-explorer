@@ -5,8 +5,9 @@ import {
 import { Entity } from "@/enums/Entity";
 import { CHMBaseOperator } from "@/schema/types/CHMFiledOperator";
 import { CHMFieldQuery } from "@/schema/types/CHMQuery";
-import { difference, lensPath, omit, set } from "ramda";
+import { isEmpty, lensPath, omit, set } from "ramda";
 import { useCallback, useMemo, useState } from "react";
+import { toast } from "react-toastify";
 
 import { AdvancedFilterRule } from "@/ui/modules/Filters/components/AdvancedFilterRule";
 import {
@@ -15,7 +16,8 @@ import {
   TransactionQueryFields,
 } from "@/ui/modules/Filters/state/state";
 
-import { FieldQuery } from "@/types/FieldQuery";
+import { QueryGroup } from "@/ui/state/types/AppState";
+
 
 const defaultState: (
   f: BlockQueryFields | ContractQueryField | TransactionQueryFields
@@ -27,18 +29,18 @@ const defaultState: (
 });
 
 export const AdvancedFiltersQueryGroup = ({
-                                            removable,
-                                            group,
-                                            fields,
-                                            kind,
-                                            onChange,
-                                            onRemove,
-                                          }: {
+  removable,
+  group,
+  fields,
+  kind,
+  onChange,
+  onRemove,
+}: {
   removable: boolean;
   group: Record<string, CHMFieldQuery>;
   fields: string[];
   kind: Entity.Block | Entity.Transaction | Entity.Contract;
-  onChange: (group: FieldQuery) => void;
+  onChange: (group: QueryGroup) => void;
   onRemove: () => void;
 }) => {
   const [currentField, update] = useState<QueryEditorField>(
@@ -54,30 +56,30 @@ export const AdvancedFiltersQueryGroup = ({
 
   const removeRule = useCallback(
     (key: string) => () => {
-      onChange(omit([key], group));
+      onChange(omit([key], group) as never);
     },
     [group]
   );
 
   const clear = useCallback(() => {
-    update(
-      defaultState(
-        difference(
-          [...Object.keys(group || {}), currentField.field],
-          fields
-        )[0] as never
-      )
-    );
-  }, [group])
+    update(defaultState(fields[0] as never));
+  }, [group]);
 
   const addRule = useCallback(() => {
-    console.log(currentField);
+    if (!currentField.value && isEmpty(currentField.values)) {
+      return toast.warn("Filter Value is required in order to Add Rule");
+    }
+    if (!currentField.field) {
+      return toast.warn("Filter Field is required in order to Add Rule");
+    }
     onChange(
       set(lensPath([currentField.field]), {
-        [currentField.operator]: currentField.value,
+        [currentField.operator]: isEmpty(currentField.values)
+          ? currentField.value
+          : currentField.values,
       })(group)
     );
-    clear()
+    clear();
   }, [group, currentField]);
 
   const groupRules = useMemo(() => Object.entries(group || {}), [group]);

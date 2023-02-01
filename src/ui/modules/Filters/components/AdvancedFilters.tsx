@@ -1,53 +1,22 @@
-import { gt, remove } from "ramda";
+import { gt, isEmpty, isNil, remove } from "ramda";
 import { PropsWithChildren, useCallback, useMemo } from "react";
+import { toast } from "react-toastify";
 
 import { AdvancedFiltersQueryGroup } from "@/ui/modules/Filters/components/AdvancedFiltersQueryGroup";
+import { AdvancedQueryActions } from "@/ui/modules/Filters/components/AdvancedQueryActions";
 import { ORMarker } from "@/ui/modules/Filters/components/ORMarker";
 import { getModelQueryFields } from "@/ui/modules/Filters/state/state";
 
-import { AdvancedFiltersState, FilterState } from "@/ui/state/types/AppState";
-
-import { FieldQuery } from "@/types/FieldQuery";
+import {
+  AdvancedFiltersState,
+  FilterState,
+  QueryGroup,
+} from "@/ui/state/types/AppState";
 
 import { getModel } from "@/api/ctx/database/clickhouse/utils/getModel";
 
 import { cb } from "@/utils/cb";
 
-
-export const AdvancedQueryActions = ({
-  search,
-  addGroup,
-}: {
-  search: () => void;
-  addGroup: () => void;
-}) => {
-  return (
-    <div
-      className={
-        "flex justify-between transform -translate-y-7 max-w-2xl w-full px-10"
-      }
-    >
-      {/*<button className="w-52 border-2 border-yellow text-yellow uppercase rounded  bg-black px-2 py-1">*/}
-      {/*  Collapse Query*/}
-      {/*</button>*/}
-      <span />
-      <div className={"flex gap-5"}>
-        <button
-          className="w-52 border-2 border-yellow text-yellow uppercase bg-black rounded px-2 py-1"
-          onClick={addGroup}
-        >
-          Add group
-        </button>
-        <button
-          className="w-52 border-2 border-yellow bg-yellow text-gray-dark uppercase rounded px-2 py-1"
-          onClick={search}
-        >
-          Search
-        </button>
-      </div>
-    </div>
-  );
-};
 
 export const InnerGroupWrapper = ({ children }: PropsWithChildren) => {
   return (
@@ -69,6 +38,8 @@ export const AdvancedFilters = ({
   state: FilterState;
   onClick: () => void;
 }) => {
+  console.log(state);
+
   const model = useMemo(cb(getModel, state.filteredBy), [state.filteredBy]);
   const fields = useMemo(cb(getModelQueryFields, model.kind), [model]);
 
@@ -82,7 +53,7 @@ export const AdvancedFilters = ({
   ]);
 
   const handleGroupChange = useCallback(
-    (index: number) => (group: FieldQuery) => {
+    (index: number) => (group: QueryGroup) => {
       handleChange([
         ...queryGroups.slice(0, index),
         group,
@@ -93,7 +64,16 @@ export const AdvancedFilters = ({
   );
 
   const addGroup = useCallback(() => {
-    handleChange([...queryGroups, []]);
+    if (
+      isEmpty(queryGroups) ||
+      queryGroups.some(isEmpty) ||
+      queryGroups.some(isNil)
+    ) {
+      return toast.warn(
+        "All existing query groups must have rules in order to add new group"
+      );
+    }
+    handleChange([...queryGroups, [] as never]);
   }, [queryGroups]);
 
   const removeGroup = useCallback(
@@ -102,6 +82,20 @@ export const AdvancedFilters = ({
     },
     [queryGroups]
   );
+
+  const search = useCallback(() => {
+    if (
+      isEmpty(queryGroups) ||
+      queryGroups.some(isEmpty) ||
+      queryGroups.some(isNil)
+    ) {
+      return toast.warn(
+        "All query groups must have rules in order to run search"
+      );
+    }
+
+    onClick();
+  }, [queryGroups, onClick]);
 
   const firstGroup = useMemo(() => queryGroups[0], [queryGroups]);
 
@@ -130,7 +124,7 @@ export const AdvancedFilters = ({
         </InnerGroupWrapper>
       ))}
 
-      <AdvancedQueryActions search={onClick} addGroup={addGroup} />
+      <AdvancedQueryActions search={search} addGroup={addGroup} />
     </div>
   );
 };
