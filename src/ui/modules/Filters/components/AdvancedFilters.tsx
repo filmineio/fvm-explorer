@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { AdvancedFiltersQueryGroup } from "@/ui/modules/Filters/components/AdvancedFiltersQueryGroup";
 import { AdvancedQueryActions } from "@/ui/modules/Filters/components/AdvancedQueryActions";
 import { ORMarker } from "@/ui/modules/Filters/components/ORMarker";
-import { getModelQueryFields } from "@/ui/modules/Filters/state/state";
+import { getModelQueryFields } from "@/ui/modules/Filters/state/getModelQueryFields";
 
 import {
   AdvancedFiltersState,

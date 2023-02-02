@@ -2,7 +2,7 @@ import { defaultNetwork } from "../src/filters/defaultNetwork";
 import { Entity } from "@/enums/Entity";
 import { Network } from "@/enums/Network";
 import type { NextPage } from "next";
-import { useRouter } from "next/router";
+import { Router, useRouter } from "next/router";
 import { isEmpty } from "ramda";
 import { useCallback, useEffect } from "react";
 
@@ -10,12 +10,12 @@ import { Main } from "@/ui/components/Main/Main";
 import { Page } from "@/ui/components/Page/Page";
 
 import { Filters } from "@/ui/modules/Filters/Filters";
-import { mapFieldQueryToApiQuery } from "@/ui/modules/Filters/state/state";
+import { mapFieldQueryToApiQuery } from "@/ui/modules/Filters/state/mapFieldQueryToApiQuery";
 import { ResultsPresenter } from "@/ui/modules/Results/components/ResultsPresenter";
 
 import { useLocationQuery } from "@/ui/hooks/useLocationQuery";
 
-import { useStore } from "@/ui/state/Store";
+import { Mod, useStore } from "@/ui/state/Store";
 import { DEFAULT_FILTERS } from "@/ui/state/default";
 import { setDataErrorTransformer } from "@/ui/state/transformers/data/setDataError.transformer";
 import { setDataLoadingTransformer } from "@/ui/state/transformers/data/setDataLoading.transformer";
@@ -37,6 +37,43 @@ import { isEnum } from "@/utils/isEnum";
 import { parse } from "@/utils/parse";
 
 
+const handleServerData =
+  (receivedServerData: number | null | undefined, mod: Mod) =>
+  (serverResponse: ApplicationData) => {
+    if (receivedServerData) return;
+
+    const common = [
+      setDataLoadingTransformer(false),
+      setDataReceivedFromServer(),
+    ];
+
+    if (serverResponse.status === OperationStatus.Ok)
+      mod(...common, setDataResultsTransformer(serverResponse.data));
+    else mod(...common, setDataErrorTransformer(serverResponse.data.exception));
+  };
+
+const getData =
+  (push: Router["push"], filters: FilterState) =>
+  (data?: number | Network | Entity) => {
+    if (isEnum(Network, data))
+      return updateRouteState(push, { ...filters, network: data as Network });
+    else if (isEnum(Entity, data))
+      return updateRouteState(push, {
+        ...filters,
+        filteredBy: data as Entity,
+      });
+
+    const page = typeof data === "number" ? data : filters.page;
+
+    updateRouteState(push, {
+      ...filters,
+      page,
+      advancedFilter: filters.advancedFilter
+        ? (toHex(JSON.stringify(filters.advancedFilter)) as never)
+        : undefined,
+    });
+  };
+
 const Home: NextPage<{ data: ApplicationData }> = ({ data: serverData }) => {
   const { push } = useRouter();
 
@@ -52,46 +89,11 @@ const Home: NextPage<{ data: ApplicationData }> = ({ data: serverData }) => {
 
   const { get } = useDataClient();
 
-  const requestData = useCallback(
-    (data?: number | Network | Entity) => {
-      if (isEnum(Network, data))
-        return updateRouteState(push, { ...filters, network: data as Network });
-      else if (isEnum(Entity, data))
-        return updateRouteState(push, {
-          ...filters,
-          filteredBy: data as Entity,
-        });
+  const requestData = useCallback(getData(push, filters), [filters, get]);
 
-      const page = typeof data === "number" ? data : filters.page;
-
-      console.log(JSON.stringify(filters.advancedFilter));
-      updateRouteState(push, {
-        ...filters,
-        page,
-        advancedFilter: filters.advancedFilter
-          ? (toHex(JSON.stringify(filters.advancedFilter)) as never)
-          : undefined,
-      });
-    },
-    [filters, get, mod]
-  );
-
-  const handleServerData = useCallback(
-    (serverResponse: ApplicationData) => {
-      if (receivedServerData) return;
-
-      const common = [
-        setDataLoadingTransformer(false),
-        setDataReceivedFromServer(),
-      ];
-
-      if (serverResponse.status === OperationStatus.Ok)
-        mod(...common, setDataResultsTransformer(serverResponse.data));
-      else
-        mod(...common, setDataErrorTransformer(serverResponse.data.exception));
-    },
-    [mod]
-  );
+  const onServerData = useCallback(handleServerData(receivedServerData, mod), [
+    mod,
+  ]);
 
   const handleQuery = useCallback((query: FilterState) => {
     if (isEmpty(query)) {
@@ -113,7 +115,7 @@ const Home: NextPage<{ data: ApplicationData }> = ({ data: serverData }) => {
   }, []);
 
   useEffect(cb(mod, resetFiltersToQueryTransformer(query as never)), [query]);
-  useEffect(cb(handleServerData, serverData), [serverData]);
+  useEffect(cb(onServerData, serverData), [serverData]);
   useEffect(cb(handleQuery, query), [query]);
 
   return (
@@ -134,8 +136,8 @@ const Home: NextPage<{ data: ApplicationData }> = ({ data: serverData }) => {
 };
 
 export async function getServerSideProps({
-                                           query,
-                                         }: {
+  query,
+}: {
   locale: string;
   query: AppQuery;
 }) {

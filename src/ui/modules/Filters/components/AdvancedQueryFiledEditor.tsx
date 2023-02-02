@@ -1,19 +1,15 @@
 import { Entity } from "@/enums/Entity";
-import {
-  CHMBaseOperator,
-  CHMFiledOperator,
-  CHMNumberOperator,
-  CHMStringOperator,
-} from "@/schema/types/CHMFiledOperator";
+import { CHMFiledOperator } from "@/schema/types/CHMFiledOperator";
 import { KeyboardEvent, useCallback, useEffect, useMemo } from "react";
 
 import { FilterValue } from "@/ui/modules/Filters/components/FilterValue";
 import { RemoveBtn } from "@/ui/modules/Filters/components/RemoveBtn";
+import { getQueryFieldOperators } from "@/ui/modules/Filters/state/getQueryFieldOperators";
+import { InputType, getInputType } from "@/ui/modules/Filters/state/inputType";
 import {
   BlockQueryFields,
   ContractQueryField,
   TransactionQueryFields,
-  getQueryFieldOperators,
 } from "@/ui/modules/Filters/state/state";
 
 import { cb } from "@/utils/cb";
@@ -26,12 +22,6 @@ export type QueryEditorField = {
   operator: CHMFiledOperator;
   field: BlockQueryFields | ContractQueryField | TransactionQueryFields;
 };
-
-enum InputType {
-  Text,
-  Bool,
-  List,
-}
 
 export const AdvancedQueryFiledEditor = ({
   fields,
@@ -53,25 +43,9 @@ export const AdvancedQueryFiledEditor = ({
     [selectedField.field]
   );
 
-  const editorType = useMemo(() => {
-    switch (selectedField.operator) {
-      case CHMStringOperator.StartsWith:
-      case CHMStringOperator.EndsWith:
-      case CHMStringOperator.Includes:
-      case CHMBaseOperator.Is:
-      case CHMBaseOperator.Not:
-      case CHMNumberOperator.GreaterThan:
-      case CHMNumberOperator.LessThan:
-      case CHMNumberOperator.GreaterThanOrEqual:
-      case CHMNumberOperator.LessThanOrEqual:
-        return InputType.Text;
-      case CHMBaseOperator.In:
-      case CHMBaseOperator.NotIn:
-        return InputType.List;
-      case CHMBaseOperator.IsNull:
-        return InputType.Bool;
-    }
-  }, [selectedField.operator]);
+  const editorType = useMemo(cb(getInputType, selectedField.operator), [
+    selectedField.operator,
+  ]);
 
   const handleKeyPress = useCallback(
     (e: KeyboardEvent<HTMLInputElement>) => {
