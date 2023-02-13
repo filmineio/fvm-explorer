@@ -1,6 +1,10 @@
 // TODO Implement followind
 import { NextApiRequest, NextApiResponse } from "next";
 
-export default async (_req: NextApiRequest, res: NextApiResponse) => {
-  res.status(401).end();
+import { getCtx } from "@/api/ctx/apiCtx";
+import { handle } from "@/api/ctx/contracts/verify/utils/handleVerifyRequest";
+
+export default async (req: NextApiRequest, res: NextApiResponse) => {
+  const ctx = await getCtx();
+  res.json(await handle(ctx, req));
 };
