@@ -3,6 +3,6 @@ import { SolidityVersion } from "@/api/ctx/contracts/verify/enums/SolidityVersio
 export type VerificationRequest = {
   solidityVersion: SolidityVersion;
   contractName: string;
-  contractSource: string;
+  contractsZipCID: string;
   optimise: boolean;
 };

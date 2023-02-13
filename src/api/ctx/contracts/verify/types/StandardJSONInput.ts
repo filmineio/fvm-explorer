@@ -1,0 +1,15 @@
+export type StandardJSONInput = {
+  language: string;
+  sources: {
+    [key: string]: {
+      content: string;
+    };
+  };
+  settings: {
+    outputSelection: {
+      [key: string]: {
+        [key: string]: string[];
+      };
+    };
+  };
+};
