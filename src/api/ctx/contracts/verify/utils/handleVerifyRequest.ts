@@ -9,11 +9,13 @@ import { processRequestBody } from "@/api/ctx/contracts/verify/utils/processRequ
 import { readContractsFromZip } from "@/api/ctx/contracts/verify/utils/readContractsFromZip";
 
 export const handle = async (ctx: ApiCtx, req: NextApiRequest) => {
+  const { contractId } = req.query;
   const verificationRequest = processRequestBody(req);
   const { solidityVersion, contractName } = verificationRequest;
   const filePath = `${nanoid()}.zip`;
   await downloadFile(ctx, verificationRequest.contractsZipCID, filePath);
   const contracts = await readContractsFromZip(filePath);
+  // TODO: fetch on chain bytecode
   const onChainBytecode = ``;
   // remove downloaded contracts
   fs.rmSync(filePath);

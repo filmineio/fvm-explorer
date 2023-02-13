@@ -3,9 +3,9 @@ import { filterSolcOutputErrors } from "./utils/filterSolcOutputErrors";
 import { SolidityVersion } from "@/api/ctx/contracts/verify/enums/SolidityVersion";
 import { VerificationStatus } from "@/api/ctx/contracts/verify/enums/VerificationStatus";
 import { StandardJSONInput } from "@/api/ctx/contracts/verify/types/StandardJSONInput";
-import { extractMetadata } from "@/api/ctx/contracts/verify/utils/extractMetadata";
 import { findContractPath } from "@/api/ctx/contracts/verify/utils/findContractPath";
 import { loadSolc } from "@/api/ctx/contracts/verify/utils/loadSolc";
+import { verifyBytecode } from "@/api/ctx/contracts/verify/utils/verifyBytecode";
 
 type Verify = (
   contractName: string,
@@ -18,6 +18,7 @@ type Verify = (
   warnings: any[];
 }>;
 
+// verify compiles the contract and compares the bytecode with the on-chain bytecode
 export const verify: Verify = async (
   contractName,
   solidityVersion,
@@ -25,12 +26,10 @@ export const verify: Verify = async (
   input
 ) => {
   // initial status is unverified
-  let status = VerificationStatus.Unverified;
-
   const contractPath = findContractPath(input, contractName);
   if (!contractPath) {
     return {
-      status,
+      status: VerificationStatus.Unverified,
       errors: ["Contract not found"],
       warnings: [],
     };
@@ -43,28 +42,13 @@ export const verify: Verify = async (
   const warnings = filterSolcOutputErrors(output, "warning");
 
   if (errors.length > 0) {
-    return { status, errors, warnings };
+    return { status: VerificationStatus.Unverified, errors, warnings };
   }
 
   const { evm } = output.contracts[contractPath][contractName];
-  const deployedBytecode = `0x${evm.deployedBytecode.object}`;
+  const contractBytecode = `0x${evm.deployedBytecode.object}`;
 
-  const { strippedBytecode, metadataBytecode } =
-    extractMetadata(deployedBytecode);
-
-  const {
-    strippedBytecode: strippedOnChainBytecode,
-    metadataBytecode: onChainMetadataBytecode,
-  } = extractMetadata(onChainBytecode);
-
-  if (
-    strippedBytecode === strippedOnChainBytecode &&
-    metadataBytecode === onChainMetadataBytecode
-  ) {
-    status = VerificationStatus.Full;
-  } else if (strippedBytecode === strippedOnChainBytecode) {
-    status = VerificationStatus.Partial;
-  }
+  const status = verifyBytecode(onChainBytecode, contractBytecode);
 
   return { status, errors, warnings };
 };
