@@ -1,4 +1,4 @@
-import { SolidityVersion } from "@/api/ctx/contracts/verify/enums/SolidityVersion";
+import { SolidityVersion } from "@/enums/SolidityVersion";
 
 const solc = require("solc");
 

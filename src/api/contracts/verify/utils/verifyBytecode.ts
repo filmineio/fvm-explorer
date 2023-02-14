@@ -1,10 +1,10 @@
-import { VerificationStatus } from "@/api/ctx/contracts/verify/enums/VerificationStatus";
-import { extractMetadata } from "@/api/ctx/contracts/verify/utils/extractMetadata";
+import { ContractVerificationStatus } from "@/enums/ContractVerificationStatus";
+import { extractMetadata } from "@/api/contracts/verify/utils/extractMetadata";
 
 export const verifyBytecode = (
   onChainBytecode: string,
   contractBytecode: string
-): VerificationStatus => {
+): ContractVerificationStatus => {
   const { strippedBytecode, metadataBytecode } =
     extractMetadata(contractBytecode);
 
@@ -17,10 +17,10 @@ export const verifyBytecode = (
     strippedBytecode === strippedOnChainBytecode &&
     metadataBytecode === onChainMetadataBytecode
   ) {
-    return VerificationStatus.Full;
+    return ContractVerificationStatus.Full;
   } else if (strippedBytecode === strippedOnChainBytecode) {
-    return VerificationStatus.Partial;
+    return ContractVerificationStatus.Partial;
   }
 
-  return VerificationStatus.Unverified;
+  return ContractVerificationStatus.Unverified;
 };

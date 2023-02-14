@@ -1,4 +1,4 @@
-export type StandardJSONInput = {
+export type SolcStandardJSONInput = {
   language: string;
   sources: {
     [key: string]: {

@@ -1,19 +1,19 @@
 import { filterSolcOutputErrors } from "./utils/filterSolcOutputErrors";
 
-import { SolidityVersion } from "@/api/ctx/contracts/verify/enums/SolidityVersion";
-import { VerificationStatus } from "@/api/ctx/contracts/verify/enums/VerificationStatus";
-import { StandardJSONInput } from "@/api/ctx/contracts/verify/types/StandardJSONInput";
-import { findContractPath } from "@/api/ctx/contracts/verify/utils/findContractPath";
-import { loadSolc } from "@/api/ctx/contracts/verify/utils/loadSolc";
-import { verifyBytecode } from "@/api/ctx/contracts/verify/utils/verifyBytecode";
+import { SolidityVersion } from "@/enums/SolidityVersion";
+import { ContractVerificationStatus } from "@/enums/ContractVerificationStatus";
+import { SolcStandardJSONInput } from "@/api/contracts/verify/types/SolcStandardJSONInput";
+import { findContractPath } from "@/api/contracts/verify/utils/findContractPath";
+import { loadSolc } from "@/api/contracts/verify/utils/loadSolc";
+import { verifyBytecode } from "@/api/contracts/verify/utils/verifyBytecode";
 
 type Verify = (
   contractName: string,
   solidityVersion: SolidityVersion,
   onChainBytecode: string,
-  input: StandardJSONInput
+  input: SolcStandardJSONInput
 ) => Promise<{
-  status: VerificationStatus;
+  status: ContractVerificationStatus;
   errors: any[];
   warnings: any[];
 }>;
@@ -29,7 +29,7 @@ export const verify: Verify = async (
   const contractPath = findContractPath(input, contractName);
   if (!contractPath) {
     return {
-      status: VerificationStatus.Unverified,
+      status: ContractVerificationStatus.Unverified,
       errors: ["Contract not found"],
       warnings: [],
     };
@@ -42,7 +42,7 @@ export const verify: Verify = async (
   const warnings = filterSolcOutputErrors(output, "warning");
 
   if (errors.length > 0) {
-    return { status: VerificationStatus.Unverified, errors, warnings };
+    return { status: ContractVerificationStatus.Unverified, errors, warnings };
   }
 
   const { evm } = output.contracts[contractPath][contractName];
