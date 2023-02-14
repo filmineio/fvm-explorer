@@ -11,6 +11,9 @@
   },
   "dependencies": {
     "@clickhouse/client": "^0.0.11",
+    "@filecoin-shipyard/lotus-client-provider-nodejs": "^1.1.1",
+    "@filecoin-shipyard/lotus-client-rpc": "^1.2.0",
+    "@filecoin-shipyard/lotus-client-schema": "^4.2.0",
     "@hapi/iron": "^7.0.0",
     "@magic-sdk/admin": "^1.8.0",
     "@segment/analytics-next": "^1.49.2",

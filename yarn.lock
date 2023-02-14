@@ -685,6 +685,30 @@
     "@ethersproject/rlp" "^5.7.0"
     "@ethersproject/signing-key" "^5.7.0"
 
+"@filecoin-shipyard/lotus-client-provider-browser@^1.0.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@filecoin-shipyard/lotus-client-provider-browser/-/lotus-client-provider-browser-1.1.1.tgz#48adacbc9c3d17e528d46d2d7eec5f6e5762bf03"
+  integrity sha512-Ii5k3CobPBs0c1OYJdSqYkG3VxlnLSuH0+ZxE+NJ8C19mQtY+uhum9au9MsKMwTSXCx71ky0gp5vTqNJwAoPsQ==
+
+"@filecoin-shipyard/lotus-client-provider-nodejs@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@filecoin-shipyard/lotus-client-provider-nodejs/-/lotus-client-provider-nodejs-1.1.1.tgz#bfd97bd0dd580a41084442d2bb3cb74c3aeb948b"
+  integrity sha512-PgjQeABOpiZ89XLqL74GnPQ3KvBWo8HN8N13blOSuev5V4dagPNEFOwhvXt4zWTbqAfLwYwWxY1nZtsnEtRysg==
+  dependencies:
+    "@filecoin-shipyard/lotus-client-provider-browser" "^1.0.1"
+    node-fetch "^2.6.1"
+    ws "^8.2.0"
+
+"@filecoin-shipyard/lotus-client-rpc@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@filecoin-shipyard/lotus-client-rpc/-/lotus-client-rpc-1.2.0.tgz#a86d43e48e4c9b2971edbf2b6cf846bfc1f06512"
+  integrity sha512-z7PhEPHkOHhCz/RQEPFEOHegPHyOxH99/1qOkY+COLmCRrHsVxpGAy6TqJLxOFLxeYaUzyTPxpG4c4cRrQ25+w==
+
+"@filecoin-shipyard/lotus-client-schema@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@filecoin-shipyard/lotus-client-schema/-/lotus-client-schema-4.2.0.tgz#684dd9e53657e2f76ab9960637ca5c2e2c264f67"
+  integrity sha512-JX1ItITk5wdsMLRwdmxfFP+p7M9qatTbQ1C2iH4KPhRU0Yds4/b2R37XovuH88gNHqKq89VBOOzHehyibEzvtQ==
+
 "@graphql-tools/merge@8.3.1":
   version "8.3.1"
   resolved "https://registry.npmjs.org/@graphql-tools/merge/-/merge-8.3.1.tgz"
@@ -8793,6 +8817,11 @@ ws@^8.11.0:
   version "8.11.0"
   resolved "https://registry.npmjs.org/ws/-/ws-8.11.0.tgz"
   integrity sha512-HPG3wQd9sNQoT9xHyNCXoDUa+Xw/VevmY9FoHyQ+g+rrMn4j6FB4np7Z0OhdTgjx6MgQLK7jwSy1YecU1+4Asg==
+
+ws@^8.2.0:
+  version "8.12.1"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-8.12.1.tgz#c51e583d79140b5e42e39be48c934131942d4a8f"
+  integrity sha512-1qo+M9Ba+xNhPB+YTWUlK6M17brTut5EXbcBaMRN5pH5dFrXz7lzz1ChFSUq3bOUl8yEvSenhHmYUNJxFzdJew==
 
 xhr-request-promise@^0.1.2:
   version "0.1.3"
