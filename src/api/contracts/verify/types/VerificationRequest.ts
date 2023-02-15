@@ -7,4 +7,5 @@ export type VerificationRequest = {
   contractName: string;
   contractsZipCID: string;
   optimise: boolean;
+  isPublic: boolean;
 };

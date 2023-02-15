@@ -20,7 +20,6 @@ export const getReadClient = (config: ClickhouseConfig): ClickhouseClient => {
   return {
     raw: (query: string) => client.query({ query }),
     query: queryRunner(client),
-    insert: client.insert,
   };
 };
 
@@ -37,8 +36,10 @@ export const getWriteClient = (
   const extendedClient: ClickhouseWriteClient = {
     raw: (query: string) => client.query({ query }),
     query: queryRunner(client),
-    insert: client.insert,
+    insert: (p) => client.insert(p),
   } as ClickhouseWriteClient;
+
+  console.log("extendedClient", extendedClient.insert);
 
   extendedClient.create = create(extendedClient);
   extendedClient.update = update(extendedClient);

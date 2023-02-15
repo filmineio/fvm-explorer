@@ -12,7 +12,7 @@ import { ClickhouseClient } from "@/api/ctx/database/clickhouse/types/clickhouse
 
 export type ClickhouseDB = {
   data: {
-    chain: Record<Network, ClickhouseClient>;
+    chain: Record<Network, ClickhouseWriteClient>;
     users: ClickhouseWriteClient;
   };
 } & {
@@ -23,8 +23,8 @@ export const initClient = (config: APIConfig["clickhouse"]): ClickhouseDB => {
   return {
     data: {
       chain: {
-        [Network.Wallaby]: getReadClient(config.wallaby),
-        [Network.HyperSpace]: getReadClient(config.hyperspace),
+        [Network.Wallaby]: getWriteClient(config.wallaby),
+        [Network.HyperSpace]: getWriteClient(config.hyperspace),
       },
       users: getWriteClient(config.userdata),
     },

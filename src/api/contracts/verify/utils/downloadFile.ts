@@ -11,17 +11,13 @@ export const downloadFile = async (
 ): Promise<string> => {
   const response = await ctx.web3storage.get(cid);
   if (!response?.ok) {
-    console.log(response)
+    console.log(response);
     throw new Error("Failed to fetch file from web3.storage");
   }
 
   const responseFiles = await response?.files();
 
-  if (!responseFiles) {
-    throw new Error("No files found in response");
-  }
-
-  if (responseFiles.length === 0) {
+  if (!responseFiles || responseFiles.length === 0) {
     throw new Error("No files found in response");
   }
 
