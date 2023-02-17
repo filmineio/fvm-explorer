@@ -1,12 +1,10 @@
 import { ContractVerificationStatus } from "@/enums/ContractVerificationStatus";
-import { contactMetaChm } from "@/schema/entities/contact-meta.chm";
 import fs from "fs";
 import { nanoid } from "nanoid";
 import { NextApiRequest } from "next";
 
-import { OperationStatus } from "@/types/ApiResponse";
-
 import { verify } from "@/api/contracts/verify";
+import { createContractMetadata } from "@/api/contracts/verify/utils/createContractMetadata";
 import { downloadFile } from "@/api/contracts/verify/utils/downloadFile";
 import { getContractById } from "@/api/contracts/verify/utils/getContractById";
 import { getContractMetaByAddress } from "@/api/contracts/verify/utils/getContractMetaByAddress";
@@ -18,23 +16,20 @@ import { ApiCtx } from "@/api/ctx/apiCtx";
 
 export const handle = async (ctx: ApiCtx, req: NextApiRequest) => {
   const { contractId } = req.query;
-  const {
-    solidityVersion,
-    contractName,
-    network,
-    contractsZipCID,
-    optimise,
-    isPublic,
-  } = processRequestBody(req);
+  const verReq = processRequestBody(req);
 
-  const contract = await getContractById(ctx, network, contractId as string);
+  const contract = await getContractById(
+    ctx,
+    verReq.network,
+    contractId as string
+  );
   if (!contract) {
     throw new Error("Contract not found");
   }
 
   const contractMeta = await getContractMetaByAddress(
     ctx,
-    network,
+    verReq.network,
     contract["contractAddress"]
   );
 
@@ -44,9 +39,9 @@ export const handle = async (ctx: ApiCtx, req: NextApiRequest) => {
 
   // download and read contracts
   const filePath = `${nanoid()}.zip`;
-  await downloadFile(ctx, contractsZipCID, filePath);
+  await downloadFile(ctx, verReq.contractsZipCID, filePath);
   const contracts = await readContractsFromZip(filePath);
-  const onChainBytecode = await ctx.lotus.chain[network].ethGetCode(
+  const onChainBytecode = await ctx.lotus.chain[verReq.network].ethGetCode(
     contract["ethAddress"],
     "latest"
   );
@@ -55,36 +50,19 @@ export const handle = async (ctx: ApiCtx, req: NextApiRequest) => {
   fs.rmSync(filePath);
 
   const input = newSolcStandardInput(contracts, {
-    optimizer: { enabled: optimise, runs: 200 },
+    optimizer: { enabled: verReq.optimise, runs: 200 },
   });
 
   const verificationResult = await verify(
-    contractName,
-    solidityVersion,
+    verReq.contractName,
+    verReq.solidityVersion,
     onChainBytecode,
     input
   );
 
   if (verificationResult.status !== ContractVerificationStatus.Unverified) {
     const meta = await uploadMetadata(ctx, verificationResult);
-    const insertResult = await ctx.database.ch.data.chain[network].create(
-      contactMetaChm,
-      {
-        contractAddress: contract.contractAddress,
-        abiCid: meta.abiCid,
-        mainCid: meta.mainCid,
-        binCid: meta.binCid,
-        fileMap: {},
-        name: contractName,
-        compilerVersion: solidityVersion,
-        sigCid: "", // TODO: What is this?
-        isPublic: isPublic,
-        owner: contract.ownerAddress,
-      },
-      ["contractAddress", contract.contractAddress]
-    );
-
-    if (insertResult === OperationStatus.Error) throw "";
+    await createContractMetadata(ctx, meta, contract, verReq);
   }
 
   return verificationResult;
