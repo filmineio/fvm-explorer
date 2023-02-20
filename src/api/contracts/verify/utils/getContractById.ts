@@ -10,7 +10,7 @@ export const getContractById = async (
   network: Network,
   contractId: string
 ): Promise<(Contract & Record<"total", number>) | undefined> => {
-  const result = await ctx.database.ch.data.chain[network].query({
+  const [contract] = await ctx.database.ch.data.chain[network].query({
     fieldName: Entity.Contract,
     selection: [
       "contractAddress",
@@ -34,5 +34,5 @@ export const getContractById = async (
     },
   });
 
-  return result[0] as (Contract & Record<"total", number>) | undefined;
+  return contract as (Contract & Record<"total", number>) | undefined;
 };

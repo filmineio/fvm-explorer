@@ -6,11 +6,15 @@ import { ApiCtx } from "@/api/ctx/apiCtx";
 type UploadMetadata = (
   ctx: ApiCtx,
   result: VerificationResult
-) => Promise<{ abiCid: string; binCid: string; mainCid: string }>;
+) => Promise<Record<"abiCid" | "binCid" | "mainCid" | "sigCid", string>>;
 
 // uploadMetadata uploads verification result metadata
 export const uploadMetadata: UploadMetadata = async (ctx, result) => {
+  console.log(result);
   const abiBlob = new Blob([JSON.stringify(result.abi)], {
+    type: "application/json",
+  });
+  const sigBlob = new Blob([JSON.stringify(result.solcOutput)], {
     type: "application/json",
   });
   const binBlob = new Blob([result.contractBytecode]);
@@ -18,6 +22,7 @@ export const uploadMetadata: UploadMetadata = async (ctx, result) => {
 
   const files = [
     new File([abiBlob], "abi.json"),
+    new File([sigBlob], "sig.json"),
     new File([binBlob], "bin"),
     new File([contractBlob], "main.sol"),
   ];
@@ -25,6 +30,7 @@ export const uploadMetadata: UploadMetadata = async (ctx, result) => {
 
   return {
     abiCid: `${cid}/abi.json`,
+    sigCid: `${cid}/sig.json`,
     binCid: `${cid}/bin`,
     mainCid: `${cid}/main.sol`,
   };

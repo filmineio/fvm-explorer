@@ -16,11 +16,11 @@ import { ApiCtx } from "@/api/ctx/apiCtx";
 
 export const handle = async (ctx: ApiCtx, req: NextApiRequest) => {
   const { contractId } = req.query;
-  const verReq = processRequestBody(req);
+  const verifyReq = processRequestBody(req);
 
   const contract = await getContractById(
     ctx,
-    verReq.network,
+    verifyReq.network,
     contractId as string
   );
   if (!contract) {
@@ -29,7 +29,7 @@ export const handle = async (ctx: ApiCtx, req: NextApiRequest) => {
 
   const contractMeta = await getContractMetaByAddress(
     ctx,
-    verReq.network,
+    verifyReq.network,
     contract["contractAddress"]
   );
 
@@ -39,9 +39,9 @@ export const handle = async (ctx: ApiCtx, req: NextApiRequest) => {
 
   // download and read contracts
   const filePath = `${nanoid()}.zip`;
-  await downloadFile(ctx, verReq.contractsZipCID, filePath);
+  await downloadFile(ctx, verifyReq.contractsZipCID, filePath);
   const contracts = await readContractsFromZip(filePath);
-  const onChainBytecode = await ctx.lotus.chain[verReq.network].ethGetCode(
+  const onChainBytecode = await ctx.lotus.chain[verifyReq.network].ethGetCode(
     contract["ethAddress"],
     "latest"
   );
@@ -50,19 +50,19 @@ export const handle = async (ctx: ApiCtx, req: NextApiRequest) => {
   fs.rmSync(filePath);
 
   const input = newSolcStandardInput(contracts, {
-    optimizer: { enabled: verReq.optimise, runs: 200 },
+    optimizer: { enabled: verifyReq.optimise, runs: 200 },
   });
 
   const verificationResult = await verify(
-    verReq.contractName,
-    verReq.solidityVersion,
+    verifyReq.contractName,
+    verifyReq.solidityVersion,
     onChainBytecode,
     input
   );
 
   if (verificationResult.status !== ContractVerificationStatus.Unverified) {
     const meta = await uploadMetadata(ctx, verificationResult);
-    await createContractMetadata(ctx, meta, contract, verReq);
+    await createContractMetadata(ctx, meta, contract, verifyReq);
   }
 
   return verificationResult;

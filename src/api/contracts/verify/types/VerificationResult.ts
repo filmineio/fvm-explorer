@@ -7,4 +7,5 @@ export type VerificationResult = {
   contractBytecode: string;
   contractCode: string;
   abi?: unknown;
+  solcOutput?: unknown;
 };

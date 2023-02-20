@@ -10,7 +10,7 @@ export const getContractMetaByAddress = async (
   network: Network,
   contractAddress: string
 ): Promise<(ContractMeta & Record<"total", number>) | undefined> => {
-  const result = await ctx.database.ch.data.chain[network].query({
+  const [contractMeta] = await ctx.database.ch.data.chain[network].query({
     fieldName: Entity.ContractMeta,
     selection: [
       "contractAddress",
@@ -38,5 +38,5 @@ export const getContractMetaByAddress = async (
     },
   });
 
-  return result[0] as (ContractMeta & Record<"total", number>) | undefined;
+  return contractMeta as (ContractMeta & Record<"total", number>) | undefined;
 };
