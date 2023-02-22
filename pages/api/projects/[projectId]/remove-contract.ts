@@ -10,16 +10,15 @@ import { Contract } from "@/types/data/Contract";
 import { Entity } from "@/enums/Entity";
 import { Network } from "@/enums/Network";
 import { omit } from "ramda";
+import { identifyUser } from "@/api/utils/identifyUser";
 
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const projectId = req.query.projectId as string;
   const ctx = await getCtx();
-  // const data = await identifyUser(ctx, req);
-  //
-  // if (data === OperationStatus.Error) return res.status(401).end();
+  const data = await identifyUser(ctx, req);
 
-  const data = { email: "stankovic.srdjo@gmail.com" }
+  if (data === OperationStatus.Error) return res.status(401).end();
 
   const body: Pick<Contract, "contractAddress"> & Record<"network", Network> = req.body;
 
@@ -31,7 +30,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       {
         fieldName: Entity.Project,
         selection: [
-          "contracts"
+          "id",
+          "name",
+          "owner",
+          "contracts",
         ],
         query: [
           {
@@ -46,7 +48,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         pagination: {
           limit: 1,
           offset: 0,
-        }
+        },
+        final: true,
       }
     );
 
@@ -59,6 +62,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         owner: { is: data.email },
       },
       {
+        ...omit([ "total" ], project),
         contracts: JSON.parse(project.contracts as never as string).filter((c: string) => c !== body.contractAddress)
       },
       "id"
