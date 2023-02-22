@@ -61,11 +61,11 @@ export const ContractCard = ({ data, network }: ContractCardProps) => {
       <Link
         href={`/explore/${Entity.Contract}/${data.contractAddress}?network=${network}`}
       >
-        <div className="relative flex flex-col  break-words bg-gray-dark border-2 border-gray-dark hover:border-lightgray rounded-lg  shadow-lg">
+        <div className="relative flex flex-col break-words bg-gray-dark border-2 border-gray-dark hover:border-lightgray rounded-base  shadow-lg">
           <div className="flex-auto p-5">
             <div className="flex flex-wrap items-center">
               <div className="relative pr-4 w-4/12">
-                <div className="bg-bglight rounded-lg py-3 px-3 flex justify-center items-center">
+                <div className="bg-bglight rounded-small py-3 px-3 flex justify-center items-center w-20 h-20">
                   <img src="/images/contract-icon.png" alt={""} />
                 </div>
               </div>
@@ -91,7 +91,7 @@ export const ContractCard = ({ data, network }: ContractCardProps) => {
 
             <div className="flex  mt-3">
               <div className="w-full lg:w-8/12 pr-0 lg:pr-3">
-                <h3 className="text-gray-text font-normal	text-sm	leading-5 tracking-widest	font-sans1	">
+                <h3 className="text-gray-text font-normal	text-sm	leading-5 tracking-wider	font-sans1	">
                   NETWORK
                 </h3>
                 <h5 className="text-white font-medium text-sm	leading-4 font-sans1 tracking-wider">
@@ -99,7 +99,7 @@ export const ContractCard = ({ data, network }: ContractCardProps) => {
                 </h5>
               </div>
               <div className="w-full lg:w-4/12 mt-2 lg:mt-0">
-                <button className="bg-bglight rounded-lg py-2 px-5 font-medium font-mono1	text-sm	leading-5 text-white tracking-wider">
+                <button className="bg-bglight rounded-base py-2 px-5 font-medium font-mono1	text-sm	leading-5 text-white tracking-wider">
                   {data.ethAddress ? "EVM" : "FVM"}
                 </button>
               </div>

@@ -8,7 +8,19 @@ module.exports = {
     container: {
       center: true,
     },
-
+    borderRadius: {
+      'small': '6px',
+      'base': '9px',
+    },
+    letterSpacing: {
+      tightest: '-.075em',
+      tighter: '-.05em',
+      tight: '-.025em',
+      normal: '0',
+      wide: '.025em',
+      wider: '.0625em',
+      widest: '.1em',
+    },
     extend: {
       colors: {
         white: "#fff",
@@ -42,7 +54,7 @@ module.exports = {
         calc: "calc(100vh - 150px)",
       },
       maxWidth: {
-        "2xl": "1530px",
+        "2xl": "1440px",
         calc2: "calc(100% - 440px)",
         lg: "calc(100% - 120px)",
       },
