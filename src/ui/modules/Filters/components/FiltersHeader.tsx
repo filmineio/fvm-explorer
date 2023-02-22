@@ -30,7 +30,7 @@ export const FiltersHeader = ({
         <div className={"flex uppercase gap-2 mr-10"}>
           <span
             className={
-              "form-check-label inline-block text-gray-light uppercase  text-sm"
+              "form-check-label inline-block text-gray-light uppercase text-sm"
             }
           >
             Search in{" "}

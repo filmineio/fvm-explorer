@@ -185,3 +185,77 @@ a.customr.textnone span.onespan {
     opacity: 1;
   }
 }
+
+.react-select {
+}
+.react-select .react-select__control {
+ border-color: green;
+}
+
+.react-select .react-select__control {
+   border-color: greenyellow;
+   box-shadow: 0 0 0 3px greenyellow;
+ }
+
+.react-select .react-select__control {
+  min-height: 50px;
+  border-radius: 9px;
+  box-shadow: none;
+  background-color: black;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.react-select .react-select__value-container {
+   display: flex;
+}
+
+.react-select .react-select__indicators {
+  padding: 0;
+  margin-right: 20px;
+}
+
+.react-select input {
+  height: 0;
+  opacity: 0;
+}
+
+.react-select [class$='-ackcql'],
+.react-select [class$='-placeholder'] {
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  margin: 0;
+}
+
+.react-select [class$='-menu'] {
+  width: 200px;
+  right: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+  padding: 0;
+  border-top: 4px solid transparent;
+  margin: 0;
+  background-color: transparent;
+  border-radius: 9px;
+  overflow: hidden;
+  z-index: 2;
+}
+.react-select .react-select__menu .react-select__menu-list {
+  background: #141620;
+  padding: 5px 0 6px 0;
+}
+
+.react-select .react-select__menu .react-select__menu-list .react-select__option {
+  padding: 10px 15px;
+  color: white;
+}
+
+.react-select .react-select__menu .react-select__menu-list .react-select__option.react-select__option--is-selected {
+  color: red;
+  background-color: greenyellow;
+}
+
+.react-select .react-select__menu .react-select__menu-list .react-select__option.react-select__option--is-focused {
+  color: blue;
+  background-color: orange;
+}
