@@ -74,7 +74,7 @@ export const TransactionStateDiff = ({
             </td>
             <td className="px-4 pb-2" colSpan={5}>
               <div className="flex justify-start ">
-                <button className="bg-secect  px-2 py-1 rounded-md text-analogous font-bold font-mono1 text-xs	tracking-widest	leading-5 relative">
+                <button className="bg-secect  px-2 py-1 rounded-base text-analogous font-bold font-mono1 text-xs	tracking-wider	leading-5 relative">
                   <CopyWrapper data={contract.contractAddress}>
                     {contract.contractAddress}
                   </CopyWrapper>
@@ -96,7 +96,7 @@ export const TransactionStateDiff = ({
                   </svg>
                 </button>
 
-                <button className="bg-secect   px-2 py-1 rounded-md text-yellow font-bold font-mono1 text-xs	tracking-widest	leading-5">
+                <button className="bg-secect   px-2 py-1 rounded-base text-yellow font-bold font-mono1 text-xs	tracking-wider	leading-5">
                   {stateDiff} FIL
                 </button>
               </div>

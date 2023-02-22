@@ -17,7 +17,7 @@ export const Header: FC = () => {
   const logout = useCallback(() => {}, []);
 
   return (
-    <header className="px-8 py-4 border-b border-gray-dark">
+    <header className="px-10 py-4 border-b border-gray-dark">
       <div className="flex flex-row justify-between items-center m-auto">
         <div className="md:basis-1/2">
           <Link href="/">
@@ -31,7 +31,7 @@ export const Header: FC = () => {
         {user && (
           <div className="md:basis-1/2 text-right">
             <Button
-              className="py-3 h-sm px-5 font-sans1 bg-yellow text-black text-sm font-semibold rounded-lg  hover:bg-yellow  focus:outline-none focus:ring-2 focus:ring-yellow "
+              className="py-3 h-sm px-5 font-sans1 bg-yellow text-black text-sm font-semibold rounded-base  hover:bg-yellow  focus:outline-none focus:ring-2 focus:ring-yellow "
               onClick={cb(Router.push, "/auth")}
             >
               AUTHENTICATE

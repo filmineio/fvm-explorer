@@ -17,7 +17,7 @@ export const TransactionOverview = ({
   return (
     <div className="my-5 flex-wrap flex justify-between">
       <div className="w-4/6	 md:w-full">
-        <div className="bg-gray-dark rounded-lg  p-6">
+        <div className="bg-gray-dark rounded-base  p-6">
           <div className="flex flex-wrap  text-justify justify-between items-center	">
             <h5 className="font-bold text-lg text-white font-mono1 ">
               Method & Params
@@ -27,7 +27,7 @@ export const TransactionOverview = ({
               <p className="text-sm font-normal font-mono1 italic	text-white pr-3">
                 MethodId
               </p>
-              <button className="bg-bglight rounded-lg py-2 px-5 font-medium font-mono1  text-sm leading-5 text-white tracking-wider">
+              <button className="bg-bglight rounded-base py-2 px-5 font-medium font-mono1  text-sm leading-5 text-white tracking-wider">
                 {transaction.method}
               </button>
             </span>
@@ -42,7 +42,7 @@ export const TransactionOverview = ({
         </div>
       </div>
       <div className="w-96	 md:w-full	ml-0  md:mt-4">
-        <div className="bg-gray-dark rounded-lg p-6">
+        <div className="bg-gray-dark rounded-base p-6">
           <h5 className="text-lg	font-bold font-sans1 text-white">
             Transaction overview
           </h5>
@@ -75,7 +75,7 @@ export const TransactionOverview = ({
           </div>
         </div>
 
-        <div className="bg-gray-dark rounded-lg p-6 mt-4">
+        <div className="bg-gray-dark rounded-base p-6 mt-4">
           <h5 className="text-lg	font-bold font-sans1 text-white">
             Gas details
           </h5>
@@ -96,7 +96,7 @@ export const TransactionOverview = ({
             <h5 className="text-left font-semibold font-sans1 text-sm mt-2 tracking-wider	text-lightgray">
               GAS PREMIUM
             </h5>
-            <p className="text-left font-semibold font-sans1  text-sm tracking-widest	text-white">
+            <p className="text-left font-semibold font-sans1  text-sm tracking-wider	text-white">
               {transaction.gasPremium}
             </p>
           </div>

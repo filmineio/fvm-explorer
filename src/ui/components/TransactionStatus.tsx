@@ -15,7 +15,7 @@ export const TransactionStatus = (props: { exitCode: number }) => {
       )}
     >
       <div
-        className={classNames("w-2.5 h-2.5 rounded-sm", {
+        className={classNames("w-2.5 h-2.5 rounded-base", {
           "bg-yellow": exitCode === 0,
           "bg-red-400": exitCode !== 0,
         })}

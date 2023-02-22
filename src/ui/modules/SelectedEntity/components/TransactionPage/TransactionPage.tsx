@@ -33,7 +33,7 @@ export const TransactionPage = ({ data }: Props) => {
     <>
       <div className=" pt-7 flex-wrap flex justify-between">
         <div className="w-full lg:mr-5 md:mr-0">
-          <div className="project relative  px-7 py-9 min-w-0 break-words bg-gray-dark border-2 border-lightgray rounded-lg mb-6 xl:mb-0 shadow-lg ">
+          <div className="project relative  px-7 py-9 min-w-0 break-words bg-gray-dark border-2 border-lightgray rounded-base mb-6 xl:mb-0 shadow-lg ">
             <div className="absolute bg-lightgray py-1 px-2 -top-3 left-0">
               <p className="text-xs text-white font-normal ">TRANSACTION</p>
             </div>
@@ -57,7 +57,7 @@ export const TransactionPage = ({ data }: Props) => {
                 <h4 className="text-lightgray font-normal font-sans1 text-sm	tracking-wider	leading-5	">
                   TIMESTAMP
                 </h4>
-                <h5 className="text-white font-medium font-sans1 text-sm	tracking-widest	leading-5	">
+                <h5 className="text-white font-medium font-sans1 text-sm	tracking-wider	leading-5	">
                   {date.toLocaleDateString()} {date.toLocaleTimeString()}
                 </h5>
               </div>
@@ -66,7 +66,7 @@ export const TransactionPage = ({ data }: Props) => {
                 <h4 className="text-lightgray font-normal font-sans1 text-sm	tracking-wider	leading-5	">
                   VALUE
                 </h4>
-                <h5 className="text-white font-medium font-sans1 text-sm	tracking-widest	leading-5	">
+                <h5 className="text-white font-medium font-sans1 text-sm	tracking-wider	leading-5	">
                   {value.toFixed()} FIL
                 </h5>
               </div>
@@ -74,7 +74,7 @@ export const TransactionPage = ({ data }: Props) => {
                 <h4 className="text-lightgray font-normal font-sans1 text-sm	tracking-wider	leading-5	">
                   HEIGHT (EPOCH){" "}
                 </h4>
-                <h5 className="text-white font-medium font-sans1 text-sm	tracking-widest	leading-5	">
+                <h5 className="text-white font-medium font-sans1 text-sm	tracking-wider	leading-5	">
                   {transaction.height}
                 </h5>
               </div>

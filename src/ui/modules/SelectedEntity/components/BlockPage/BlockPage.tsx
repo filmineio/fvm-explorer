@@ -56,13 +56,13 @@ export const BlockPage = ({ data }: Props) => {
   return (
     <div className=" pt-7">
       <div className="w-full">
-        <div className="project relative  p-7  min-w-0 break-words bg-gray-dark border-2 border-lightgray rounded-lg  shadow-lg ">
+        <div className="project relative p-7 min-w-0 break-words bg-gray-dark border-2 border-lightgray rounded-base shadow-lg ">
           <div className="absolute bg-lightgray py-1 px-2 -top-3 left-0">
             <p className="text-xs text-white font-normal ">BLOCK</p>
           </div>
           <div className="md:lex-wrap flex items-center">
             <div className="relative pr-4 ">
-              <div className="bg-bglight w-24 h-24 rounded-lg py-3 px-3 flex justify-center items-center ">
+              <div className="bg-bglight w-24 h-24 rounded-base py-3 px-3 flex justify-center items-center ">
                 <img src="/images/block-icon.svg" alt={"block-icon"} />
               </div>
             </div>
@@ -78,7 +78,7 @@ export const BlockPage = ({ data }: Props) => {
                   </span>
                   {chainBlock.BlockSig?.Data}
                 </p>
-                <button className="bg-bglight rounded-lg py-1 px-3 font-normal font-mono1	text-xs	leading-5 text-white tracking-wider lg:w-2/12">
+                <button className="bg-bglight rounded-base py-1 px-3 font-normal font-mono1	text-xs	leading-5 text-white tracking-wider lg:w-2/12">
                   TYPE {chainBlock.BlockSig?.Type}
                 </button>
               </div>
