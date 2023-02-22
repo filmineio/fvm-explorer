@@ -7,6 +7,7 @@ import Button from "@/ui/components/Button";
 import { useStore } from "@/ui/state/Store";
 
 import { cb } from "@/utils/cb";
+import LogoDevStorage from "@/ui/components/Common/Icons/LogoDevStorage";
 
 
 export const Header: FC = () => {
@@ -17,15 +18,11 @@ export const Header: FC = () => {
   const logout = useCallback(() => {}, []);
 
   return (
-    <header className="px-10 py-4 border-b border-gray-dark">
+    <header className="px-5 py-5 border-b border-gray-dark">
       <div className="flex flex-row justify-between items-center m-auto">
         <div className="md:basis-1/2">
           <Link href="/">
-            <img
-              src="/images/logomain.png"
-              className="h-31 w-155"
-              alt={"filexplore"}
-            />
+            <LogoDevStorage />
           </Link>
         </div>
         {user && (
