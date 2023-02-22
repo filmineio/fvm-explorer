@@ -90,7 +90,7 @@ export const AdvancedFiltersQueryGroup = ({
     >
       {removable && (
         <button
-          className="box-content w-4 h-4 p-2 text-center text-white border-none bg-secect rounded-lg focus:shadow-none focus:outline-none flex justify-center items-center absolute -top-3 -right-3"
+          className="box-content w-4 h-4 p-2 text-center text-white border-none bg-secect rounded-base focus:shadow-none focus:outline-none flex justify-center items-center absolute -top-3 -right-3"
           onClick={onRemove}
         >
           <img className="w-auto" src="/images/close.png" alt={""} />

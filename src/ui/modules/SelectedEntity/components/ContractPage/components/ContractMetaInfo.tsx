@@ -2,7 +2,7 @@ import { Contract } from "@/types/data/Contract";
 
 export const ContractMetaInfo = ({ contract }: { contract: Contract }) => {
   return (
-    <div className="project relative p-7  min-w-0 break-words  border-2 border-lightgray rounded-lg mt-6  ">
+    <div className="project relative p-7  min-w-0 break-words  border-2 border-lightgray rounded-base mt-6  ">
       <div className="absolute bg-lightgray p-1 -top-3 left-0">
         <p className="text-sm text-white font-normal ">ABI &amp; COMPILER</p>
       </div>
@@ -18,7 +18,7 @@ export const ContractMetaInfo = ({ contract }: { contract: Contract }) => {
               data-bs-target="#ViewABI"
               className="flex items-center justify-between text-xs font-bold font-sans1 text-white pr-4"
             >
-              <div className="bg-yellowrgba p-1 mr-2 rounded-md flex items-center justify-center w-8">
+              <div className="bg-yellowrgba p-1 mr-2 rounded-base flex items-center justify-center w-8">
                 <svg
                   width="14"
                   height="14"
@@ -40,7 +40,7 @@ export const ContractMetaInfo = ({ contract }: { contract: Contract }) => {
               </a>
             </button>
             <button className="flex items-center justify-between text-xs font-bold font-sans1 text-white">
-              <div className="bg-yellowrgba p-1 mr-2 rounded-md flex items-center justify-center w-8">
+              <div className="bg-yellowrgba p-1 mr-2 rounded-base flex items-center justify-center w-8">
                 <svg
                   width="14"
                   height="16"
@@ -66,7 +66,7 @@ export const ContractMetaInfo = ({ contract }: { contract: Contract }) => {
           <h4 className="text-lightgray font-normal font-sans1 text-sm	tracking-wider	leading-5	">
             COMPILER VERSION
           </h4>
-          <h5 className="text-white font-medium font-sans1 text-sm	tracking-widest	leading-5	">
+          <h5 className="text-white font-medium font-sans1 text-sm	tracking-wider	leading-5	">
             g++ 4.8
           </h5>
         </div>

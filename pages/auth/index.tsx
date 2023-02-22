@@ -61,7 +61,7 @@ const Home: NextPage = () => {
                     handleChange={change}
                     label={"Email Address"}
                     placeholder={"Your email..."}
-                    className={`w-96 md:w-ful bg-gray-900 placeholder-lightgray ou focus:outline-none focus:border-sky-500 focus:ring-sky-500 block rounded-md focus:ring-1 lg:w-80 min-h-sm font-mono font-medium text-sm pl-11 md:w-52 xs:w-full sm:w-52`}
+                    className={`w-96 md:w-ful bg-gray-900 placeholder-lightgray ou focus:outline-none focus:border-sky-500 focus:ring-sky-500 block rounded-base focus:ring-1 lg:w-80 min-h-sm font-mono font-medium text-sm pl-11 md:w-52 xs:w-full sm:w-52`}
                     valid={state.emailValid}
                     icon={
                       <svg
@@ -83,7 +83,7 @@ const Home: NextPage = () => {
                   />
                   <Button
                     type="button"
-                    className="buttons w-52 bg-yellow h-sm font-sans1 font-bold rounded-lg lg:px-8 px-8 text-sm  md:px-4 md:w-full md:mt-0 "
+                    className="buttons w-52 bg-yellow h-sm font-sans1 font-bold rounded-base lg:px-8 px-8 text-sm  md:px-4 md:w-full md:mt-0 "
                     onClick={initLogin}
                   >
                     SIGN IN
@@ -98,7 +98,7 @@ const Home: NextPage = () => {
         <Modal>
           <div
             className={
-              "modal-content shadow-lg relative flex flex-col w-full pointer-events-auto bg-[#B7006E] bg-clip-padding rounded-md outline-none text-current py-28"
+              "modal-content shadow-lg relative flex flex-col w-full pointer-events-auto bg-[#B7006E] bg-clip-padding rounded-base outline-none text-current py-28"
             }
           >
             <div className="modal-header flex flex-shrink-0 items-center justify-center p-4  rounded-t-md ">

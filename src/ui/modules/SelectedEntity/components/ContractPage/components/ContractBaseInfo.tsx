@@ -20,7 +20,7 @@ export const ContractBaseInfo = ({
   const [showEth, toggle] = useReducer((p) => !p, false);
   return (
     <div className="w-full mr-5 md:mr-0">
-      <div className="project relative  p-7  min-w-0 break-words bg-gray-dark border-2 border-lightgray rounded-lg mb-6 xl:mb-0 shadow-lg ">
+      <div className="project relative  p-7  min-w-0 break-words bg-gray-dark border-2 border-lightgray rounded-base mb-6 xl:mb-0 shadow-lg ">
         <div className="absolute bg-lightgray py-1 px-2 -top-3 left-0">
           <p className="text-xs text-white font-normal ">CONTRACT</p>
         </div>
@@ -44,7 +44,7 @@ export const ContractBaseInfo = ({
               className="flex items-center justify-between text-xs font-bold font-sans1 text-white"
               onClick={toggle}
             >
-              <div className="bg-yellowrgba p-1 mr-2 rounded-md flex items-center justify-center w-8">
+              <div className="bg-yellowrgba p-1 mr-2 rounded-base flex items-center justify-center w-8">
                 <svg
                   width="16"
                   height="16"
@@ -81,7 +81,7 @@ export const ContractBaseInfo = ({
             <h4 className="text-lightgray font-normal font-sans1 text-sm uppercase tracking-wider	leading-5	">
               Number of TRANSACTIONS
             </h4>
-            <h5 className="text-white font-medium font-sans1 text-sm	tracking-widest	leading-5	">
+            <h5 className="text-white font-medium font-sans1 text-sm	tracking-wider	leading-5	">
               {totalTransactions}
             </h5>
           </div>
@@ -90,7 +90,7 @@ export const ContractBaseInfo = ({
             <h4 className="text-lightgray font-normal font-sans1 text-sm	tracking-wider	leading-5	">
               VALUE LOCKED
             </h4>
-            <h5 className="text-white font-medium font-sans1 text-sm	tracking-widest	leading-5	">
+            <h5 className="text-white font-medium font-sans1 text-sm	tracking-wider	leading-5	">
               --
             </h5>
           </div>
@@ -99,7 +99,7 @@ export const ContractBaseInfo = ({
               NETWORK
             </h4>
             <button className="flex items-center  justify-between text-xs font-semibold font-sans1 text-white">
-              <div className="bg-yellow p-1 w-2.5 h-2.5 mr-2 rounded-sm flex items-center justify-center"></div>
+              <div className="bg-yellow p-1 w-2.5 h-2.5 mr-2 rounded-base flex items-center justify-center"></div>
               {capitalize(network)}
             </button>
           </div>

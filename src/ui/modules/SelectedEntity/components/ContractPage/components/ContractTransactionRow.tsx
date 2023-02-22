@@ -50,7 +50,7 @@ export const ContractTransactionRow = ({
       </tr>
       <tr
         className={
-          "min-w-full bg-gray-dark rounded-lg rounded-t-0  transform -translate-y-2"
+          "min-w-full bg-gray-dark rounded-base rounded-t-0  transform -translate-y-2"
         }
       >
         <td colSpan={7} className="px-6 pt-4 pb-3">
@@ -58,7 +58,7 @@ export const ContractTransactionRow = ({
             <div
               onClick={toggle}
               className={
-                "state bg-secect rounded-md w-6 h-6 mr-2 flex items-center justify-center cursor-pointer"
+                "state bg-secect rounded-base w-6 h-6 mr-2 flex items-center justify-center cursor-pointer"
               }
             >
               <svg
@@ -85,7 +85,7 @@ export const ContractTransactionRow = ({
       {open && (
         <tr
           className={
-            "min-w-full bg-gray-dark rounded-lg rounded-t-0  transform -translate-y-4"
+            "min-w-full bg-gray-dark rounded-base rounded-t-0  transform -translate-y-4"
           }
         >
           <td colSpan={7}>
