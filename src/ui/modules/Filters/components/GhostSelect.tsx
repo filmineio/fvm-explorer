@@ -13,7 +13,7 @@ export const GhostSelect: GhostSelectT = ({
 }) => {
   return (
     <select
-      className="text-yellow font-sans1 select-text border-none focus:outline-none focus:border-none bg-inherit  caret-yellow text-sm	font-semibold tracking-wide	cursor-pointer"
+      className="text-yellow font-roboto select-text border-none focus:outline-none focus:border-none bg-inherit  caret-yellow text-sm	font-semibold tracking-wide	cursor-pointer"
       value={value}
       onChange={onChange(change)}
     >

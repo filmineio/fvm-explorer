@@ -68,17 +68,17 @@ export const BlockPage = ({ data }: Props) => {
             </div>
 
             <div className="pl-1">
-              <h3 className="text-2xl font-sans1 font-bold text-white mb-2 relative">
+              <h3 className="text-2xl font-roboto font-bold text-white mb-2 relative">
                 <CopyWrapper data={block.cid}>{block.cid}</CopyWrapper>
               </h3>
               <div className=" flex md:flex-wrap gap-1 items-center">
-                <p className="text-white font-mono1 font-normal text-sm pr-3 w-9/12 truncate">
-                  <span className="text-lightgray font-mono1 font-normal text-sm">
+                <p className="text-white font-space font-normal text-sm pr-3 w-9/12 truncate">
+                  <span className="text-lightgray font-space font-normal text-sm">
                     Block signature:{" "}
                   </span>
                   {chainBlock.BlockSig?.Data}
                 </p>
-                <button className="bg-bglight rounded-base py-1 px-3 font-normal font-mono1	text-xs	leading-5 text-white tracking-wider lg:w-2/12">
+                <button className="bg-bglight rounded-base py-1 px-3 font-normal font-space	text-xs	leading-5 text-white tracking-wider lg:w-2/12">
                   TYPE {chainBlock.BlockSig?.Type}
                 </button>
               </div>

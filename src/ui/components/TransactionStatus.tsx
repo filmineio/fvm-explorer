@@ -7,7 +7,7 @@ export const TransactionStatus = (props: { exitCode: number }) => {
   return (
     <div
       className={classNames(
-        "font-bold text-xs leading-4 font-mono1 flex items-center gap-1.5",
+        "font-bold text-xs leading-4 font-space flex items-center gap-1.5",
         {
           "text-yellow": exitCode === 0,
           "text-red-400 ": exitCode !== 0,

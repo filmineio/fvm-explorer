@@ -33,7 +33,7 @@ export const TransactionCard = ({ data, network }: TransactionCardProps) => {
             <div className="flex flex-wrap items-center">
               <div className="relative w-full">
                 <CopyWrapper data={data.cid}>
-                  <h4 className="text-white leading-6 text-base font-bold font-sans1 truncate	">
+                  <h4 className="text-white leading-6 text-base font-bold font-roboto truncate	">
                     {data.cid}
                   </h4>
                 </CopyWrapper>
@@ -44,10 +44,10 @@ export const TransactionCard = ({ data, network }: TransactionCardProps) => {
             <div className="flex mt-4">
               <div className="w-full xs:w-1/2 lg:w-7/12 pr-3">
                 <div className="bg-yellow p-2.5 rounded-base">
-                  <h4 className="text-lg font-bold text-black	tracking-wider	font-mono1">
+                  <h4 className="text-lg font-bold text-black	tracking-wider	font-space">
                     {value.toFixed(2)} FIL
                   </h4>
-                  <p className="text-gray-text text-sm font-normal font-sans1	">
+                  <p className="text-gray-text text-sm font-normal font-roboto	">
                     value
                   </p>
                 </div>
@@ -55,10 +55,10 @@ export const TransactionCard = ({ data, network }: TransactionCardProps) => {
 
               <div className="w-full xs:w-1/2 lg:w-5/12 mt-0">
                 <div className="bg-black p-2.5 rounded-base">
-                  <h4 className="text-lg font-bold text-white	tracking-wider	font-mono1">
+                  <h4 className="text-lg font-bold text-white	tracking-wider	font-space">
                     {data.height}
                   </h4>
-                  <p className="text-gray-text text-sm font-normal font-sans1">
+                  <p className="text-gray-text text-sm font-normal font-roboto">
                     epoch
                   </p>
                 </div>
@@ -67,18 +67,18 @@ export const TransactionCard = ({ data, network }: TransactionCardProps) => {
 
             <div className="flex  mt-3">
               <div className="w-full lg:w-5/12 pr-0 lg:pr-3">
-                <h3 className="text-gray-text font-normal	text-sm	leading-5 tracking-wider	font-sans1	">
+                <h3 className="text-gray-text font-normal	text-sm	leading-5 tracking-wider	font-roboto	">
                   NETWORK
                 </h3>
-                <h5 className="text-white font-medium text-sm	leading-4 font-sans1 tracking-wider">
+                <h5 className="text-white font-medium text-sm	leading-4 font-roboto tracking-wider">
                   {capitalize(network)}
                 </h5>
               </div>
               <div className="w-full lg:w-5/12 pr-0 lg:pr-3">
-                <h3 className="text-gray-text font-normal	text-sm	leading-5 tracking-wider	font-sans1	">
+                <h3 className="text-gray-text font-normal	text-sm	leading-5 tracking-wider	font-roboto	">
                   GAS USED
                 </h3>
-                <h5 className="text-white font-medium text-sm	leading-4 font-sans1 tracking-wider">
+                <h5 className="text-white font-medium text-sm	leading-4 font-roboto tracking-wider">
                   {data.messageRctGasUsed} attoFIL
                 </h5>
               </div>

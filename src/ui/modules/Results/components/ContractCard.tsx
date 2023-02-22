@@ -71,12 +71,12 @@ export const ContractCard = ({ data, network }: ContractCardProps) => {
               </div>
               <div className="relative w-8/12">
                 <CopyWrapper data={data.contractAddress}>
-                  <h4 className="text-white leading-6 text-base font-bold font-sans1 truncate	">
+                  <h4 className="text-white leading-6 text-base font-bold font-roboto truncate	">
                     {data.contractAddress}
                   </h4>
                 </CopyWrapper>
 
-                <p className="text-yellow font-bold text-xs leading-4 font-mono1">
+                <p className="text-yellow font-bold text-xs leading-4 font-space">
                   {data.verified}
                 </p>
               </div>
@@ -91,15 +91,15 @@ export const ContractCard = ({ data, network }: ContractCardProps) => {
 
             <div className="flex  mt-3">
               <div className="w-full lg:w-8/12 pr-0 lg:pr-3">
-                <h3 className="text-gray-text font-normal	text-sm	leading-5 tracking-wider	font-sans1	">
+                <h3 className="text-gray-text font-normal	text-sm	leading-5 tracking-wider	font-roboto	">
                   NETWORK
                 </h3>
-                <h5 className="text-white font-medium text-sm	leading-4 font-sans1 tracking-wider">
+                <h5 className="text-white font-medium text-sm	leading-4 font-roboto tracking-wider">
                   {capitalize(network)}
                 </h5>
               </div>
               <div className="w-full lg:w-4/12 mt-2 lg:mt-0">
-                <button className="bg-bglight rounded-base py-2 px-5 font-medium font-mono1	text-sm	leading-5 text-white tracking-wider">
+                <button className="bg-bglight rounded-base py-2 px-5 font-medium font-space	text-sm	leading-5 text-white tracking-wider">
                   {data.ethAddress ? "EVM" : "FVM"}
                 </button>
               </div>
