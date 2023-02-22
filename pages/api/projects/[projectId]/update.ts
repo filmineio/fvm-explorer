@@ -11,21 +11,22 @@ import { standardizeResponse } from "@/utils/standardizeResponse";
 
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+  const projectId = req.query.projectId as string;
   const ctx = await getCtx();
   const data = await identifyUser(ctx, req);
 
   if (data === OperationStatus.Error) return res.status(401).end();
 
-  const body: Pick<Project, "id" | "name"> = req.body;
+  const body: Pick<Project, "name"> = req.body;
 
-  if (!body.id?.trim())
+  if (!projectId || !projectId.trim())
     return res.status(400).json({ exception: "INVALID_REQUEST_BODY" });
 
   try {
     const result = await ctx.database.ch.data.users.update(
       projectChm,
       {
-        id: { is: body.id },
+        id: { is: projectId },
         owner: { is: data.email },
       },
       body,

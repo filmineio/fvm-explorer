@@ -1,4 +1,4 @@
-import { Contract } from "@/types/data/Contract";
+import { ProjectContract } from "@/types/data/ProjectContract";
 
 export type Project = Record<"name" | "id" | "owner", string> &
-  Record<"contracts", Contract[]>;
+  Record<"contracts", ProjectContract[]>;

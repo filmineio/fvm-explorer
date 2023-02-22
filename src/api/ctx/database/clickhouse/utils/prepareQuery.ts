@@ -30,7 +30,7 @@ export function prepareQuery<T = CHModel<unknown>>(schema: QuerySchema<T>) {
     map,
     fieldAliasMap,
     selectionSchema
-  )}${resolveSource(map)} ${querySchema.length ? "where" : ""} ${queryToSQL(
+  )}${resolveSource(map, schema.final)} ${querySchema.length ? "where" : ""} ${queryToSQL(
     querySchema
   )}`;
 

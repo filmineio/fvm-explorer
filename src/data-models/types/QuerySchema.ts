@@ -11,6 +11,7 @@ export type QuerySchema<M = CHModel<unknown>> = {
   selection: (keyof M)[];
   order: QueryOrder;
   pagination: QueryPagination;
+  final?: boolean;
 };
 export type SchemaValidation<M = CHModel<unknown>> = {
   validateQueryParams: <T = CHModel<unknown>>(

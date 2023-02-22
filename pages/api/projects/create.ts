@@ -30,7 +30,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         id: newProjectId,
         name: body.name,
         owner: data.email as string,
-        contracts: JSON.stringify({}) as any,
+        contracts: JSON.stringify([]) as any,
       },
       ["id", newProjectId]
     );
