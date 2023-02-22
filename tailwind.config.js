@@ -9,8 +9,8 @@ module.exports = {
       center: true,
     },
     borderRadius: {
-      'small': '6px',
-      'base': '9px',
+      'small': '2px',
+      'base': '4px',
     },
     letterSpacing: {
       tightest: '-.075em',
@@ -72,8 +72,8 @@ module.exports = {
       },
     },
     fontFamily: {
-      sans1: ["Archivo", "sans-serif"],
-      mono1: ["IBM Plex Mono", "monospace"],
+      roboto: ['Roboto Mono', "monospace"],
+      space: ["Space Mono", "monospace"],
     },
   },
   plugins: [require("tw-elements/dist/plugin")],

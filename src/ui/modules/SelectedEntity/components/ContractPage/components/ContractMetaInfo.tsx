@@ -9,14 +9,14 @@ export const ContractMetaInfo = ({ contract }: { contract: Contract }) => {
 
       <div className="xs:flex flex-wrap ">
         <div className="w-full mt-2 sm:w-6/12 mt-0 w-5/12 ">
-          <h4 className="text-lightgray font-normal font-sans1 text-sm	tracking-wider	leading-5	">
+          <h4 className="text-lightgray font-normal font-roboto text-sm	tracking-wider	leading-5	">
             ABI
           </h4>
           <div className="flex">
             <button
               data-bs-toggle="modal"
               data-bs-target="#ViewABI"
-              className="flex items-center justify-between text-xs font-bold font-sans1 text-white pr-4"
+              className="flex items-center justify-between text-xs font-bold font-roboto text-white pr-4"
             >
               <div className="bg-yellowrgba p-1 mr-2 rounded-base flex items-center justify-center w-8">
                 <svg
@@ -39,7 +39,7 @@ export const ContractMetaInfo = ({ contract }: { contract: Contract }) => {
                 View ABI
               </a>
             </button>
-            <button className="flex items-center justify-between text-xs font-bold font-sans1 text-white">
+            <button className="flex items-center justify-between text-xs font-bold font-roboto text-white">
               <div className="bg-yellowrgba p-1 mr-2 rounded-base flex items-center justify-center w-8">
                 <svg
                   width="14"
@@ -63,10 +63,10 @@ export const ContractMetaInfo = ({ contract }: { contract: Contract }) => {
         </div>
 
         <div className="w-full mt-2 sm:w-6/12 mt-0 w-3/12 ">
-          <h4 className="text-lightgray font-normal font-sans1 text-sm	tracking-wider	leading-5	">
+          <h4 className="text-lightgray font-normal font-roboto text-sm	tracking-wider	leading-5	">
             COMPILER VERSION
           </h4>
-          <h5 className="text-white font-medium font-sans1 text-sm	tracking-wider	leading-5	">
+          <h5 className="text-white font-medium font-roboto text-sm	tracking-wider	leading-5	">
             g++ 4.8
           </h5>
         </div>

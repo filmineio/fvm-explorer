@@ -12,7 +12,7 @@ export const Footer: FC = () => {
             alt={"filexplore"}
           />
         </Link>
-        <p className="text-gray-text text-xs font-medium leading-4 font-mono1">
+        <p className="text-gray-text text-xs font-medium leading-4 font-space">
           © Filexplore 2022.
         </p>
       </div>

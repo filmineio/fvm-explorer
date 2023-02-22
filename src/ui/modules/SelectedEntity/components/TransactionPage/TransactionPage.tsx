@@ -41,7 +41,7 @@ export const TransactionPage = ({ data }: Props) => {
               <div className=" lg:w-8/12   w-full ">
                 <div className="pr-3 w-fit relative">
                   <CopyWrapper data={transaction.cid}>
-                    <h3 className="text-xl font-sans1 font-bold text-white relative">
+                    <h3 className="text-xl font-roboto font-bold text-white relative">
                       {transaction.cid}
                     </h3>
                   </CopyWrapper>
@@ -54,33 +54,33 @@ export const TransactionPage = ({ data }: Props) => {
 
             <div className="xs:flex mt-6 flex-wrap ">
               <div className="w-full mt-2 sm:w-6/12 md:mt-0 md:w-5/12 ">
-                <h4 className="text-lightgray font-normal font-sans1 text-sm	tracking-wider	leading-5	">
+                <h4 className="text-lightgray font-normal font-roboto text-sm	tracking-wider	leading-5	">
                   TIMESTAMP
                 </h4>
-                <h5 className="text-white font-medium font-sans1 text-sm	tracking-wider	leading-5	">
+                <h5 className="text-white font-medium font-roboto text-sm	tracking-wider	leading-5	">
                   {date.toLocaleDateString()} {date.toLocaleTimeString()}
                 </h5>
               </div>
 
               <div className="w-full mt-2 sm:w-6/12 md:mt-0 md:w-3/12 ">
-                <h4 className="text-lightgray font-normal font-sans1 text-sm	tracking-wider	leading-5	">
+                <h4 className="text-lightgray font-normal font-roboto text-sm	tracking-wider	leading-5	">
                   VALUE
                 </h4>
-                <h5 className="text-white font-medium font-sans1 text-sm	tracking-wider	leading-5	">
+                <h5 className="text-white font-medium font-roboto text-sm	tracking-wider	leading-5	">
                   {value.toFixed()} FIL
                 </h5>
               </div>
               <div className="w-full mt-2 md:mt-0 md:w-3/12 ">
-                <h4 className="text-lightgray font-normal font-sans1 text-sm	tracking-wider	leading-5	">
+                <h4 className="text-lightgray font-normal font-roboto text-sm	tracking-wider	leading-5	">
                   HEIGHT (EPOCH){" "}
                 </h4>
-                <h5 className="text-white font-medium font-sans1 text-sm	tracking-wider	leading-5	">
+                <h5 className="text-white font-medium font-roboto text-sm	tracking-wider	leading-5	">
                   {transaction.height}
                 </h5>
               </div>
             </div>
             <div className="mt-6">
-              <h4 className="text-lightgray font-normal font-sans1 text-sm	tracking-wider	leading-5">
+              <h4 className="text-lightgray font-normal font-roboto text-sm	tracking-wider	leading-5">
                 FROM/TO
               </h4>
               <TransactionActors transaction={transaction} />

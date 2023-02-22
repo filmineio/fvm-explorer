@@ -27,7 +27,7 @@ export const ContractBaseInfo = ({
         <div className="flex md:flex-wrap   items-center">
           <div className="w-3/4  md:w-full ">
             <div className="pr-3">
-              <h3 className="text-xl font-sans1 font-bold text-white relative w-fit">
+              <h3 className="text-xl font-roboto font-bold text-white relative w-fit">
                 <CopyWrapper
                   data={
                     showEth ? contract.ethAddress : contract.contractAddress
@@ -41,7 +41,7 @@ export const ContractBaseInfo = ({
 
           <div className="sx:w-1/4">
             <button
-              className="flex items-center justify-between text-xs font-bold font-sans1 text-white"
+              className="flex items-center justify-between text-xs font-bold font-roboto text-white"
               onClick={toggle}
             >
               <div className="bg-yellowrgba p-1 mr-2 rounded-base flex items-center justify-center w-8">
@@ -78,27 +78,27 @@ export const ContractBaseInfo = ({
 
         <div className="flex mt-6 flex-wrap ">
           <div className="w-full mt-2 sm:w-6/12 mt-0 w-5/12 ">
-            <h4 className="text-lightgray font-normal font-sans1 text-sm uppercase tracking-wider	leading-5	">
+            <h4 className="text-lightgray font-normal font-roboto text-sm uppercase tracking-wider	leading-5	">
               Number of TRANSACTIONS
             </h4>
-            <h5 className="text-white font-medium font-sans1 text-sm	tracking-wider	leading-5	">
+            <h5 className="text-white font-medium font-roboto text-sm	tracking-wider	leading-5	">
               {totalTransactions}
             </h5>
           </div>
 
           <div className="w-full mt-2 sm:w-6/12 mt-0 w-3/12 ">
-            <h4 className="text-lightgray font-normal font-sans1 text-sm	tracking-wider	leading-5	">
+            <h4 className="text-lightgray font-normal font-roboto text-sm	tracking-wider	leading-5	">
               VALUE LOCKED
             </h4>
-            <h5 className="text-white font-medium font-sans1 text-sm	tracking-wider	leading-5	">
+            <h5 className="text-white font-medium font-roboto text-sm	tracking-wider	leading-5	">
               --
             </h5>
           </div>
           <div className="w-full mt-2 mt-0 w-3/12 ">
-            <h4 className="text-lightgray font-normal font-sans1 text-sm	tracking-wider	leading-5	">
+            <h4 className="text-lightgray font-normal font-roboto text-sm	tracking-wider	leading-5	">
               NETWORK
             </h4>
-            <button className="flex items-center  justify-between text-xs font-semibold font-sans1 text-white">
+            <button className="flex items-center  justify-between text-xs font-semibold font-roboto text-white">
               <div className="bg-yellow p-1 w-2.5 h-2.5 mr-2 rounded-base flex items-center justify-center"></div>
               {capitalize(network)}
             </button>

@@ -16,7 +16,7 @@ export const SearchFilters = ({
       <div className="flex items-center flex-1 justify-center bg-gray-dark rounded-base">
         <div className="input-group relative flex md:flex-wrap gap-4 items-stretch w-full rounded">
           <Input
-            className="xl:w-96 form-control relative flex-auto min-w-0 block w-full px-5 py-4 text-sm font-medium font-mono1 text-white bg-gray-dark rounded-base transition ease-in-out m-0 focus:text-white focus:border-0 focus:outline-none outline-none"
+            className="xl:w-96 form-control relative flex-auto min-w-0 block w-full px-5 py-4 text-sm font-medium font-space text-white bg-gray-dark rounded-base transition ease-in-out m-0 focus:text-white focus:border-0 focus:outline-none outline-none"
             placeholder="Search"
             handleChange={handleChange}
             value={state.filterValue}

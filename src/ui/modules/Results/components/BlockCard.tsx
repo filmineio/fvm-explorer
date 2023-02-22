@@ -31,12 +31,12 @@ export const BlockCard = ({ data, network }: BlockCardProps) => {
               </div>
               <div className="relative w-8/12 flex flex-col gap-2">
                 <CopyWrapper data={data.cid}>
-                  <h4 className="text-white leading-6 text-base font-bold font-sans1 truncate	">
+                  <h4 className="text-white leading-6 text-base font-bold font-roboto truncate	">
                     {data.cid}
                   </h4>
                 </CopyWrapper>
 
-                <p className="text-sm text-white leading-4 font-mono1">
+                <p className="text-sm text-white leading-4 font-space">
                   Height: {data.height}
                 </p>
               </div>
@@ -46,7 +46,7 @@ export const BlockCard = ({ data, network }: BlockCardProps) => {
               <div className="w-full">
                 <div className="text-gray-text font-normal	text-sm	 tracking-wider">
                   <span>BLOCK SIGNATURE: </span>
-                  <button className="bg-bglight rounded-base px-2 py-1 font-medium font-mono1	text-sm	leading-5 text-white truncate max-w-xs">
+                  <button className="bg-bglight rounded-base px-2 py-1 font-medium font-space	text-sm	leading-5 text-white truncate max-w-xs">
                     Type {block.BlockSig?.Type}
                   </button>
                 </div>

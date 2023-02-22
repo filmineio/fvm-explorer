@@ -55,7 +55,7 @@ body {
 /* Button 10 */
 #button-10 .knobs:after {
   content: 'or';
-  font-family: 'IBM Plex Mono', 'monospace';
+  font-family: 'Space Mono', monospace;
   font-weight: 500;
   top: 0;
   line-height: 1;

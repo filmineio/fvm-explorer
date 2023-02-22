@@ -11,10 +11,7 @@ export default function Document() {
           href="https://fonts.gstatic.com"
           crossOrigin={"true"}
         />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Archivo:wght@100;300;400;500;600;700;800&family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
       </Head>
       <body className={"h-full box-border"}>
         <Main />
