@@ -18,7 +18,7 @@ export const GhostSelect: GhostSelectT = ({
       onChange={onChange(change)}
     >
       {values.map((v) => (
-        <option className="text-gray-dark" key={v.value} value={v.value}>
+        <option className="text-slate" key={v.value} value={v.value}>
           {v.label}
         </option>
       ))}

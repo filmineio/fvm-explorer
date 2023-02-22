@@ -24,7 +24,7 @@ export const ContractTransactionRow = ({
 
   return (
     <>
-      <tr className="min-w-full bg-gray-dark rounded rounded-b-0">
+      <tr className="min-w-full bg-slate rounded rounded-b-0">
         <td className="w-1/6 px-6 py-3 text-left truncate text-yellow underline cursor-pointer">
           <Link
             href={`/explore/${Entity.Transaction}/${transaction.cid}?network=${network}`}
@@ -50,7 +50,7 @@ export const ContractTransactionRow = ({
       </tr>
       <tr
         className={
-          "min-w-full bg-gray-dark rounded-base rounded-t-0  transform -translate-y-2"
+          "min-w-full bg-slate rounded-base rounded-t-0  transform -translate-y-2"
         }
       >
         <td colSpan={7} className="px-6 pt-4 pb-3">
@@ -58,7 +58,7 @@ export const ContractTransactionRow = ({
             <div
               onClick={toggle}
               className={
-                "state bg-secect rounded-base w-6 h-6 mr-2 flex items-center justify-center cursor-pointer"
+                "state bg-body rounded-base w-6 h-6 mr-2 flex items-center justify-center cursor-pointer"
               }
             >
               <svg
@@ -85,7 +85,7 @@ export const ContractTransactionRow = ({
       {open && (
         <tr
           className={
-            "min-w-full bg-gray-dark rounded-base rounded-t-0  transform -translate-y-4"
+            "min-w-full bg-slate rounded-base rounded-t-0  transform -translate-y-4"
           }
         >
           <td colSpan={7}>

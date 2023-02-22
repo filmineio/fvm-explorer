@@ -23,7 +23,7 @@ export const AdvancedQueryActions = ({
           Add group
         </button>
         <button
-          className="w-52 border-2 border-yellow bg-yellow text-gray-dark uppercase rounded px-2 py-1"
+          className="w-52 border-2 border-yellow bg-yellow text-slate uppercase rounded px-2 py-1"
           onClick={search}
         >
           Search

@@ -86,11 +86,11 @@ export const AdvancedFiltersQueryGroup = ({
 
   return (
     <div
-      className={"relative p-5 border-2 border-lightgray rounded pb-8 relative"}
+      className={"relative p-5 border-2 border-label rounded pb-8 relative"}
     >
       {removable && (
         <button
-          className="box-content w-4 h-4 p-2 text-center text-white border-none bg-secect rounded-base focus:shadow-none focus:outline-none flex justify-center items-center absolute -top-3 -right-3"
+          className="box-content w-4 h-4 p-2 text-center text-white border-none bg-body rounded-base focus:shadow-none focus:outline-none flex justify-center items-center absolute -top-3 -right-3"
           onClick={onRemove}
         >
           <img className="w-auto" src="/images/close.png" alt={""} />

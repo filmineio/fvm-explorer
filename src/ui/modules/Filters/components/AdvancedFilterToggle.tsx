@@ -20,7 +20,7 @@ export const AdvancedFilterToggle = ({
             {label}
           </label>
           <input
-            className="form-check-input appearance-none w-10 rounded-full float-left h-5 align-top bg-lightgray bg-no-repeat checked:bg-yellow  bg-contain bg-gray-300 focus:outline-none cursor-pointer shadow-sm"
+            className="form-check-input appearance-none w-10 rounded-full float-left h-5 align-top bg-label bg-no-repeat checked:bg-yellow  bg-contain bg-gray-300 focus:outline-none cursor-pointer shadow-sm"
             type="checkbox"
             id="advancedFilters"
             checked={checked}

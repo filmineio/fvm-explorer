@@ -20,8 +20,8 @@ export const ContractBaseInfo = ({
   const [showEth, toggle] = useReducer((p) => !p, false);
   return (
     <div className="w-full mr-5 md:mr-0">
-      <div className="project relative  p-7  min-w-0 break-words bg-gray-dark border-2 border-lightgray rounded-base mb-6 xl:mb-0 shadow-lg ">
-        <div className="absolute bg-lightgray py-1 px-2 -top-3 left-0">
+      <div className="project relative  p-7  min-w-0 break-words bg-slate border-2 border-label rounded-base mb-6 xl:mb-0 shadow-lg ">
+        <div className="absolute bg-label py-1 px-2 -top-3 left-0">
           <p className="text-xs text-white font-normal ">CONTRACT</p>
         </div>
         <div className="flex md:flex-wrap   items-center">
@@ -78,7 +78,7 @@ export const ContractBaseInfo = ({
 
         <div className="flex mt-6 flex-wrap ">
           <div className="w-full mt-2 sm:w-6/12 mt-0 w-5/12 ">
-            <h4 className="text-lightgray font-normal font-roboto text-sm uppercase tracking-wider	leading-5	">
+            <h4 className="text-label font-normal font-roboto text-sm uppercase tracking-wider	leading-5	">
               Number of TRANSACTIONS
             </h4>
             <h5 className="text-white font-medium font-roboto text-sm	tracking-wider	leading-5	">
@@ -87,7 +87,7 @@ export const ContractBaseInfo = ({
           </div>
 
           <div className="w-full mt-2 sm:w-6/12 mt-0 w-3/12 ">
-            <h4 className="text-lightgray font-normal font-roboto text-sm	tracking-wider	leading-5	">
+            <h4 className="text-label font-normal font-roboto text-sm	tracking-wider	leading-5	">
               VALUE LOCKED
             </h4>
             <h5 className="text-white font-medium font-roboto text-sm	tracking-wider	leading-5	">
@@ -95,7 +95,7 @@ export const ContractBaseInfo = ({
             </h5>
           </div>
           <div className="w-full mt-2 mt-0 w-3/12 ">
-            <h4 className="text-lightgray font-normal font-roboto text-sm	tracking-wider	leading-5	">
+            <h4 className="text-label font-normal font-roboto text-sm	tracking-wider	leading-5	">
               NETWORK
             </h4>
             <button className="flex items-center  justify-between text-xs font-semibold font-roboto text-white">

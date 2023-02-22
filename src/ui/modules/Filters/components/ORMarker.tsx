@@ -7,7 +7,7 @@ export const ORMarker = () => {
     >
       <div
         className={
-          "border-2 border-lightgray bg-black text-gray-text w-20 h-10 bg-black flex items-center justify-center"
+          "border-2 border-label bg-black text-gray-text w-20 h-10 bg-black flex items-center justify-center"
         }
       >
         OR

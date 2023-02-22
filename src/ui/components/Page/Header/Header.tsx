@@ -18,7 +18,7 @@ export const Header: FC = () => {
   const logout = useCallback(() => {}, []);
 
   return (
-    <header className="px-5 py-5 border-b border-gray-dark">
+    <header className="px-5 py-5 border-b border-slate">
       <div className="flex flex-row justify-between items-center m-auto">
         <div className="md:basis-1/2">
           <Link href="/">

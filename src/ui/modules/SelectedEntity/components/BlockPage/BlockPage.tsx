@@ -56,8 +56,8 @@ export const BlockPage = ({ data }: Props) => {
   return (
     <div className=" pt-7">
       <div className="w-full">
-        <div className="project relative p-7 min-w-0 break-words bg-gray-dark border-2 border-lightgray rounded-base shadow-lg ">
-          <div className="absolute bg-lightgray py-1 px-2 -top-3 left-0">
+        <div className="project relative p-7 min-w-0 break-words bg-slate border-2 border-label rounded-base shadow-lg ">
+          <div className="absolute bg-label py-1 px-2 -top-3 left-0">
             <p className="text-xs text-white font-normal ">BLOCK</p>
           </div>
           <div className="md:lex-wrap flex items-center">
@@ -73,7 +73,7 @@ export const BlockPage = ({ data }: Props) => {
               </h3>
               <div className=" flex md:flex-wrap gap-1 items-center">
                 <p className="text-white font-space font-normal text-sm pr-3 w-9/12 truncate">
-                  <span className="text-lightgray font-space font-normal text-sm">
+                  <span className="text-label font-space font-normal text-sm">
                     Block signature:{" "}
                   </span>
                   {chainBlock.BlockSig?.Data}

@@ -11,9 +11,9 @@ export const EventEntryRow = ({ entry }: { entry: Entry }) => {
       <td>
         {/* TODO Only Data can be decoded so UI must be changed */}
         {/*<select className=" text-yellow font-roboto select-text border-none focus:outline-none focus:border-none bg-inherit  caret-yellow text-sm	font-semibold tracking-wide	cursor-pointer">*/}
-        {/*  <option className="text-gray-dark">String</option>*/}
-        {/*  <option className="text-gray-dark">Address</option>*/}
-        {/*  <option className="text-gray-dark">UInt256</option>*/}
+        {/*  <option className="text-slate">String</option>*/}
+        {/*  <option className="text-slate">Address</option>*/}
+        {/*  <option className="text-slate">UInt256</option>*/}
         {/*</select>*/}
       </td>
       <td className="text-white text-sm font-normal font-space text-left relative">

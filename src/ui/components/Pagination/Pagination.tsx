@@ -64,8 +64,8 @@ export const Pagination = ({
                   className={classNames(
                     "page-link relative block py-1.5 px-3 border-0  outline-none transition-all duration-300 rounded text-white hover:text-white  focus:shadow-none",
                     {
-                      "bg-lightgray": page === p,
-                      "bg-gray-dark": p !== p,
+                      "bg-label": page === p,
+                      "bg-slate": p !== p,
                     }
                   )}
                 >
@@ -90,7 +90,7 @@ export const Pagination = ({
         </nav>
       </div>
       <div
-        className={"text-lightgray w-full text-right transform -translate-y-6"}
+        className={"text-label w-full text-right transform -translate-y-6"}
       >
         of <span className={"text-yellow"}>{totalPages}</span> pages
       </div>

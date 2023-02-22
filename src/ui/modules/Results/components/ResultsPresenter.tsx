@@ -26,7 +26,7 @@ export const ResultsPresenter = ({
   if (error) return <SearchFeedback kind={results.kind} error />;
   if (loading)
     return (
-      <div className="text-lightgray">
+      <div className="text-label">
         <Spinner />
       </div>
     );

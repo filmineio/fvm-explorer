@@ -15,7 +15,7 @@ export const EventPresenter = ({ event }: { event: Event }) => {
   return (
     <div
       className={
-        "bg-gray-dark text-left text-sm  text-white font-space tracking-wider font-light  whitespace-nowrap rounded"
+        "bg-slate text-left text-sm  text-white font-space tracking-wider font-light  whitespace-nowrap rounded"
       }
     >
       <div className={"flex px-6 py-6"}>
@@ -29,8 +29,8 @@ export const EventPresenter = ({ event }: { event: Event }) => {
         </div>
       </div>
       {visible && (
-        <div className="px-6 py-12 rounded-br-lg mb-2.5 -mt-5 rounded-bl-lg shadow-lg bg-gray-dark">
-          <div className="border border-secect mb-4"></div>
+        <div className="px-6 py-12 rounded-br-lg mb-2.5 -mt-5 rounded-bl-lg shadow-lg bg-slate">
+          <div className="border border-body mb-4"></div>
           <p className="text-left text-lg	font-roboto font-bold leading-5	mb-3 text-white">
             Entries{" "}
           </p>

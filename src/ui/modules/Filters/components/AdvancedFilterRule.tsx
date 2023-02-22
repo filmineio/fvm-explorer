@@ -19,7 +19,7 @@ export const AdvancedFilterRule = ({
 
   return (
     <div>
-      <div className="bg-gray-dark rounded-base flex-wrap justify-end gap-5 items-center flex-row-reverse flex px-5 py-3 ">
+      <div className="bg-slate rounded-base flex-wrap justify-end gap-5 items-center flex-row-reverse flex px-5 py-3 ">
         <div className="flex flex-wrap gap-4">
           <div className="closebut pr-3">
             <button
@@ -58,7 +58,7 @@ export const AdvancedFilterRule = ({
         </div>
         <div className="flex gap-3">
           <button
-            className="box-content w-4 h-4 p-2 text-center text-white border-none bg-secect rounded-base focus:shadow-none focus:outline-none flex justify-center items-center"
+            className="box-content w-4 h-4 p-2 text-center text-white border-none bg-body rounded-base focus:shadow-none focus:outline-none flex justify-center items-center"
             onClick={onRemove}
           >
             <img className="w-auto" src="/images/close.png" alt={""} />

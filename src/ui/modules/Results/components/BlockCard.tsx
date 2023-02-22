@@ -21,7 +21,7 @@ export const BlockCard = ({ data, network }: BlockCardProps) => {
   return (
     <div className="w-full sm:min-w-full max-w-xs md:w-1/2 lg:w-1/3xs:w-full my-2 sm:pr-5 px-0 cursor-pointer">
       <Link href={`/explore/${Entity.Block}/${data.cid}?network=${network}`}>
-        <div className="relative flex flex-col min-w-0 break-words bg-gray-dark border-2 border-gray-dark hover:border-lightgray rounded-base  shadow-lg">
+        <div className="relative flex flex-col min-w-0 break-words bg-slate border-2 border-slate hover:border-label rounded-base  shadow-lg">
           <div className="flex-auto p-5">
             <div className="flex flex-wrap items-center">
               <div className="relative pr-4 w-4/12">

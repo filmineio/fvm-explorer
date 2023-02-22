@@ -98,7 +98,7 @@ export const ContractCard = ({ data, network }: ContractCardProps) => {
       <Link
         href={`/explore/${Entity.Contract}/${data.contractAddress}?network=${network}`}
       >
-        <div className="relative flex flex-col break-words bg-gray-dark border-2 border-gray-dark hover:border-lightgray rounded-base  shadow-lg">
+        <div className="relative flex flex-col break-words bg-slate border-2 border-slate hover:border-label rounded-base  shadow-lg">
           <div className="flex-auto p-5">
             <div className="flex flex-wrap items-center">
               <div className="relative pr-4 w-4/12">
