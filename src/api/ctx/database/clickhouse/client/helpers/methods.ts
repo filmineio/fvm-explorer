@@ -1,9 +1,9 @@
-import { ClickhouseWriteClient } from "../../types/ClickhouseWriteClient";
 import { CHMFieldQuery } from "@/schema/types/CHMQuery";
 import { omit } from "ramda";
 
 import { OperationStatus } from "@/types/ApiResponse";
 
+import { ClickhouseWriteClient } from "@/api/ctx/database/clickhouse/types/ClickhouseWriteClient";
 import { Create } from "@/api/ctx/database/clickhouse/types/create";
 import { Update } from "@/api/ctx/database/clickhouse/types/update";
 
@@ -37,6 +37,7 @@ export const create =
         selection: [],
       });
     } catch (e) {
+      console.log(e);
       return OperationStatus.Error;
     }
   };
@@ -50,6 +51,7 @@ export const update =
         order: [key as string, "ASC"],
         pagination: { limit: 1, offset: 0 },
         selection: [key as string],
+        final: true,
       });
 
       if (!match) return OperationStatus.Error;
@@ -60,11 +62,15 @@ export const update =
           {
             ...Object.fromEntries(
               Object.entries({ ...omit(["total"], match), ...data }).map(
-                ([k, v]) => [capitalize(k), v]
+                ([k, v]) => [
+                  capitalize(k),
+                  typeof v === "object" ? JSON.stringify(v) : v,
+                ]
               )
             ),
           },
         ],
+        format: "JSONEachRow",
       });
 
       return client.query({
@@ -73,8 +79,10 @@ export const update =
         order: [key as string, "ASC"],
         pagination: { limit: 1, offset: 0 },
         selection: [],
+        final: true,
       });
     } catch (e) {
+      console.log(e);
       return OperationStatus.Error;
     }
   };

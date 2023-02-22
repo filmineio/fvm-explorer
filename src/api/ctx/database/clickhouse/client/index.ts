@@ -39,8 +39,6 @@ export const getWriteClient = (
     insert: (p) => client.insert(p),
   } as ClickhouseWriteClient;
 
-  console.log("extendedClient", extendedClient.insert);
-
   extendedClient.create = create(extendedClient);
   extendedClient.update = update(extendedClient);
 
