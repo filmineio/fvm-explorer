@@ -6,6 +6,7 @@ import { omit } from "ramda";
 
 import { OperationStatus } from "@/types/ApiResponse";
 import { Contract } from "@/types/data/Contract";
+import { ProjectContract } from "@/types/data/ProjectContract";
 
 import { getCtx } from "@/api/ctx/apiCtx";
 import { identifyUser } from "@/api/utils/identifyUser";
@@ -37,6 +38,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         {
           Id: {
             is: projectId,
+          },
+          Owner: {
+            is: data.email,
           },
         },
       ],
@@ -79,6 +83,19 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (!contract)
       return res.status(404).json({ exception: "ENTITY_NOT_FOUND" });
 
+    const projectContracts = JSON.parse(
+      project.contracts as string
+    ) as ProjectContract[];
+
+    const found = projectContracts.find(
+      (contract: ProjectContract) =>
+        contract.contractAddress === body.contractAddress &&
+        contract.network === body.network
+    );
+
+    if (found)
+      return res.status(400).json({ exception: "CONTRACT_ALREADY_ADDED" });
+
     const result = await ctx.database.ch.data.users.update(
       projectChm,
       {
@@ -88,8 +105,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       {
         ...omit(["total"], project),
         contracts: [
-          ...(JSON.parse(project.contracts as never as string) as string[]),
-          body.contractAddress,
+          ...projectContracts,
+          { contractAddress: body.contractAddress, network: body.network },
         ],
       },
       "id"
