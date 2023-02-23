@@ -5,8 +5,6 @@ import { Spinner } from "@/ui/components/Spinner/Spinner";
 
 import { Results } from "@/ui/modules/Results/Results";
 
-import { FilterState } from "@/ui/state/types/AppState";
-
 import { DataResult } from "@/types/DataResult";
 
 
@@ -14,14 +12,14 @@ export const ResultsPresenter = ({
   error,
   results,
   loading,
-  filters,
+  page,
   paginate,
 }: {
   error: string;
   loading: boolean;
   results: DataResult;
   paginate: (page?: number) => void;
-  filters: FilterState;
+  page: number;
 }) => {
   if (error) return <SearchFeedback kind={results.kind} error />;
   if (loading)
@@ -35,7 +33,7 @@ export const ResultsPresenter = ({
   return (
     <Results
       paginate={paginate}
-      page={filters.page}
+      page={page}
       pageSize={PAGE_SIZE}
       data={results}
     />

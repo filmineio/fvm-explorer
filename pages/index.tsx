@@ -128,7 +128,7 @@ const Home: NextPage<{ data: ApplicationData }> = ({ data: serverData }) => {
           loading={loading}
           results={results}
           paginate={requestData}
-          filters={filters}
+          page={filters.page}
         />
       </Main>
     </Page>

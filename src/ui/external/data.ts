@@ -42,7 +42,7 @@ export const useQuery = <T>() => {
     total: number;
   }>({
     error: "",
-    loading: true,
+    loading: false,
     data: [],
     total: 0,
   });
