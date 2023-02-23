@@ -11,6 +11,7 @@ module.exports = {
     borderRadius: {
       'small': '2px',
       'base': '4px',
+      "msm": "3px",
     },
     letterSpacing: {
       tightest: '-.075em',
@@ -49,7 +50,7 @@ module.exports = {
       },
 
       fontSize: {
-        sml: "13",
+        "pagination": ["13px", "22px"],
         sm: "14px",
         md: "32px",
       },

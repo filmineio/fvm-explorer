@@ -1,8 +1,10 @@
 import classNames from "classnames";
-import { range } from "ramda";
+import { max, min, range } from "ramda";
 import { useMemo } from "react";
 
 import { cb } from "@/utils/cb";
+import ArrowChevronNext from "@/ui/components/Common/Icons/ArrowChevronNext";
+import ArrowChevronPrevious from "@/ui/components/Common/Icons/ArrowChevronPrevious";
 
 type PaginationProps = {
   paginate: (page: number) => void;
@@ -21,13 +23,17 @@ export const Pagination = ({
     () => Math.ceil(total / pageSize),
     [pageSize, total]
   );
+
+  const maxPages = 5;
+  const maxPreviousPages = 2;
+
   const pages = useMemo(() => {
-    if (totalPages > 10) {
-      return totalPages - page < 10
-        ? range(totalPages - 10, totalPages)
-        : page === 1
-        ? range(page, page + 10)
-        : range(page - 1, page + 9);
+    if (totalPages > maxPages) {
+      return totalPages - page < maxPages
+        ? range(totalPages - maxPages, totalPages)
+        : page <= maxPreviousPages
+        ? range(1, maxPages + 1)
+        : range(page - maxPreviousPages, page + maxPages - maxPreviousPages);
     }
 
     return range(1, totalPages);
@@ -38,61 +44,42 @@ export const Pagination = ({
   }
 
   return (
-    <div className="py-7 space-y-5">
+    <div className="my-14">
       <div className="flex justify-end">
         <nav aria-label="Page navigation example">
           <ul className="flex list-style-none">
             <li
-              className="m-1 page-item cursor-pointer"
-              onClick={cb(paginate, page - 1)}
+              className="flex mr-4 page-item cursor-pointer justify-center items-center"
+              onClick={cb(paginate, max(page - 1, 1))}
             >
-              <span
-                className="page-link background-color: transparent;
-            relative block py-1.5 px-3 border-0  outline-none transition-all duration-300 rounded text-white hover:text-white  focus:shadow-none"
-                aria-label="Next"
-              >
-                <span aria-hidden="true">&laquo;</span>
-              </span>
+              <ArrowChevronPrevious/>
             </li>
             {pages.map((p) => (
               <li
-                className=" m-1 page-item cursor-pointer"
+                className="mx-1 page-item cursor-pointer"
                 key={p}
                 onClick={cb(paginate, p)}
               >
-                <span
-                  className={classNames(
-                    "page-link relative block py-1.5 px-3 border-0  outline-none transition-all duration-300 rounded text-white hover:text-white  focus:shadow-none",
-                    {
-                      "bg-label": page === p,
-                      "bg-slate": p !== p,
-                    }
-                  )}
-                >
-                  {p}
-                </span>
+                {
+                  page === p ?
+                      <div className="page-link relative flex w-8 h-8 bg-blue-500 rounded-msm text-white text-pagination font-semibold justify-center items-center">
+                        {p}
+                      </div>:
+                      <span className="page-link relative flex w-8 h-8 bg-transparent border-2 border-label rounded-msm text-white text-pagination font-semibold justify-center items-center hover:bg-body">
+                        {p}
+                      </span>
+                }
               </li>
             ))}
 
             <li
-              className="m-1 page-item cursor-pointer"
-              onClick={cb(paginate, page + 1)}
+              className="flex ml-4 page-item cursor-pointer justify-center items-center"
+              onClick={cb(paginate, min(page + 1, totalPages))}
             >
-              <span
-                className="page-link background-color: transparent;
-              relative block py-1.5 px-3 rounded border-0  outline-none transition-all duration-300  text-white hover:text-white  focus:shadow-none"
-                aria-label="Next"
-              >
-                <span aria-hidden="true">&raquo;</span>
-              </span>
+              <ArrowChevronNext/>
             </li>
           </ul>
         </nav>
-      </div>
-      <div
-        className={"text-label w-full text-right transform -translate-y-6"}
-      >
-        of <span className={"text-yellow"}>{totalPages}</span> pages
       </div>
     </div>
   );
