@@ -43,7 +43,7 @@ module.exports = {
         "body_opacity-50": "#292E4280",
         "slate": "#141620",
         "label": "#596184",
-        "label_opacity-50": "#5961844d",
+        "label_opacity-30": "#5961844d",
         "blue-400": "#59A9FF",
         "blue-500": "#0576F0",
       },
@@ -74,6 +74,15 @@ module.exports = {
         "2xl": { max: "1336px" },
         "3xl": { max: "1920px" },
       },
+
+      width: {
+        "14/25": "56%",
+        "11/25": "44%"
+      },
+
+      lineHeight: {
+        "compact": "1.2"
+      }
     },
     fontFamily: {
       roboto: ['Roboto Mono', "monospace"],
