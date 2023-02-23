@@ -11,7 +11,10 @@ module.exports = {
     borderRadius: {
       'small': '2px',
       'base': '4px',
-      "msm": "3px",
+      "3": "3px",
+      "6": "6px",
+      "9": "9px"
+
     },
     letterSpacing: {
       tightest: '-.075em',
@@ -83,6 +86,20 @@ module.exports = {
 
       lineHeight: {
         "compact": "1.2"
+      },
+
+      margin: {
+        "0.75": "3px",
+        "1.25": "5px",
+        "1.75": "7px",
+        "2.25": "9px"
+      },
+
+      padding: {
+        "0.75": "3px",
+        "1.25": "5px",
+        "1.75": "7px",
+        "2.25": "9px"
       }
     },
     fontFamily: {

@@ -62,10 +62,10 @@ export const Pagination = ({
               >
                 {
                   page === p ?
-                      <div className="page-link relative flex w-8 h-8 bg-blue-500 rounded-msm text-white text-pagination font-semibold justify-center items-center">
+                      <div className="page-link relative flex w-8 h-8 bg-blue-500 rounded-3 text-white text-pagination font-semibold justify-center items-center">
                         {p}
                       </div>:
-                      <span className="page-link relative flex w-8 h-8 bg-transparent border-2 border-label rounded-msm text-white text-pagination font-semibold justify-center items-center hover:bg-body">
+                      <span className="page-link relative flex w-8 h-8 bg-transparent border-2 border-label rounded-3 text-white text-pagination font-semibold justify-center items-center hover:bg-body">
                         {p}
                       </span>
                 }
