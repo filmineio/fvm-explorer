@@ -54,6 +54,7 @@ module.exports = {
 
       fontSize: {
         "pagination": ["13px", "22px"],
+        "28": "28px",
         sm: "14px",
         md: "32px",
       },
@@ -99,7 +100,11 @@ module.exports = {
         "0.75": "3px",
         "1.25": "5px",
         "1.75": "7px",
-        "2.25": "9px"
+        "2.25": "9px",
+        "2.75": "11px",
+        "3.25": "13px",
+        "3.75": "15px",
+        "6.5": "28px"
       }
     },
     fontFamily: {
