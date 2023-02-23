@@ -24,16 +24,16 @@ export const TransactionCard = ({ data, network }: TransactionCardProps) => {
   );
 
   return (
-    <div className="w-full sm:min-w-full max-w-xs md:w-1/2 lg:w-1/3  my-2 sm:pr-5 px-0 cursor-pointer">
+    <div className="w-full sm:min-w-full max-w-xs md:w-1/2 lg:w-1/3 sm:pr-5 px-0 cursor-pointer">
       <Link
         href={`/explore/${Entity.Transaction}/${data.cid}?network=${network}`}
       >
-        <div className="relative flex flex-col w-full break-words bg-slate border-2 border-slate hover:border-label rounded-base  shadow-lg">
+        <div className="relative flex flex-col w-full break-words bg-body_opacity-50 border-2 border-transparent hover:border-label rounded-base  shadow-lg">
           <div className="flex-auto p-5">
             <div className="flex flex-wrap items-center">
               <div className="relative w-full">
                 <CopyWrapper data={data.cid}>
-                  <h4 className="text-white leading-6 text-base font-bold font-roboto truncate	">
+                  <h4 className="font-roboto text-white text-lg font-bold leading-compact truncate">
                     {data.cid}
                   </h4>
                 </CopyWrapper>
@@ -41,44 +41,44 @@ export const TransactionCard = ({ data, network }: TransactionCardProps) => {
               <TransactionStatus exitCode={data.messageRctExitCode} />
             </div>
 
-            <div className="flex mt-4">
-              <div className="w-full xs:w-1/2 lg:w-7/12 pr-3">
-                <div className="bg-yellow p-2.5 rounded-base">
-                  <h4 className="text-lg font-bold text-black	tracking-wider	font-space">
+            <div className="flex mt-5">
+              <div className="w-14/25 pr-2.5">
+                <div className="bg-label_opacity-30 p-2.5 rounded-msm">
+                  <h4 className="font-space text-white text-lg font-bold leading-compact tracking-wider">
                     {value.toFixed(2)} FIL
                   </h4>
-                  <p className="text-gray-text text-sm font-normal font-roboto	">
+                  <p className="font-roboto text-white text-xs font-normal leading-normal">
                     value
                   </p>
                 </div>
               </div>
 
-              <div className="w-full xs:w-1/2 lg:w-5/12 mt-0">
-                <div className="bg-black p-2.5 rounded-base">
-                  <h4 className="text-lg font-bold text-white	tracking-wider	font-space">
+              <div className="w-11/25">
+                <div className="bg-label_opacity-30 p-2.5 rounded-msm">
+                  <h4 className="font-space text-white text-lg font-bold leading-compact tracking-wider">
                     {data.height}
                   </h4>
-                  <p className="text-gray-text text-sm font-normal font-roboto">
+                  <p className="font-roboto text-white text-xs font-normal leading-normal">
                     epoch
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="flex  mt-3">
-              <div className="w-full lg:w-5/12 pr-0 lg:pr-3">
-                <h3 className="text-gray-text font-normal	text-sm	leading-5 tracking-wider	font-roboto	">
+            <div className="flex mt-5">
+              <div className="w-14/25 lg:w-5/12 pr-0 lg:pr-3">
+                <h3 className="font-roboto text-label text-sm font-normal leading-4 tracking-wider lowercase">
                   NETWORK
                 </h3>
-                <h5 className="text-white font-medium text-sm	leading-4 font-roboto tracking-wider">
+                <h5 className="font-roboto text-white text-sm font-medium leading-normal tracking-wider capitalize">
                   {capitalize(network)}
                 </h5>
               </div>
-              <div className="w-full lg:w-5/12 pr-0 lg:pr-3">
-                <h3 className="text-gray-text font-normal	text-sm	leading-5 tracking-wider	font-roboto	">
+              <div className="w-11/25 lg:w-5/12 pr-0 lg:pr-3">
+                <h3 className="font-roboto text-label text-sm font-normal leading-4 tracking-wider lowercase">
                   GAS USED
                 </h3>
-                <h5 className="text-white font-medium text-sm	leading-4 font-roboto tracking-wider">
+                <h5 className="font-roboto text-white text-sm font-medium leading-normal tracking-wider">
                   {data.messageRctGasUsed} attoFIL
                 </h5>
               </div>
