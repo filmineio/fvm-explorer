@@ -11,14 +11,20 @@ import { standardizeResponse } from "@/utils/standardizeResponse";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const ctx = await getCtx();
+  const network = req.query.network as Network;
+  const contractAddresses = ((req.query.contractAddresses as string) || "")
+    .split(",")
+    .filter((x) => x !== "");
+
+  if (!network || contractAddresses.length === 0)
+    return res.status(400).json({ exception: "INVALID_REQUEST_PARAMS" });
+
   const user = await identifyUser(ctx, req);
-  const body: Record<"network", Network> &
-    Record<"contractAddresses", string[]> = req.body;
 
   if (user === OperationStatus.Error) return res.status(401).end();
 
   try {
-    const result = await ctx.database.ch.data.chain[body.network].query({
+    const result = await ctx.database.ch.data.chain[network].query({
       fieldName: Entity.ContractMeta,
       selection: [
         "contractAddress",
@@ -35,7 +41,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       query: [
         {
           ContractAddress: {
-            in: body.contractAddresses,
+            in: contractAddresses,
           },
           Owner: {
             is: user.email,
@@ -46,7 +52,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         },
         {
           ContractAddress: {
-            in: body.contractAddresses,
+            in: contractAddresses,
           },
           IsPublic: {
             is: true,
@@ -55,13 +61,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       ],
       order: ["contractAddress", "ASC"],
       pagination: {
-        limit: body.contractAddresses.length,
+        limit: contractAddresses.length,
         offset: 0,
       },
+      final: true,
     });
 
     return res.status(200).json(standardizeResponse(result));
   } catch (e) {
+    console.log(e);
     return res.status(400).json({ exception: e });
   }
 };
