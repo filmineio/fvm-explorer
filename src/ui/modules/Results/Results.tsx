@@ -43,7 +43,7 @@ export const Results = ({
   return (
     <div className="space-y-5 pt-5 flex-col">
       <div
-        className={"grid grid-cols-4 relative gap-6"}
+        className={"grid grid-cols-4 relative gap-7"}
       >
         {rows.map((r) => (
           <Card

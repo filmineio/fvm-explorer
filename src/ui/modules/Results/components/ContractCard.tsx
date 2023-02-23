@@ -95,7 +95,7 @@ export const ContractCard = ({ data, network }: ContractCardProps) => {
   }, []);
 
   return (
-    <div className="w-full sm:min-w-full max-w-xs sm:w-5/12 md:w-1/2 lg:w-1/3 my-2 sm:pr-5 px-0 cursor-pointer">
+    <div className="w-full sm:min-w-full max-w-xs sm:w-5/12 md:w-1/2 lg:w-1/3 sm:pr-5 px-0 cursor-pointer">
       <Link
         href={`/explore/${Entity.Contract}/${data.contractAddress}?network=${network}`}
       >
