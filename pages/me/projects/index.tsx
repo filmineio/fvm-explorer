@@ -71,7 +71,7 @@ export default function Projects({ data }: { data: Project[] }): ReactElement {
     user &&
       get(Entity.Project, {
         network: Network.HyperSpace,
-        query: { owner: { is: "stankovic.srdjo@gmail.com" } },
+        query: { owner: { is: user.email } },
         order: ["id", "ASC"],
         pagination: { limit: PAGE_SIZE, offset: getZeroIndexOffset(1) },
       });

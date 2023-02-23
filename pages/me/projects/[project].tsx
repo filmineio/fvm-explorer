@@ -55,7 +55,7 @@ export default function SingleProject({
       getProject(Entity.Project, {
         network: Network.HyperSpace,
         order: ["id", "ASC"],
-        query: { id: { is: projectId } },
+        query: { id: { is: projectId }, owner: { is: user.email } },
       });
   }, [!!user, projectId]);
 
