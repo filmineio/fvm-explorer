@@ -3,6 +3,7 @@ import Router from "next/router";
 import { FC } from "react";
 
 import Button from "@/ui/components/Button";
+import { UserMenu } from "@/ui/components/UserMenu/UserMenu";
 
 import { useStore } from "@/ui/state/Store";
 
@@ -36,16 +37,7 @@ export const Header: FC = () => {
             </Button>
           </div>
         )}
-        {user && (
-          <div className="md:basis-1/2 text-right">
-            <Button
-              className="py-3 h-sm px-5 font-sans1 text-yellow text-sm font-semibold focus:outline-none "
-              onClick={cb(Router.push, "/me/projects")}
-            >
-              {user.email}
-            </Button>
-          </div>
-        )}
+        {user && <UserMenu user={user} />}
       </div>
     </header>
   );

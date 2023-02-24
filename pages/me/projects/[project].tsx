@@ -7,9 +7,8 @@ import {
   MyDataKind,
   MyDataWrapper,
 } from "@/ui/components/MyDataWrapper/MyDataWrapper";
+import { ProjectContractRow } from "@/ui/components/ProjectComponents/ProjectContractRow";
 import { Spinner } from "@/ui/components/Spinner/Spinner";
-
-import { ProjectContractRow } from "@/ui/modules/Results/components/ProjectContractRow";
 
 import { useStore } from "@/ui/state/Store";
 
@@ -33,12 +32,7 @@ export default function SingleProject({
     loading: projectLoading,
     data: projects,
   } = useQuery<Project>();
-  const {
-    get: getContracts,
-    loading: contractLoading,
-    data: contracts,
-    total,
-  } = useQuery<Contract>();
+  const { get: getContracts, data: contracts } = useQuery<Contract>();
 
   const project = useMemo(() => projects[0], [projects]);
 
@@ -78,7 +72,7 @@ export default function SingleProject({
   if (projectLoading || !project) {
     return (
       <MyDataWrapper kind={MyDataKind.Projects}>
-        <div className=" all px-0 max-w-2xl justify-self-center mx-auto pt-20 pb-10  text-gray-light">
+        <div className=" all px-0 max-w-2xl justify-self-center mx-auto pt-20 pb-10  text-lightgray">
           <Spinner />
         </div>
       </MyDataWrapper>

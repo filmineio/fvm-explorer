@@ -2,23 +2,27 @@ import { Entity } from "@/enums/Entity";
 import { Network } from "@/enums/Network";
 import { useRouter } from "next/router";
 import { pluck, uniqBy } from "ramda";
-import { useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { toast } from "react-toastify";
+
+import { ProjectEditModal } from "@/ui/components/ProjectComponents/ProjectEditModal";
 
 import { TransactionCounters } from "@/ui/modules/Results/components/TransactionCounters";
 
-import { useQuery } from "@/ui/external/data";
+import { useMutation, useQuery } from "@/ui/external/data";
 
 import { Project } from "@/types/data/Project";
 import { Transaction } from "@/types/data/Transaction";
 
 import { cb } from "@/utils/cb";
+import { parse } from "@/utils/parse";
 
 
 type ProjectCardProps = {
   data: Project;
-  network: Network;
+  reFetch: () => void;
 };
-export const ProjectCard = ({ data, network }: ProjectCardProps) => {
+export const ProjectCard = ({ data, reFetch }: ProjectCardProps) => {
   const { push } = useRouter();
 
   const {
@@ -28,10 +32,37 @@ export const ProjectCard = ({ data, network }: ProjectCardProps) => {
     data: transactions,
   } = useQuery<Pick<Transaction, "cid" | "messageRctExitCode">>();
 
+  const {
+    total: updatedProject,
+    loading: updating,
+    error: updatingError,
+    post: updateProject,
+  } = useMutation<Project>();
+
+  const {
+    total: removedProject,
+    loading: removing,
+    error: removingError,
+    post: removeProject,
+  } = useMutation<Project>();
+
+  const [showEdit, setShowEdit] = useState(false);
+
   const contracts: Project["contracts"] = useMemo(
-    () => JSON.parse(data.contracts as never),
+    () => parse(data.contracts as never, []),
     [data.contracts]
   );
+
+  const edit = useCallback(
+    (name: string) => {
+      updateProject(Entity.Project, `/projects/${data.id}/update`, { name });
+    },
+    [data]
+  );
+
+  const remove = useCallback(() => {
+    removeProject(Entity.Project, `/projects/${data.id}/remove`, {});
+  }, [data]);
 
   const { ok, reverted } = useMemo(() => {
     return uniqBy((m) => m.cid, transactions).reduce(
@@ -49,7 +80,7 @@ export const ProjectCard = ({ data, network }: ProjectCardProps) => {
     if (!contracts.length) return;
 
     get(Entity.Transaction, {
-      network: network,
+      network: Network.HyperSpace,
       query: [
         ["robustTo", "robustFrom"].map((f) => ({
           [f]: {
@@ -63,13 +94,33 @@ export const ProjectCard = ({ data, network }: ProjectCardProps) => {
     });
   }, [contracts]);
 
+  useEffect(() => {
+    !!updatingError && toast.error(updatingError);
+  }, [!!updatingError]);
+
+  useEffect(() => {
+    if (!updatedProject) return;
+    reFetch();
+    toast.info(`Successfully updated the project`);
+  }, [updatedProject]);
+
+  useEffect(() => {
+    !!removingError && toast.error(removingError);
+  }, [!!removingError]);
+
+  useEffect(() => {
+    if (!removedProject) return;
+    reFetch();
+    toast.info(`Successfully removed the project`);
+  }, [removedProject]);
+
   return (
     <>
       <div className="relative px-5 py-8 w-96 break-words bg-gray-dark border-2 hover:border-lightgray rounded-lg xl:mb-0 shadow-lg flex flex-col">
         <div className="absolute bg-lightgray py-1 px-2 -top-3 left-0">
           <p className="text-xs text-white font-normal ">PROJECT</p>
         </div>
-        <div className="block">
+        <div className="block cursor-pointer" onClick={cb(setShowEdit, true)}>
           <div className="bg-bglight absolute right-2 top-2 	 p-2 mr-2 rounded-md flex items-center justify-center w-8">
             <svg
               width="12"
@@ -138,6 +189,16 @@ export const ProjectCard = ({ data, network }: ProjectCardProps) => {
           <div className="mt-8 flex text-yellow text-sm font-bold" />
         )}
       </div>
+
+      {showEdit && (
+        <ProjectEditModal
+          onEdit={edit}
+          onDelete={remove}
+          value={data.name}
+          toggle={setShowEdit}
+          loading={updating}
+        />
+      )}
     </>
   );
 };

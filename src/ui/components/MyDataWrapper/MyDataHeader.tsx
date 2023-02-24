@@ -1,4 +1,5 @@
 import { MyDataKind } from "@/ui/components/MyDataWrapper/MyDataWrapper";
+import { UserMenu } from "@/ui/components/UserMenu/UserMenu";
 
 import { useStore } from "@/ui/state/Store";
 
@@ -107,11 +108,7 @@ export const MyDataHeader = ({
           </ul>
         </div>
 
-        <div className="user flex items-center">
-          <div className="py-3 h-sm px-5 font-sans1 text-yellow text-sm font-semibold focus:outline-none ">
-            {user?.email}
-          </div>
-        </div>
+        <UserMenu user={user} />
       </div>
     </div>
   );

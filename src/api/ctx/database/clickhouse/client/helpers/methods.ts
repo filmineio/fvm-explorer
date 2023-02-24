@@ -9,6 +9,7 @@ import { Update } from "@/api/ctx/database/clickhouse/types/update";
 
 import { capitalize } from "@/utils/capitalize";
 
+
 export const create =
   (client: ClickhouseWriteClient): Create =>
   async (model, data, [key, id]) => {
@@ -50,7 +51,7 @@ export const update =
         fieldName: model.kind,
         order: [key as string, "ASC"],
         pagination: { limit: 1, offset: 0 },
-        selection: [key as string],
+        selection: [],
         final: true,
       });
 
@@ -79,7 +80,6 @@ export const update =
         order: [key as string, "ASC"],
         pagination: { limit: 1, offset: 0 },
         selection: [],
-        final: true,
       });
     } catch (e) {
       console.log(e);
