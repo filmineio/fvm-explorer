@@ -15,6 +15,10 @@ import { useStore } from "@/ui/state/Store";
 import { uiApiClient } from "@/ui/external";
 
 import { cb } from "@/utils/cb";
+import LogoName from "@/ui/components/Common/Icons/LogoName";
+import AuthIllustrationTop from "@/ui/components/Common/Icons/AuthIllustrationTop";
+import AuthIllustrationBottom from "@/ui/components/Common/Icons/AuthIllustrationBottom";
+import MailIcon from "@/ui/components/Common/Icons/MailIcon";
 
 
 const Home: NextPage = () => {
@@ -38,52 +42,40 @@ const Home: NextPage = () => {
   return (
     <>
       <Page>
-        <div className="flex h-full md:flex-wrap ">
-          <div className="w-1/2 lg:w-4/12 flex items-center justify-center bg-[#141620] md:w-full">
-            <div className="logo md:w-1/2 md:w-48 xl:w-auto md:mb-5 md:h-96 flex items-center justify-center">
-              <figure>
-                <img src="/images/logo.png" alt="logo" />
-              </figure>
+        <div className="flex h-full">
+          <div className="flex relative w-1/2 items-center justify-center bg-line_opacity-80">
+            <div className="absolute self-end top-0 right-0">
+              <AuthIllustrationTop/>
+            </div>
+            <div className="flex items-center justify-center">
+              <LogoName/>
+            </div>
+            <div className="absolute self-start bottom-0 left-0">
+              <AuthIllustrationBottom/>
             </div>
           </div>
 
-          <div className="w-1/2  lg:w-8/12 flex items-center justify-center bg-black md:w-full">
+          <div className="w-1/2 lg:w-8/12 flex items-center justify-center md:w-full">
             <div className="md:text-center md:text-left md:p-5">
               <form>
-                <h1 className="text-white text-md md:mb-2  md:mb-1 font-roboto font-bold">
+                <h1 className="font-space text-white text-36 font-bold leading-compact">
                   Log in/Sign up
                 </h1>
-                <p className="text-gray text-base">
+                <p className="font-roboto text-white font-normal text-16 leading-normal mt-4">
                   Authenticate with your email to use the app.
                 </p>
-                <div className="flex mt-2 md:flex-wrap items-end mt-8 gap-0">
+                <div className="flex md:flex-wrap items-end mt-12 gap-0">
                   <Input
                     handleChange={change}
-                    label={"Email Address"}
-                    placeholder={"Your email..."}
-                    className={`w-96 md:w-ful bg-gray-900 placeholder-label ou focus:outline-none focus:border-sky-500 focus:ring-sky-500 block rounded-base focus:ring-1 lg:w-80 min-h-sm font-mono font-medium text-sm pl-11 md:w-52 xs:w-full sm:w-52`}
+                    placeholder="Email"
+                    className="block bg-slate min-h-sm w-80 pl-11 border-2 border-body rounded-base text-white placeholder-label caret-white text-14 outline-none leading-4 hover:border-label
+                        focus:border-label focus:ring-body focus:ring-2"
                     valid={state.emailValid}
-                    icon={
-                      <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M7 9L10.7506 12.0005C11.481 12.5848 12.519 12.5848 13.2494 12.0005L17 9M21 17L21 7C21 5.89543 20.1046 5 19 5L5 5C3.89543 5 3 5.89543 3 7L3 17C3 18.1046 3.89543 19 5 19L19 19C20.1046 19 21 18.1046 21 17Z"
-                          stroke="#596184"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    }
+                    icon={<MailIcon/>}
                   />
                   <Button
                     type="button"
-                    className="buttons w-52 bg-yellow h-sm font-roboto font-bold rounded-base lg:px-8 px-8 text-sm  md:px-4 md:w-full md:mt-0 "
+                    className="bg-blue-500 py-3.75 px-7 rounded-base font-roboto text-base text-white font-bold leading-5 whitespace-nowrap ml-5"
                     onClick={initLogin}
                   >
                     SIGN IN

@@ -50,11 +50,16 @@ module.exports = {
         "label_opacity-30": "#5961844d",
         "blue-400": "#59A9FF",
         "blue-500": "#0576F0",
+        "line": "#D8DBE9",
+        "line_opacity-80": "#D8DBE9CC"
       },
 
       fontSize: {
         "pagination": ["13px", "22px"],
+        "14": "14px",
+        "16": "16px",
         "28": "28px",
+        "36": "36px",
         sm: "14px",
         md: "32px",
       },
