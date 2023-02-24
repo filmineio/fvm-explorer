@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Router from "next/router";
 import { useCallback, useEffect, useReducer } from "react";
 
@@ -132,13 +131,5 @@ const Home: NextPage = () => {
     </>
   );
 };
-
-export async function getServerSideProps({ locale }: { locale: any }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ["common"])),
-    },
-  };
-}
 
 export default Home;

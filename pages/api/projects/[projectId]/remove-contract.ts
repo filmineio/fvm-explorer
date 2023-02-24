@@ -23,7 +23,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (data === OperationStatus.Error) return res.status(401).end();
 
   const body: Pick<Contract, "contractAddress"> & Record<"network", Network> =
-    parse(req.body, {} as never);
+    req.body;
 
   if (!body.contractAddress?.trim() || !body.network?.trim())
     return res.status(400).json({ exception: "INVALID_REQUEST_BODY" });

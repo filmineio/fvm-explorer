@@ -1,4 +1,4 @@
-import { Axios } from "axios";
+import axios, { Axios } from "axios";
 
 import { uiConfig } from "@/ui/ctx/config/config";
 
@@ -15,13 +15,7 @@ export const getHttpClient =
           throw "Invalid Response";
         }
       },
-      transformRequest: (c) => {
-        try {
-          return JSON.stringify(c);
-        } catch (e) {
-          return c;
-        }
-      },
+      transformRequest: axios.defaults.transformRequest,
       baseURL: uiConfig.api.url,
       headers: readToken()
         ? {
