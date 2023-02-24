@@ -1,5 +1,6 @@
 import { ContractVerificationStatus } from "@/enums/ContractVerificationStatus";
 import fs from "fs";
+import { MagicUserMetadata } from "magic-sdk";
 import { nanoid } from "nanoid";
 import { NextApiRequest } from "next";
 
@@ -14,7 +15,11 @@ import { readContractsFromZip } from "@/api/contracts/verify/utils/readContracts
 import { uploadMetadata } from "@/api/contracts/verify/utils/uploadMetadata";
 import { ApiCtx } from "@/api/ctx/apiCtx";
 
-export const handle = async (ctx: ApiCtx, req: NextApiRequest) => {
+export const handle = async (
+  ctx: ApiCtx,
+  req: NextApiRequest,
+  user: MagicUserMetadata
+) => {
   const { contractId } = req.query;
   const verifyReq = processRequestBody(req);
 
@@ -62,7 +67,7 @@ export const handle = async (ctx: ApiCtx, req: NextApiRequest) => {
 
   if (verificationResult.status !== ContractVerificationStatus.Unverified) {
     const meta = await uploadMetadata(ctx, verificationResult);
-    await createContractMetadata(ctx, meta, contract, verifyReq);
+    await createContractMetadata(ctx, meta, contract, verifyReq, user);
   }
 
   return verificationResult;

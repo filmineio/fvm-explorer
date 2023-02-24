@@ -32,6 +32,7 @@ export const getContractById = async (
       limit: 1,
       offset: 0,
     },
+    final: true,
   });
 
   return contract as (Contract & Record<"total", number>) | undefined;

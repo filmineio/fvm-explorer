@@ -36,6 +36,7 @@ export const getContractMetaByAddress = async (
       limit: 1,
       offset: 0,
     },
+    final: true,
   });
 
   return contractMeta as (ContractMeta & Record<"total", number>) | undefined;

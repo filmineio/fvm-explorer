@@ -13,7 +13,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (user === OperationStatus.Error) return res.status(401).end();
 
   try {
-    res.json(await handle(ctx, req));
+    res.json(await handle(ctx, req, user));
   } catch (e) {
     console.log(e);
     return res.status(400).json({ exception: e });
