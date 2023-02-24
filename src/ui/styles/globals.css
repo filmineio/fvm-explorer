@@ -49,7 +49,7 @@ html {
 }
 
 body {
-  background-color: black;
+  background-color: theme("colors.slate");
 }
 
 /* Button 10 */

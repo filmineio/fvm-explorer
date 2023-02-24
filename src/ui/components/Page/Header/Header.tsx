@@ -17,7 +17,7 @@ export const Header: FC = () => {
   } = useStore();
 
   return (
-    <header className="px-5 py-5 border-b border-slate">
+    <header className="px-4 py-4 border-b border-body">
       <div className="flex flex-row justify-between items-center m-auto">
         <div className="md:basis-1/2">
           <Link href="/">

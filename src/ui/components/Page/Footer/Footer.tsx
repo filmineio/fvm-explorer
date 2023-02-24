@@ -4,7 +4,7 @@ import LogoDevStorageBlack from "@/ui/components/Common/Icons/LogoDevStorageBlac
 
 export const Footer: FC = () => {
   return (
-    <footer className="px-5 py-6 border-t border-slate">
+    <footer className="px-5 py-6 border-t border-body">
       <div className="flex flex-wrap justify-between items-center m-auto">
         <Link href="/">
           <LogoDevStorageBlack />
