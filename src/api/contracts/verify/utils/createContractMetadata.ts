@@ -1,4 +1,5 @@
 import { contactMetaChm } from "@/schema/entities/contact-meta.chm";
+import { MagicUserMetadata } from "magic-sdk";
 
 import { OperationStatus } from "@/types/ApiResponse";
 import { Contract } from "@/types/data/Contract";
@@ -10,14 +11,16 @@ type CreateContractMetadata = (
   ctx: ApiCtx,
   meta: Record<"abiCid" | "binCid" | "mainCid" | "sigCid", string>,
   contract: Contract,
-  verificationRequest: VerificationRequest
+  verificationRequest: VerificationRequest,
+  user: MagicUserMetadata
 ) => Promise<void>;
 
 export const createContractMetadata: CreateContractMetadata = async (
   ctx,
   meta,
   contract,
-  verificationRequest
+  verificationRequest,
+  user
 ) => {
   const insertResult = await ctx.database.ch.data.chain[
     verificationRequest.network
@@ -33,7 +36,7 @@ export const createContractMetadata: CreateContractMetadata = async (
       name: verificationRequest.contractName,
       compilerVersion: verificationRequest.solidityVersion,
       isPublic: verificationRequest.isPublic,
-      owner: contract.ownerAddress,
+      owner: user.email as string,
     },
     ["contractAddress", contract.contractAddress]
   );

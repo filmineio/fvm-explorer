@@ -42,7 +42,7 @@ export const useQuery = <T>() => {
     total: number;
   }>({
     error: "",
-    loading: true,
+    loading: false,
     data: [],
     total: 0,
   });
@@ -54,7 +54,7 @@ export const useQuery = <T>() => {
         ...query,
       })
       .then((response) => {
-        const data = processResponse(response, Entity.Event);
+        const data = processResponse(response, resource);
         if (data.status === OperationStatus.Error) {
           setState((p) => set(lensPath(["error"]), data.data.exception)(p));
         } else {
@@ -67,7 +67,7 @@ export const useQuery = <T>() => {
         }
       })
       .catch(() =>
-        setState((p) => set(lensPath(["error"]), "Something Wennt Wrong")(p))
+        setState((p) => set(lensPath(["error"]), "Something Went Wrong")(p))
       )
       .finally(() => setState((p) => set(lensPath(["loading"]), false)(p)));
   };
@@ -105,4 +105,43 @@ export const useDataClient = () => {
   };
 
   return { get };
+};
+
+export const useMutation = <T = unknown>() => {
+  const [state, setState] = useState<{
+    error: string;
+    loading: boolean;
+    data: T[];
+    total: number;
+  }>({
+    error: "",
+    loading: false,
+    data: [],
+    total: 0,
+  });
+
+  const post = <T = unknown>(resource: Entity, path: string, data: T) => {
+    setState((p) => set(lensPath(["loading"]), true)(p));
+    uiCtx
+      .client()
+      .post(path, data)
+      .then((response) => {
+        const data = processResponse(response, resource);
+        if (data.status === OperationStatus.Error) {
+          setState((p) => set(lensPath(["error"]), data.data.exception)(p));
+        } else {
+          setState((p) =>
+            set(
+              lensPath(["total"]),
+              data.data.total
+            )(set(lensPath(["data"]), data.data.rows)(p))
+          );
+        }
+      })
+      .catch(() =>
+        setState((p) => set(lensPath(["error"]), "Something Went Wrong")(p))
+      )
+      .finally(() => setState((p) => set(lensPath(["loading"]), false)(p)));
+  };
+  return { post, ...state };
 };

@@ -25,13 +25,7 @@ export const ContractPage = ({ data }: Props) => {
   const contract = useMemo(() => data.rows[0] as Contract, [data]);
   const [activeTab, setActiveTab] = useState(0);
   const query = useLocationQuery<{ network: Network }>();
-  const {
-    get,
-    loading,
-    error,
-    data: transactions,
-    total,
-  } = useQuery<Transaction>();
+  const { get, loading, data: transactions, total } = useQuery<Transaction>();
   const [page, paginate] = useState<number>(1);
 
   useEffect(() => {

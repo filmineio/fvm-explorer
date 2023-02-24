@@ -5,7 +5,7 @@ import { Sealer, initSealer } from "@/api/ctx/auth/sealer";
 import { AuthUtils, authUtils } from "@/api/ctx/auth/utils";
 import { apiConfig } from "@/api/ctx/config/config";
 import { ClickhouseDB, initClient } from "@/api/ctx/database/clickhouse";
-import { Lotus, initLotus } from "@/api/ctx/lotus";
+import { Lotus } from "@/api/ctx/lotus";
 
 export type ApiCtx = {
   version: string;
@@ -31,14 +31,14 @@ export const getCtx = async (): Promise<ApiCtx> => {
     database: {
       ch: initClient(apiConfig.clickhouse),
     },
-    lotus: initLotus(apiConfig.lotus),
+    // lotus: initLotus(apiConfig.lotus),
     auth: {
       sealer: initSealer(apiConfig.auth),
       magic: initMagicClient(apiConfig.auth),
       utils: authUtils,
     },
     web3storage: new Web3Storage({ token: apiConfig.web3Storage.token }),
-  };
+  } as never;
 
   return ctx;
 };

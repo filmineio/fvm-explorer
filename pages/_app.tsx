@@ -5,9 +5,13 @@ import dynamic from "next/dynamic";
 import Script from "next/script";
 import { GoogleAnalytics } from "nextjs-google-analytics";
 import NextNProgress from "nextjs-progressbar";
+import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 
 import Store from "@/ui/state/Store";
+
+import { uiCtx } from "@/ui/ctx/uiCtx";
+import { useAuthApiClient } from "@/ui/external/auth";
 
 dynamic(import("tw-elements"), { ssr: false });
 
@@ -24,9 +28,21 @@ const PostHog = () => {
   );
 };
 
+function Auth() {
+  const { me } = useAuthApiClient();
+
+  useEffect(() => {
+    const user = uiCtx.auth().user;
+    !!user && me();
+  }, []);
+
+  return <></>;
+}
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Store>
+      <Auth />
       <ToastContainer theme={"dark"} hideProgressBar={true} />
       <GoogleAnalytics trackPageViews />
       {/*<PostHog />*/}

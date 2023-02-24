@@ -1,8 +1,9 @@
 import Link from "next/link";
 import Router from "next/router";
-import { FC, useCallback } from "react";
+import { FC } from "react";
 
 import Button from "@/ui/components/Button";
+import { UserMenu } from "@/ui/components/UserMenu/UserMenu";
 
 import { useStore } from "@/ui/state/Store";
 
@@ -15,8 +16,6 @@ export const Header: FC = () => {
     state: { user },
   } = useStore();
 
-  const logout = useCallback(() => {}, []);
-
   return (
     <header className="px-5 py-5 border-b border-slate">
       <div className="flex flex-row justify-between items-center m-auto">
@@ -25,7 +24,7 @@ export const Header: FC = () => {
             <LogoDevStorage />
           </Link>
         </div>
-        {user && (
+        {!user && (
           <div className="md:basis-1/2 text-right">
             <Button
               className="py-3 h-sm px-5 font-roboto bg-yellow text-black text-sm font-semibold rounded-base  hover:bg-yellow  focus:outline-none focus:ring-2 focus:ring-yellow "
@@ -35,6 +34,7 @@ export const Header: FC = () => {
             </Button>
           </div>
         )}
+        {user && <UserMenu user={user} />}
       </div>
     </header>
   );

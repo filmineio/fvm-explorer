@@ -6,7 +6,6 @@ import { Pagination } from "@/ui/components/Pagination/Pagination";
 
 import { BlockCard } from "@/ui/modules/Results/components/BlockCard";
 import { ContractCard } from "@/ui/modules/Results/components/ContractCard";
-import { ProjectCard } from "@/ui/modules/Results/components/ProjectCard";
 import { TransactionCard } from "@/ui/modules/Results/components/TransactionCard";
 
 import { getEntityIdentifier } from "@/ui/utils/getEntityIdentifier";
@@ -35,8 +34,9 @@ export const Results = ({
         return BlockCard;
       case Entity.Transaction:
         return TransactionCard;
-      case Entity.Project:
-        return ProjectCard;
+      default:
+        // eslint-disable-next-line react/display-name
+        return () => <></>;
     }
   }, [kind]);
 

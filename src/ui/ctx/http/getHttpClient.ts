@@ -15,6 +15,13 @@ export const getHttpClient =
           throw "Invalid Response";
         }
       },
+      transformRequest: (c) => {
+        try {
+          return JSON.stringify(c);
+        } catch (e) {
+          return c;
+        }
+      },
       baseURL: uiConfig.api.url,
       headers: readToken()
         ? {
