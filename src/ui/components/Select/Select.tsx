@@ -1,32 +1,42 @@
 import Select from 'react-select';
-import { onChange } from "@/utils/unpack";
+import SelectOption from "@/ui/components/Select/SelectOption";
+import clsx from "clsx";
 
 export type GhostSelectT = <T extends string = string>(props: {
   value: T;
   values: { value: T; label: string }[];
   onChange: (v: string) => void;
+  selectType?: 'transparent' | 'field';
 }) => JSX.Element;
 
-export const Select: GhostSelectT = ({
+export const CustomSelect: GhostSelectT = ({
   value,
   values,
   onChange: change,
+  selectType,
 }) => {
-  console.log('change', change);
-  alert('dasda');
-
+  const handleOnChange = (e: any) => {
+    change(e.value);
+  }
   return (
-    <Select options={values} />
-    // <select
-    //   className="text-yellow font-roboto select-text border-none focus:outline-none focus:border-none bg-inherit  caret-yellow text-sm	font-semibold tracking-wide	cursor-pointer"
-    //   value={value}
-    //   onChange={onChange(change)}
-    // >
-    //   {values.map((v) => (
-    //     <option className="text-gray-dark" key={v.value} value={v.value}>
-    //       {v.label}
-    //     </option>
-    //   ))}
-    // </select>
+    <>
+      <Select
+        className={clsx('react-select', {'transparent': selectType === 'transparent'})}
+        classNamePrefix="react-select"
+        options={values}
+        onChange={handleOnChange}
+        value={values.find(
+          (option) => option.value === value,
+        )}
+        isSearchable={false}
+        isClearable={false}
+        components={{
+          IndicatorSeparator: () => null,
+          // @ts-ignore
+          Option: SelectOption,
+        }}
+        // menuIsOpen
+      />
+    </>
   );
 };
