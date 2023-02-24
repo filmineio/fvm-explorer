@@ -5,8 +5,7 @@ import { uniqBy } from "ramda";
 import { useEffect, useMemo } from "react";
 
 import { CopyWrapper } from "@/ui/components/CopyWrapper/CopyWrapper";
-
-import { TransactionCounters } from "@/ui/modules/Results/components/TransactionCounters";
+import { Spinner } from "@/ui/components/Spinner/Spinner";
 
 import { useQuery } from "@/ui/external/data";
 
@@ -19,6 +18,44 @@ import { capitalize } from "@/utils/capitalize";
 type ContractCardProps = {
   data: Contract;
   network: Network;
+};
+
+const TransactionCounters = ({
+  ok,
+  reverted,
+  loading,
+  error,
+}: {
+  ok: number;
+  reverted: number;
+  loading: boolean;
+  error: boolean;
+}) => {
+  return (
+    <div className="flex mt-4">
+      <div className="w-full xs:w-1/2 lg:w-7/12 pr-3">
+        <div className="bg-yellow p-2.5 rounded-base">
+          <h4 className="text-lg font-bold text-black	tracking-wider	font-space">
+            {loading ? <Spinner inline /> : error ? "--" : ok}
+          </h4>
+          <p className="text-gray-text text-sm font-normal font-roboto	">
+            successful txns
+          </p>
+        </div>
+      </div>
+
+      <div className="w-full xs:w-1/2 lg:w-5/12 mt-0">
+        <div className="bg-black p-2.5 rounded-base">
+          <h4 className="text-lg font-bold text-white	tracking-wider	font-space">
+            {loading ? <Spinner inline /> : error ? "--" : reverted}
+          </h4>
+          <p className="text-gray-text text-sm font-normal font-roboto">
+            failed txns
+          </p>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export const ContractCard = ({ data, network }: ContractCardProps) => {
