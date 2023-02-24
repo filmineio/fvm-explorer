@@ -2,14 +2,14 @@ import { Contract } from "@/types/data/Contract";
 
 export const ContractMetaInfo = ({ contract }: { contract: Contract }) => {
   return (
-    <div className="project relative p-7  min-w-0 break-words  border-2 border-lightgray rounded-base mt-6  ">
-      <div className="absolute bg-lightgray p-1 -top-3 left-0">
+    <div className="project relative p-7  min-w-0 break-words  border-2 border-label rounded-base mt-6  ">
+      <div className="absolute bg-label p-1 -top-3 left-0">
         <p className="text-sm text-white font-normal ">ABI &amp; COMPILER</p>
       </div>
 
       <div className="xs:flex flex-wrap ">
         <div className="w-full mt-2 sm:w-6/12 mt-0 w-5/12 ">
-          <h4 className="text-lightgray font-normal font-roboto text-sm	tracking-wider	leading-5	">
+          <h4 className="text-label font-normal font-roboto text-sm	tracking-wider	leading-5	">
             ABI
           </h4>
           <div className="flex">
@@ -63,7 +63,7 @@ export const ContractMetaInfo = ({ contract }: { contract: Contract }) => {
         </div>
 
         <div className="w-full mt-2 sm:w-6/12 mt-0 w-3/12 ">
-          <h4 className="text-lightgray font-normal font-roboto text-sm	tracking-wider	leading-5	">
+          <h4 className="text-label font-normal font-roboto text-sm	tracking-wider	leading-5	">
             COMPILER VERSION
           </h4>
           <h5 className="text-white font-medium font-roboto text-sm	tracking-wider	leading-5	">

@@ -9,7 +9,7 @@ export const TransactionActors = ({
 }) => {
   return (
     <div className="xs:flex mt-3 flex-wrap justify-center sm:justify-start items-center">
-      <button className="bg-secect mb-2 py-2 px-3 rounded-base text-analogous font-bold font-space text-sm	tracking-wider	leading-5 relative">
+      <button className="bg-body mb-2 py-2 px-3 rounded-base text-analogous font-bold font-space text-sm	tracking-wider	leading-5 relative">
         <CopyWrapper data={transaction.robustFrom || transaction.from}>
           {transaction.robustFrom || transaction.from}
         </CopyWrapper>
@@ -31,7 +31,7 @@ export const TransactionActors = ({
         </svg>
       </button>
 
-      <button className="bg-secect mb-2  py-2 px-3 rounded-base text-yellow font-bold font-space text-sm	tracking-wider	leading-5 relative">
+      <button className="bg-body mb-2  py-2 px-3 rounded-base text-yellow font-bold font-space text-sm	tracking-wider	leading-5 relative">
         <CopyWrapper data={transaction.robustTo || transaction.to}>
           {transaction.robustTo || transaction.to}
         </CopyWrapper>

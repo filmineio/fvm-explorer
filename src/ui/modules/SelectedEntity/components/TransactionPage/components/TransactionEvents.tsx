@@ -34,7 +34,7 @@ export const TransactionEvents = ({
 
   if (loading)
     return (
-      <div className="flex flex-col text-lightgray">
+      <div className="flex flex-col text-label">
         <Spinner />
       </div>
     );
@@ -53,7 +53,7 @@ export const TransactionEvents = ({
           <div className="overflow-hidden">
             <div
               className={
-                "bg-secect border-0 rounded-l-lg uppercase text-left border-0 t text-sm font-bold text-white px-6 py-5 flex justify-between"
+                "bg-body border-0 rounded-l-lg uppercase text-left border-0 t text-sm font-bold text-white px-6 py-5 flex justify-between"
               }
             >
               <div className={"flex-1"}>Event</div>

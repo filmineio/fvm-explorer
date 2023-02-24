@@ -33,8 +33,8 @@ export const TransactionPage = ({ data }: Props) => {
     <>
       <div className=" pt-7 flex-wrap flex justify-between">
         <div className="w-full lg:mr-5 md:mr-0">
-          <div className="project relative  px-7 py-9 min-w-0 break-words bg-gray-dark border-2 border-lightgray rounded-base mb-6 xl:mb-0 shadow-lg ">
-            <div className="absolute bg-lightgray py-1 px-2 -top-3 left-0">
+          <div className="project relative  px-7 py-9 min-w-0 break-words bg-slate border-2 border-label rounded-base mb-6 xl:mb-0 shadow-lg ">
+            <div className="absolute bg-label py-1 px-2 -top-3 left-0">
               <p className="text-xs text-white font-normal ">TRANSACTION</p>
             </div>
             <div className=" lg:flex items-center justify-between flex-wrap ">
@@ -54,7 +54,7 @@ export const TransactionPage = ({ data }: Props) => {
 
             <div className="xs:flex mt-6 flex-wrap ">
               <div className="w-full mt-2 sm:w-6/12 md:mt-0 md:w-5/12 ">
-                <h4 className="text-lightgray font-normal font-roboto text-sm	tracking-wider	leading-5	">
+                <h4 className="text-label font-normal font-roboto text-sm	tracking-wider	leading-5	">
                   TIMESTAMP
                 </h4>
                 <h5 className="text-white font-medium font-roboto text-sm	tracking-wider	leading-5	">
@@ -63,7 +63,7 @@ export const TransactionPage = ({ data }: Props) => {
               </div>
 
               <div className="w-full mt-2 sm:w-6/12 md:mt-0 md:w-3/12 ">
-                <h4 className="text-lightgray font-normal font-roboto text-sm	tracking-wider	leading-5	">
+                <h4 className="text-label font-normal font-roboto text-sm	tracking-wider	leading-5	">
                   VALUE
                 </h4>
                 <h5 className="text-white font-medium font-roboto text-sm	tracking-wider	leading-5	">
@@ -71,7 +71,7 @@ export const TransactionPage = ({ data }: Props) => {
                 </h5>
               </div>
               <div className="w-full mt-2 md:mt-0 md:w-3/12 ">
-                <h4 className="text-lightgray font-normal font-roboto text-sm	tracking-wider	leading-5	">
+                <h4 className="text-label font-normal font-roboto text-sm	tracking-wider	leading-5	">
                   HEIGHT (EPOCH){" "}
                 </h4>
                 <h5 className="text-white font-medium font-roboto text-sm	tracking-wider	leading-5	">
@@ -80,7 +80,7 @@ export const TransactionPage = ({ data }: Props) => {
               </div>
             </div>
             <div className="mt-6">
-              <h4 className="text-lightgray font-normal font-roboto text-sm	tracking-wider	leading-5">
+              <h4 className="text-label font-normal font-roboto text-sm	tracking-wider	leading-5">
                 FROM/TO
               </h4>
               <TransactionActors transaction={transaction} />

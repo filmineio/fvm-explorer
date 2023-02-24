@@ -61,7 +61,7 @@ const Home: NextPage = () => {
                     handleChange={change}
                     label={"Email Address"}
                     placeholder={"Your email..."}
-                    className={`w-96 md:w-ful bg-gray-900 placeholder-lightgray ou focus:outline-none focus:border-sky-500 focus:ring-sky-500 block rounded-base focus:ring-1 lg:w-80 min-h-sm font-mono font-medium text-sm pl-11 md:w-52 xs:w-full sm:w-52`}
+                    className={`w-96 md:w-ful bg-gray-900 placeholder-label ou focus:outline-none focus:border-sky-500 focus:ring-sky-500 block rounded-base focus:ring-1 lg:w-80 min-h-sm font-mono font-medium text-sm pl-11 md:w-52 xs:w-full sm:w-52`}
                     valid={state.emailValid}
                     icon={
                       <svg

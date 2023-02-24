@@ -20,7 +20,7 @@ export const TabHeader = ({
           "block nav- font-bold font-roboto text-sm leading-tight border-x-0 border-t-0 border-b-2 border-transparent py-2 my-2 hover:border-transparent focus:border-transparent",
           {
             "text-yellow underline": tabIndex === activeTab,
-            "text-lightgray": tabIndex !== activeTab,
+            "text-label": tabIndex !== activeTab,
           }
         )}
       >

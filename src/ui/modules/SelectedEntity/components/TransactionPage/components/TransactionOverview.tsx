@@ -17,7 +17,7 @@ export const TransactionOverview = ({
   return (
     <div className="my-5 flex-wrap flex justify-between">
       <div className="w-4/6	 md:w-full">
-        <div className="bg-gray-dark rounded-base  p-6">
+        <div className="bg-slate rounded-base  p-6">
           <div className="flex flex-wrap  text-justify justify-between items-center	">
             <h5 className="font-bold text-lg text-white font-space ">
               Method & Params
@@ -33,7 +33,7 @@ export const TransactionOverview = ({
             </span>
           </div>
           <div className="overflow-x-auto ">
-            <div className="py-2 inline-block min-w-full text-lightgray">
+            <div className="py-2 inline-block min-w-full text-label">
               <pre>
                 <code>{transaction.params}</code>
               </pre>
@@ -42,13 +42,13 @@ export const TransactionOverview = ({
         </div>
       </div>
       <div className="w-96	 md:w-full	ml-0  md:mt-4">
-        <div className="bg-gray-dark rounded-base p-6">
+        <div className="bg-slate rounded-base p-6">
           <h5 className="text-lg	font-bold font-roboto text-white">
             Transaction overview
           </h5>
 
           <div className="py-3">
-            <h5 className="text-left font-semibold font-roboto text-sm mt-2 tracking-wider	 text-lightgray">
+            <h5 className="text-left font-semibold font-roboto text-sm mt-2 tracking-wider	 text-label">
               CID
             </h5>
             <div className={"relative"}>
@@ -59,7 +59,7 @@ export const TransactionOverview = ({
               </CopyWrapper>
             </div>
 
-            <h5 className="text-left font-semibold font-roboto text-sm mt-2 tracking-wider	 text-lightgray">
+            <h5 className="text-left font-semibold font-roboto text-sm mt-2 tracking-wider	 text-label">
               TIPSETS (BLOCKS)
             </h5>
 
@@ -75,25 +75,25 @@ export const TransactionOverview = ({
           </div>
         </div>
 
-        <div className="bg-gray-dark rounded-base p-6 mt-4">
+        <div className="bg-slate rounded-base p-6 mt-4">
           <h5 className="text-lg	font-bold font-roboto text-white">
             Gas details
           </h5>
 
           <div className="py-3">
-            <h5 className="text-left font-semibold font-roboto text-sm mt-2 tracking-wider	 text-lightgray">
+            <h5 className="text-left font-semibold font-roboto text-sm mt-2 tracking-wider	 text-label">
               GAS FEE CAP
             </h5>
             <p className="text-left font-medium font-roboto mb-4 text-sm  text-white">
               {transaction.gasFeeCap}
             </p>
-            <h5 className="text-left font-semibold font-roboto text-sm mt-2 tracking-wider	 text-lightgray">
+            <h5 className="text-left font-semibold font-roboto text-sm mt-2 tracking-wider	 text-label">
               GAS LIMIT
             </h5>
             <p className="text-left font-semibold font-roboto mb-4 text-sm text-white">
               {transaction.gasLimit}
             </p>
-            <h5 className="text-left font-semibold font-roboto text-sm mt-2 tracking-wider	text-lightgray">
+            <h5 className="text-left font-semibold font-roboto text-sm mt-2 tracking-wider	text-label">
               GAS PREMIUM
             </h5>
             <p className="text-left font-semibold font-roboto  text-sm tracking-wider	text-white">

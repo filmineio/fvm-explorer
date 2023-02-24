@@ -13,12 +13,12 @@ export const GhostSelect: GhostSelectT = ({
 }) => {
   return (
     <select
-      className="text-yellow font-roboto select-text border-none focus:outline-none focus:border-none bg-inherit  caret-yellow text-sm	font-semibold tracking-wide	cursor-pointer"
+      className="bg-transparent font-roboto text-blue-400 text-sm font-normal leading-normal select-text outline-none cursor-pointer"
       value={value}
       onChange={onChange(change)}
     >
       {values.map((v) => (
-        <option className="text-gray-dark" key={v.value} value={v.value}>
+        <option className="text-slate" key={v.value} value={v.value}>
           {v.label}
         </option>
       ))}
