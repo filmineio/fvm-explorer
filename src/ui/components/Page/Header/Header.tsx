@@ -27,7 +27,7 @@ export const Header: FC = () => {
         {!user && (
           <div className="md:basis-1/2 text-right">
             <Button
-              className="py-3 h-sm px-5 font-roboto bg-yellow text-black text-sm font-semibold rounded-base  hover:bg-yellow  focus:outline-none focus:ring-2 focus:ring-yellow "
+              className="bg-blue-500 py-3.75 px-7 rounded-base font-roboto text-base text-white font-bold leading-5"
               onClick={cb(Router.push, "/auth")}
             >
               AUTHENTICATE
