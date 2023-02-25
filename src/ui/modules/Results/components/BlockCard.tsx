@@ -44,15 +44,15 @@ export const BlockCard = ({ data, network }: BlockCardProps) => {
             <div className="flex flex-col mt-5 gap-1">
               <div className="w-full">
                 <div className="flex items-center">
-                  <h5 className="text-label text-sm font-medium leading-4 lowercase">
+                  <h5 className="text-label text-14 font-medium leading-4 lowercase">
                     BLOCK SIGNATURE
                   </h5>
-                  <h4 className="bg-label_opacity-30 rounded-3 ml-2.5 px-3 py-1.25 font-medium text-sm leading-4 text-blue-400 truncate">
+                  <h4 className="bg-label_opacity-30 rounded-3 ml-2.5 px-3 py-1.25 font-medium text-14 leading-4 text-blue-400 truncate">
                     Type {block.BlockSig?.Type}
                   </h4>
                 </div>
               </div>
-              <div className="w-full text-white text-sm font-normal leading-normal truncate">
+              <div className="w-full text-white text-14 font-normal leading-normal truncate">
                 {block.BlockSig?.Data}
               </div>
             </div>

@@ -16,7 +16,7 @@ export const Header: FC = () => {
   } = useStore();
 
   return (
-    <header className="px-5 py-5 border-b border-slate">
+    <header className="px-4 py-4 border-b border-body">
       <div className="flex flex-row justify-between items-center m-auto">
         <div className="md:basis-1/2">
           <Link href="/" passHref>
@@ -28,7 +28,7 @@ export const Header: FC = () => {
         {!user && (
           <div className="md:basis-1/2 text-right">
             <Button
-              className="py-3 h-sm px-5 bg-yellow text-black text-sm font-semibold rounded-base  hover:bg-yellow  focus:outline-none focus:ring-2 focus:ring-yellow "
+              className="bg-blue-500 py-3.75 px-7 rounded-4 font-roboto text-base text-white font-bold leading-5"
               onClick={cb(Router.push, "/auth")}
             >
               AUTHENTICATE

@@ -50,7 +50,7 @@ html {
 }
 
 body {
-  background-color: black;
+  background-color: theme("colors.slate");
   font-family: 'Roboto Mono', monospace;
 }
 
@@ -247,7 +247,7 @@ a.customr.textnone span.onespan {
   min-height: 50px;
   border-radius: 9px;
   box-shadow: none;
-  background-color: black;
+  background-color: theme("colors.slate");
   border: 1px solid transparent;
   cursor: pointer;
 }

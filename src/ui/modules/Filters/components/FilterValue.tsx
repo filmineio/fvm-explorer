@@ -1,7 +1,7 @@
 export const FilterValue = ({ value }: { value: string }) => {
   return (
-    <div className="rounded-base flex items-center mr-1 bg-body">
-      <div className="px-2 py-1 text-sm font-space font-medium text-white w-fit max-w-[100px] truncate">
+    <div className="rounded-4 flex items-center mr-1 bg-body">
+      <div className="px-2 py-1 text-14 font-space font-medium text-white w-fit max-w-[100px] truncate">
         {value}
       </div>
 

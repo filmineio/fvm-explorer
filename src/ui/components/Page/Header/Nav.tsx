@@ -138,7 +138,7 @@ export const Nav: FC = () => {
   return (
     <div>
       <div className="container">
-        <div className="rounded-base shadow-nav flex items-center justify-between">
+        <div className="rounded-4 shadow-nav flex items-center justify-between">
           <ul className={'pl-4 flex items-start'}>
             {menu.map((menu_item, index) => (
               <li key={index}>

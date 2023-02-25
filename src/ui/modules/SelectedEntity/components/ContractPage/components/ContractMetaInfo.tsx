@@ -2,14 +2,14 @@ import { Contract } from "@/types/data/Contract";
 
 export const ContractMetaInfo = ({ contract }: { contract: Contract }) => {
   return (
-    <div className="project relative p-7  min-w-0 break-words  border-2 border-label rounded-base mt-6  ">
+    <div className="project relative p-7  min-w-0 break-words  border-2 border-label rounded-4 mt-6  ">
       <div className="absolute bg-label p-1 -top-3 left-0">
-        <p className="text-sm text-white font-normal ">ABI &amp; COMPILER</p>
+        <p className="text-14 text-white font-normal ">ABI &amp; COMPILER</p>
       </div>
 
       <div className="xs:flex flex-wrap ">
         <div className="w-full mt-2 sm:w-6/12 mt-0 w-5/12 ">
-          <h4 className="text-label font-normal text-sm	tracking-wider	leading-5	">
+          <h4 className="text-label font-normal text-14	tracking-wider	leading-5	">
             ABI
           </h4>
           <div className="flex">
@@ -18,7 +18,7 @@ export const ContractMetaInfo = ({ contract }: { contract: Contract }) => {
               data-bs-target="#ViewABI"
               className="flex items-center justify-between text-xs font-bold text-white pr-4"
             >
-              <div className="bg-yellowrgba p-1 mr-2 rounded-base flex items-center justify-center w-8">
+              <div className="bg-yellowrgba p-1 mr-2 rounded-4 flex items-center justify-center w-8">
                 <svg
                   width="14"
                   height="14"
@@ -35,12 +35,12 @@ export const ContractMetaInfo = ({ contract }: { contract: Contract }) => {
                   ></path>
                 </svg>
               </div>
-              <a href="#ViewABI" className="text-yellow font-bold text-sm ">
+              <a href="#ViewABI" className="text-yellow font-bold text-14 ">
                 View ABI
               </a>
             </button>
             <button className="flex items-center justify-between text-xs font-bold text-white">
-              <div className="bg-yellowrgba p-1 mr-2 rounded-base flex items-center justify-center w-8">
+              <div className="bg-yellowrgba p-1 mr-2 rounded-4 flex items-center justify-center w-8">
                 <svg
                   width="14"
                   height="16"
@@ -57,16 +57,16 @@ export const ContractMetaInfo = ({ contract }: { contract: Contract }) => {
                   ></path>
                 </svg>
               </div>
-              <h5 className="text-yellow font-bold text-sm ">Copy ABI</h5>
+              <h5 className="text-yellow font-bold text-14 ">Copy ABI</h5>
             </button>
           </div>
         </div>
 
         <div className="w-full mt-2 sm:w-6/12 mt-0 w-3/12 ">
-          <h4 className="text-label font-normal text-sm	tracking-wider	leading-5	">
+          <h4 className="text-label font-normal text-14	tracking-wider	leading-5	">
             COMPILER VERSION
           </h4>
-          <h5 className="text-white font-medium text-sm	tracking-wider	leading-5	">
+          <h5 className="text-white font-medium text-14	tracking-wider	leading-5	">
             g++ 4.8
           </h5>
         </div>

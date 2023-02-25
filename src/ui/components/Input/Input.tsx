@@ -34,7 +34,7 @@ const Input = ({
         {!!icon && (
           <div
             className={classNames(
-              `absolute inset-y-0 flex items-center pl-3 pointer-events-none h-10 top-1.5`,
+              `absolute inset-y-0 flex justify-center items-center pl-3 pointer-events-none h-10 top-1`,
               {
                 "right-5": iconPosition === "right",
                 "left-0": iconPosition === "left",

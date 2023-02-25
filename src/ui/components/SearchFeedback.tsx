@@ -11,7 +11,7 @@ export const SearchFeedback = ({
 }) => {
   if (!kind) {
     return (
-      <div className="border-solid border-2 border-label  rounded-baselg ">
+      <div className="border-solid border-2 border-label  rounded-4lg ">
         <div className="h-full min-h-[57vh] min-h-[47vh] flex justify-center items-center ">
           <h3 className=" text-3xl   font-bold leading-8 text-white">
             No data found
@@ -22,9 +22,9 @@ export const SearchFeedback = ({
   }
   return (
     <div className="container mx-auto px-4 2xls:px-20">
-      <div className="border-solid border-2  mt-10 border-label  rounded-baselg ">
+      <div className="border-solid border-2  mt-10 border-label  rounded-4lg ">
         <div className="h-full min-h-[57vh] flex justify-center items-center px-8  xs:flex-wrap">
-          <div className="border-solid border-2 border-label  rounded-baselg p-6">
+          <div className="border-solid border-2 border-label  rounded-4lg p-6">
             <img src="/images/text-ped.png" alt={"filexplore"} />
           </div>
           {error ? (

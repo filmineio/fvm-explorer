@@ -56,13 +56,13 @@ export const BlockPage = ({ data }: Props) => {
   return (
     <div className=" pt-7">
       <div className="w-full">
-        <div className="project relative p-7 min-w-0 break-words bg-slate border-2 border-label rounded-base shadow-lg ">
+        <div className="project relative p-7 min-w-0 break-words bg-slate border-2 border-label rounded-4 shadow-lg ">
           <div className="absolute bg-label py-1 px-2 -top-3 left-0">
             <p className="text-xs text-white font-normal ">BLOCK</p>
           </div>
           <div className="md:lex-wrap flex items-center">
             <div className="relative pr-4 ">
-              <div className="bg-bglight w-24 h-24 rounded-base py-3 px-3 flex justify-center items-center ">
+              <div className="bg-bglight w-24 h-24 rounded-4 py-3 px-3 flex justify-center items-center ">
                 <img src="/images/block-icon.svg" alt={"block-icon"} />
               </div>
             </div>
@@ -72,13 +72,13 @@ export const BlockPage = ({ data }: Props) => {
                 <CopyWrapper data={block.cid}>{block.cid}</CopyWrapper>
               </h3>
               <div className=" flex md:flex-wrap gap-1 items-center">
-                <p className="text-white font-space font-normal text-sm pr-3 w-9/12 truncate">
-                  <span className="text-label font-space font-normal text-sm">
+                <p className="text-white font-space font-normal text-14 pr-3 w-9/12 truncate">
+                  <span className="text-label font-space font-normal text-14">
                     Block signature:{" "}
                   </span>
                   {chainBlock.BlockSig?.Data}
                 </p>
-                <button className="bg-bglight rounded-base py-1 px-3 font-normal font-space	text-xs	leading-5 text-white tracking-wider lg:w-2/12">
+                <button className="bg-bglight rounded-4 py-1 px-3 font-normal font-space	text-xs	leading-5 text-white tracking-wider lg:w-2/12">
                   TYPE {chainBlock.BlockSig?.Type}
                 </button>
               </div>

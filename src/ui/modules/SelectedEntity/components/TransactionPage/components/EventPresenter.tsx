@@ -15,7 +15,7 @@ export const EventPresenter = ({ event }: { event: Event }) => {
   return (
     <div
       className={
-        "bg-slate text-left text-sm  text-white font-space tracking-wider font-light  whitespace-nowrap rounded"
+        "bg-slate text-left text-14  text-white font-space tracking-wider font-light  whitespace-nowrap rounded"
       }
     >
       <div className={"flex px-6 py-6"}>

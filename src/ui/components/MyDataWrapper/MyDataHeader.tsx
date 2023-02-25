@@ -24,7 +24,7 @@ export const MyDataHeader = ({
       </div>
       <div className="flex items-center justify-between w-full">
         <div className="list ">
-          <ul className="flex flex-wrap text-sm font-medium text-center">
+          <ul className="flex flex-wrap text-14 font-medium text-center">
             <li className="dromenu mr-2 flex items-center relative">
               <span className="navbar-burger inline-flex items-center">
                 <svg

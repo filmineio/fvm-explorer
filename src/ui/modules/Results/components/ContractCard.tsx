@@ -133,15 +133,15 @@ export const ContractCard = ({ data, network }: ContractCardProps) => {
 
             <div className="flex mt-5">
               <div className="w-14/25 lg:w-8/12 pr-0 lg:pr-3">
-                <h3 className="text-label text-sm font-normal leading-4 lowercase">
+                <h3 className="text-label text-14 font-normal leading-4 lowercase">
                   NETWORK
                 </h3>
-                <h5 className="text-white text-sm font-medium leading-normal capitalize">
+                <h5 className="text-white text-14 font-medium leading-normal capitalize">
                   {network}
                 </h5>
               </div>
               <div className="w-11/25 lg:w-4/12 mt-2 lg:mt-0">
-                <button className="block ml-auto mr-0 bg-label_opacity-30 rounded-3 py-2.5 px-5 text-blue-400 text-sm font-medium leading-4">
+                <button className="block ml-auto mr-0 bg-label_opacity-30 rounded-3 py-2.5 px-5 text-blue-400 text-14 font-medium leading-4">
                   {data.ethAddress ? "EVM" : "FVM"}
                 </button>
               </div>

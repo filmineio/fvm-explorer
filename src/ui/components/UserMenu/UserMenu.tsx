@@ -38,7 +38,7 @@ export const UserMenu = ({ user }: { user: User }) => {
       {expanded && (
         <div
           className={
-            "absolute h-fit w-64 right-2 p-2 bg-black top-[100%] text-gray-text text-sm rounded border border-gray-dark flex flex-col gap-2 z-50"
+            "absolute h-fit w-64 right-2 p-2 bg-black top-[100%] text-gray-text text-14 rounded border border-gray-dark flex flex-col gap-2 z-50"
           }
         >
           <div

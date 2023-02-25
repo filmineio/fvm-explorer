@@ -17,7 +17,7 @@ export const Breadcrumb: FC<IBreadcrumb> = ({ pageTitle , parents, currentPageBr
         <div className='flex flex-wrap justify-between gap-6'>
           <h2 className={'text-2xl font-bold'}>{pageTitle}</h2>
 
-          <ul className='flex flex-wrap items-center text-sm gap-4'>
+          <ul className='flex flex-wrap items-center text-14 gap-4'>
             <li>
               <Link href={'/'}>
                 <span className={'cursor-pointer'}>DOMOV</span>
