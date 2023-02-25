@@ -10,11 +10,11 @@ import { FilterState } from "@/ui/state/types/AppState";
 import { cb } from "@/utils/cb";
 
 export const FiltersHeader = ({
-  state,
-  checked,
-  toggle,
-  search,
-}: {
+                                state,
+                                checked,
+                                toggle,
+                                search,
+                              }: {
   state: FilterState;
   checked: boolean;
   toggle: (v: boolean) => void;
@@ -28,7 +28,7 @@ export const FiltersHeader = ({
 
       <div className="flex flex-1 justify-end items-center flex-wrap gap-5">
         <div className="flex gap-3 mr-5 items-center">
-          <span className="inline-block text-label form-check-label text-14 lowercase translate-y-0.5">
+          <span className="inline-block text-label form-check-label text-14">
             Search in
           </span>
           <div className="w-36">
@@ -42,7 +42,7 @@ export const FiltersHeader = ({
         </div>
 
         <div className="flex gap-3 mr-5 items-center">
-          <span className="inline-block text-label form-check-label text-14 lowercase translate-y-0.5">
+          <span className="inline-block text-label form-check-label text-14">
             Network
           </span>
           <div className="w-32">

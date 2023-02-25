@@ -19,20 +19,20 @@ export const AdvancedFilterRule = ({
 
   return (
     <div>
-      <div className="bg-slate rounded-4 flex-wrap justify-end gap-5 items-center flex-row-reverse flex px-5 py-3 ">
+      <div className="bg-body_opacity-50 flex-wrap justify-end gap-4 items-center flex-row-reverse flex px-5 py-5 rounded-3">
         <div className="flex flex-wrap gap-4">
-          <div className="closebut pr-3">
+          <div>
             <button
               type="button"
-              className=" box-content w-64 py-1 font-normal px-2 text-center text-white border border-yellow text-14 font-space  rounded-4 focus:shadow-none focus:outline-none"
+              className="box-content px-3 py-1.5 font-normal px-2 text-center text-white border border-blue-400 text-14 uppercase rounded-4 focus:shadow-none focus:outline-none"
             >
               {field}
             </button>
           </div>
-          <div className="closebut pr-3">
+          <div>
             <button
               type="button"
-              className=" box-content w-48 py-1 font-normal px-2 text-center text-analogous border border-analogous  text-14 font-space  rounded-full focus:shadow-none focus:outline-none"
+              className="box-content px-3 py-1.5 font-normal px-2 text-center text-purple border border-purple text-14 font-space rounded-40 focus:shadow-none focus:outline-none"
             >
               {toHumanReadable(operator)}
             </button>
@@ -42,7 +42,7 @@ export const AdvancedFilterRule = ({
               <button
                 key={v}
                 type="button"
-                className="box-content bg-analogous py-1 font-normal px-2 text-center text-white text-14 font-space  rounded-4 focus:shadow-none focus:outline-none w-40 truncate"
+                className="box-content px-3 py-1.5 font-normal px-2 text-center text-white bg-pink border border-pink text-14 uppercase rounded-3 focus:shadow-none focus:outline-none"
               >
                 {v as string}
               </button>
@@ -50,7 +50,7 @@ export const AdvancedFilterRule = ({
           ) : (
             <button
               type="button"
-              className="box-content bg-analogous py-1 font-normal px-2 text-center text-white text-14 font-space  rounded-4 focus:shadow-none focus:outline-none"
+              className="box-content px-3 py-1.5 font-normal px-2 text-center text-white bg-pink border border-pink text-14 uppercase rounded-3 focus:shadow-none focus:outline-none"
             >
               {val as string}
             </button>

@@ -102,7 +102,7 @@ export const AdvancedFilters = ({
   const restOfTheGroups = useMemo(() => queryGroups.slice(1), [queryGroups]);
 
   return (
-    <div className={"flex flex-col justify-center gap-3"}>
+    <div className="flex flex-col justify-center gap-5">
       <AdvancedFiltersQueryGroup
         removable={!hasMultipleGroups}
         group={firstGroup}
