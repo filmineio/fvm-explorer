@@ -10,6 +10,7 @@ import { identifyUser } from "@/api/utils/identifyUser";
 
 import { standardizeResponse } from "@/utils/standardizeResponse";
 
+
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const ctx = await getCtx();
   const data = await identifyUser(ctx, req);
@@ -38,6 +39,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (result === OperationStatus.Error) throw "";
     return res.status(200).json(standardizeResponse(result));
   } catch (e) {
+    console.dir(e, { depth: 2 });
     return res.status(400).json({ exception: "CREATION_FAILED" });
   }
 };
