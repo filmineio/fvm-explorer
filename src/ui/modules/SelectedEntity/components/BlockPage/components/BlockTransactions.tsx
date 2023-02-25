@@ -36,7 +36,7 @@ export const BlockTransactions = ({
             <div className="overflow-hidden">
               <table className="min-w-full text-center border-0 border-separate border-spacing-y-3.5	">
                 <thead>
-                  <tr className="bg-secect border-0  ">
+                  <tr className="bg-body border-0  ">
                     <th
                       scope="col"
                       className=" w-1/6 rounded-l-lg text-left border-0 text-xs font-bold text-white px-6 py-4"
@@ -70,7 +70,7 @@ export const BlockTransactions = ({
                   </tr>
                 </thead>
                 {loading ? (
-                  <tbody className={"transform translate-y-4 text-lightgray"}>
+                  <tbody className={"transform translate-y-4 text-label"}>
                     <tr>
                       <td colSpan={6} className={"pb-6"}>
                         <Spinner />

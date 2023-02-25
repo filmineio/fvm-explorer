@@ -7,178 +7,310 @@
 
 
 @media screen and (max-width: 639px) {
-    .container {
-        max-width: 100%;
-    }
+  .container {
+    max-width: 100%;
+  }
 }
 
 @media screen and (max-width: 767px) {
-    .leftside.toggles {
-        left: 0;
-        z-index: 999;
-    }
+  .leftside.toggles {
+    left: 0;
+    z-index: 999;
+  }
 
-    .overlay-canvas-nav {
-        content: '';
-        position: fixed;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease 0s;
-    }
+  .overlay-canvas-nav {
+    content: '';
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease 0s;
+  }
 
-    .leftside {
-        background-color: #141620;
-        width: 100px;
-        left: -100px;
-        transition: 0.5s;
-    }
+  .leftside {
+    background-color: #141620;
+    width: 100px;
+    left: -100px;
+    transition: 0.5s;
+  }
 
-    body.toggles .overlay-canvas-nav {
-        opacity: 1;
-        visibility: visible;
-        z-index: 99;
-    }
+  body.toggles .overlay-canvas-nav {
+    opacity: 1;
+    visibility: visible;
+    z-index: 99;
+  }
+}
+
+html {
+  line-height: 1.2;
 }
 
 body {
-    background-color: black;
+  background-color: black;
 }
 
 /* Button 10 */
 #button-10 .knobs:after {
-    content: 'or';
-    font-family: 'IBM Plex Mono', 'monospace';
-    font-weight: 500;
-    top: 0;
-    line-height: 1;
+  content: 'or';
+  font-family: 'Space Mono', monospace;
+  font-weight: 500;
+  top: 0;
+  line-height: 1;
 }
 
 #button-10 .checkbox:checked + .knobs:before {
-    left: 55px;
-    background-color: #596184
+  left: 55px;
+  background-color: #596184
 }
 
 #button-10 .checkbox:checked + .knobs:after {
-    color: #fff;
+  color: #fff;
 }
 
 .state.bg-yellowrgba svg {
-    transform: rotate(92deg);
+  transform: rotate(92deg);
 }
 
 .tol .text {
-    display: none;
-    width: 200px;
-    top: -108px;
+  display: none;
+  width: 200px;
+  top: -108px;
 }
 
 .tol:hover span.text {
-    display: block;
+  display: block;
 }
 
 .user ul li {
-    display: none;
+  display: none;
 }
 
 .molte .eidte {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .molte:hover .eidte {
-    visibility: visible;
+  visibility: visible;
 }
 
 .allmenu .toolteap {
-    display: none;
-    right: -110px;
-    top: 0;
+  display: none;
+  right: -110px;
+  top: 0;
 }
 
 .allmenu:hover .toolteap {
-    display: block;
+  display: block;
 }
 
 .allmenu::after {
-    content: "";
-    border-right: 2px solid #d5ff64;
-    position: absolute;
-    height: 40px;
-    left: -10px;
-    top: 0;
-    display: none;
+  content: "";
+  border-right: 2px solid #d5ff64;
+  position: absolute;
+  height: 40px;
+  left: -10px;
+  top: 0;
+  display: none;
 }
 
 .menu ul li.active .allmenu::after {
-    display: block;
+  display: block;
 }
 
 .visibablhiden {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .custome:hover .visibablhiden {
-    visibility: visible;
+  visibility: visible;
 }
 
 .nav-tabs .nav-link.active {
-    color: #d5ff64;
-    border-color: #d5ff64;
+  color: #d5ff64;
+  border-color: #d5ff64;
 }
 
 .list li ul.drop-down {
-    display: none;
-    border-radius: 10px;
-    padding: 10px;
-    position: absolute;
-    width: 180px;
-    text-align: center;
-    top: 28px;
-    left: 10px;
+  display: none;
+  border-radius: 10px;
+  padding: 10px;
+  position: absolute;
+  width: 180px;
+  text-align: center;
+  top: 28px;
+  left: 10px;
 }
 
 a.customr.textnone span.towspan {
-    display: block;
+  display: block;
 }
 
 a.customr span.towspan {
-    display: none;
+  display: none;
 }
 
 a.customr.textnone span.onespan {
-    display: none;
+  display: none;
 }
 
 #editor {
-    background-color: #141620;
-    position: relative;
+  background-color: #141620;
+  position: relative;
 }
 
 .ace_mobile-menu {
-    display: none;
+  display: none;
 }
 
 .ace-monokai .ace_print-margin {
-    width: 0px;
-    background-color: transparent;
+  width: 0;
+  background-color: transparent;
 }
 
 .ace-monokai .ace_gutter {
-    background: transparent;
+  background: transparent;
 }
 
 
 @keyframes fadeInAnimation {
-    0% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 0;
+  }
 
 
-    100% {
-        opacity: 1;
-    }
+  100% {
+    opacity: 1;
+  }
+}
+
+.react-select.transparent .react-select__control {
+  border: none;
+}
+
+.react-select .react-select__control {
+  border-color: greenyellow;
+  box-shadow: 0 0 0 3px greenyellow;
+}
+
+.react-select .react-select__control {
+  min-height: 50px;
+  border-radius: 9px;
+  box-shadow: none;
+  background-color: black;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.react-select .react-select__value-container {
+  display: flex;
+}
+
+.react-select .react-select__indicators {
+  padding: 0;
+  /*margin-right: 20px;*/
+}
+
+.react-select input {
+  height: 0;
+  opacity: 0;
+}
+
+.react-select [class$='-ackcql'],
+.react-select [class$='-placeholder'] {
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  margin: 0;
+}
+
+.react-select [class$='-menu'] {
+  width: 200px;
+  right: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+  padding: 0;
+  border-top: 4px solid transparent;
+  margin: 0;
+  background-color: transparent;
+  border-radius: 9px;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.react-select .react-select__single-value {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  color: #59A9FF;
+}
+
+.react-select .react-select__dropdown-indicator {
+  padding: 0;
+}
+
+.react-select .react-select__dropdown-indicator svg path {
+  fill: #59A9FF;
+}
+
+.react-select .react-select__menu .react-select__menu-list {
+  background: #141620;
+  padding: 5px 0 6px 0;
+}
+
+.react-select .react-select__menu .react-select__menu-list .react-select__option {
+  padding: 10px 15px;
+  color: #596184;
+  position: relative;
+  transition: all 160ms ease-in-out;
+  cursor: pointer;
+}
+
+.react-select .react-select__menu .react-select__menu-list .react-select__option:before {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0 3px 3px 0;
+  background-color: transparent;
+  height: 100%;
+  width: 3px;
+  transition: all 160ms ease-in-out;
+}
+
+.react-select .react-select__menu .react-select__menu-list .react-select__option:active,
+.react-select .react-select__menu .react-select__menu-list .react-select__option.react-select__option--is-focused,
+.react-select .react-select__menu .react-select__menu-list .react-select__option:active:before {
+  background-color: transparent;
+}
+
+.react-select .react-select__menu .react-select__menu-list .react-select__option.react-select__option--is-selected {
+  background-color: transparent;
+  color: #59A9FF;
+}
+
+.react-select .react-select__menu .react-select__menu-list .react-select__option:hover {
+  color: #59A9FF;
+  background-color: rgba(89, 97, 132, 0.3);
+}
+
+.react-select .react-select__menu .react-select__menu-list .react-select__option:hover:before {
+  background-color: #59A9FF;
+}
+
+/* GraphQL style */
+
+.sc-lkqHmb.bmhMQH {
+  background: #292E42;
+  border-radius: 2px;
+}
+
+.sc-cLQEGU.evlONy {
+  background: #596184;
+  border-radius: 2px;
+  padding: 6px 16px;
 }

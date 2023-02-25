@@ -1,9 +1,10 @@
-import { MyDataKind } from "@/ui/components/MyDataWrapper/MyDataWrapper";
+import { MyDataKind } from "@/ui/components/MyDataWrapper/MyDataWrapper/MyDataWrapper";
 import { UserMenu } from "@/ui/components/UserMenu/UserMenu";
 
 import { useStore } from "@/ui/state/Store";
 
 import { Maybe } from "@/types/Maybe";
+import LogoDevStorageWithText from "@/ui/components/Common/Icons/LogoDevStorage";
 
 export const MyDataHeader = ({
   kind,
@@ -17,8 +18,11 @@ export const MyDataHeader = ({
   } = useStore();
 
   return (
-    <div className="px-4  pl-20 md:pr-10 z-10 fixed top-0 left-0 right-0 bg-black border-b-2 border-gray-dark ">
-      <div className="flex items-center justify-between ">
+    <div className="flex md:pr-10 z-10 top-0 left-0 right-0 bg-black border-b-2 border-label border-b min-h-[80px]">
+      <div className="z-10 flex items-center mr-10 w-[70px] justify-center border-r-2 border-label flex-shrink-0">
+        <LogoDevStorageWithText />
+      </div>
+      <div className="flex items-center justify-between w-100">
         <div className="list ">
           <ul className="flex flex-wrap text-sm font-medium text-center">
             <li className="dromenu mr-2 flex items-center relative">

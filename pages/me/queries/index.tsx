@@ -3,7 +3,7 @@ import { ReactElement, useEffect, useState } from "react";
 import {
   MyDataKind,
   MyDataWrapper,
-} from "@/ui/components/MyDataWrapper/MyDataWrapper";
+} from "@/ui/components/MyDataWrapper/MyDataWrapper/MyDataWrapper";
 import { Spinner } from "@/ui/components/Spinner/Spinner";
 
 import { GraphQLEditor } from "@/ui/modules/GraphQl/GraphQLEditor";

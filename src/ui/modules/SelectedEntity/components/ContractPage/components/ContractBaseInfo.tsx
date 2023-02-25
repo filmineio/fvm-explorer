@@ -20,14 +20,14 @@ export const ContractBaseInfo = ({
   const [showEth, toggle] = useReducer((p) => !p, false);
   return (
     <div className="w-full mr-5 md:mr-0">
-      <div className="project relative  p-7  min-w-0 break-words bg-gray-dark border-2 border-lightgray rounded-lg mb-6 xl:mb-0 shadow-lg ">
-        <div className="absolute bg-lightgray py-1 px-2 -top-3 left-0">
+      <div className="project relative  p-7  min-w-0 break-words bg-slate border-2 border-label rounded-base mb-6 xl:mb-0 shadow-lg ">
+        <div className="absolute bg-label py-1 px-2 -top-3 left-0">
           <p className="text-xs text-white font-normal ">CONTRACT</p>
         </div>
         <div className="flex md:flex-wrap   items-center">
           <div className="w-3/4  md:w-full ">
             <div className="pr-3">
-              <h3 className="text-xl font-sans1 font-bold text-white relative w-fit">
+              <h3 className="text-xl font-roboto font-bold text-white relative w-fit">
                 <CopyWrapper
                   data={
                     showEth ? contract.ethAddress : contract.contractAddress
@@ -41,10 +41,10 @@ export const ContractBaseInfo = ({
 
           <div className="sx:w-1/4">
             <button
-              className="flex items-center justify-between text-xs font-bold font-sans1 text-white"
+              className="flex items-center justify-between text-xs font-bold font-roboto text-white"
               onClick={toggle}
             >
-              <div className="bg-yellowrgba p-1 mr-2 rounded-md flex items-center justify-center w-8">
+              <div className="bg-yellowrgba p-1 mr-2 rounded-base flex items-center justify-center w-8">
                 <svg
                   width="16"
                   height="16"
@@ -78,28 +78,28 @@ export const ContractBaseInfo = ({
 
         <div className="flex mt-6 flex-wrap ">
           <div className="w-full mt-2 sm:w-6/12 mt-0 w-5/12 ">
-            <h4 className="text-lightgray font-normal font-sans1 text-sm uppercase tracking-wider	leading-5	">
+            <h4 className="text-label font-normal font-roboto text-sm uppercase tracking-wider	leading-5	">
               Number of TRANSACTIONS
             </h4>
-            <h5 className="text-white font-medium font-sans1 text-sm	tracking-widest	leading-5	">
+            <h5 className="text-white font-medium font-roboto text-sm	tracking-wider	leading-5	">
               {totalTransactions}
             </h5>
           </div>
 
           <div className="w-full mt-2 sm:w-6/12 mt-0 w-3/12 ">
-            <h4 className="text-lightgray font-normal font-sans1 text-sm	tracking-wider	leading-5	">
+            <h4 className="text-label font-normal font-roboto text-sm	tracking-wider	leading-5	">
               VALUE LOCKED
             </h4>
-            <h5 className="text-white font-medium font-sans1 text-sm	tracking-widest	leading-5	">
+            <h5 className="text-white font-medium font-roboto text-sm	tracking-wider	leading-5	">
               --
             </h5>
           </div>
           <div className="w-full mt-2 mt-0 w-3/12 ">
-            <h4 className="text-lightgray font-normal font-sans1 text-sm	tracking-wider	leading-5	">
+            <h4 className="text-label font-normal font-roboto text-sm	tracking-wider	leading-5	">
               NETWORK
             </h4>
-            <button className="flex items-center  justify-between text-xs font-semibold font-sans1 text-white">
-              <div className="bg-yellow p-1 w-2.5 h-2.5 mr-2 rounded-sm flex items-center justify-center"></div>
+            <button className="flex items-center  justify-between text-xs font-semibold font-roboto text-white">
+              <div className="bg-yellow p-1 w-2.5 h-2.5 mr-2 rounded-base flex items-center justify-center"></div>
               {capitalize(network)}
             </button>
           </div>

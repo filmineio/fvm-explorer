@@ -1,0 +1,17 @@
+.my-data-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  .my-data-inner {
+    display: flex;
+    flex-wrap: wrap;
+    height: calc(100vh - 80px);
+
+    .my-data-content {
+      flex: 1 1 auto;
+      height: 100%;
+      overflow: auto;
+    }
+  }
+}

@@ -41,12 +41,9 @@ export const Results = ({
   }, [kind]);
 
   return (
-    <div className="space-y-5 pt-5 flex-col">
+    <div className="pt-5 flex-col">
       <div
-        className={classNames("flex flex-wrap relative gap-6", {
-          "justify-center": rows.length > 2,
-          "justify-start px-20": rows.length < 3,
-        })}
+        className={"grid grid-cols-4 relative gap-7"}
       >
         {rows.map((r) => (
           <Card

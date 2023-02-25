@@ -7,19 +7,13 @@ export const TransactionStatus = (props: { exitCode: number }) => {
   return (
     <div
       className={classNames(
-        "font-bold text-xs leading-4 font-mono1 flex items-center gap-1.5",
+        "flex items-center gap-1.5 font-roboto text-xs font-bold leading-compact mt-1.5",
         {
-          "text-yellow": exitCode === 0,
-          "text-red-400 ": exitCode !== 0,
+          "text-blue-400": exitCode === 0,
+          "text-label": exitCode !== 0,
         }
       )}
     >
-      <div
-        className={classNames("w-2.5 h-2.5 rounded-sm", {
-          "bg-yellow": exitCode === 0,
-          "bg-red-400": exitCode !== 0,
-        })}
-      />
       {exitCode === 0 ? "successful" : "reverted"}
     </div>
   );

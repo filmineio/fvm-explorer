@@ -1,5 +1,5 @@
+import { CustomSelect } from "@/ui/components/Select/Select";
 import { AdvancedFilterToggle } from "@/ui/modules/Filters/components/AdvancedFilterToggle";
-import { GhostSelect } from "@/ui/modules/Filters/components/GhostSelect";
 import {
   availableFilters,
   availableNetworks,
@@ -21,40 +21,38 @@ export const FiltersHeader = ({
   search: (v: string) => void;
 }) => {
   return (
-    <div className={"flex justify-between items-center"}>
-      <h3 className="text-2xl font-bold leading-8 text-gray-light">
+    <div className="flex justify-between items-center">
+      <h3 className="font-space text-28 font-bold leading-compact text-white">
         Filecoin contracts explorer
       </h3>
 
-      <div className={"flex flex-1 justify-end items-center flex-wrap gap-5"}>
-        <div className={"flex uppercase gap-2 mr-10"}>
-          <span
-            className={
-              "form-check-label inline-block text-gray-light uppercase  text-sm"
-            }
-          >
-            Search in{" "}
-          </span>{" "}
-          <GhostSelect
-            value={state.filteredBy}
-            onChange={search}
-            values={availableFilters}
-          />
+      <div className="flex flex-1 justify-end items-center flex-wrap gap-5">
+        <div className="flex gap-3 mr-5 items-center">
+          <span className="inline-block text-label form-check-label text-sm lowercase">
+            Search in
+          </span>
+          <div className="w-36">
+            <CustomSelect
+              value={state.filteredBy}
+              onChange={search}
+              values={availableFilters}
+              selectType="transparent"
+            />
+          </div>
         </div>
 
-        <div className={"flex uppercase gap-2"}>
-          <span
-            className={
-              "form-check-label inline-block text-gray-light uppercase text-sm"
-            }
-          >
-            NETWORK{" "}
-          </span>{" "}
-          <GhostSelect
-            value={state.network}
-            onChange={search}
-            values={availableNetworks}
-          />
+        <div className="flex gap-3 mr-5 items-center">
+          <span className="inline-block text-label form-check-label text-sm lowercase">
+            Network
+          </span>
+          <div className="w-32">
+            <CustomSelect
+              value={state.network}
+              onChange={search}
+              values={availableNetworks}
+              selectType="transparent"
+            />
+          </div>
         </div>
 
         <AdvancedFilterToggle

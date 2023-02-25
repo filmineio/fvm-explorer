@@ -24,7 +24,7 @@ export const ContractTransactionRow = ({
 
   return (
     <>
-      <tr className="min-w-full bg-gray-dark rounded rounded-b-0">
+      <tr className="min-w-full bg-slate rounded rounded-b-0">
         <td className="w-1/6 px-6 py-3 text-left truncate text-yellow underline cursor-pointer">
           <Link
             href={`/explore/${Entity.Transaction}/${transaction.cid}?network=${network}`}
@@ -32,33 +32,33 @@ export const ContractTransactionRow = ({
             {transaction.cid}
           </Link>
         </td>
-        <td className="w-1/6  text-left text-sm	italic  text-white font-mono1 tracking-wider	 font-normal px-6 py-3 whitespace-nowrap">
+        <td className="w-1/6  text-left text-sm	italic  text-white font-space tracking-wider	 font-normal px-6 py-3 whitespace-nowrap">
           {transaction.method}
         </td>
-        <td className="w-1/6  text-left text-sm	italic  text-white font-mono1 tracking-wider	 font-normal px-6 py-3 whitespace-nowrap">
+        <td className="w-1/6  text-left text-sm	italic  text-white font-space tracking-wider	 font-normal px-6 py-3 whitespace-nowrap">
           {transaction.height}
         </td>
-        <td className="w-1/6  text-left text-sm	  text-white font-sans1 tracking-wider	 font-bold px-6 py-3 whitespace-nowrap">
+        <td className="w-1/6  text-left text-sm	  text-white font-roboto tracking-wider	 font-bold px-6 py-3 whitespace-nowrap">
           <TransactionStatus exitCode={transaction.messageRctExitCode} />
         </td>
-        <td className="w-1/6  text-left text-sm	  text-white font-sans1 tracking-wider	 font-normal  px-6 py-3 whitespace-nowrap">
+        <td className="w-1/6  text-left text-sm	  text-white font-roboto tracking-wider	 font-normal  px-6 py-3 whitespace-nowrap">
           {transaction.messageRctGasUsed} attoFIL
         </td>
-        <td className="w-1/6  text-left text-sm	  text-white font-sans1 tracking-wider	 font-normal px-6 py-3 whitespace-nowrap">
+        <td className="w-1/6  text-left text-sm	  text-white font-roboto tracking-wider	 font-normal px-6 py-3 whitespace-nowrap">
           {transaction.value} FIL
         </td>
       </tr>
       <tr
         className={
-          "min-w-full bg-gray-dark rounded-lg rounded-t-0  transform -translate-y-2"
+          "min-w-full bg-slate rounded-base rounded-t-0  transform -translate-y-2"
         }
       >
         <td colSpan={7} className="px-6 pt-4 pb-3">
-          <div className="flex items-center text-sm font-normal font-sans1 text-white">
+          <div className="flex items-center text-sm font-normal font-roboto text-white">
             <div
               onClick={toggle}
               className={
-                "state bg-secect rounded-md w-6 h-6 mr-2 flex items-center justify-center cursor-pointer"
+                "state bg-body rounded-base w-6 h-6 mr-2 flex items-center justify-center cursor-pointer"
               }
             >
               <svg
@@ -85,7 +85,7 @@ export const ContractTransactionRow = ({
       {open && (
         <tr
           className={
-            "min-w-full bg-gray-dark rounded-lg rounded-t-0  transform -translate-y-4"
+            "min-w-full bg-slate rounded-base rounded-t-0  transform -translate-y-4"
           }
         >
           <td colSpan={7}>
