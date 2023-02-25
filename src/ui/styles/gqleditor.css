@@ -1,0 +1,76 @@
+.graphiql-container {
+    min-height: calc(100vh - 10rem);
+    flex-direction: row-reverse;
+}
+
+.graphiql-main {
+    flex-direction: row-reverse;
+    background-color: #141620;
+}
+
+.graphiql-editors, .graphiql-query-editor, .graphiql-query-editor-wrapper, .graphiql-editor, .graphiql-session, .CodeMirror.cm-s-graphiql, .CodeMirror-gutters *, .graphiql-session-header, .graphiql-editor-tools, .graphiql-editor-tool {
+    background-color: #141620;
+}
+
+.graphiql-horizontal-drag-bar {
+    width: 1px !important;
+    background-color: #3f424b;
+}
+
+button.graphiql-execute-button {
+    background-color: #D5FF64 !important;
+}
+
+button.graphiql-execute-button svg path {
+    fill: #141620;
+}
+
+
+.graphiql-history-item.editable {
+    background-color: rgba(183, 0, 110, 0.19) !important;
+}
+
+.graphiql-sidebar {
+    position: absolute !important;
+    top: 3.5rem !important;
+    display: flex !important;
+    flex-direction: row !important;
+    right: 16rem;
+    gap: 3rem;
+    background-color: transparent;
+}
+
+.graphiql-sidebar-section {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 1rem !important;
+}
+
+
+.graphiql-sidebar > div > button {
+    width: fit-content !important;
+    display: flex;
+    gap: 1rem;
+    color: #D5FF64 !important;
+    white-space: nowrap;
+    align-items: center !important;
+    padding: 5px 1rem;
+}
+
+.graphiql-sidebar > div:nth-child(1) > button:nth-child(1):after {
+    content: "View Docs";
+}
+
+.graphiql-sidebar > div:nth-child(1) > button:nth-child(2):after {
+    content: "Query History";
+}
+
+.graphiql-sidebar > div:nth-child(1) > button:nth-child(2) {
+    transform: translateY(-.2rem);
+}
+
+
+/*Hide Editor Theme Settings */
+.graphiql-sidebar > div:nth-child(2) > button {
+    display: none;
+}
