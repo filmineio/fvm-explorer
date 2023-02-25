@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 
 import { User } from "@/ui/state/types/AppState";
 
