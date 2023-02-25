@@ -51,11 +51,13 @@ module.exports = {
         "label": "#596184",
         "label_opacity-30": "#5961844d",
         "blue-400": "#59A9FF",
+        "blue-400_opacity-30": "#59A9FF4d",
         "blue-500": "#0576F0",
         "line": "#D8DBE9",
         "line_opacity-80": "#D8DBE9CC",
         "red": "#D32F40",
-        "purple": "#8B4DFF"
+        "purple": "#8B4DFF",
+        "pink": "#D857C9"
       },
 
       fontSize: {

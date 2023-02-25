@@ -81,17 +81,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .input-wrapper input::placeholder {
-   color: #596184;
-   opacity: 1;
- }
+  color: #596184;
+  opacity: 1;
+}
 
 .input-wrapper input:-ms-input-placeholder {
-   color: #596184;
- }
+  color: #596184;
+}
 
 .input-wrapper input::-ms-input-placeholder {
-   color: #596184;
- }
+  color: #596184;
+}
 
 .input-wrapper label {
   font-size: 14px;
@@ -234,22 +234,26 @@ a.customr.textnone span.onespan {
   }
 }
 
-.react-select.transparent .react-select__control {
-  border: none;
-}
-
-.react-select .react-select__control {
-  border-color: greenyellow;
-  box-shadow: 0 0 0 3px greenyellow;
-}
-
 .react-select .react-select__control {
   min-height: 50px;
-  border-radius: 9px;
+  border-radius: 4px;
   box-shadow: none;
   background-color: theme("colors.slate");
-  border: 1px solid transparent;
+  border: 2px solid #292E42;
   cursor: pointer;
+  padding-right: 10px;
+  padding-left: 6px;
+}
+
+.react-select:not(.transparent):hover .react-select__control,
+.react-select:not(.transparent) .react-select__control.react-select__control--menu-is-open {
+  border-color: #292E42;
+  box-shadow: 0 0 0 3px #292E4280;
+}
+
+.react-select.transparent .react-select__control {
+  border: none;
+  padding: 0;
 }
 
 .react-select .react-select__value-container {
@@ -266,7 +270,6 @@ a.customr.textnone span.onespan {
   opacity: 0;
 }
 
-.react-select [class$='-ackcql'],
 .react-select [class$='-placeholder'] {
   font-size: 14px;
   font-weight: 500;
@@ -274,7 +277,7 @@ a.customr.textnone span.onespan {
   margin: 0;
 }
 
-.react-select [class$='-menu'] {
+.react-select .react-select__menu {
   width: 200px;
   right: 0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
@@ -292,6 +295,10 @@ a.customr.textnone span.onespan {
   font-size: 14px;
   display: flex;
   align-items: center;
+  color: #596184;
+}
+
+.react-select.transparent .react-select__single-value {
   color: #59A9FF;
 }
 
@@ -299,8 +306,12 @@ a.customr.textnone span.onespan {
   padding: 0;
 }
 
-.react-select .react-select__dropdown-indicator svg path {
+.react-select.transparent .react-select__dropdown-indicator svg path {
   fill: #59A9FF;
+}
+
+.react-select:not(.transparent) .react-select__dropdown-indicator svg path {
+  fill: #596184;
 }
 
 .react-select .react-select__menu .react-select__menu-list {

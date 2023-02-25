@@ -17,6 +17,7 @@ import {
 } from "@/ui/modules/Filters/state/state";
 
 import { QueryGroup } from "@/ui/state/types/AppState";
+import Garbage from "@/ui/components/Common/Icons/Garbage";
 
 
 const defaultState: (
@@ -86,14 +87,14 @@ export const AdvancedFiltersQueryGroup = ({
 
   return (
     <div
-      className={"relative p-5 border-2 border-label rounded pb-8 relative"}
+      className={"relative p-5 border-[3px] border-label rounded-3 pb-8 relative"}
     >
       {removable && (
         <button
-          className="box-content w-4 h-4 p-2 text-center text-white border-none bg-body rounded-4 focus:shadow-none focus:outline-none flex justify-center items-center absolute -top-3 -right-3"
+          className="bg-body rounded-3 flex items-center justify-center w-8 h-8 absolute top-[-18px] right-[-18px]"
           onClick={onRemove}
         >
-          <img className="w-auto" src="/images/close.png" alt={""} />
+          <Garbage />
         </button>
       )}
 
@@ -106,7 +107,7 @@ export const AdvancedFiltersQueryGroup = ({
         onClear={clear}
       />
 
-      <div className={"flex flex-col gap-2"}>
+      <div className={"flex flex-col gap-3 pt-4"}>
         {groupRules.map(([field, v]) => (
           <AdvancedFilterRule
             key={field}

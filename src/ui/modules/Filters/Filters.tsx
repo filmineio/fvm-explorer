@@ -33,7 +33,7 @@ export const Filters = ({ search }: { search: () => void }) => {
   }, []);
 
   return (
-    <div className="py-7 space-y-5 ">
+    <div className="pt-10 space-y-5 ">
       <FiltersHeader
         state={state}
         checked={advancedSearchActive}
