@@ -1,6 +1,5 @@
 import { PAGE_SIZE } from "@/constants/pagination";
 import { Entity } from "@/enums/Entity";
-import { Network } from "@/enums/Network";
 import { useEffect, useMemo, useState } from "react";
 
 import { TabHeader } from "@/ui/components/TabHeader/TabHeader";
@@ -8,12 +7,11 @@ import { TabHeader } from "@/ui/components/TabHeader/TabHeader";
 import { ContractBaseInfo } from "@/ui/modules/SelectedEntity/components/ContractPage/components/ContractBaseInfo";
 import { ContractTransactions } from "@/ui/modules/SelectedEntity/components/ContractPage/components/ContractTransactions";
 
-import { useLocationQuery } from "@/ui/hooks/useLocationQuery";
-
-import { useQuery } from "@/ui/external/data";
+import { useGet, useQuery } from "@/ui/external/data";
 
 import { ContractResults } from "@/types/DataResult";
 import { Contract } from "@/types/data/Contract";
+import { ContractMeta } from "@/types/data/ContractMeta";
 import { Transaction } from "@/types/data/Transaction";
 
 import { getZeroIndexOffset } from "@/utils/getZeroIndexOffset";
@@ -24,8 +22,14 @@ type Props = { data: ContractResults };
 export const ContractPage = ({ data }: Props) => {
   const contract = useMemo(() => data.rows[0] as Contract, [data]);
   const [activeTab, setActiveTab] = useState(0);
-  const query = useLocationQuery<{ network: Network }>();
   const { get, loading, data: transactions, total } = useQuery<Transaction>();
+  const {
+    get: getVerification,
+    loading: checkingVerification,
+    data: verifications,
+    total: verificationCount,
+  } = useGet<ContractMeta>();
+
   const [page, paginate] = useState<number>(1);
 
   useEffect(() => {
@@ -49,6 +53,15 @@ export const ContractPage = ({ data }: Props) => {
       ],
     });
   }, [page]);
+
+  useEffect(() => {
+    if (!contract) return;
+
+    getVerification(
+      Entity.ContractMeta,
+      `contracts/${contract.contractAddress}/metadata?network=${data.network}`
+    );
+  }, [contract]);
 
   return (
     <div className="py-7">

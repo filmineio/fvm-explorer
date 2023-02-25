@@ -24,7 +24,7 @@ export const AVAILABLE_FILTERS = [
   Entity.Transaction,
 ];
 
-export const AVAILABLE_NETWORKS = [Network.Wallaby, Network.HyperSpace];
+export const AVAILABLE_NETWORKS = [Network.HyperSpace];
 
 export const availableFilters = AVAILABLE_FILTERS.map((value) => ({
   value,
