@@ -3,7 +3,7 @@ import { ReactElement } from "react";
 import {
   MyDataKind,
   MyDataWrapper,
-} from "@/ui/components/MyDataWrapper/MyDataWrapper";
+} from "@/ui/components/MyDataWrapper/MyDataWrapper/MyDataWrapper";
 
 export default function Queries(): ReactElement {
   return (

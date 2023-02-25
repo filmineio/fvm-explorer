@@ -8,8 +8,7 @@ import { UserMenu } from "@/ui/components/UserMenu/UserMenu";
 import { useStore } from "@/ui/state/Store";
 
 import { cb } from "@/utils/cb";
-import LogoDevStorage from "@/ui/components/Common/Icons/LogoDevStorage";
-
+import LogoDevStorageWithText from "@/ui/components/Common/Icons/LogoDevStorageWithText";
 
 export const Header: FC = () => {
   const {
@@ -20,8 +19,10 @@ export const Header: FC = () => {
     <header className="px-5 py-5 border-b border-slate">
       <div className="flex flex-row justify-between items-center m-auto">
         <div className="md:basis-1/2">
-          <Link href="/">
-            <LogoDevStorage />
+          <Link href="/" passHref>
+            <a>
+              <LogoDevStorageWithText />
+            </a>
           </Link>
         </div>
         {!user && (

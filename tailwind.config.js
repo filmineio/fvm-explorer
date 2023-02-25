@@ -33,8 +33,8 @@ module.exports = {
         gray: "#8492a6",
         "gray-light": "#d3dce6",
         "gray-text": "#6E7191",
-        yellowrgba: "rgba(213, 255, 100, 0.2);",
-        bglight: " rgba(89, 97, 132, 0.2);",
+        yellowrgba: "rgba(213, 255, 100, 0.2)",
+        bglight: " rgba(89, 97, 132, 0.2)",
         darckgry: "#EFF0F7",
         analogous: "#B7006E",
         rgbaanalogous: "rgba(183, 0, 110, 0.3)",
@@ -50,6 +50,7 @@ module.exports = {
         "label_opacity-30": "#5961844d",
         "blue-400": "#59A9FF",
         "blue-500": "#0576F0",
+        "transparent": "rgba(0, 0, 0, 0)",
       },
 
       fontSize: {

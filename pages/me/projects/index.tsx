@@ -7,7 +7,7 @@ import { ReactElement, useCallback, useEffect } from "react";
 import {
   MyDataKind,
   MyDataWrapper,
-} from "@/ui/components/MyDataWrapper/MyDataWrapper";
+} from "@/ui/components/MyDataWrapper/MyDataWrapper/MyDataWrapper";
 import { ProjectCard } from "@/ui/components/ProjectComponents/ProjectCard";
 import { ProjectsHeading } from "@/ui/components/ProjectsHeading/ProjectsHeading";
 import { SearchFeedback } from "@/ui/components/SearchFeedback";

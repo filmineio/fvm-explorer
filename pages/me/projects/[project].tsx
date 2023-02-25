@@ -6,7 +6,7 @@ import { ReactElement, useEffect, useMemo } from "react";
 import {
   MyDataKind,
   MyDataWrapper,
-} from "@/ui/components/MyDataWrapper/MyDataWrapper";
+} from "@/ui/components/MyDataWrapper/MyDataWrapper/MyDataWrapper";
 import { ProjectContractRow } from "@/ui/components/ProjectComponents/ProjectContractRow";
 import { Spinner } from "@/ui/components/Spinner/Spinner";
 
