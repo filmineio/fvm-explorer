@@ -38,13 +38,13 @@ export const ContractTransactionRow = ({
         <td className="w-1/6  text-left text-sm	italic  text-white font-space tracking-wider	 font-normal px-6 py-3 whitespace-nowrap">
           {transaction.height}
         </td>
-        <td className="w-1/6  text-left text-sm	  text-white font-roboto tracking-wider	 font-bold px-6 py-3 whitespace-nowrap">
+        <td className="w-1/6  text-left text-sm	  text-white tracking-wider	 font-bold px-6 py-3 whitespace-nowrap">
           <TransactionStatus exitCode={transaction.messageRctExitCode} />
         </td>
-        <td className="w-1/6  text-left text-sm	  text-white font-roboto tracking-wider	 font-normal  px-6 py-3 whitespace-nowrap">
+        <td className="w-1/6  text-left text-sm	  text-white tracking-wider	 font-normal  px-6 py-3 whitespace-nowrap">
           {transaction.messageRctGasUsed} attoFIL
         </td>
-        <td className="w-1/6  text-left text-sm	  text-white font-roboto tracking-wider	 font-normal px-6 py-3 whitespace-nowrap">
+        <td className="w-1/6  text-left text-sm	  text-white tracking-wider	 font-normal px-6 py-3 whitespace-nowrap">
           {transaction.value} FIL
         </td>
       </tr>
@@ -54,7 +54,7 @@ export const ContractTransactionRow = ({
         }
       >
         <td colSpan={7} className="px-6 pt-4 pb-3">
-          <div className="flex items-center text-sm font-normal font-roboto text-white">
+          <div className="flex items-center text-sm font-normal text-white">
             <div
               onClick={toggle}
               className={

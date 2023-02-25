@@ -71,20 +71,14 @@ export default function Projects({ data }: { data: Project[] }): ReactElement {
   }
   return (
     <MyDataWrapper kind={MyDataKind.Projects}>
-      <div className=" all px-0 max-w-2xl justify-self-center mx-auto pt-20 pb-10 pl-32 md:pl-20">
+      <div className="max-w-1xl mx-auto p-10">
         <ProjectsHeading onCreate={getData} />
-
-        <div className="space-y-5 pt-5 flex-col">
-          <div
-            className={classNames("flex flex-wrap relative gap-6", {
-              "justify-center": projects.length > 2,
-              "justify-start px-20": projects.length < 3,
-            })}
-          >
-            {projects.map((data) => (
-              <ProjectCard key={data.id} data={data} reFetch={getData} />
-            ))}
-          </div>
+        <div
+          className="grid grid-cols-3 gap-5 relative"
+        >
+          {projects.map((data) => (
+            <ProjectCard key={data.id} data={data} reFetch={getData} />
+          ))}
         </div>
       </div>
     </MyDataWrapper>

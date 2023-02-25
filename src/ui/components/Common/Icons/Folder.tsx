@@ -9,8 +9,8 @@ const Folder: FC = () => (
     viewBox="0 0 30 30"
   >
     <path
-      fill="#A0A3BD"
-      stroke="#A0A3BD"
+      fill="#596184"
+      stroke="596184"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth="2"

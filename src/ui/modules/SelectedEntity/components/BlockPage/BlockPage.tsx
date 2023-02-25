@@ -68,7 +68,7 @@ export const BlockPage = ({ data }: Props) => {
             </div>
 
             <div className="pl-1">
-              <h3 className="text-2xl font-roboto font-bold text-white mb-2 relative">
+              <h3 className="text-2xl font-bold text-white mb-2 relative">
                 <CopyWrapper data={block.cid}>{block.cid}</CopyWrapper>
               </h3>
               <div className=" flex md:flex-wrap gap-1 items-center">

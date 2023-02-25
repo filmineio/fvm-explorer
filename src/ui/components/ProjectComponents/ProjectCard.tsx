@@ -116,8 +116,8 @@ export const ProjectCard = ({ data, reFetch }: ProjectCardProps) => {
 
   return (
     <>
-      <div className="relative px-5 py-8 w-96 break-words bg-gray-dark border-2 hover:border-lightgray rounded-lg xl:mb-0 shadow-lg flex flex-col">
-        <div className="absolute bg-lightgray py-1 px-2 -top-3 left-0">
+      <div className="relative flex flex-col break-words bg-body_opacity-50 border-2 border-transparent hover:border-label rounded-9 shadow-lg pt-10 px-8 pb-8">
+        <div className="absolute bg-label py-1.5 px-2.5 -top-4 -left-[1.875px]">
           <p className="text-xs text-white font-normal ">PROJECT</p>
         </div>
         <div className="block cursor-pointer" onClick={cb(setShowEdit, true)}>
@@ -142,14 +142,14 @@ export const ProjectCard = ({ data, reFetch }: ProjectCardProps) => {
         <div className="flex flex-wrap items-center">
           <div className="relative pr-4 xs:w-4/12">
             <div className="bg-bglight  rounded-lg py-3 px-3 flex justify-center items-center ">
-              <img src="/images/Project-icon.png" />
+              <img src="/images/Project-icon.png" alt="" />
             </div>
           </div>
           <div className="relative w-6/12 ">
-            <h4 className="text-white leading-6 text-2xl	 font-bold font-sans1 truncate	">
+            <h4 className="text-white leading-6 text-2xl font-bold font-sans1 truncate	">
               {data.name}
             </h4>
-            <h4 className="text-newdarck mt-1.5 font-normal font-mono1 text-sm	tracking-wider	leading-5	">
+            <h4 className="mt-1.5 text-blue-400	tracking-wider leading-5 text-14 font-bold">
               {contracts.length} contracts
             </h4>
           </div>

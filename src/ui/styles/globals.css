@@ -51,8 +51,55 @@ html {
 
 body {
   background-color: black;
+  font-family: 'Roboto Mono', monospace;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+.input-wrapper input {
+  border: 2px solid #292E42;
+  border-radius: 4px;
+  transition: all 160ms ease-in-out;
+  background: transparent;
+  padding: 15px;
+  outline: none !important;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.input-wrapper input:hover {
+  border-color: #596184;
+}
+
+.input-wrapper input:focus {
+  border-color: #596184;
+  box-shadow: 0 0 0 5px rgba(89, 97, 132, 0.4);
+}
+
+.input-wrapper input::placeholder {
+   color: #596184;
+   opacity: 1;
+ }
+
+.input-wrapper input:-ms-input-placeholder {
+   color: #596184;
+ }
+
+.input-wrapper input::-ms-input-placeholder {
+   color: #596184;
+ }
+
+.input-wrapper label {
+  font-size: 14px;
+  line-height: 16px;
+  margin-bottom: 10px;
+  display: inline-block;
+  color: #fff;
+}
 /* Button 10 */
 #button-10 .knobs:after {
   content: 'or';
@@ -302,15 +349,16 @@ a.customr.textnone span.onespan {
   background-color: #59A9FF;
 }
 
-/* GraphQL style */
-
-.sc-lkqHmb.bmhMQH {
-  background: #292E42;
-  border-radius: 2px;
+.btn {
+  border-radius: 4px;
+  font-family: 'Roboto Mono', monospace;
+  padding: 15px 26px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
 }
 
-.sc-cLQEGU.evlONy {
-  background: #596184;
-  border-radius: 2px;
-  padding: 6px 16px;
+.btn.link {
+  padding: 2px;
+  background-color: transparent;
 }

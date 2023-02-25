@@ -4,7 +4,7 @@ import { UserMenu } from "@/ui/components/UserMenu/UserMenu";
 import { useStore } from "@/ui/state/Store";
 
 import { Maybe } from "@/types/Maybe";
-import LogoDevStorageWithText from "@/ui/components/Common/Icons/LogoDevStorage";
+import LogoDevStorage from "@/ui/components/Common/Icons/LogoDevStorage";
 
 export const MyDataHeader = ({
   kind,
@@ -18,15 +18,15 @@ export const MyDataHeader = ({
   } = useStore();
 
   return (
-    <div className="flex md:pr-10 z-10 top-0 left-0 right-0 bg-black border-b-2 border-label border-b min-h-[80px]">
-      <div className="z-10 flex items-center mr-10 w-[70px] justify-center border-r-2 border-label flex-shrink-0">
-        <LogoDevStorageWithText />
+    <div className="flex md:pr-10 z-10 top-0 left-0 right-0 border-b-2 border-body min-h-[80px]">
+      <div className="z-10 flex items-center mr-10 w-[70px] justify-center border-r-2 border-body flex-shrink-0">
+        <LogoDevStorage />
       </div>
-      <div className="flex items-center justify-between w-100">
+      <div className="flex items-center justify-between w-full">
         <div className="list ">
           <ul className="flex flex-wrap text-sm font-medium text-center">
             <li className="dromenu mr-2 flex items-center relative">
-              <span className="navbar-burger inline-flex items-center  text-gray-text font-mono1 font-normal text-xs">
+              <span className="navbar-burger inline-flex items-center">
                 <svg
                   width="24"
                   height="24"
@@ -68,7 +68,7 @@ export const MyDataHeader = ({
                   />
                 </svg>
               </span>
-              <div className="inline-flex items-center py-4 px-0 gap-2 text-yellow font-mono1 font-normal text-xs ">
+              <div className="inline-flex items-center py-4 px-0 gap-2 text-blue-400 text-12">
                 <svg
                   width="8"
                   height="8"
@@ -89,7 +89,7 @@ export const MyDataHeader = ({
             </li>
             {activeEntity && (
               <li className="mr-2 flex items-center relative">
-                <div className="inline-flex items-center py-4 px-0 gap-2 text-yellow font-mono1 font-normal text-xs ">
+                <div className="inline-flex items-center py-4 px-0 gap-2 text-blue-400">
                   <svg
                     width="8"
                     height="8"

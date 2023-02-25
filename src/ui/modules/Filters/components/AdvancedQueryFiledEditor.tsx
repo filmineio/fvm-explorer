@@ -135,7 +135,7 @@ export const AdvancedQueryFiledEditor = ({
         </div>
         <div className="ml-2 xs:mt-4 sm:mt-0">
           <button
-            className="rounded-base border-2 border-yellow text-yellow text-xs font-roboto font-bold py-3 px-6"
+            className="rounded-base border-2 border-yellow text-yellow text-xs font-bold py-3 px-6"
             onClick={handleAdd}
           >
             ADD RULE

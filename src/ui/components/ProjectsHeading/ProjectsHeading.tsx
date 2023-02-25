@@ -40,23 +40,22 @@ export const ProjectsHeading = ({ onCreate }: { onCreate: () => void }) => {
 
   return (
     <>
-      <div className="flex flex-wrap items-center justify-between mb-10">
+      <div className="flex flex-wrap items-center justify-between mb-20">
         <div className="textheading">
-          <h3 className="text-2xl font-sans1 font-bold text-white	">
+          <h3 className="text-24 text-white mb-4 font-space">
             My projects
           </h3>
-
-          <h5 className="text-switchs text-lg font-sans1">
+          <p className="text-white text-16">
             Collections of contracts you created or want to be in the loop
             about.
-          </h5>
+          </p>
         </div>
         <div
           className={"cursor-pointer"}
           onClick={cb(setCreateCaseActive, true)}
         >
-          <div className="flex text-yellow text-sm font-bold mt-5">
-            <div className=" bg-yellowrgba p-1 mr-2 rounded-md flex items-center justify-center w-8">
+          <div className="flex items-center text-blue-400 text-14 font-bold hover:text-blue-600 transition-colors">
+            <div className="bg-label-30 mr-5 rounded-3 flex items-center justify-center w-8 h-8">
               <svg
                 width="14"
                 height="14"
@@ -66,7 +65,7 @@ export const ProjectsHeading = ({ onCreate }: { onCreate: () => void }) => {
               >
                 <path
                   d="M1.66699 7.00008H7.00033M12.3337 7.00008H7.00033M7.00033 7.00008V1.66675M7.00033 7.00008V12.3334"
-                  stroke="#D5FF64"
+                  stroke="#0576F0"
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -79,7 +78,7 @@ export const ProjectsHeading = ({ onCreate }: { onCreate: () => void }) => {
       </div>
       {createCaseActive && loading && (
         <Modal>
-          <div className="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-black bg-clip-padding rounded-md outline-none text-gray-text">
+          <div className="modal-content border-none shadow-none relative flex flex-col w-full pointer-events-auto bg-slate rounded-10">
             <Spinner />
           </div>
         </Modal>

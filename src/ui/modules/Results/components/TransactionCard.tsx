@@ -49,7 +49,7 @@ export const TransactionCard = ({ data, network }: TransactionCardProps) => {
                   <h4 className="font-space text-white text-lg font-bold leading-compact">
                     {value.toFixed(2)} FIL
                   </h4>
-                  <p className="font-roboto text-white text-xs font-normal leading-normal">
+                  <p className="text-white text-xs font-normal leading-normal">
                     value
                   </p>
                 </div>
@@ -60,7 +60,7 @@ export const TransactionCard = ({ data, network }: TransactionCardProps) => {
                   <h4 className="font-space text-white text-lg font-bold leading-compact">
                     {data.height}
                   </h4>
-                  <p className="font-roboto text-white text-xs font-normal leading-normal">
+                  <p className="text-white text-xs font-normal leading-normal">
                     epoch
                   </p>
                 </div>
@@ -69,18 +69,18 @@ export const TransactionCard = ({ data, network }: TransactionCardProps) => {
 
             <div className="flex mt-5">
               <div className="w-14/25 lg:w-5/12 pr-0 lg:pr-3">
-                <h3 className="font-roboto text-label text-sm font-medium leading-4 lowercase">
+                <h3 className="text-label text-sm font-medium leading-4 lowercase">
                   method type
                 </h3>
-                <h5 className="font-roboto text-white text-sm font-normal leading-normal capitalize">
+                <h5 className="text-white text-sm font-normal leading-normal capitalize">
                   {data.method}
                 </h5>
               </div>
               <div className="w-11/25 lg:w-5/12 pr-0 lg:pr-3">
-                <h3 className="font-roboto text-label text-sm font-medium leading-4 lowercase">
+                <h3 className="text-label text-sm font-medium leading-4 lowercase">
                   GAS
                 </h3>
-                <h5 className="font-roboto text-white text-sm font-normal leading-normal">
+                <h5 className="text-white text-sm font-normal leading-normal">
                   {data.messageRctGasUsed} FIL
                 </h5>
               </div>
