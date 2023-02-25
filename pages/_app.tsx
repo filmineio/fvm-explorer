@@ -13,7 +13,7 @@ import Store from "@/ui/state/Store";
 import { uiCtx } from "@/ui/ctx/uiCtx";
 import { useAuthApiClient } from "@/ui/external/auth";
 
-dynamic(import("tw-elements"), { ssr: false });
+dynamic(import("tw-elements" as never), { ssr: false });
 
 const PostHog = () => {
   return (

@@ -30,7 +30,7 @@ export const CopyWrapper = ({
               return false;
             }}
           >
-            <span className="bg-slate text-blue-400 font-bold text-sm font-roboto z-10 bg-label p-2 rounded">
+            <span className="bg-slate text-blue-400 font-bold text-14 font-roboto z-10 bg-label p-2 rounded">
               Copy
             </span>
           </div>

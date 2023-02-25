@@ -19,13 +19,12 @@ export const getFilterLabel = (value: Entity) => {
 };
 
 export const AVAILABLE_FILTERS = [
-  Entity.Project,
   Entity.Contract,
   Entity.Block,
   Entity.Transaction,
 ];
 
-export const AVAILABLE_NETWORKS = [Network.Wallaby, Network.HyperSpace];
+export const AVAILABLE_NETWORKS = [Network.HyperSpace];
 
 export const availableFilters = AVAILABLE_FILTERS.map((value) => ({
   value,

@@ -9,11 +9,13 @@ module.exports = {
       center: true,
     },
     borderRadius: {
-      'small': '2px',
-      'base': '4px',
+      '2': '2px',
       "3": "3px",
+      '4': '4px',
       "6": "6px",
-      "9": "9px"
+      "9": "9px",
+      "10": "10px",
+      "40": "40px",
 
     },
     letterSpacing: {
@@ -33,12 +35,12 @@ module.exports = {
         gray: "#8492a6",
         "gray-light": "#d3dce6",
         "gray-text": "#6E7191",
-        yellowrgba: "rgba(213, 255, 100, 0.2);",
-        bglight: " rgba(89, 97, 132, 0.2);",
+        yellowrgba: "rgba(213, 255, 100, 0.2)",
+        bglight: " rgba(89, 97, 132, 0.2)",
         darckgry: "#EFF0F7",
         analogous: "#B7006E",
         rgbaanalogous: "rgba(183, 0, 110, 0.3)",
-        popupbg: "rgb(41 46 66 / 45%)",
+        popupbg: "rgba(41, 46, 66, 60%)",
         switchs: "#596184",
         Crusta: "#F89358",
         newdarck: "#D9DBE9",
@@ -51,23 +53,27 @@ module.exports = {
         "blue-400": "#59A9FF",
         "blue-500": "#0576F0",
         "line": "#D8DBE9",
-        "line_opacity-80": "#D8DBE9CC"
+        "line_opacity-80": "#D8DBE9CC",
+        "red": "#D32F40",
+        "purple": "#8B4DFF"
       },
 
       fontSize: {
         "pagination": ["13px", "22px"],
+        "12": "12px",
         "14": "14px",
         "16": "16px",
+        "24": "24px",
         "28": "28px",
+        "32": "32px",
         "36": "36px",
-        sm: "14px",
-        md: "32px",
       },
       minHeight: {
         sm: "50px",
         calc: "calc(100vh - 150px)",
       },
       maxWidth: {
+        "1xl": "1370px",
         "2xl": "1440px",
         calc2: "calc(100% - 440px)",
         lg: "calc(100% - 120px)",

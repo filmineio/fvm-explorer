@@ -145,3 +145,42 @@ export const useMutation = <T = unknown>() => {
   };
   return { post, ...state };
 };
+
+export const useGet = <T = unknown>() => {
+  const [state, setState] = useState<{
+    error: string;
+    loading: boolean;
+    data: T[];
+    total: number;
+  }>({
+    error: "",
+    loading: false,
+    data: [],
+    total: 0,
+  });
+
+  const get = <T = unknown>(resource: Entity, path: string) => {
+    setState((p) => set(lensPath(["loading"]), true)(p));
+    uiCtx
+      .client()
+      .get(path)
+      .then((response) => {
+        const data = processResponse(response, resource);
+        if (data.status === OperationStatus.Error) {
+          setState((p) => set(lensPath(["error"]), data.data.exception)(p));
+        } else {
+          setState((p) =>
+            set(
+              lensPath(["total"]),
+              data.data.total
+            )(set(lensPath(["data"]), data.data.rows)(p))
+          );
+        }
+      })
+      .catch(() =>
+        setState((p) => set(lensPath(["error"]), "Something Went Wrong")(p))
+      )
+      .finally(() => setState((p) => set(lensPath(["loading"]), false)(p)));
+  };
+  return { get, ...state };
+};

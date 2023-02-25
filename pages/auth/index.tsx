@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Router from "next/router";
 import { useCallback, useEffect, useReducer } from "react";
 
@@ -43,7 +42,7 @@ const Home: NextPage = () => {
     <>
       <Page>
         <div className="flex h-full">
-          <div className="flex relative w-1/2 items-center justify-center bg-line_opacity-80">
+          <div className="flex relative w-11/25 items-center justify-center bg-line_opacity-80">
             <div className="absolute self-end top-0 right-0">
               <AuthIllustrationTop/>
             </div>
@@ -55,8 +54,8 @@ const Home: NextPage = () => {
             </div>
           </div>
 
-          <div className="w-1/2 lg:w-8/12 flex items-center justify-center md:w-full">
-            <div className="md:text-center md:text-left md:p-5">
+          <div className="w-14/25 lg:w-8/12 flex items-center justify-center md:w-full">
+            <div className="md:text-center md:text-left md:p-5 mr-[12%]">
               <form>
                 <h1 className="font-space text-white text-36 font-bold leading-compact">
                   Log in/Sign up
@@ -68,14 +67,14 @@ const Home: NextPage = () => {
                   <Input
                     handleChange={change}
                     placeholder="Email"
-                    className="block bg-slate min-h-sm w-80 pl-11 border-2 border-body rounded-base text-white placeholder-label caret-white text-14 outline-none leading-4 hover:border-label
+                    className="block bg-slate min-h-sm w-80 pl-11 border-2 border-body rounded-4 text-white placeholder-label caret-white text-14 outline-none leading-4 hover:border-label
                         focus:border-label focus:ring-body focus:ring-2"
                     valid={state.emailValid}
                     icon={<MailIcon/>}
                   />
                   <Button
                     type="button"
-                    className="bg-blue-500 py-3.75 px-7 rounded-base font-roboto text-base text-white font-bold leading-5 whitespace-nowrap ml-5"
+                    className="bg-blue-500 py-3.75 px-7 rounded-4 font-roboto text-base text-white font-bold leading-5 whitespace-nowrap ml-5"
                     onClick={initLogin}
                   >
                     SIGN IN
@@ -90,12 +89,12 @@ const Home: NextPage = () => {
         <Modal>
           <div
             className={
-              "modal-content shadow-lg relative flex flex-col w-full pointer-events-auto bg-[#B7006E] bg-clip-padding rounded-base outline-none text-current py-28"
+              "modal-content shadow-lg relative flex flex-col w-full pointer-events-auto bg-[#B7006E] bg-clip-padding rounded-4 outline-none text-current py-28"
             }
           >
             <div className="modal-header flex flex-shrink-0 items-center justify-center p-4  rounded-t-md ">
               <h5
-                className="text-5xl  font-roboto leading-normal text-white"
+                className="text-5xl  leading-normal text-white"
                 id="exampleModalScrollableLabel "
               >
                 Check your email
@@ -124,13 +123,5 @@ const Home: NextPage = () => {
     </>
   );
 };
-
-export async function getServerSideProps({ locale }: { locale: any }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ["common"])),
-    },
-  };
-}
 
 export default Home;

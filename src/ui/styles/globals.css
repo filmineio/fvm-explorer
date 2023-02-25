@@ -1,4 +1,5 @@
 @import '~react-toastify/dist/ReactToastify.css';
+@import "gqleditor.css";
 
 @tailwind base;
 @tailwind components;
@@ -50,8 +51,55 @@ html {
 
 body {
   background-color: theme("colors.slate");
+  font-family: 'Roboto Mono', monospace;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+.input-wrapper input {
+  border: 2px solid #292E42;
+  border-radius: 4px;
+  transition: all 160ms ease-in-out;
+  background: transparent;
+  padding: 15px;
+  outline: none !important;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.input-wrapper input:hover {
+  border-color: #596184;
+}
+
+.input-wrapper input:focus {
+  border-color: #596184;
+  box-shadow: 0 0 0 5px rgba(89, 97, 132, 0.4);
+}
+
+.input-wrapper input::placeholder {
+   color: #596184;
+   opacity: 1;
+ }
+
+.input-wrapper input:-ms-input-placeholder {
+   color: #596184;
+ }
+
+.input-wrapper input::-ms-input-placeholder {
+   color: #596184;
+ }
+
+.input-wrapper label {
+  font-size: 14px;
+  line-height: 16px;
+  margin-bottom: 10px;
+  display: inline-block;
+  color: #fff;
+}
 /* Button 10 */
 #button-10 .knobs:after {
   content: 'or';
@@ -184,4 +232,133 @@ a.customr.textnone span.onespan {
   100% {
     opacity: 1;
   }
+}
+
+.react-select.transparent .react-select__control {
+  border: none;
+}
+
+.react-select .react-select__control {
+  border-color: greenyellow;
+  box-shadow: 0 0 0 3px greenyellow;
+}
+
+.react-select .react-select__control {
+  min-height: 50px;
+  border-radius: 9px;
+  box-shadow: none;
+  background-color: theme("colors.slate");
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.react-select .react-select__value-container {
+  display: flex;
+}
+
+.react-select .react-select__indicators {
+  padding: 0;
+  /*margin-right: 20px;*/
+}
+
+.react-select input {
+  height: 0;
+  opacity: 0;
+}
+
+.react-select [class$='-ackcql'],
+.react-select [class$='-placeholder'] {
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  margin: 0;
+}
+
+.react-select [class$='-menu'] {
+  width: 200px;
+  right: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+  padding: 0;
+  border-top: 4px solid transparent;
+  margin: 0;
+  background-color: transparent;
+  border-radius: 9px;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.react-select .react-select__single-value {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  color: #59A9FF;
+}
+
+.react-select .react-select__dropdown-indicator {
+  padding: 0;
+}
+
+.react-select .react-select__dropdown-indicator svg path {
+  fill: #59A9FF;
+}
+
+.react-select .react-select__menu .react-select__menu-list {
+  background: #141620;
+  padding: 5px 0 6px 0;
+}
+
+.react-select .react-select__menu .react-select__menu-list .react-select__option {
+  padding: 10px 15px;
+  color: #596184;
+  position: relative;
+  transition: all 160ms ease-in-out;
+  cursor: pointer;
+}
+
+.react-select .react-select__menu .react-select__menu-list .react-select__option:before {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0 3px 3px 0;
+  background-color: transparent;
+  height: 100%;
+  width: 3px;
+  transition: all 160ms ease-in-out;
+}
+
+.react-select .react-select__menu .react-select__menu-list .react-select__option:active,
+.react-select .react-select__menu .react-select__menu-list .react-select__option.react-select__option--is-focused,
+.react-select .react-select__menu .react-select__menu-list .react-select__option:active:before {
+  background-color: transparent;
+}
+
+.react-select .react-select__menu .react-select__menu-list .react-select__option.react-select__option--is-selected {
+  background-color: transparent;
+  color: #59A9FF;
+}
+
+.react-select .react-select__menu .react-select__menu-list .react-select__option:hover {
+  color: #59A9FF;
+  background-color: rgba(89, 97, 132, 0.3);
+}
+
+.react-select .react-select__menu .react-select__menu-list .react-select__option:hover:before {
+  background-color: #59A9FF;
+}
+
+.btn {
+  border-radius: 4px;
+  font-family: 'Roboto Mono', monospace;
+  padding: 15px 26px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.btn.link {
+  padding: 2px;
+  background-color: transparent;
 }

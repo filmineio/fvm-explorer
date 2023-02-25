@@ -53,7 +53,7 @@ export const Dropdown = <T extends any>({
         )}
       >
         <ul
-          className="py-1 uppercase text-sm "
+          className="py-1 uppercase text-14 "
           onClick={cb(toggle, !state)}
           onMouseLeave={cb(toggle, false)}
         >

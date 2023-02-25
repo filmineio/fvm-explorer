@@ -1,5 +1,5 @@
+import { CustomSelect } from "@/ui/components/Select/Select";
 import { AdvancedFilterToggle } from "@/ui/modules/Filters/components/AdvancedFilterToggle";
-import { GhostSelect } from "@/ui/modules/Filters/components/GhostSelect";
 import {
   availableFilters,
   availableNetworks,
@@ -28,25 +28,31 @@ export const FiltersHeader = ({
 
       <div className="flex flex-1 justify-end items-center flex-wrap gap-5">
         <div className="flex gap-3 mr-5 items-center">
-          <span className="inline-block text-label form-check-label text-sm lowercase translate-y-0.5">
+          <span className="inline-block text-label form-check-label text-14 lowercase translate-y-0.5">
             Search in
           </span>
-          <GhostSelect
-            value={state.filteredBy}
-            onChange={search}
-            values={availableFilters}
-          />
+          <div className="w-36">
+            <CustomSelect
+              value={state.filteredBy}
+              onChange={search}
+              values={availableFilters}
+              selectType="transparent"
+            />
+          </div>
         </div>
 
         <div className="flex gap-3 mr-5 items-center">
-          <span className="inline-block text-label form-check-label text-sm lowercase translate-y-0.5">
+          <span className="inline-block text-label form-check-label text-14 lowercase translate-y-0.5">
             Network
           </span>
-          <GhostSelect
-            value={state.network}
-            onChange={search}
-            values={availableNetworks}
-          />
+          <div className="w-32">
+            <CustomSelect
+              value={state.network}
+              onChange={search}
+              values={availableNetworks}
+              selectType="transparent"
+            />
+          </div>
         </div>
 
         <AdvancedFilterToggle

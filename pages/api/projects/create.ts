@@ -8,7 +8,6 @@ import { Project } from "@/types/data/Project";
 import { getCtx } from "@/api/ctx/apiCtx";
 import { identifyUser } from "@/api/utils/identifyUser";
 
-import { parse } from "@/utils/parse";
 import { standardizeResponse } from "@/utils/standardizeResponse";
 
 
@@ -18,7 +17,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (data === OperationStatus.Error) return res.status(401).end();
 
-  const body: Pick<Project, "name"> = parse(req.body, { name: "" });
+  const body: Pick<Project, "name"> = req.body;
 
   if (!body.name?.trim())
     return res.status(400).json({ exception: "INVALID_REQUEST_BODY" });
@@ -40,6 +39,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (result === OperationStatus.Error) throw "";
     return res.status(200).json(standardizeResponse(result));
   } catch (e) {
+    console.dir(e, { depth: 2 });
     return res.status(400).json({ exception: "CREATION_FAILED" });
   }
 };

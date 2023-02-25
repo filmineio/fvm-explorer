@@ -65,24 +65,24 @@ export const ProjectContractRow = ({ contract }: { contract: Contract }) => {
           </div>
         </div>
       </td>
-      <td className="bg-gray-dark text-left text-sm	 text-gray-text font-sans1 tracking-wider font-light px-6 py-3 whitespace-nowrap">
+      <td className="bg-gray-dark text-left text-14	 text-gray-text font-sans1 tracking-wider font-light px-6 py-3 whitespace-nowrap">
         NETWORK
-        <p className="font-medium text-sm	text-white font-sans1">
+        <p className="font-medium text-14	text-white font-sans1">
           {toHumanReadable(Network.HyperSpace)}
         </p>
       </td>
 
       <td
         colSpan={2}
-        className="bg-gray-dark text-left text-sm	 text-gray-text font-sans1 tracking-wider font-light px-6 py-3 whitespace-nowrap"
+        className="bg-gray-dark text-left text-14	 text-gray-text font-sans1 tracking-wider font-light px-6 py-3 whitespace-nowrap"
       >
         TRANSACTIONS
-        <p className="font-medium text-sm	text-white font-sans1">
+        <p className="font-medium text-14	text-white font-sans1">
           {ok + reverted}
         </p>
       </td>
 
-      <td className="bg-gray-dark text-left text-sm	 text-gray-text font-sans1 tracking-wider font-light px-6 py-3 whitespace-nowrap">
+      <td className="bg-gray-dark text-left text-14	 text-gray-text font-sans1 tracking-wider font-light px-6 py-3 whitespace-nowrap">
         <div className="flex items-center justify-between text-xs font-bold font-sans1 text-white">
           <div className="bg-yellowrgba p-1 mr-2 rounded-md flex items-center justify-center w-8">
             <svg
@@ -101,10 +101,10 @@ export const ProjectContractRow = ({ contract }: { contract: Contract }) => {
               ></path>
             </svg>
           </div>
-          <h5 className="text-yellow font-bold text-sm">View contract</h5>
+          <h5 className="text-yellow font-bold text-14">View contract</h5>
         </div>
       </td>
-      <td className="bg-gray-dark text-left text-sm	rounded-r-lg text-gray-text font-sans1 tracking-wider font-light px-6 py-3 whitespace-nowrap">
+      <td className="bg-gray-dark text-left text-14	rounded-r-lg text-gray-text font-sans1 tracking-wider font-light px-6 py-3 whitespace-nowrap">
         <div className="flex items-center justify-between text-xs font-bold font-sans1 text-white">
           <div className="bg-[#292E42] p-1 mr-2 rounded-md flex items-center justify-center">
             <svg

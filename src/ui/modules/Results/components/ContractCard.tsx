@@ -39,7 +39,7 @@ const TransactionCounters = ({
           <h4 className="font-space text-white text-lg font-bold leading-compact">
             {loading ? <Spinner inline /> : error ? "--" : ok}
           </h4>
-          <p className="font-roboto text-white text-xs font-normal leading-normal">
+          <p className="text-white text-xs font-normal leading-normal">
             successful txns
           </p>
         </div>
@@ -50,7 +50,7 @@ const TransactionCounters = ({
           <h4 className="font-space text-white text-lg font-bold leading-compact">
             {loading ? <Spinner inline /> : error ? "--" : reverted}
           </h4>
-          <p className="font-roboto text-white text-xs font-normal leading-normal">
+          <p className="text-white text-xs font-normal leading-normal">
             failed txns
           </p>
         </div>
@@ -114,10 +114,10 @@ export const ContractCard = ({ data, network }: ContractCardProps) => {
                   </h4>
                 </CopyWrapper>
                 { data.verified ?
-                    <p className="font-roboto text-blue-400 text-xs font-bold leading-compact mt-1.5">
+                    <p className="text-blue-400 text-xs font-bold leading-compact mt-1.5">
                       verified
                     </p> :
-                    <p className="font-roboto text-label text-xs font-bold leading-compact mt-1.5">
+                    <p className="text-label text-xs font-bold leading-compact mt-1.5">
                       unverified
                     </p>
                 }
@@ -133,15 +133,15 @@ export const ContractCard = ({ data, network }: ContractCardProps) => {
 
             <div className="flex mt-5">
               <div className="w-14/25 lg:w-8/12 pr-0 lg:pr-3">
-                <h3 className="font-roboto text-label text-sm font-normal leading-4 lowercase">
+                <h3 className="text-label text-14 font-normal leading-4 lowercase">
                   NETWORK
                 </h3>
-                <h5 className="font-roboto text-white text-sm font-medium leading-normal capitalize">
+                <h5 className="text-white text-14 font-medium leading-normal capitalize">
                   {network}
                 </h5>
               </div>
               <div className="w-11/25 lg:w-4/12 mt-2 lg:mt-0">
-                <button className="block ml-auto mr-0 bg-label_opacity-30 rounded-3 py-2.5 px-5 font-roboto text-blue-400 text-sm font-medium leading-4">
+                <button className="block ml-auto mr-0 bg-label_opacity-30 rounded-3 py-2.5 px-5 text-blue-400 text-14 font-medium leading-4">
                   {data.ethAddress ? "EVM" : "FVM"}
                 </button>
               </div>

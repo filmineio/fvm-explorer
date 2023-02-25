@@ -32,7 +32,7 @@ const Button = ({
       {leftIcon}
       <span
         className={classNames("font-medium", {
-          "text-sm": size === "md",
+          "text-14": size === "md",
           "text-xs": size === "xs",
         })}
       >

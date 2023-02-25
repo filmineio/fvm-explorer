@@ -19,12 +19,12 @@ export const AdvancedFilterRule = ({
 
   return (
     <div>
-      <div className="bg-slate rounded-base flex-wrap justify-end gap-5 items-center flex-row-reverse flex px-5 py-3 ">
+      <div className="bg-slate rounded-4 flex-wrap justify-end gap-5 items-center flex-row-reverse flex px-5 py-3 ">
         <div className="flex flex-wrap gap-4">
           <div className="closebut pr-3">
             <button
               type="button"
-              className=" box-content w-64 py-1 font-normal px-2 text-center text-white border border-yellow text-sm font-space  rounded-base focus:shadow-none focus:outline-none"
+              className=" box-content w-64 py-1 font-normal px-2 text-center text-white border border-yellow text-14 font-space  rounded-4 focus:shadow-none focus:outline-none"
             >
               {field}
             </button>
@@ -32,7 +32,7 @@ export const AdvancedFilterRule = ({
           <div className="closebut pr-3">
             <button
               type="button"
-              className=" box-content w-48 py-1 font-normal px-2 text-center text-analogous border border-analogous  text-sm font-space  rounded-full focus:shadow-none focus:outline-none"
+              className=" box-content w-48 py-1 font-normal px-2 text-center text-analogous border border-analogous  text-14 font-space  rounded-full focus:shadow-none focus:outline-none"
             >
               {toHumanReadable(operator)}
             </button>
@@ -42,7 +42,7 @@ export const AdvancedFilterRule = ({
               <button
                 key={v}
                 type="button"
-                className="box-content bg-analogous py-1 font-normal px-2 text-center text-white text-sm font-space  rounded-base focus:shadow-none focus:outline-none w-40 truncate"
+                className="box-content bg-analogous py-1 font-normal px-2 text-center text-white text-14 font-space  rounded-4 focus:shadow-none focus:outline-none w-40 truncate"
               >
                 {v as string}
               </button>
@@ -50,7 +50,7 @@ export const AdvancedFilterRule = ({
           ) : (
             <button
               type="button"
-              className="box-content bg-analogous py-1 font-normal px-2 text-center text-white text-sm font-space  rounded-base focus:shadow-none focus:outline-none"
+              className="box-content bg-analogous py-1 font-normal px-2 text-center text-white text-14 font-space  rounded-4 focus:shadow-none focus:outline-none"
             >
               {val as string}
             </button>
@@ -58,7 +58,7 @@ export const AdvancedFilterRule = ({
         </div>
         <div className="flex gap-3">
           <button
-            className="box-content w-4 h-4 p-2 text-center text-white border-none bg-body rounded-base focus:shadow-none focus:outline-none flex justify-center items-center"
+            className="box-content w-4 h-4 p-2 text-center text-white border-none bg-body rounded-4 focus:shadow-none focus:outline-none flex justify-center items-center"
             onClick={onRemove}
           >
             <img className="w-auto" src="/images/close.png" alt={""} />

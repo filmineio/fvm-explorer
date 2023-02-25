@@ -8,8 +8,7 @@ import { UserMenu } from "@/ui/components/UserMenu/UserMenu";
 import { useStore } from "@/ui/state/Store";
 
 import { cb } from "@/utils/cb";
-import LogoDevStorage from "@/ui/components/Common/Icons/LogoDevStorage";
-
+import LogoDevStorageWithText from "@/ui/components/Common/Icons/LogoDevStorageWithText";
 
 export const Header: FC = () => {
   const {
@@ -20,14 +19,16 @@ export const Header: FC = () => {
     <header className="px-4 py-4 border-b border-body">
       <div className="flex flex-row justify-between items-center m-auto">
         <div className="md:basis-1/2">
-          <Link href="/">
-            <LogoDevStorage />
+          <Link href="/" passHref>
+            <a>
+              <LogoDevStorageWithText />
+            </a>
           </Link>
         </div>
         {!user && (
           <div className="md:basis-1/2 text-right">
             <Button
-              className="bg-blue-500 py-3.75 px-7 rounded-base font-roboto text-base text-white font-bold leading-5"
+              className="bg-blue-500 py-3.75 px-7 rounded-4 font-roboto text-base text-white font-bold leading-5"
               onClick={cb(Router.push, "/auth")}
             >
               AUTHENTICATE
