@@ -18,7 +18,7 @@
 }
 
 button.graphiql-execute-button {
-    background-color: #D5FF64 !important;
+    background-color: #0576F0 !important;
 }
 
 button.graphiql-execute-button svg path {
@@ -51,7 +51,7 @@ button.graphiql-execute-button svg path {
     width: fit-content !important;
     display: flex;
     gap: 1rem;
-    color: #D5FF64 !important;
+    color: #0576F0 !important;
     white-space: nowrap;
     align-items: center !important;
     padding: 5px 1rem;

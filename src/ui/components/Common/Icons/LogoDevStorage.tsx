@@ -9,7 +9,7 @@ const LogoDevStorage: FC = () => (
     viewBox="0 0 54 57"
   >
     <path
-      style={{ mixBlendMode: "multiply" }}
+    style={{ mixBlendMode: "multiply" }}
       fill="#F5B309"
       d="M27.182 44.722L42.18 18.746l5.566 9.647-8.684 15.042a2.575 2.575 0 01-2.23 1.287h-9.65z"
     ></path>
