@@ -128,7 +128,7 @@ const Home: NextPage = () => {
           <div className="w-1/2  lg:w-8/12 flex items-center justify-center bg-black md:w-full">
             <div className="md:text-center md:text-left md:p-5">
               <form>
-                <h1 className="text-white text-md md:mb-2  md:mb-1 font-roboto font-bold">
+                <h1 className="text-white text-md md:mb-2  md:mb-1 font-bold">
                   Log in/Sign up
                 </h1>
                 <p className="text-gray text-base">
@@ -161,7 +161,7 @@ const Home: NextPage = () => {
                   />
                   <Button
                     type="button"
-                    className="buttons w-52 bg-yellow h-sm font-roboto font-bold rounded-base lg:px-8 px-8 text-sm  md:px-4 md:w-full md:mt-0 "
+                    className="buttons w-52 bg-yellow h-sm font-bold rounded-base lg:px-8 px-8 text-sm  md:px-4 md:w-full md:mt-0 "
                     onClick={initLogin}
                   >
                     SIGN IN
@@ -181,7 +181,7 @@ const Home: NextPage = () => {
           >
             <div className="modal-header flex flex-shrink-0 items-center justify-center p-4  rounded-t-md ">
               <h5
-                className="text-5xl  font-roboto leading-normal text-white"
+                className="text-5xl  leading-normal text-white"
                 id="exampleModalScrollableLabel "
               >
                 Check your email

@@ -5,7 +5,7 @@
   width: 70px;
   flex-shrink: 0;
   padding-top: 15px;
-  border-right: 2px solid #596184;
+  border-right: 2px solid #292E42;
   height: calc(100vh - 80px);
 
   ul {
@@ -20,11 +20,35 @@
         margin-bottom: 15px;
       }
 
+      & > label {
+        font-size: 16px;
+        line-height: 24px;
+        padding: 12px 20px;
+        background: #292E42;
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.8);
+        border-radius: 6px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: calc(100% + 12px);
+        white-space: nowrap;
+        color: #fff;
+        font-family: 'Roboto Mono', monospace;
+        transition: all 250ms ease-in-out;
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      &:hover > label {
+        opacity: 1;
+        visibility: visible;
+      }
+
       &:hover,
       &.active {
         .sidebar-item {
           svg path {
-            transition: all 160ms ease-in-out;
+            transition: all 100ms ease-in-out;
           }
 
           &.folder svg path {
@@ -49,7 +73,7 @@
       }
 
       .sidebar-item {
-        background: #EFF0F6;
+        background: #292E42;
         border-radius: 6px;
         display: inline-flex;
         align-items: center;

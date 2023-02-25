@@ -6,6 +6,8 @@ import { Spinner } from "@/ui/components/Spinner/Spinner";
 
 import { cb } from "@/utils/cb";
 import { onChange } from "@/utils/unpack";
+import X from "@/ui/components/Common/Icons/X";
+import Delete from "@/ui/components/Common/Icons/Delete";
 
 export const ProjectEditModal = ({
   value,
@@ -26,7 +28,7 @@ export const ProjectEditModal = ({
   if (loading) {
     return (
       <Modal>
-        <div className="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-black bg-clip-padding rounded-md outline-none text-gray-text">
+        <div className="modal-content border-none shadow-none relative flex flex-col w-full pointer-events-auto bg-slate rounded-10">
           <Spinner />
         </div>
       </Modal>
@@ -36,16 +38,16 @@ export const ProjectEditModal = ({
   if (confirm) {
     return (
       <Modal>
-        <div className="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-black bg-clip-padding rounded-md outline-none text-current">
+        <div className="modal-content border-none shadow-none relative flex flex-col w-full pointer-events-auto bg-slate rounded-10">
           <div className="modal-header flex flex-shrink-0 items-center">
             <button
-              className="btn-close absolute right-3 z-50 top-3 box-content w-4 h-4 p-1 text-white border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-white hover:opacity-75 hover:no-underline"
+              className="btn-close absolute right-7 top-7 z-10 hover:opacity-50 transition-all [transition:opacity_.0.16s_ease_in_out]"
               onClick={compose(cb(change, ""), cb(toggle, false))}
             >
-              x
+              <X />
             </button>
           </div>
-          <div className="modal-body relative p-12  text-2xl text-white">
+          <div className="modal-body relative p-[70px]">
             <p className="text-2xl text-white font-sans1 font-bold">
               Are you sure you want to delete {name} project?
             </p>
@@ -69,52 +71,40 @@ export const ProjectEditModal = ({
 
   return (
     <Modal>
-      <div className="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-black bg-clip-padding rounded-md outline-none text-current">
+      <div className="modal-content border-none shadow-none relative flex flex-col w-full pointer-events-auto bg-slate rounded-10">
         <div className="modal-header flex flex-shrink-0 items-center">
           <button
-            className="btn-close absolute right-3 z-50 top-3 box-content w-4 h-4 p-1 text-white border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-white hover:opacity-75 hover:no-underline"
+            className="btn-close absolute right-7 top-7 z-10 hover:opacity-50 transition-all [transition:opacity_.0.16s_ease_in_out]"
             onClick={compose(cb(change, ""), cb(toggle, false))}
           >
-            x
+            <X />
           </button>
         </div>
-        <div className="modal-body relative p-12  text-2xl text-white">
-          <p className="text-2xl text-white font-sans1 font-bold">
+        <div className="modal-body relative p-[70px]">
+          <h3 className="font-space text-white text-24 mb-10">
             Edit {value} project
-          </p>
-          <h4 className="text-white text-sm mt-5 font-sans1 ">Change Name</h4>
-          <input
-            className="font-mono1 p-3 bg-gray-dark placeholder-lightgray focus:outline-none focus:border-sky-500 focus:ring-sky-500 block rounded-md focus:ring-1 w-full min-h-sm  font-medium text-sm "
-            placeholder="Project name..."
-            onChange={onChange(change)}
-            value={name}
-          />
-          <div className="flex gap-4">
+          </h3>
+          <div className="input-wrapper">
+            <label>Change Name</label>
+            <input
+              className="w-full"
+              placeholder="Project name..."
+              onChange={onChange(change)}
+              value={name}
+            />
+          </div>
+          <div className="flex items-center gap-5 mt-[70px]">
             <button
               onClick={cb(onEdit, name)}
-              className="mt-[70px] btn bg-yellow py-3.5 mr-2 px-[30px] rounded-[9px] font-bold text-black text-[14px]"
+              className="btn bg-blue-500 text-white"
             >
               SAVE PROJECT
             </button>
             <button
-              className="text-analogous mt-[70px] btn  py-3.5 px-[30px] rounded-[9px] font-bold font-sans1 text-base flex gap-1 items-center"
+              className="btn link flex items-center text-red"
               onClick={cb(setConfirm, true)}
             >
-              <svg
-                width="32"
-                height="32"
-                viewBox="0 0 32 32"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M13.4997 11.8333V11.8333C13.4997 10.4526 14.619 9.33333 15.9997 9.33333V9.33333C17.3804 9.33333 18.4997 10.4526 18.4997 11.8333V11.8333M13.4997 11.8333H18.4997M13.4997 11.8333H10.9997M18.4997 11.8333H20.9997M22.6663 11.8333H20.9997M9.33301 11.8333H10.9997M10.9997 11.8333V20.6667C10.9997 21.7712 11.8951 22.6667 12.9997 22.6667H18.9997C20.1042 22.6667 20.9997 21.7712 20.9997 20.6667V11.8333"
-                  stroke="#B7006E"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              <Delete />
               Delete Project
             </button>
           </div>

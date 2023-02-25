@@ -6,6 +6,7 @@ import { User } from "@/ui/state/types/AppState";
 import { uiCtx } from "@/ui/ctx/uiCtx";
 
 import { cb } from "@/utils/cb";
+import ArrowChevronDown from "@/ui/components/Common/Icons/ArrowChevronDown";
 
 
 export const UserMenu = ({ user }: { user: User }) => {
@@ -24,18 +25,20 @@ export const UserMenu = ({ user }: { user: User }) => {
 
   return (
     <div
-      className="user flex items-center relative cursor-pointer"
+      className="flex items-center relative cursor-pointer relative"
       onMouseEnter={cb(setExpanded, true)}
       onMouseLeave={cb(setExpanded, false)}
     >
-      <div className="py-3 h-sm px-5 font-sans1 text-yellow text-sm font-semibold focus:outline-none">
+      <div className="py-4 text-white font-14 focus:outline-none flex items-center gap-4">
+        <div className="w-8 h-8 flex items-center justify-center bg-purple rounded-40">{user?.email?.charAt(0).toUpperCase()}</div>
         {user?.email}
+        <ArrowChevronDown />
       </div>
 
       {expanded && (
         <div
           className={
-            "absolute h-fit w-64 right-2 p-2 bg-black shadow-sm top-8 text-gray-text text-sm rounded border border-gray-dark flex flex-col gap-2 z-50"
+            "absolute h-fit w-64 right-2 p-2 bg-black top-[100%] text-gray-text text-sm rounded border border-gray-dark flex flex-col gap-2 z-50"
           }
         >
           <div

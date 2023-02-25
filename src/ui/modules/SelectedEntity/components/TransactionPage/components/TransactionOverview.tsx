@@ -43,12 +43,12 @@ export const TransactionOverview = ({
       </div>
       <div className="w-96	 md:w-full	ml-0  md:mt-4">
         <div className="bg-slate rounded-base p-6">
-          <h5 className="text-lg	font-bold font-roboto text-white">
+          <h5 className="text-lg	font-bold text-white">
             Transaction overview
           </h5>
 
           <div className="py-3">
-            <h5 className="text-left font-semibold font-roboto text-sm mt-2 tracking-wider	 text-label">
+            <h5 className="text-left font-semibold text-sm mt-2 tracking-wider	 text-label">
               CID
             </h5>
             <div className={"relative"}>
@@ -59,7 +59,7 @@ export const TransactionOverview = ({
               </CopyWrapper>
             </div>
 
-            <h5 className="text-left font-semibold font-roboto text-sm mt-2 tracking-wider	 text-label">
+            <h5 className="text-left font-semibold text-sm mt-2 tracking-wider	 text-label">
               TIPSETS (BLOCKS)
             </h5>
 
@@ -76,27 +76,27 @@ export const TransactionOverview = ({
         </div>
 
         <div className="bg-slate rounded-base p-6 mt-4">
-          <h5 className="text-lg	font-bold font-roboto text-white">
+          <h5 className="text-lg	font-bold text-white">
             Gas details
           </h5>
 
           <div className="py-3">
-            <h5 className="text-left font-semibold font-roboto text-sm mt-2 tracking-wider	 text-label">
+            <h5 className="text-left font-semibold text-sm mt-2 tracking-wider	 text-label">
               GAS FEE CAP
             </h5>
-            <p className="text-left font-medium font-roboto mb-4 text-sm  text-white">
+            <p className="text-left font-medium mb-4 text-sm  text-white">
               {transaction.gasFeeCap}
             </p>
-            <h5 className="text-left font-semibold font-roboto text-sm mt-2 tracking-wider	 text-label">
+            <h5 className="text-left font-semibold text-sm mt-2 tracking-wider	 text-label">
               GAS LIMIT
             </h5>
-            <p className="text-left font-semibold font-roboto mb-4 text-sm text-white">
+            <p className="text-left font-semibold mb-4 text-sm text-white">
               {transaction.gasLimit}
             </p>
-            <h5 className="text-left font-semibold font-roboto text-sm mt-2 tracking-wider	text-label">
+            <h5 className="text-left font-semibold text-sm mt-2 tracking-wider	text-label">
               GAS PREMIUM
             </h5>
-            <p className="text-left font-semibold font-roboto  text-sm tracking-wider	text-white">
+            <p className="text-left font-semibold  text-sm tracking-wider	text-white">
               {transaction.gasPremium}
             </p>
           </div>

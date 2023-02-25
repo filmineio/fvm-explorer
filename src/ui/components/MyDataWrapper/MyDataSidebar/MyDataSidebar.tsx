@@ -21,6 +21,7 @@ export const MyDataSidebar = ({ kind }: { kind: MyDataKind }) => {
               <Folder />
             </div>
           </Link>
+          <label>My projects</label>
         </li>
         <li
           className={classNames(styles['sidebar-item-wrapper'], {
@@ -32,6 +33,7 @@ export const MyDataSidebar = ({ kind }: { kind: MyDataKind }) => {
               <DatabaseSearch />
             </div>
           </Link>
+          <label>My queries</label>
         </li>
       </ul>
     </div>

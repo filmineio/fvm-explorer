@@ -9,11 +9,11 @@ const DatabaseSearch: FC = () => (
     viewBox="0 0 30 30"
   >
     <path
-      fill="#A0A3BD"
+      fill="#596184"
       d="M26.25 8.75c0 2.761-5.037 5-11.25 5s-11.25-2.239-11.25-5 5.037-5 11.25-5 11.25 2.239 11.25 5z"
     />
     <path
-      stroke="#A0A3BD"
+      stroke="#596184"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth="2"
