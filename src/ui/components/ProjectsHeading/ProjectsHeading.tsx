@@ -11,6 +11,7 @@ import { useMutation } from "@/ui/external/data";
 import { Project } from "@/types/data/Project";
 
 import { cb } from "@/utils/cb";
+import Plus from "@/ui/components/Common/Icons/Plus";
 
 
 export const ProjectsHeading = ({ onCreate }: { onCreate: () => void }) => {
@@ -56,21 +57,7 @@ export const ProjectsHeading = ({ onCreate }: { onCreate: () => void }) => {
         >
           <div className="flex items-center text-blue-400 text-14 font-bold hover:text-blue-600 transition-colors">
             <div className="bg-label-30 mr-5 rounded-3 flex items-center justify-center w-8 h-8">
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 14 14"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1.66699 7.00008H7.00033M12.3337 7.00008H7.00033M7.00033 7.00008V1.66675M7.00033 7.00008V12.3334"
-                  stroke="#0576F0"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              <Plus />
             </div>
             New project
           </div>
