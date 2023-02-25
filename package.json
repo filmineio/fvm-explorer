@@ -29,6 +29,7 @@
     "babel-plugin-macros": "^3.1.0",
     "classnames": "^2.3.2",
     "dotenv": "^16.0.3",
+    "graphiql": "^2.2.0",
     "graphql": "^16.6.0",
     "graphql-type-json": "^0.3.2",
     "magic-sdk": "^11.0.0",

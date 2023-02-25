@@ -1,4 +1,5 @@
 @import '~react-toastify/dist/ReactToastify.css';
+@import "gqleditor.css";
 
 @tailwind base;
 @tailwind components;
