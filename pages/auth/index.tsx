@@ -46,7 +46,7 @@ const Home: NextPage = () => {
             <div className="absolute self-end top-0 right-0">
               <AuthIllustrationTop/>
             </div>
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center z-50">
               <LogoName/>
             </div>
             <div className="absolute self-start bottom-0 left-0">
