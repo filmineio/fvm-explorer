@@ -56,7 +56,7 @@ export const ProjectsHeading = ({ onCreate }: { onCreate: () => void }) => {
           onClick={cb(setCreateCaseActive, true)}
         >
           <div className="flex items-center text-blue-400 text-14 font-bold hover:text-blue-600 transition-colors">
-            <div className="bg-label-30 mr-5 rounded-3 flex items-center justify-center w-8 h-8">
+            <div className="bg-label_opacity-30 mr-5 rounded-3 flex items-center justify-center w-8 h-8">
               <Plus />
             </div>
             New project

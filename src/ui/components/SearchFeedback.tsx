@@ -21,7 +21,7 @@ export const SearchFeedback = ({
     );
   }
   return (
-    <div className="container mx-auto px-4 2xls:px-20">
+    <div className="container mx-auto 2xls:px-20">
       <div className="border-solid border-2  mt-10 border-label  rounded-4lg ">
         <div className="h-full min-h-[57vh] flex justify-center items-center px-8  xs:flex-wrap">
           <div className="border-solid border-2 border-label  rounded-4lg p-6">

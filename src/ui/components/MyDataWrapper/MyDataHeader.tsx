@@ -5,6 +5,7 @@ import { useStore } from "@/ui/state/Store";
 
 import { Maybe } from "@/types/Maybe";
 import LogoDevStorage from "@/ui/components/Common/Icons/LogoDevStorage";
+import Link from "next/link";
 
 export const MyDataHeader = ({
   kind,
@@ -20,7 +21,11 @@ export const MyDataHeader = ({
   return (
     <div className="flex md:pr-10 z-10 top-0 left-0 right-0 border-b-2 border-body min-h-[80px]">
       <div className="z-10 flex items-center mr-10 w-[70px] justify-center border-r-2 border-body flex-shrink-0">
-        <LogoDevStorage />
+        <Link href="/" passHref>
+          <a>
+            <LogoDevStorage />
+          </a>
+        </Link>
       </div>
       <div className="flex items-center justify-between w-full">
         <div className="list ">

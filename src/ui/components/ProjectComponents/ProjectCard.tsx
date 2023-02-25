@@ -122,7 +122,7 @@ export const ProjectCard = ({ data, reFetch }: ProjectCardProps) => {
           <p className="text-xs text-white font-normal ">PROJECT</p>
         </div>
         <div className="block cursor-pointer" onClick={cb(setShowEdit, true)}>
-          <div className="absolute right-2 top-2 bg-label-30 rounded-3 flex items-center justify-center w-8 h-8">
+          <div className="absolute right-2 top-2 bg-label_opacity-30 rounded-3 flex items-center justify-center w-8 h-8">
             <svg
               width="12"
               height="12"
@@ -167,7 +167,7 @@ export const ProjectCard = ({ data, reFetch }: ProjectCardProps) => {
             className="mt-8 flex items-center text-blue-400 text-14 font-bold cursor-pointer hover:text-blue-600 transition-colors"
             onClick={cb(push, `/me/projects/${data.id}`)}
           >
-            <div className="bg-label-30 mr-5 rounded-3 flex items-center justify-center w-6 h-6">
+            <div className="bg-label_opacity-30 mr-5 rounded-3 flex items-center justify-center w-6 h-6">
               <Share />
             </div>
             View Contracts
