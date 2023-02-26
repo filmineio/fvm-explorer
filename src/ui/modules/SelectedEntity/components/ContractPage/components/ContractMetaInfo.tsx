@@ -1,6 +1,13 @@
 import { Contract } from "@/types/data/Contract";
+import { ContractMeta } from "@/types/data/ContractMeta";
 
-export const ContractMetaInfo = ({ contract }: { contract: Contract }) => {
+export const ContractMetaInfo = ({
+  contract,
+  metadata,
+}: {
+  contract: Contract;
+  metadata: ContractMeta;
+}) => {
   return (
     <div className="project relative p-7  min-w-0 break-words  border-2 border-label rounded-4 mt-6  ">
       <div className="absolute bg-label p-1 -top-3 left-0">
@@ -13,11 +20,7 @@ export const ContractMetaInfo = ({ contract }: { contract: Contract }) => {
             ABI
           </h4>
           <div className="flex">
-            <button
-              data-bs-toggle="modal"
-              data-bs-target="#ViewABI"
-              className="flex items-center justify-between text-xs font-bold text-white pr-4"
-            >
+            <button className="flex items-center justify-between text-xs font-bold text-white pr-4">
               <div className="bg-blue-400_opacity-30 p-1 mr-2 rounded-4 flex items-center justify-center w-8">
                 <svg
                   width="14"
@@ -67,7 +70,7 @@ export const ContractMetaInfo = ({ contract }: { contract: Contract }) => {
             COMPILER VERSION
           </h4>
           <h5 className="text-white font-medium text-14	tracking-wider	leading-5	">
-            g++ 4.8
+            {metadata.compilerVersion}
           </h5>
         </div>
       </div>

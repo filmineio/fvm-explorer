@@ -9,6 +9,7 @@ import { AddToProject } from "@/ui/modules/SelectedEntity/components/ContractPag
 import { useStore } from "@/ui/state/Store";
 
 import { Contract } from "@/types/data/Contract";
+import { ContractMeta } from "@/types/data/ContractMeta";
 
 import { capitalize } from "@/utils/capitalize";
 
@@ -17,10 +18,12 @@ export const ContractBaseInfo = ({
   contract,
   network,
   totalTransactions,
+  metadata,
 }: {
   contract: Contract;
   network: Network;
   totalTransactions: number;
+  metadata?: ContractMeta;
 }) => {
   const {
     state: { user },
@@ -147,7 +150,9 @@ export const ContractBaseInfo = ({
           </div>
         </div>
 
-        {3 > 4 && <ContractMetaInfo contract={contract} />}
+        {!!metadata && (
+          <ContractMetaInfo contract={contract} metadata={metadata} />
+        )}
       </div>
 
       {showAddToProject && (

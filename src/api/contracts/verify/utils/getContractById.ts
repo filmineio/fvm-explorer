@@ -22,7 +22,7 @@ export const getContractById = async (
     ],
     query: [
       {
-        ContractId: {
+        contractAddress: {
           is: contractId,
         },
       },

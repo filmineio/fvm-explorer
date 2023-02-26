@@ -1,4 +1,5 @@
 import { CustomSelect } from "@/ui/components/Select/Select";
+
 import { AdvancedFilterToggle } from "@/ui/modules/Filters/components/AdvancedFilterToggle";
 import {
   availableFilters,
@@ -9,12 +10,13 @@ import { FilterState } from "@/ui/state/types/AppState";
 
 import { cb } from "@/utils/cb";
 
+
 export const FiltersHeader = ({
-                                state,
-                                checked,
-                                toggle,
-                                search,
-                              }: {
+  state,
+  checked,
+  toggle,
+  search,
+}: {
   state: FilterState;
   checked: boolean;
   toggle: (v: boolean) => void;
