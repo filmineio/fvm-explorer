@@ -9,14 +9,14 @@ module.exports = {
       center: true,
     },
     borderRadius: {
-      '2': '2px',
+      "2": "2px",
       "3": "3px",
-      '4': '4px',
+      "4": "4px",
       "6": "6px",
       "9": "9px",
       "10": "10px",
       "40": "40px",
-
+      "0330":"0 3px 3px 0"
     },
     letterSpacing: {
       tightest: '-.075em',
@@ -118,6 +118,10 @@ module.exports = {
         "3.25": "13px",
         "3.75": "15px",
         "6.5": "28px"
+      },
+
+      boxShadow: {
+        "dropdown": "0 4px 12px #000000cc",
       }
     },
     fontFamily: {
