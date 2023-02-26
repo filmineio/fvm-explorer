@@ -101,7 +101,7 @@ export const AddToProject = ({
   }
   return (
     <Modal>
-      <div className="modal-content border-none shadow-none relative flex flex-col w-full pointer-events-auto bg-black rounded-10">
+      <div className="modal-content border-none shadow-none relative flex flex-col w-full pointer-events-auto bg-slate rounded-10">
         <div className="modal-header flex flex-shrink-0 items-center">
           <button
             className="btn-close absolute right-7 top-7 z-10 hover:opacity-50 transition-all [transition:opacity_.0.16s_ease_in_out]"
@@ -110,11 +110,11 @@ export const AddToProject = ({
             <X />
           </button>
         </div>
-        <div className="modal-body relative p-[70px] w-full">
-          <h3 className="font-space text-white text-24">
+        <div className="modal-body relative p-[70px]">
+          <h3 className="font-space text-white text-24 mb-5">
             Add contract to project
           </h3>
-          <p className={"pb-10 pt-2 text-gray-text"}>
+          <p className="mb-14 text-gray-text">
             Easily access the contracts you wish to monitor.
           </p>
 
@@ -132,9 +132,7 @@ export const AddToProject = ({
           </div>
           <button
             onClick={submit}
-            className={
-              "bg-blue-500 mt-14 p-4 px-14 font-semibold rounded-6 text-lg uppercase"
-            }
+            className="btn bg-blue-500 text-white mt-14 uppercase"
           >
             Done
           </button>

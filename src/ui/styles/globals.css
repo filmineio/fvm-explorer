@@ -118,7 +118,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 
-.state.bg-yellowrgba svg {
+.state.bg-blue-400_opacity-30 svg {
   transform: rotate(92deg);
 }
 

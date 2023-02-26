@@ -25,7 +25,7 @@ export const ContractTransactionRow = ({
   return (
     <>
       <tr className="min-w-full bg-slate rounded rounded-b-0">
-        <td className="w-1/6 px-6 py-3 text-left truncate text-yellow underline cursor-pointer">
+        <td className="w-1/6 px-6 py-3 text-left truncate text-blue-400 underline cursor-pointer">
           <Link
             href={`/explore/${Entity.Transaction}/${transaction.cid}?network=${network}`}
           >

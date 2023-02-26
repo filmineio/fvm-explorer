@@ -18,7 +18,7 @@ export const ContractMetaInfo = ({ contract }: { contract: Contract }) => {
               data-bs-target="#ViewABI"
               className="flex items-center justify-between text-xs font-bold text-white pr-4"
             >
-              <div className="bg-yellowrgba p-1 mr-2 rounded-4 flex items-center justify-center w-8">
+              <div className="bg-blue-400_opacity-30 p-1 mr-2 rounded-4 flex items-center justify-center w-8">
                 <svg
                   width="14"
                   height="14"
@@ -35,12 +35,12 @@ export const ContractMetaInfo = ({ contract }: { contract: Contract }) => {
                   ></path>
                 </svg>
               </div>
-              <a href="#ViewABI" className="text-yellow font-bold text-14 ">
+              <a href="#ViewABI" className="text-blue-400 font-bold text-14 ">
                 View ABI
               </a>
             </button>
             <button className="flex items-center justify-between text-xs font-bold text-white">
-              <div className="bg-yellowrgba p-1 mr-2 rounded-4 flex items-center justify-center w-8">
+              <div className="bg-blue-400 p-1 mr-2 rounded-4 flex items-center justify-center w-8">
                 <svg
                   width="14"
                   height="16"
@@ -57,7 +57,7 @@ export const ContractMetaInfo = ({ contract }: { contract: Contract }) => {
                   ></path>
                 </svg>
               </div>
-              <h5 className="text-yellow font-bold text-14 ">Copy ABI</h5>
+              <h5 className="text-blue-400 font-bold text-14 ">Copy ABI</h5>
             </button>
           </div>
         </div>

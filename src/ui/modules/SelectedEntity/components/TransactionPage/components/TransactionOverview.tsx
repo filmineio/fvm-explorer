@@ -66,7 +66,7 @@ export const TransactionOverview = ({
             {data.map((t) => (
               <div key={t.cid} className={"cursor-pointer"}>
                 <Link href={`/explore/block/${t.block}?network=${network}`}>
-                  <p className="text-left font-normal font-space mb-4 truncate text-14 text-white hover:text-yellow hover:underline">
+                  <p className="text-left font-normal font-space mb-4 truncate text-14 text-white hover:text-blue-400 hover:underline">
                     {t.block}
                   </p>
                 </Link>

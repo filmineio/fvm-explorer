@@ -22,7 +22,7 @@ export const EventPresenter = ({ event }: { event: Event }) => {
         <div className={"flex-1"}>Event {event.order}</div>
         <div className={"text-center w-96"}>t0{event.emitter}</div>
         <div
-          className={"flex-1 text-right text-yellow cursor-pointer"}
+          className={"flex-1 text-right text-blue-400 cursor-pointer"}
           onClick={toggle}
         >
           {visible ? "Hide Entries" : "Show Entries"}
