@@ -71,6 +71,11 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 
+.input-wrapper input[type="file"] {
+  padding: 0;
+  border: none;
+}
+
 .input-wrapper input:hover {
   border-color: #596184;
 }
@@ -78,6 +83,10 @@ h1, h2, h3, h4, h5, h6 {
 .input-wrapper input:focus {
   border-color: #596184;
   box-shadow: 0 0 0 5px rgba(89, 97, 132, 0.4);
+}
+
+.input-wrapper input[type="file"]:focus {
+  box-shadow: none;
 }
 
 .input-wrapper input::placeholder {
@@ -99,6 +108,9 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 10px;
   display: inline-block;
   color: #fff;
+}
+.input-wrapper label.mb-0 {
+  margin-bottom: 0;
 }
 /* Button 10 */
 #button-10 .knobs:after {
