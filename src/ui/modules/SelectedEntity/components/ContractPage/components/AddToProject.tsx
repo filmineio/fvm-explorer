@@ -111,10 +111,10 @@ export const AddToProject = ({
           </button>
         </div>
         <div className="modal-body relative p-[70px]">
-          <h3 className="font-space text-white text-24 mb-5">
+          <h3 className="font-space text-white text-24 mb-10">
             Add contract to project
           </h3>
-          <p className="mb-14 text-gray-text">
+          <p className="mb-14 text-white text-16">
             Easily access the contracts you wish to monitor.
           </p>
 
