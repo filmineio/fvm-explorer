@@ -1,76 +1,205 @@
 .graphiql-container {
-    min-height: calc(100vh - 10rem);
-    flex-direction: row-reverse;
+  min-height: calc(100vh - 10rem);
+  flex-direction: row-reverse;
+  position: relative;
+  overflow: visible;
+}
+
+body .graphiql-container .graphiql-query-editor {
+  padding-left: 0;
+}
+
+body .graphiql-container .graphiql-editors.full-height {
+  margin-top: 0;
+}
+
+body .graphiql-container .graphiql-session,
+body .graphiql-container .graphiql-editor-tools,
+body .graphiql-add-tab-wrapper {
+  padding: 0;
+}
+
+body .graphiql-add-tab-wrapper button {
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background-color: rgba(41, 46, 66, 0.5);
+}
+
+body .graphiql-tabs {
+  padding: 0;
+}
+
+body .graphiql-editor-tools-tabs .graphiql-un-styled,
+body .graphiql-editor-tools-tabs .graphiql-un-styled:hover,
+body .graphiql-tab {
+  background: rgba(89, 97, 132, 0.4);
+  border-radius: 2px;
+}
+
+body .graphiql-container .graphiql-editor-tools-tabs > button + button,
+body .graphiql-tabs > :not(:first-child) {
+  margin-left: 0;
+}
+
+body .graphiql-un-styled.active,
+body .graphiql-un-styled.active:hover,
+body .graphiql-tab.graphiql-tab-active {
+  background: #596184;
+}
+
+body button.graphiql-tab-add,
+body .graphiql-tab .graphiql-tab-close {
+  outline: none !important;
+}
+
+body :is(.graphiql-un-styled,button.graphiql-un-styled):hover,
+body :is(.graphiql-un-styled,button.graphiql-un-styled):active {
+  background: unset;
+}
+
+body .graphiql-container .graphiql-session-header {
+  height: auto;
+  border-radius: 2px;
+  min-height: 38.5px;
+}
+
+body .graphiql-container .graphiql-editor-tools-tabs > button,
+body button.graphiql-tab-button {
+  padding: 8px 16px;
+  outline: none !important;
+  display: inline-flex;
+  align-items: center;
+  color: #fff;
+}
+
+body button.graphiql-tab-button:before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background: url("../../../public/images/gql-icon.svg") no-repeat center;
+  background-size: contain;
+  margin-right: 8px;
+}
+
+body .graphiql-container .graphiql-sessions {
+  background: transparent;
+}
+
+body .graphiql-container .graphiql-editor-tools {
+  background-color: #292E42;
 }
 
 .graphiql-main {
-    flex-direction: row-reverse;
-    background-color: #141620;
+  flex-direction: row-reverse;
+  background-color: #141620;
 }
 
-.graphiql-editors, .graphiql-query-editor, .graphiql-query-editor-wrapper, .graphiql-editor, .graphiql-session, .CodeMirror.cm-s-graphiql, .CodeMirror-gutters *, .graphiql-session-header, .graphiql-editor-tools, .graphiql-editor-tool {
-    background-color: #141620;
+.graphiql-query-editor, .graphiql-query-editor-wrapper, .graphiql-editor, .graphiql-session, .CodeMirror.cm-s-graphiql, .CodeMirror-gutters *, .graphiql-editor-tools, .graphiql-editor-tool {
+  background-color: #141620;
+}
+
+body .graphiql-container .graphiql-editors {
+  background: transparent;
+}
+
+body .graphiql-container .graphiql-editor-tools button.active {
+  color: #fff;
+}
+
+.graphiql-session-header {
+  background-color: #292E42;
 }
 
 .graphiql-horizontal-drag-bar {
-    width: 1px !important;
-    background-color: #3f424b;
+  width: 1px !important;
+  background-color: #3f424b;
 }
 
 button.graphiql-execute-button {
-    background-color: #0576F0 !important;
+  background-color: #0576F0 !important;
 }
 
 button.graphiql-execute-button svg path {
-    fill: #141620;
+  fill: #fff;
 }
 
 
 .graphiql-history-item.editable {
-    background-color: rgba(183, 0, 110, 0.19) !important;
+  background-color: rgba(183, 0, 110, 0.19) !important;
 }
 
 .graphiql-sidebar {
-    position: absolute !important;
-    top: 3.5rem !important;
-    display: flex !important;
-    flex-direction: row !important;
-    right: 16rem;
-    gap: 3rem;
-    background-color: transparent;
+  position: absolute !important;
+  top: -70px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  right: 260px;
+  gap: 3rem;
+  background-color: transparent;
 }
 
 .graphiql-sidebar-section {
-    display: flex !important;
-    flex-direction: row !important;
-    gap: 1rem !important;
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 1rem !important;
 }
 
 
 .graphiql-sidebar > div > button {
-    width: fit-content !important;
-    display: flex;
-    gap: 1rem;
-    color: #0576F0 !important;
-    white-space: nowrap;
-    align-items: center !important;
-    padding: 5px 1rem;
+  width: fit-content !important;
+  display: flex;
+  gap: 1rem;
+  color: #0576F0 !important;
+  white-space: nowrap;
+  align-items: center !important;
+  padding: 5px 1rem;
 }
 
 .graphiql-sidebar > div:nth-child(1) > button:nth-child(1):after {
-    content: "View Docs";
+  content: "View Docs";
 }
 
 .graphiql-sidebar > div:nth-child(1) > button:nth-child(2):after {
-    content: "Query History";
+  content: "Query History";
 }
 
 .graphiql-sidebar > div:nth-child(1) > button:nth-child(2) {
-    transform: translateY(-.2rem);
+  transform: translateY(-.2rem);
 }
 
+button {
+  outline: none !important;
+}
 
 /*Hide Editor Theme Settings */
 .graphiql-sidebar > div:nth-child(2) > button {
-    display: none;
+  display: none;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar-track {
+  background: #141620;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #292E42;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #292E42;
 }

@@ -32,7 +32,7 @@ export const SearchFeedback = ({
               <h5 className="text-white font-bold text-lg mb-4 font-space tracking-wider	">
                 Something Went Wrong
               </h5>
-              <p className="text-switchs font-medium text-[16px]">
+              <p className="text-label font-medium text-[16px]">
                 We are experiencing issues while running your query
                 <br />
                 Try again in few minutes. If the issue is still present please
@@ -44,7 +44,7 @@ export const SearchFeedback = ({
               <h5 className="text-white font-bold text-lg mb-4 font-space tracking-wider	">
                 {capitalize(kind)} not found
               </h5>
-              <p className="text-switchs font-medium text-[16px]">
+              <p className="text-label font-medium text-[16px]">
                 It may take up to 2 minutes for the new {kind}
                 <br />
                 to appear in FilExplore.
