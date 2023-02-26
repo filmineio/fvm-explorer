@@ -24,7 +24,7 @@ export const SearchFilters = ({
         </div>
       </div>
       <button
-        className="border-2 border-blue-400 px-6.5 py-3.75 font-bold text-blue-400 uppercase rounded-4 ml-3"
+        className="border-2 border-blue-400 px-7 py-3.75 font-bold text-blue-400 uppercase rounded-4 ml-3"
         onClick={onClick}
       >
         SEARCH

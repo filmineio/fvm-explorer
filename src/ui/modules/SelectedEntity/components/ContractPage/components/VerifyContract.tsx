@@ -137,7 +137,7 @@ export const VerifyContract = ({
     <>
       <div
         className={
-          "absolute top-0 left-0 w-full h-16 bg-blue-400_opacity-30 flex justify-between items-center  px-10"
+          "absolute top-0 left-0 w-full h-16 bg-label flex justify-between items-center  px-10"
         }
       >
         <div className={"text-white"}>
@@ -145,7 +145,7 @@ export const VerifyContract = ({
           <span>Upload source code to claim ownership.</span>
         </div>
         <button
-          className={"bg-white py-2 px-8 text-sm font-semibold rounded-6"}
+          className={"bg-blue-500 p- py-3.75 px-7 text-white text-16 font-semibold rounded-6"}
           onClick={cb(setShowVerify, true)}
         >
           VERIFY CONTRACT

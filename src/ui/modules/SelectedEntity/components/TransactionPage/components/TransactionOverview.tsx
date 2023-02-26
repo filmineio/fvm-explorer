@@ -15,58 +15,58 @@ export const TransactionOverview = ({
   transaction: Transaction;
 }) => {
   return (
-    <div className="my-5 flex-wrap flex justify-between">
+    <div className="mt-5 flex-wrap flex justify-between">
       <div className="w-4/6	 md:w-full">
-        <div className="bg-slate rounded-4  p-6">
+        <div className="bg-body_opacity-50 rounded-6 p-7.5">
           <div className="flex flex-wrap  text-justify justify-between items-center	">
-            <h5 className="font-bold text-lg text-white font-space ">
+            <h5 className="font-bold text-18 leading-compact text-white font-space">
               Method & Params
             </h5>
 
             <span className="flex text-justify items-center mt-3 sm:mt-0	">
-              <p className="text-14 font-normal font-space italic	text-white pr-3">
+              <p className="text-14 font-normal italic	text-white pr-3">
                 MethodId
               </p>
-              <button className="bg-bglight rounded-4 py-2 px-5 font-medium font-space  text-14 leading-5 text-white tracking-wider">
+              <button className="bg-bglight rounded-4 py-2 px-5 font-medium text-14 leading-5 text-white tracking-wider">
                 {transaction.method}
               </button>
             </span>
           </div>
           <div className="overflow-x-auto ">
-            <div className="py-2 inline-block min-w-full text-label">
+            <div className="mt-4 inline-block min-w-full">
               <pre>
-                <code>{transaction.params}</code>
+                <code className="font-roboto text-14 leading-normal text-label">{transaction.params}</code>
               </pre>
             </div>
           </div>
         </div>
       </div>
-      <div className="w-96	 md:w-full	ml-0  md:mt-4">
-        <div className="bg-slate rounded-4 p-6">
-          <h5 className="text-lg	font-bold text-white">
+      <div className="w-[430px] md:w-full ml-0 md:mt-4">
+        <div className="bg-body_opacity-50 rounded-6 p-7.5">
+          <h5 className="text-18 font-bold text-white leading-compact">
             Transaction overview
           </h5>
 
-          <div className="py-3">
-            <h5 className="text-left font-semibold text-14 mt-2 tracking-wider	 text-label">
+          <div className="mt-5">
+            <h5 className="text-left font-medium text-14 tracking-wider text-label leading-4">
               CID
             </h5>
             <div className={"relative"}>
               <CopyWrapper data={transaction.cid}>
-                <p className="text-left font-normal font-space mb-4 text-14  text-white relative truncate cursor-pointer">
+                <p className="mt-1.25 text-left font-normal text-14 text-white leading-normal relative truncate cursor-pointer">
                   {transaction.cid}
                 </p>
               </CopyWrapper>
             </div>
 
-            <h5 className="text-left font-semibold text-14 mt-2 tracking-wider	 text-label">
+            <h5 className="mt-5 text-left font-medium text-14 tracking-wider text-label leading-4 lowercase">
               TIPSETS (BLOCKS)
             </h5>
 
             {data.map((t) => (
               <div key={t.cid} className={"cursor-pointer"}>
                 <Link href={`/explore/block/${t.block}?network=${network}`}>
-                  <p className="text-left font-normal font-space mb-4 truncate text-14 text-white hover:text-blue-400 hover:underline">
+                  <p className="text-left font-normal mt-3 truncate text-14 text-white hover:text-blue-400 hover:underline">
                     {t.block}
                   </p>
                 </Link>
@@ -75,28 +75,28 @@ export const TransactionOverview = ({
           </div>
         </div>
 
-        <div className="bg-slate rounded-4 p-6 mt-4">
-          <h5 className="text-lg	font-bold text-white">
+        <div className="bg-body_opacity-50 rounded-6 p-7.5 mt-5">
+          <h5 className="text-18 font-bold text-white leading-compact">
             Gas details
           </h5>
 
-          <div className="py-3">
-            <h5 className="text-left font-semibold text-14 mt-2 tracking-wider	 text-label">
+          <div className="mt-5">
+            <h5 className="text-left font-medium text-14 tracking-wider text-label leading-4 lowercase">
               GAS FEE CAP
             </h5>
-            <p className="text-left font-medium mb-4 text-14  text-white">
+            <p className="mt-1.25 text-left font-normal text-14 text-white leading-normal">
               {transaction.gasFeeCap}
             </p>
-            <h5 className="text-left font-semibold text-14 mt-2 tracking-wider	 text-label">
+            <h5 className="mt-5 text-left font-medium text-14 tracking-wider	 text-label leading-4 lowercase">
               GAS LIMIT
             </h5>
-            <p className="text-left font-semibold mb-4 text-14 text-white">
+            <p className="mt-1.25 text-left font-normal text-14 text-white leading-normal">
               {transaction.gasLimit}
             </p>
-            <h5 className="text-left font-semibold text-14 mt-2 tracking-wider	text-label">
+            <h5 className="mt-5 text-left font-medium text-14 tracking-wider	text-label leading-4 lowercase">
               GAS PREMIUM
             </h5>
-            <p className="text-left font-semibold  text-14 tracking-wider	text-white">
+            <p className="mt-1.25 text-left font-normal  text-14 tracking-wider	text-white">
               {transaction.gasPremium}
             </p>
           </div>

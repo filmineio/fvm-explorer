@@ -12,6 +12,10 @@ import { Contract } from "@/types/data/Contract";
 import { ContractMeta } from "@/types/data/ContractMeta";
 
 import { capitalize } from "@/utils/capitalize";
+import FileEyeIcon from "@/ui/components/Common/Icons/FileEyeIcon";
+import BookmarkCodeIcon from "@/ui/components/Common/Icons/BookmarkCodeIcon";
+import LinkIcon from "@/ui/components/Common/Icons/LinkIcon";
+import FileCopyIcon from "@/ui/components/Common/Icons/FileCopyIcon";
 
 
 export const ContractBaseInfo = ({
@@ -31,124 +35,94 @@ export const ContractBaseInfo = ({
 
   const [showEth, toggle] = useReducer((p) => !p, false);
   const [showAddToProject, toggleAddToProject] = useReducer((p) => !p, false);
-  return (
-    <div className="w-full mr-5 md:mr-0">
-      <div className="project relative  p-7  min-w-0 break-words bg-slate border-2 border-label rounded-4 mb-6 xl:mb-0 shadow-lg ">
-        <div className="absolute bg-label py-1 px-2 -top-3 left-0">
-          <p className="text-xs text-white font-normal ">CONTRACT</p>
-        </div>
-        <div className="flex md:flex-wrap justify-between  items-center">
-          <div className="md:w-full ">
-            <div className="pr-3">
-              <h3 className="text-xl font-bold text-white relative w-fit">
-                <CopyWrapper
-                  data={
-                    showEth ? contract.ethAddress : contract.contractAddress
-                  }
-                >
-                  {showEth ? contract.ethAddress : contract.contractAddress}
-                </CopyWrapper>
-              </h3>
-            </div>
-          </div>
 
-          <div className="flex gap-9 justify-end">
-            <button
-              className="flex items-center justify-between text-xs font-bold text-white"
-              onClick={toggle}
-            >
-              <div className="bg-blue-400_opacity-30 p-1 mr-2 rounded-4 flex items-center justify-center w-8">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M13.7353 5.66667V5.66667C13.7353 5.16821 13.5395 4.68971 13.19 4.33428L10.4479 1.54529C10.1049 1.19647 9.63624 1 9.14706 1V1M13.7353 5.66667H11.1471C10.0425 5.66667 9.14706 4.77124 9.14706 3.66667L9.14706 1M13.7353 5.66667V8M9.14706 1L3.5 1C2.39543 1 1.5 1.89543 1.5 3L1.5 13C1.5 14.1046 2.39543 15 3.5 15L4.55882 15"
-                    stroke="#0576F0"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  ></path>
-                  <path
-                    d="M10.6761 12.6673H10.6838M6.90038 12.4995C7.22767 11.9644 8.41086 10.334 10.6761 10.334C12.9413 10.334 14.1245 11.9644 14.4518 12.4995C14.5155 12.6038 14.5155 12.7309 14.4518 12.8352C14.1245 13.3702 12.9413 15.0007 10.6761 15.0007C8.41086 15.0007 7.22767 13.3702 6.90038 12.8352C6.83659 12.7309 6.83659 12.6038 6.90038 12.4995Z"
-                    stroke="#0576F0"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  ></path>
-                </svg>
+  return (
+    <div className="w-full">
+      <div className="relative bg-body_opacity-50 p-7.5 mb-15 rounded-6 break-words">
+        <div className="absolute bg-label py-1.25 px-2 -top-3 left-0 rounded-1110">
+          <p className="text-white text-12 font-bold leading-compact uppercase">CONTRACT</p>
+        </div>
+        <div className="flex flex-wrap items-center justify-between">
+          <div className="flex items-center justify-start mr-15">
+            <h3 className="relative font-space text-24 leading-compact font-bold text-white">
+              <CopyWrapper data={ showEth ? contract.ethAddress : contract.contractAddress }>
+                {showEth ? contract.ethAddress : contract.contractAddress}
+              </CopyWrapper>
+            </h3>
+          </div>
+          <div className="flex items-center justify-start">
+            <button className="flex items-center mr-10" type="button" onClick={toggle}>
+              <div className="w-6 h-6 flex mr-2.5 rounded-3 bg-label_opacity-30 items-center justify-center">
+                <FileEyeIcon/>
               </div>
-              <span className="text-blue-500 font-bold text-sm">
-                {" "}
-                {showEth ? "Hide ETH" : "View ETH"}
+              <span className="text-blue-400 font-bold text-14 leading-4">
+                { " " }
+                { showEth ? "Hide ETH" : "View ETH" }
               </span>
             </button>
             {!!user && (
-              <button
-                className={"flex gap-1 items-center"}
-                onClick={toggleAddToProject}
-              >
-                <div className="bg-blue-400_opacity-30 p-1 rounded-4 flex items-center justify-center w-8">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M10.0002 6L9.3335 6C8.22893 6 7.3335 6.89543 7.3335 8V17.1384C7.3335 17.5223 7.74824 17.763 8.08157 17.5725L11.0079 15.9003C11.6228 15.549 12.3776 15.549 12.9924 15.9004L15.9188 17.5725C16.2521 17.763 16.6668 17.5223 16.6668 17.1384V11.3333"
-                      stroke="#0576F0"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M13.9998 6L12.6665 7.33333L13.9998 8.66667M16.6665 6L17.9998 7.33333L16.6665 8.66667"
-                      stroke="#0576F0"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+              <button className="flex items-center" type="button" onClick={toggleAddToProject}>
+                <div className="w-6 h-6 flex mr-2.5 rounded-3 bg-label_opacity-30 items-center justify-center">
+                  <BookmarkCodeIcon/>
                 </div>
-                <span className={"text-blue-500 text-sm"}>Save to project</span>
+                <span className="text-blue-400 font-bold text-14 leading-4">Save to project</span>
               </button>
             )}
           </div>
         </div>
-
-        <div className="flex mt-6 flex-wrap ">
-          <div className="w-full mt-2 sm:w-6/12 mt-0 w-5/12 ">
-            <h4 className="text-label font-normal text-14 uppercase tracking-wider	leading-5	">
+        <div className="flex flex-wrap justify-start mt-7.5">
+          <div className="flex flex-col mr-15">
+            <h4 className="font-medium text-label text-14 leading-4 lowercase">
               Number of TRANSACTIONS
             </h4>
-            <h5 className="text-white font-medium text-14	tracking-wider	leading-5	">
+            <h5 className="font-medium text-white text-14	leading-normal mt-1.5">
               {totalTransactions}
             </h5>
           </div>
 
-          <div className="w-full mt-2 sm:w-6/12 mt-0 w-3/12 ">
-            <h4 className="text-label font-normal text-14	tracking-wider	leading-5	">
+          <div className="flex flex-col mr-15">
+            <h4 className="font-medium text-label text-14 leading-4 lowercase">
               VALUE LOCKED
             </h4>
-            <h5 className="text-white font-medium text-14	tracking-wider	leading-5	">
+            <h5 className="font-medium text-white text-14	leading-normal mt-1.5">
               --
             </h5>
           </div>
-          <div className="w-full mt-2 mt-0 w-3/12 ">
-            <h4 className="text-label font-normal text-14	tracking-wider	leading-5	">
+          <div className="flex flex-col">
+            <h4 className="font-medium text-label text-14 leading-4 lowercase">
               NETWORK
             </h4>
-            <button className="flex items-center  justify-between text-xs font-semibold text-white">
-              <div className="bg-blue-400 p-1 w-2.5 h-2.5 mr-2 rounded-4 flex items-center justify-center"></div>
-              {capitalize(network)}
-            </button>
+            <div className="flex items-center mt-1.5">
+              <div className="bg-pink p-1 w-2.5 h-2.5 mr-2 rounded-2 flex items-center justify-center"/>
+              <span className="font-bold text-white text-14 leading-normal capitalize">{network}</span>
+            </div>
           </div>
         </div>
+
+        {/*<span className="flex font-space font-bold text-white text-18 leading-compact mt-10">ABI & Compiler</span>*/}
+
+        {/*<div className="flex flex-wrap items-center justify-start mt-5">*/}
+        {/*  <button className="flex items-center mr-10" type="button" onClick={() => 0 /*TODO*!/>*/}
+        {/*    <div className="w-6 h-6 flex mr-2.5 rounded-3 bg-label_opacity-30 items-center justify-center">*/}
+        {/*      <LinkIcon/>*/}
+        {/*    </div>*/}
+        {/*    <span className="text-blue-400 font-bold text-14 leading-4">View ABI</span>*/}
+        {/*  </button>*/}
+        {/*  <button className="flex items-center mr-10" type="button" onClick={() => 0 /*TODO*!/>*/}
+        {/*    <div className="w-6 h-6 flex mr-2.5 rounded-3 bg-label_opacity-30 items-center justify-center">*/}
+        {/*      <FileCopyIcon/>*/}
+        {/*    </div>*/}
+        {/*    <span className="text-blue-400 font-bold text-14 leading-4">Copy ABI</span>*/}
+        {/*  </button>*/}
+        {/*  <div className="flex items-center">*/}
+        {/*    <h4 className="font-medium text-label text-14 leading-4 lowercase mr-5">*/}
+        {/*      compiler v.*/}
+        {/*    </h4>*/}
+        {/*    <h5 className="bg-label_opacity-30 px-3.5 py-2.5 rounded-4 font-normal text-white text-14 italic leading-4 lowercase">*/}
+        {/*      gcc 4.8*/}
+        {/*    </h5>*/}
+        {/*  </div>*/}
+        {/*</div>*/}
 
         {!!metadata && (
           <ContractMetaInfo contract={contract} metadata={metadata} />

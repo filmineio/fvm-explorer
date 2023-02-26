@@ -16,7 +16,7 @@ export const EventEntryRow = ({ entry }: { entry: Entry }) => {
         {/*  <option className="text-slate">UInt256</option>*/}
         {/*</select>*/}
       </td>
-      <td className="text-white text-14 font-normal font-space text-left relative">
+      <td className="text-white text-14 leading-4 font-normal font-space text-left relative">
         <CopyWrapper data={entry.Value}>
           <div className={"max-w-7xl truncate cursor-pointer"}>
             {entry.Value}
