@@ -21,7 +21,7 @@ export const Page: FC<PageProps> = ({
 
   return (
     <div
-      className={"h-screen w-screen"}
+      className={"h-screen w-full"}
       style={{ animation: "fadeInAnimation .4s ease-in" }}
     >
       <Head>

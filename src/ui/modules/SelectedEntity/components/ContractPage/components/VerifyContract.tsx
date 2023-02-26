@@ -145,7 +145,7 @@ export const VerifyContract = ({
           <span>Upload source code to claim ownership.</span>
         </div>
         <button
-          className={"bg-blue-500 p- py-3.75 px-7 text-white text-16 font-semibold rounded-6"}
+          className="btn bg-blue-500 text-white hover:bg-blue-400 hover:border-blue-400 active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all"
           onClick={cb(setShowVerify, true)}
         >
           VERIFY CONTRACT
