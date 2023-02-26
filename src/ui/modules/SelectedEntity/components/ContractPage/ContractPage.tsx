@@ -137,7 +137,6 @@ export const ContractPage = ({ data }: Props) => {
             )}
             {/*{activeTab === 1 && TODO*/}
           </div>
-{/*>>>>>>> main*/}
         </div>
       </div>
     </>

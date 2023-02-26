@@ -4,9 +4,10 @@ import { TransactionOverview } from "./components/TransactionOverview";
 import { useMemo, useState } from "react";
 
 import { CopyWrapper } from "@/ui/components/CopyWrapper/CopyWrapper";
-import { TransactionStatus } from "@/ui/components/TransactionStatus";
 
-import { TransactionPageTabHeaders } from "@/ui/modules/SelectedEntity/components/TransactionPage/components/TransactionPageTabHeaders";
+import {
+  TransactionPageTabHeaders
+} from "@/ui/modules/SelectedEntity/components/TransactionPage/components/TransactionPageTabHeaders";
 
 import { TransactionActors } from "@/ui/TransactionActors/TransactionActors";
 
@@ -14,6 +15,7 @@ import { TransactionResults } from "@/types/DataResult";
 import { Transaction } from "@/types/data/Transaction";
 
 import { attoFilToFil } from "@/utils/attoFilToFil";
+import classNames from "classnames";
 
 
 type Props = { data: TransactionResults };
@@ -28,59 +30,63 @@ export const TransactionPage = ({ data }: Props) => {
   );
 
   const [activeTab, setActiveTab] = useState(0);
+  const exitCode = useMemo(() => +transaction.messageRctExitCode, [transaction.messageRctExitCode]);
 
   return (
     <>
       <div className=" pt-7 flex-wrap flex justify-between">
         <div className="w-full lg:mr-5 md:mr-0">
-          <div className="project relative  px-7 py-9 min-w-0 break-words bg-slate border-2 border-label rounded-4 mb-6 xl:mb-0 shadow-lg ">
-            <div className="absolute bg-label py-1 px-2 -top-3 left-0">
-              <p className="text-xs text-white font-normal ">TRANSACTION</p>
+          <div className="project relative bg-body_opacity-50 p-7.5 min-w-0 rounded-6 mb-15 shadow-lg break-words">
+            <div className="absolute bg-label py-1.25 px-2 -top-3 left-0 rounded-1110">
+              <p className="text-white text-12 font-bold leading-compact uppercase">transaction</p>
             </div>
-            <div className=" lg:flex items-center justify-between flex-wrap ">
-              <div className=" lg:w-8/12   w-full ">
-                <div className="pr-3 w-fit relative">
-                  <CopyWrapper data={transaction.cid}>
-                    <h3 className="text-xl font-bold text-white relative">
-                      {transaction.cid}
-                    </h3>
+            <div className="flex flex-wrap items-center justify-between">
+              <div className="flex items-center justify-start mr-15">
+                <h3 className="relative font-space text-24 leading-compact font-bold text-white">
+                  <CopyWrapper data={ transaction.cid }>
+                    { transaction.cid }
                   </CopyWrapper>
-                </div>
+                </h3>
               </div>
-              <div className="md:mt2 lg:w-4/12  w-full">
-                <TransactionStatus exitCode={transaction.messageRctExitCode} />
+              <div className="flex items-center h-6 gap-2">
+                <div className={classNames("w-3 h-3 rounded-2 mt-1", {
+                  "bg-blue-500": exitCode === 0,
+                  "bg-label": exitCode !== 0
+                })}/>
+                <span className="text-14 font-normal leading-compact text-white">
+                  {exitCode === 0 ? "successful" : "reverted"}
+                </span>
               </div>
             </div>
-
-            <div className="xs:flex mt-6 flex-wrap ">
-              <div className="w-full mt-2 sm:w-6/12 md:mt-0 md:w-5/12 ">
-                <h4 className="text-label font-normal text-14	tracking-wider	leading-5	">
+            <div className="flex flex-wrap justify-start mt-7.5">
+              <div className="flex flex-col mr-15">
+                <h4 className="font-medium text-label text-14 leading-4 lowercase">
                   TIMESTAMP
                 </h4>
-                <h5 className="text-white font-medium text-14	tracking-wider	leading-5	">
+                <h5 className="font-medium text-white text-14	leading-normal mt-1.5">
                   {date.toLocaleDateString()} {date.toLocaleTimeString()}
                 </h5>
               </div>
 
-              <div className="w-full mt-2 sm:w-6/12 md:mt-0 md:w-3/12 ">
-                <h4 className="text-label font-normal text-14	tracking-wider	leading-5	">
+              <div className="flex flex-col mr-15">
+                <h4 className="font-medium text-label text-14 leading-4 lowercase">
                   VALUE
                 </h4>
-                <h5 className="text-white font-medium text-14	tracking-wider	leading-5	">
+                <h5 className="font-medium text-white text-14	leading-normal mt-1.5">
                   {value.toFixed()} FIL
                 </h5>
               </div>
-              <div className="w-full mt-2 md:mt-0 md:w-3/12 ">
-                <h4 className="text-label font-normal text-14	tracking-wider	leading-5	">
-                  HEIGHT (EPOCH){" "}
+              <div className="flex flex-col">
+                <h4 className="font-medium text-label text-14 leading-4 lowercase">
+                  HEIGHT (EPOCH)
                 </h4>
-                <h5 className="text-white font-medium text-14	tracking-wider	leading-5	">
-                  {transaction.height}
+                <h5 className="font-medium text-white text-14	leading-normal mt-1.5">
+                  { transaction.height }
                 </h5>
               </div>
             </div>
-            <div className="mt-6">
-              <h4 className="text-label font-normal text-14	tracking-wider	leading-5">
+            <div className="mt-10">
+              <h4 className="font-medium text-label text-14 leading-4 lowercase">
                 FROM/TO
               </h4>
               <TransactionActors transaction={transaction} />
@@ -88,8 +94,8 @@ export const TransactionPage = ({ data }: Props) => {
           </div>
         </div>
       </div>
-      <div className=" py-2.5  relative">
-        <p className="text-white mt-0 mt-7 font-bold leading-5 text-2xl  ">
+      <div className="relative mb-15">
+        <p className="text-white font-bold leading-5 text-2xl  ">
           Details
         </p>
 

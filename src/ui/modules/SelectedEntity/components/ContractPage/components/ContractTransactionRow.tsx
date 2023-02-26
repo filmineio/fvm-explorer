@@ -50,7 +50,6 @@ export const ContractTransactionRow = ({
               {exitCode === 0 ? "successful" : "reverted"}
             </span>
           </div>
-          {/*<TransactionStatus exitCode={transaction.messageRctExitCode} />*/}
         </td>
         <td className="w-1/6  text-left text-14	  text-white tracking-wider	 font-normal  px-6 py-3 whitespace-nowrap">
           {transaction.messageRctGasUsed} attoFIL
