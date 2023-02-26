@@ -1,4 +1,4 @@
-.graphiql-container {
+body .graphiql-container {
   min-height: calc(100vh - 10rem);
   flex-direction: row-reverse;
   position: relative;
@@ -182,24 +182,24 @@ button {
   display: none;
 }
 
-::-webkit-scrollbar {
+body .graphiql-container ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
   border-radius: 10px;
   overflow: hidden;
 }
 
-::-webkit-scrollbar-track {
-  background: #141620;
+body .graphiql-container ::-webkit-scrollbar-track {
+  background: transparent;
   border-radius: 10px;
   overflow: hidden;
 }
 
-::-webkit-scrollbar-thumb {
+body .graphiql-container ::-webkit-scrollbar-thumb {
   background: #292E42;
   border-radius: 20px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+body .graphiql-container ::-webkit-scrollbar-thumb:hover {
   background: #292E42;
 }
