@@ -9,12 +9,13 @@ import { InputType, getInputType } from "@/ui/modules/Filters/state/inputType";
 import {
   BlockQueryFields,
   ContractQueryField,
-  TransactionQueryFields,
+  TransactionQueryFields
 } from "@/ui/modules/Filters/state/state";
 
 import { cb } from "@/utils/cb";
 import { toHumanReadable } from "@/utils/toHumanReadable";
 import { onChange } from "@/utils/unpack";
+import { CustomSelect } from "@/ui/components/Select/Select";
 
 export type QueryEditorField = {
   value: string;
@@ -83,59 +84,73 @@ export const AdvancedQueryFiledEditor = ({
 
   return (
     <div className="content">
-      <div className="flex mt-3 flex-wrap gap-1">
-        <div className="flex justify-center pr-2 md:w-1/2 w-40">
-          <div className="mb-3 w-40 md:w-ful">
-            <select
-              className="form-select appearance-none block w-full px-3 py-3 text-label font-normal bg-slate bg-clip-padding bg-no-repeat rounded-4 transition ease-in-out outline-none m-0 font-space text-14	 focus:text-white focus:bg-slate  focus:outline-none"
+      <div className="flex mt-3 flex-wrap items-center gap-1">
+        <div className="flex justify-center md:w-1/2 w-40 mr-4">
+          <div className="w-40 md:w-ful">
+            <CustomSelect
               value={selectedField.field}
-              onChange={onChange(change("field"))}
-            >
-              {fields.map((f) => (
-                <option key={f} value={f}>
-                  {f}
-                </option>
-              ))}
-            </select>
+              onChange={change("field")}
+              // values={availableFilters}
+              values={fields.map((str) => ({ label: str, value: str }))}
+            />
+            {/*<select*/}
+            {/*  className="form-select appearance-none block w-full px-3 py-3 text-label font-normal bg-slate bg-clip-padding bg-no-repeat rounded-4 transition ease-in-out outline-none m-0 font-space text-14	 focus:text-white focus:bg-slate  focus:outline-none"*/}
+            {/*  value={selectedField.field}*/}
+            {/*  onChange={onChange(change("field"))}*/}
+            {/*>*/}
+            {/*  {fields.map((f) => (*/}
+            {/*    <option key={f} value={f}>*/}
+            {/*      {f}*/}
+            {/*    </option>*/}
+            {/*  ))}*/}
+            {/*</select>*/}
           </div>
         </div>
-        <div className="flex justify-center w-1/2 w-40 pr-2">
-          <div className="mb-3 w-30 w-full">
-            <select
-              className="form-select appearance-none block w-full px-3 py-3 font-normal text-white bg-slate bg-clip-padding bg-no-repeat rounded-4 transition ease-in-out outline-none m-0 font-space text-14	 focus:text-white focus:bg-slate  focus:outline-none"
+        <div className="flex justify-center w-1/2 w-36">
+          <div className="w-30 w-full">
+            <CustomSelect
               value={selectedField.operator}
-              onChange={onChange(change("operator"))}
-            >
-              {operators.map((o) => (
-                <option key={o} value={o}>
-                  {toHumanReadable(o)}
-                </option>
-              ))}
-            </select>
+              onChange={change("operator")}
+              // values={availableFilters}
+              values={operators.map((str) => ({ label: toHumanReadable(str), value: str }))}
+            />
+            {/*<select*/}
+            {/*  className="form-select appearance-none block w-full px-3 py-3 font-normal text-white bg-slate bg-clip-padding bg-no-repeat rounded-4 transition ease-in-out outline-none m-0 font-space text-14	 focus:text-white focus:bg-slate  focus:outline-none"*/}
+            {/*  value={selectedField.operator}*/}
+            {/*  onChange={onChange(change("operator"))}*/}
+            {/*>*/}
+            {/*  {operators.map((o) => (*/}
+            {/*    <option key={o} value={o}>*/}
+            {/*      {toHumanReadable(o)}*/}
+            {/*    </option>*/}
+            {/*  ))}*/}
+            {/*</select>*/}
           </div>
         </div>
         <div className="relative xs:max-w-full max-w-calc2 flex-1 sm:max-w-lg text-xs">
-          <div className="px-3 py-2.5 flex w-full rounded-4 bg-slate gap-5 flex-wrap">
+          <div className="pr-3 py-2.5 flex w-full rounded-4 bg-slate gap-5 flex-wrap">
             <div className="rounded-4 flex items-center">
               {selectedField.values.map((v) => (
                 <FilterValue value={v} key={v} />
               ))}
             </div>
             <div className="flex-1">
-              <input
-                type="text"
-                placeholder="Enter value..."
-                className="bg-slate text-white w-full border-0 focus:border-0 focus:outline-none focus:ring-0 py-1 px-0 font-space text-14 transform translate-y-0.5 flex-1"
-                value={selectedField.value}
-                onChange={onChange(change("value"))}
-                onKeyDown={handleKeyPress}
-              />
+              <div className="input-wrapper">
+                <input
+                  type="text"
+                  placeholder="Enter value..."
+                  className="w-full"
+                  value={selectedField.value}
+                  onChange={onChange(change("value"))}
+                  onKeyDown={handleKeyPress}
+                />
+              </div>
             </div>
           </div>
         </div>
         <div className="ml-2 xs:mt-4 sm:mt-0">
           <button
-            className="rounded-4 border-2 border-yellow text-yellow text-xs font-bold py-3 px-6"
+            className="btn border-2 border-blue-400 text-blue-400 hover:text-blue-600 hover:border-blue-600 active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all"
             onClick={handleAdd}
           >
             ADD RULE

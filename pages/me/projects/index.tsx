@@ -1,7 +1,6 @@
 import { PAGE_SIZE } from "@/constants/pagination";
 import { Entity } from "@/enums/Entity";
 import { Network } from "@/enums/Network";
-import classNames from "classnames";
 import { ReactElement, useCallback, useEffect } from "react";
 
 import {
@@ -40,14 +39,14 @@ export default function Projects({ data }: { data: Project[] }): ReactElement {
 
   useEffect(getData, [!!user]);
 
-  if (loading) {
+  if (!user || loading) {
     return (
       <MyDataWrapper kind={MyDataKind.Projects}>
-        <div className=" all px-0 max-w-2xl justify-self-center mx-auto pt-20 pb-10 pl-32 md:pl-20">
+        <div className="max-w-1xl mx-auto p-10">
           <ProjectsHeading onCreate={getData} />
-        </div>
-        <div className={"text-gray-text"}>
-          <Spinner />
+          <div className={"text-gray-text"}>
+            <Spinner />
+          </div>
         </div>
       </MyDataWrapper>
     );
@@ -56,15 +55,15 @@ export default function Projects({ data }: { data: Project[] }): ReactElement {
   if (projects.length === 0) {
     return (
       <MyDataWrapper kind={MyDataKind.Projects}>
-        <div className=" all px-0 max-w-2xl justify-self-center mx-auto pt-20 pb-10 pl-32 md:pl-20">
+        <div className="max-w-1xl mx-auto p-10">
           <ProjectsHeading onCreate={getData} />
-        </div>
-        <div
-          className={
-            "max-w-2xl justify-self-center mx-auto pt-20 pb-10 pl-32 md:pl-20 "
-          }
-        >
-          <SearchFeedback kind={Entity.Project} />
+          <div
+            className={
+              "justify-self-center mx-auto"
+            }
+          >
+            <SearchFeedback kind={Entity.Project} />
+          </div>
         </div>
       </MyDataWrapper>
     );

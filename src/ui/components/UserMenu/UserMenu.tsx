@@ -33,9 +33,9 @@ export const UserMenu = ({ user }: { user: User }) => {
       onMouseLeave={cb(setExpanded, false)}
     >
       <div className="py-4 text-white font-14 focus:outline-none flex items-center gap-4 mr-6">
-        <div className="flex w-8 h-8 rounded-40 bg-purple items-center justify-center text-white text-16 font-bold leading-normal">{user?.email?.charAt(0).toUpperCase()}</div>
+        {user && <div className="flex w-8 h-8 rounded-40 bg-purple items-center justify-center text-white text-16 font-bold leading-normal">{user.email?.charAt(0).toUpperCase()}</div>}
         {user?.email}
-        <ArrowChevronDown />
+        {user && <ArrowChevronDown />}
       </div>
 
       {expanded && (

@@ -7,6 +7,7 @@ const LogoDevStorage: FC = () => (
     height="57"
     fill="none"
     viewBox="0 0 54 57"
+    style={{isolation: 'isolate'}}
   >
     <path
     style={{ mixBlendMode: "multiply" }}
