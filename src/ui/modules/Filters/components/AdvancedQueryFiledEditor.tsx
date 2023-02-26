@@ -3,7 +3,6 @@ import { CHMFiledOperator } from "@/schema/types/CHMFiledOperator";
 import { KeyboardEvent, useCallback, useEffect, useMemo } from "react";
 
 import { FilterValue } from "@/ui/modules/Filters/components/FilterValue";
-import { RemoveBtn } from "@/ui/modules/Filters/components/RemoveBtn";
 import { getQueryFieldOperators } from "@/ui/modules/Filters/state/getQueryFieldOperators";
 import { InputType, getInputType } from "@/ui/modules/Filters/state/inputType";
 import {
@@ -90,20 +89,8 @@ export const AdvancedQueryFiledEditor = ({
             <CustomSelect
               value={selectedField.field}
               onChange={change("field")}
-              // values={availableFilters}
               values={fields.map((str) => ({ label: str, value: str }))}
             />
-            {/*<select*/}
-            {/*  className="form-select appearance-none block w-full px-3 py-3 text-label font-normal bg-slate bg-clip-padding bg-no-repeat rounded-4 transition ease-in-out outline-none m-0 font-space text-14	 focus:text-white focus:bg-slate  focus:outline-none"*/}
-            {/*  value={selectedField.field}*/}
-            {/*  onChange={onChange(change("field"))}*/}
-            {/*>*/}
-            {/*  {fields.map((f) => (*/}
-            {/*    <option key={f} value={f}>*/}
-            {/*      {f}*/}
-            {/*    </option>*/}
-            {/*  ))}*/}
-            {/*</select>*/}
           </div>
         </div>
         <div className="flex justify-center w-1/2 w-36">
@@ -111,20 +98,8 @@ export const AdvancedQueryFiledEditor = ({
             <CustomSelect
               value={selectedField.operator}
               onChange={change("operator")}
-              // values={availableFilters}
               values={operators.map((str) => ({ label: toHumanReadable(str), value: str }))}
             />
-            {/*<select*/}
-            {/*  className="form-select appearance-none block w-full px-3 py-3 font-normal text-white bg-slate bg-clip-padding bg-no-repeat rounded-4 transition ease-in-out outline-none m-0 font-space text-14	 focus:text-white focus:bg-slate  focus:outline-none"*/}
-            {/*  value={selectedField.operator}*/}
-            {/*  onChange={onChange(change("operator"))}*/}
-            {/*>*/}
-            {/*  {operators.map((o) => (*/}
-            {/*    <option key={o} value={o}>*/}
-            {/*      {toHumanReadable(o)}*/}
-            {/*    </option>*/}
-            {/*  ))}*/}
-            {/*</select>*/}
           </div>
         </div>
         <div className="relative xs:max-w-full max-w-calc2 flex-1 sm:max-w-lg text-xs">
@@ -150,13 +125,18 @@ export const AdvancedQueryFiledEditor = ({
         </div>
         <div className="ml-2 xs:mt-4 sm:mt-0">
           <button
-            className="btn border-2 border-blue-400 text-blue-400 hover:text-blue-600 hover:border-blue-600 active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all"
+            className="btn border-2 border-blue-500 text-blue-500 hover:text-blue-400 hover:border-blue-400 active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all"
             onClick={handleAdd}
           >
             ADD RULE
           </button>
         </div>
-        <RemoveBtn onClick={onClear} />
+        <button
+          className="btn link flex items-center text-label ml-4"
+          onClick={onClear}
+        >
+          Clear
+        </button>
       </div>
     </div>
   );

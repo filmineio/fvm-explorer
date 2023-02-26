@@ -41,7 +41,7 @@ export const CreateProjectModal = ({
           <div className="flex items-center gap-5 mt-[70px]">
             <button
               onClick={onCreate}
-              className="btn bg-blue-500 text-white"
+              className="btn bg-blue-500 text-white hover:bg-blue-400 hover:border-blue-400 active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all"
             >
               SAVE PROJECT
             </button>
