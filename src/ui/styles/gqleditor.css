@@ -1,4 +1,4 @@
-body .graphiql-container {
+.graphiql-container {
   min-height: calc(100vh - 10rem);
   flex-direction: row-reverse;
   position: relative;
@@ -182,24 +182,24 @@ button {
   display: none;
 }
 
-body .graphiql-container ::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 5px;
   height: 5px;
   border-radius: 10px;
   overflow: hidden;
 }
 
-body .graphiql-container ::-webkit-scrollbar-track {
-  background: transparent;
+::-webkit-scrollbar-track {
+  background: #141620;
   border-radius: 10px;
   overflow: hidden;
 }
 
-body .graphiql-container ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: #292E42;
   border-radius: 20px;
 }
 
-body .graphiql-container ::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
   background: #292E42;
 }
