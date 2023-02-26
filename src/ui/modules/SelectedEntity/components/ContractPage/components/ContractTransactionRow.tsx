@@ -42,7 +42,7 @@ export const ContractTransactionRow = ({
         </td>
         <td className="w-1/6  text-left text-14	text-white tracking-wider	 font-bold px-6 py-3 whitespace-nowrap">
           <div className="flex items-center gap-1.5">
-            <div className={classNames("w-3 h-3 rounded-2", {
+            <div className={classNames("w-3 h-3 rounded-2 mt-0.5", {
               "bg-blue-500": exitCode === 0,
               "bg-label": exitCode !== 0
             })}></div>
@@ -60,10 +60,10 @@ export const ContractTransactionRow = ({
       </tr>
       <tr
         className={
-          "min-w-full bg-body_opacity-50 rounded-0044 transform -translate-y-2"
+          "min-w-full bg-body_opacity-50 transform -translate-y-2"
         }
       >
-        <td colSpan={7} className="px-6 pt-4 pb-3">
+        <td colSpan={7} className="px-6 pt-4 pb-3 rounded-0044">
           <div className="flex items-center text-14 font-medium text-white">
             <div
               onClick={toggle}
@@ -95,10 +95,10 @@ export const ContractTransactionRow = ({
       {open && (
         <tr
           className={
-            "min-w-full bg-body_opacity-50 rounded-0044 transform -translate-y-4"
+            "min-w-full bg-body_opacity-50 transform -translate-y-4"
           }
         >
-          <td colSpan={7}>
+          <td colSpan={7} className="rounded-0044">
             <TransactionStateDiff
               transaction={transaction}
               contract={contract}
