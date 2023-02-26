@@ -141,7 +141,7 @@ export const ContractBaseInfo = ({
               NETWORK
             </h4>
             <button className="flex items-center  justify-between text-xs font-semibold text-white">
-              <div className="bg-yellow p-1 w-2.5 h-2.5 mr-2 rounded-4 flex items-center justify-center"></div>
+              <div className="bg-blue-400 p-1 w-2.5 h-2.5 mr-2 rounded-4 flex items-center justify-center"></div>
               {capitalize(network)}
             </button>
           </div>

@@ -19,7 +19,7 @@ export const TabHeader = ({
         className={classNames(
           "block nav- font-bold text-14 leading-tight border-x-0 border-t-0 border-b-2 border-transparent py-2 my-2 hover:border-transparent focus:border-transparent",
           {
-            "text-yellow underline": tabIndex === activeTab,
+            "text-blue-400 underline": tabIndex === activeTab,
             "text-label": tabIndex !== activeTab,
           }
         )}
