@@ -31,7 +31,7 @@ export const TransactionActors = ({
         </svg>
       </button>
 
-      <button className="bg-body mb-2  py-2 px-3 rounded-4 text-yellow font-bold font-space text-14	tracking-wider	leading-5 relative">
+      <button className="bg-body mb-2  py-2 px-3 rounded-4 text-blue-400 font-bold font-space text-14	tracking-wider	leading-5 relative">
         <CopyWrapper data={transaction.robustTo || transaction.to}>
           {transaction.robustTo || transaction.to}
         </CopyWrapper>

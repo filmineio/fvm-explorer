@@ -95,8 +95,7 @@ export const TransactionStateDiff = ({
                     ></path>
                   </svg>
                 </button>
-
-                <button className="bg-body px-2 py-1 rounded-4 text-yellow-500 font-bold font-space text-xs	tracking-wider	leading-5">
+                <button className="bg-body px-2 py-1 rounded-4 text-blue-400 font-bold font-space text-xs	tracking-wider leading-5">
                   {stateDiff} FIL
                 </button>
               </div>

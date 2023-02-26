@@ -11,7 +11,7 @@ export const AdvancedQueryActions = ({
         "flex justify-between transform -translate-y-12 max-w-2xl w-full px-10"
       }
     >
-      {/*<button className="w-52 border-2 border-yellow text-yellow uppercase rounded  bg-black px-2 py-1">*/}
+      {/*<button className="w-52 border-2 border-blue-400 text-blue-400 uppercase rounded  bg-black px-2 py-1">*/}
       {/*  Collapse Query*/}
       {/*</button>*/}
       <span />

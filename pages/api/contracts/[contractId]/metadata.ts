@@ -1,5 +1,6 @@
 import { Entity } from "@/enums/Entity";
 import { Network } from "@/enums/Network";
+import { CHMFieldQuery } from "@/schema/types/CHMQuery";
 import { NextApiRequest, NextApiResponse } from "next";
 
 import { OperationStatus } from "@/types/ApiResponse";
@@ -16,35 +17,36 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const network = req.query.network as Network;
   const ctx = await getCtx();
   const user = await identifyUser(ctx, req);
-
-  if (user === OperationStatus.Error) return res.status(401).end();
+  const query: Record<string, CHMFieldQuery>[] = [
+    {
+      contractAddress: {
+        is: contractId,
+      },
+      isPublic: {
+        is: true,
+      },
+    },
+  ];
+  if (user !== OperationStatus.Error) {
+    query.push({
+      contractAddress: {
+        is: contractId,
+      },
+      owner: {
+        is: user.email,
+      },
+      isPublic: {
+        is: false,
+      },
+    });
+  }
 
   try {
     const response: (ContractMeta & Record<"total", number>)[] =
       await ctx.database.ch.data.chain[network].query({
         fieldName: Entity.ContractMeta,
         selection: [],
-        query: [
-          {
-            contractAddress: {
-              is: contractId,
-            },
-            owner: {
-              is: user.email,
-            },
-            isPublic: {
-              is: false,
-            },
-          },
-          {
-            contractAddress: {
-              is: contractId,
-            },
-            isPublic: {
-              is: true,
-            },
-          },
-        ],
+        query: query,
         order: ["contractAddress", "ASC"],
         pagination: {
           limit: 1,

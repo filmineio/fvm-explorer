@@ -22,7 +22,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (data === OperationStatus.Error) return res.status(401).end();
 
   const body: Pick<Contract, "contractAddress"> & Record<"network", Network> =
-    parse(req.body, {} as never);
+    req.body;
 
   if (
     !projectId.trim() ||
@@ -39,7 +39,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         id: {
           is: projectId,
         },
-        ower: {
+        owner: {
           is: data.email,
         },
       },

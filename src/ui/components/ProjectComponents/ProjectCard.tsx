@@ -174,7 +174,6 @@ export const ProjectCard = ({ data, reFetch }: ProjectCardProps) => {
           </div>
         )}
       </div>
-
       {showEdit && (
         <ProjectEditModal
           onEdit={edit}

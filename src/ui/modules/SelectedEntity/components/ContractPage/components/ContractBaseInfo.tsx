@@ -1,9 +1,15 @@
+import { ContractMetaInfo } from "./ContractMetaInfo";
 import { Network } from "@/enums/Network";
 import { useReducer } from "react";
 
 import { CopyWrapper } from "@/ui/components/CopyWrapper/CopyWrapper";
 
+import { AddToProject } from "@/ui/modules/SelectedEntity/components/ContractPage/components/AddToProject";
+
+import { useStore } from "@/ui/state/Store";
+
 import { Contract } from "@/types/data/Contract";
+import { ContractMeta } from "@/types/data/ContractMeta";
 
 import { capitalize } from "@/utils/capitalize";
 import FileEyeIcon from "@/ui/components/Common/Icons/FileEyeIcon";
@@ -16,12 +22,19 @@ export const ContractBaseInfo = ({
   contract,
   network,
   totalTransactions,
+  metadata,
 }: {
   contract: Contract;
   network: Network;
   totalTransactions: number;
+  metadata?: ContractMeta;
 }) => {
+  const {
+    state: { user },
+  } = useStore();
+
   const [showEth, toggle] = useReducer((p) => !p, false);
+  const [showAddToProject, toggleAddToProject] = useReducer((p) => !p, false);
 
   return (
     <div className="w-full">
@@ -29,7 +42,6 @@ export const ContractBaseInfo = ({
         <div className="absolute bg-label py-1.25 px-2 -top-3 left-0 rounded-1110">
           <p className="text-white text-12 font-bold leading-compact uppercase">CONTRACT</p>
         </div>
-
         <div className="flex flex-wrap items-center justify-between">
           <div className="flex items-center justify-start mr-15">
             <h3 className="relative font-space text-24 leading-compact font-bold text-white">
@@ -44,17 +56,18 @@ export const ContractBaseInfo = ({
                 <FileEyeIcon/>
               </div>
               <span className="text-blue-400 font-bold text-14 leading-4">
+                { " " }
                 { showEth ? "Hide ETH" : "View ETH" }
               </span>
             </button>
-            <button className="flex items-center" type="button" onClick={() => 0 /*TODO*/ }>
-              <div className="w-6 h-6 flex mr-2.5 rounded-3 bg-label_opacity-30 items-center justify-center">
-                <BookmarkCodeIcon/>
-              </div>
-              <span className="text-blue-400 font-bold text-14 leading-4">
-                Save to project
-              </span>
-            </button>
+            {!!user && (
+              <button className="flex items-center" type="button" onClick={toggleAddToProject}>
+                <div className="w-6 h-6 flex mr-2.5 rounded-3 bg-label_opacity-30 items-center justify-center">
+                  <BookmarkCodeIcon/>
+                </div>
+                <span className="text-blue-400 font-bold text-14 leading-4">Save to project</span>
+              </button>
+            )}
           </div>
         </div>
         <div className="flex flex-wrap justify-start mt-7.5">
@@ -111,8 +124,19 @@ export const ContractBaseInfo = ({
         {/*  </div>*/}
         {/*</div>*/}
 
-        {/*<ContractMetaInfo contract={contract} />*/}
+        {!!metadata && (
+          <ContractMetaInfo contract={contract} metadata={metadata} />
+        )}
       </div>
+
+      {showAddToProject && (
+        <AddToProject
+          contract={contract}
+          onAdd={toggleAddToProject}
+          close={toggleAddToProject}
+          network={network}
+        />
+      )}
     </div>
   );
 };

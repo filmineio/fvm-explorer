@@ -21,7 +21,7 @@ export const BlockTransactionRow = ({
 
   return (
     <tr className="border-spacing-y-3">
-      <td className="w-1/6 px-6 py-3 text-left truncate text-yellow underline cursor-pointer">
+      <td className="w-1/6 px-6 py-3 text-left truncate text-blue-400 underline cursor-pointer">
         <Link
           href={`/explore/${Entity.Transaction}/${transaction.cid}?network=${network}`}
         >

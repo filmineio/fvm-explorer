@@ -3,7 +3,7 @@ export type Web3StorageConfig = {
 };
 
 const web3StorageConfig: Web3StorageConfig = {
-  token: process.env.WEB3_STORAGE_TOKEN as string,
+  token: process.env.NEXT_PUBLIC_WEB3_STORAGE_TOKEN as string,
 };
 
 export default web3StorageConfig;

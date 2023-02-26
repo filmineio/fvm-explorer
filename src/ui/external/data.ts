@@ -126,6 +126,10 @@ export const useMutation = <T = unknown>() => {
       .client()
       .post(path, data)
       .then((response) => {
+        if (response.data.exception) {
+          setState((p) => set(lensPath(["error"]), "Something Went Wrong")(p));
+          return;
+        }
         const data = processResponse(response, resource);
         if (data.status === OperationStatus.Error) {
           setState((p) => set(lensPath(["error"]), data.data.exception)(p));
@@ -138,10 +142,12 @@ export const useMutation = <T = unknown>() => {
           );
         }
       })
-      .catch(() =>
-        setState((p) => set(lensPath(["error"]), "Something Went Wrong")(p))
-      )
-      .finally(() => setState((p) => set(lensPath(["loading"]), false)(p)));
+      .catch(() => {
+        setState((p) => set(lensPath(["error"]), "Something Went Wrong")(p));
+      })
+      .finally(() => {
+        setState((p) => set(lensPath(["loading"]), false)(p));
+      });
   };
   return { post, ...state };
 };
