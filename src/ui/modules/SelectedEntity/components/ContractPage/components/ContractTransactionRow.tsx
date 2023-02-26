@@ -46,7 +46,7 @@ export const ContractTransactionRow = ({
               "bg-blue-500": exitCode === 0,
               "bg-label": exitCode !== 0
             })}></div>
-            <span className="font-14 font-normal leading-compact">
+            <span className="text-14 font-normal leading-compact">
               {exitCode === 0 ? "successful" : "reverted"}
             </span>
           </div>
