@@ -71,11 +71,6 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 
-.input-wrapper input[type="file"] {
-  padding: 0;
-  border: none;
-}
-
 .input-wrapper input:hover {
   border-color: #596184;
 }
@@ -83,43 +78,6 @@ h1, h2, h3, h4, h5, h6 {
 .input-wrapper input:focus {
   border-color: #596184;
   box-shadow: 0 0 0 5px rgba(89, 97, 132, 0.4);
-}
-
-.input-wrapper input[type="file"]:focus {
-  box-shadow: none;
-}
-
-input[type="file"]::file-selector-button {
-  border-radius: 4px;
-  font-family: 'Roboto Mono', monospace;
-  padding: 15px 26px;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 20px;
-  background-color: #0576F0;
-  cursor: pointer;
-  color: #fff;
-  text-transform: uppercase;
-  margin-right: 10px;
-  border: 2px solid #0576F0;
-}
-
-input[type="file"]::-ms-browse:hover {
-  background-color: #0576F0;
-  margin-right: 10px;
-  border: 2px solid #0576F0;
-}
-
-input[type="file"]::-webkit-file-upload-button:hover {
-  background-color: #0576F0;
-  margin-right: 10px;
-  border: 2px solid #0576F0;
-}
-
-input[type="file"]::file-selector-button:hover {
-  background-color: #0576F0;
-  margin-right: 10px;
-  border: 2px solid #0576F0;
 }
 
 .input-wrapper input::placeholder {
@@ -141,9 +99,6 @@ input[type="file"]::file-selector-button:hover {
   margin-bottom: 10px;
   display: inline-block;
   color: #fff;
-}
-.input-wrapper label.mb-0 {
-  margin-bottom: 0;
 }
 /* Button 10 */
 #button-10 .knobs:after {

@@ -44,7 +44,6 @@ export const VerifyContract = ({
 }) => {
   const [data, setData] = useState(defaultState);
   const [showVerify, setShowVerify] = useState(false);
-  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
 
   const {
     upload,
@@ -67,7 +66,6 @@ export const VerifyContract = ({
     ({ target: { files } }: ChangeEvent<HTMLInputElement>) => {
       const file = files ? files[0] : null;
       change("source")(file);
-      setUploadedFile(file);
     },
     []
   );
@@ -185,25 +183,21 @@ export const VerifyContract = ({
               </button>
             </div>
             <div className="modal-body relative p-[70px]">
-              <h3 className="font-space text-white text-24 mb-10">
+              <h3 className="font-space text-white text-24 mb-5">
                 Upload source code
               </h3>
-              <p className="mb-14 text-white text-16">
+              <p className="mb-14 text-gray-text">
                 Please don’t close this popup while upload is in progress.
               </p>
 
               <div className={"flex flex-col gap-3"}>
-                <div className="input-wrapper flex items-center uppercase justify-between w-full mb-7">
-                  <label className="mb-0">Source Code (.zip)*</label>
-                  <label htmlFor="uploadFile" className="btn bg-blue-500 text-white ml-auto mb-0 cursor-pointer">CHOOSE FILE</label>
+                <div className="input-wrapper flex items-center uppercase justify-between w-full">
+                  <label>Source Code (.zip)*</label>
                   <input
-                    id="uploadFile"
-                    className="hidden"
                     type={"file"}
                     accept=".zip"
                     onChange={handleSource}
                   ></input>
-                  {uploadedFile && <span className="text-12 text-white ml-5">{uploadedFile.name}</span>}
                 </div>
 
                 <div className="input-wrapper">
@@ -256,18 +250,9 @@ export const VerifyContract = ({
                 </div>
               </div>
 
-              {data.source && data.source.size > MAX_FILE_SIZE && (
-                <p
-                  className={
-                    "text-14 text-red pt-10"
-                  }
-                >
-                  Maximum file size is 10 MB
-                </p>
-              )}
               <button
                 className={classNames(
-                  "btn text-white mt-10 flex gap-2  uppercase",
+                  "btn text-white mt-14 flex gap-2  uppercase",
                   {
                     "bg-blue-500": valid,
                     "bg-body cursor-not-allowed": !valid || uploading,
@@ -278,6 +263,15 @@ export const VerifyContract = ({
               >
                 UPLOAD
               </button>
+              {data.source && data.source.size > MAX_FILE_SIZE && (
+                <p
+                  className={
+                    "text-xs text-red font-light pt-2 opacity-75 absolute"
+                  }
+                >
+                  Maximum file size is 10 MB
+                </p>
+              )}
             </div>
           </div>
         </Modal>
