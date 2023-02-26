@@ -38,7 +38,7 @@ export const ProjectEditModal = ({
   if (confirm) {
     return (
       <Modal>
-        <div className="modal-content border-none shadow-none relative flex flex-col w-full pointer-events-auto bg-slate rounded-10">
+        <div className="modal-content border-none shadow-none relative flex flex-col w-[590px] mx-auto pointer-events-auto bg-slate rounded-10">
           <div className="modal-header flex flex-shrink-0 items-center">
             <button
               className="btn-close absolute right-7 top-7 z-10 hover:opacity-50 transition-all [transition:opacity_.0.16s_ease_in_out]"
@@ -48,21 +48,26 @@ export const ProjectEditModal = ({
             </button>
           </div>
           <div className="modal-body relative p-[70px]">
-            <p className="text-2xl text-white font-sans1 font-bold">
+            <h3 className="font-space text-white text-24 mb-5">
+              Delete project
+            </h3>
+            <p className="mb-0 text-white">
               Are you sure you want to delete {name} project?
             </p>
-            <button
-              onClick={onDelete}
-              className="mt-[70px] btn bg-analogous py-3.5 mr-2 px-[30px] rounded-[9px] font-bold text-black text-[14px]"
-            >
-              YES, DELETE PROJECT
-            </button>
-            <button
-              className="text-lightgray hover:bg-yellow mt-[70px] btn  py-3.5 px-[30px] rounded-[9px] font-bold font-sans1 hover:text-black text-base"
-              onClick={cb(setConfirm, false)}
-            >
-              Cancel
-            </button>
+            <div className="flex items-center gap-5 mt-[70px]">
+              <button
+                onClick={onDelete}
+                className="btn bg-red text-white"
+              >
+                YES, DELETE PROJECT
+              </button>
+              <button
+                className="btn link flex items-center text-label"
+                onClick={cb(setConfirm, false)}
+              >
+                Cancel
+              </button>
+            </div>
           </div>
         </div>
       </Modal>
@@ -71,7 +76,7 @@ export const ProjectEditModal = ({
 
   return (
     <Modal>
-      <div className="modal-content border-none shadow-none relative flex flex-col w-full pointer-events-auto bg-slate rounded-10">
+      <div className="modal-content border-none shadow-none relative flex flex-col w-[590px] mx-auto pointer-events-auto bg-slate rounded-10">
         <div className="modal-header flex flex-shrink-0 items-center">
           <button
             className="btn-close absolute right-7 top-7 z-10 hover:opacity-50 transition-all [transition:opacity_.0.16s_ease_in_out]"
@@ -101,10 +106,12 @@ export const ProjectEditModal = ({
               SAVE PROJECT
             </button>
             <button
-              className="btn link flex items-center text-red"
+              className="btn link flex items-center text-red ml-auto"
               onClick={cb(setConfirm, true)}
             >
-              <Delete />
+              <div className="bg-label_opacity-30 mr-5 rounded-3 flex items-center justify-center w-8 h-8">
+                <Delete />
+              </div>
               Delete Project
             </button>
           </div>

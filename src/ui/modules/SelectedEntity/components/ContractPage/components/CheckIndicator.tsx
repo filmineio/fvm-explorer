@@ -17,7 +17,7 @@ export const CheckIndicator = ({
             <rect width="24" height="24" rx="4" fill="#292E42" />
             <path
               d="M8 12L11 15L16 9"
-              stroke="black"
+              stroke="#fff"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -45,7 +45,7 @@ export const CheckIndicator = ({
               <rect width="24" height="24" rx="4" fill="#0576F0" />
               <path
                 d="M8 12L11 15L16 9"
-                stroke="black"
+                stroke="#fff"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"

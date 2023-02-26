@@ -39,7 +39,7 @@ export function AddToProjectRow({
   return (
     <div
       className={classNames(
-        "p-6 bg-slate rounded-10 w-full flex justify-between items-center ",
+        "p-6 bg-body rounded-10 w-full flex justify-between items-center rounded-6 ",
         { "cursor-pointer": !included, "cursor-forbidden": included }
       )}
       onClick={onClick}
