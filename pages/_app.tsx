@@ -46,7 +46,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ToastContainer theme={"dark"} hideProgressBar={true} />
       <GoogleAnalytics trackPageViews />
       {/*<PostHog />*/}
-      <NextNProgress nonce="my-nonce" color={"#add442"} showOnShallow={true} />
+      <NextNProgress nonce="my-nonce" color={"#0576F0"} showOnShallow={true} />
       <Component {...pageProps} />
     </Store>
   );
