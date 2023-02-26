@@ -34,40 +34,40 @@ export const ContractTransactions = ({
           <div className="overflow-hidden">
             <table className="min-w-full text-center border-0 border-separate border-spacing-y-2	">
               <thead>
-                <tr className="bg-body border-0  ">
+                <tr className="bg-body border-0">
                   <th
                     scope="col"
-                    className=" w-1/6 rounded-l-lg text-left border-0  text-xs font-bold text-white px-6 py-4"
+                    className="w-1/6 rounded-4004 border-0 text-left font-14 leading-4 font-bold text-white px-6 py-4"
                   >
                     TRANSACTION HASH
                   </th>
                   <th
                     scope="col"
-                    className="w-1/6 border-0 text-left   text-xs font-bold text-white px-6 py-4"
+                    className="w-1/6 border-0 text-left font-14 leading-4 font-bold text-white px-6 py-4"
                   >
                     METHOD
                   </th>
                   <th
                     scope="col"
-                    className="w-1/6 border-0 text-left   text-xs font-bold text-white px-6 py-4"
+                    className="w-1/6 border-0 text-left font-14 leading-4 font-bold text-white px-6 py-4"
                   >
                     EPOCH
                   </th>
                   <th
                     scope="col"
-                    className="w-1/6 border-0 text-left   text-xs font-bold text-white px-6 py-4"
+                    className="w-1/6 border-0 text-left font-14 leading-4 font-bold text-white px-6 py-4"
                   >
                     STATUS
                   </th>
                   <th
                     scope="col"
-                    className="w-1/6 border-0 text-left   text-xs font-bold text-white px-6 py-4"
+                    className="w-1/6 border-0 text-left font-14 leading-4 font-bold text-white px-6 py-4"
                   >
                     GAS COST
                   </th>
                   <th
                     scope="col"
-                    className="w-1/6  border-0 text-left rounded-r-lg  text-xs font-bold text-white px-6 py-4"
+                    className="w-1/6 rounded-0440 border-0 text-left font-14 leading-4 font-bold text-white px-6 py-4"
                   >
                     VALUE
                   </th>

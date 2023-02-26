@@ -97,6 +97,7 @@ export const ContractPage = ({ data }: Props) => {
               loading={loading}
             />
           )}
+          {/*{activeTab === 1 && /*TODO*!/*/}
         </div>
       </div>
     </div>

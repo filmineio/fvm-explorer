@@ -17,9 +17,9 @@ export const TabHeader = ({
     <li className="nav-item px-4 cursor-pointer" onClick={cb(toggle, tabIndex)}>
       <span
         className={classNames(
-          "block nav- font-bold text-14 leading-tight border-x-0 border-t-0 border-b-2 border-transparent py-2 my-2 hover:border-transparent focus:border-transparent",
+          "block nav- font-bold text-14 leading-tight border-x-0 border-t-0 border-b-2 border-transparent py-2 mb-2 hover:border-transparent focus:border-transparent",
           {
-            "text-yellow underline": tabIndex === activeTab,
+            "text-blue-400 underline": tabIndex === activeTab,
             "text-label": tabIndex !== activeTab,
           }
         )}

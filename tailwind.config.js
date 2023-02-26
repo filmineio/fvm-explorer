@@ -16,7 +16,13 @@ module.exports = {
       "9": "9px",
       "10": "10px",
       "40": "40px",
-      "0330":"0 3px 3px 0"
+      "0330": "0 3px 3px 0",
+      "4004": "4px 0 0 4px",
+      "0440": "0 4px 4px 0",
+      "4000": "4px 0 0 0",
+      "0400": "0 4px 0 0",
+      "0044": "0 0 4px 4px",
+      "1110": "1px 1px 1px 0"
     },
     letterSpacing: {
       tightest: '-.075em',
@@ -57,7 +63,9 @@ module.exports = {
         "line_opacity-80": "#D8DBE9CC",
         "red": "#D32F40",
         "purple": "#8B4DFF",
-        "pink": "#D857C9"
+        "purple-400": "#A475FD",
+        "pink": "#D857C9",
+        "yellow-500": "#F0A108"
       },
 
       fontSize: {
@@ -65,6 +73,7 @@ module.exports = {
         "12": "12px",
         "14": "14px",
         "16": "16px",
+        "18": "18px",
         "24": "24px",
         "28": "28px",
         "32": "32px",
@@ -106,7 +115,9 @@ module.exports = {
         "0.75": "3px",
         "1.25": "5px",
         "1.75": "7px",
-        "2.25": "9px"
+        "2.25": "9px",
+        "7.5": "30px",
+        "15": "60px"
       },
 
       padding: {
@@ -117,7 +128,7 @@ module.exports = {
         "2.75": "11px",
         "3.25": "13px",
         "3.75": "15px",
-        "6.5": "28px"
+        "7.5": "30px"
       },
 
       boxShadow: {

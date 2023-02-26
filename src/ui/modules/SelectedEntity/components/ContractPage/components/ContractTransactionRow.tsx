@@ -2,7 +2,7 @@ import { Entity } from "@/enums/Entity";
 import { Network } from "@/enums/Network";
 import classNames from "classnames";
 import Link from "next/link";
-import { useReducer } from "react";
+import {useMemo, useReducer} from "react";
 
 import { TransactionStatus } from "@/ui/components/TransactionStatus";
 
@@ -22,10 +22,12 @@ export const ContractTransactionRow = ({
 }) => {
   const [open, toggle] = useReducer((p) => !p, false);
 
+  const exitCode = useMemo(() => +transaction.messageRctExitCode, [transaction.messageRctExitCode]);
+
   return (
     <>
-      <tr className="min-w-full bg-slate rounded rounded-b-0">
-        <td className="w-1/6 px-6 py-3 text-left truncate text-yellow underline cursor-pointer">
+      <tr className="min-w-full rounded rounded-b-0 bg-body_opacity-50">
+        <td className="w-1/6 px-6 py-3 text-left truncate text-blue-400 underline cursor-pointer rounded-4000">
           <Link
             href={`/explore/${Entity.Transaction}/${transaction.cid}?network=${network}`}
           >
@@ -38,23 +40,32 @@ export const ContractTransactionRow = ({
         <td className="w-1/6  text-left text-14	italic  text-white font-space tracking-wider	 font-normal px-6 py-3 whitespace-nowrap">
           {transaction.height}
         </td>
-        <td className="w-1/6  text-left text-14	  text-white tracking-wider	 font-bold px-6 py-3 whitespace-nowrap">
-          <TransactionStatus exitCode={transaction.messageRctExitCode} />
+        <td className="w-1/6  text-left text-14	text-white tracking-wider	 font-bold px-6 py-3 whitespace-nowrap">
+          <div className="flex items-center gap-1.5">
+            <div className={classNames("w-3 h-3 rounded-2", {
+              "bg-blue-500": exitCode === 0,
+              "bg-label": exitCode !== 0
+            })}></div>
+            <span className="font-14 font-normal leading-compact">
+              {exitCode === 0 ? "successful" : "reverted"}
+            </span>
+          </div>
+          {/*<TransactionStatus exitCode={transaction.messageRctExitCode} />*/}
         </td>
         <td className="w-1/6  text-left text-14	  text-white tracking-wider	 font-normal  px-6 py-3 whitespace-nowrap">
           {transaction.messageRctGasUsed} attoFIL
         </td>
-        <td className="w-1/6  text-left text-14	  text-white tracking-wider	 font-normal px-6 py-3 whitespace-nowrap">
+        <td className="w-1/6  text-left text-14	  text-white tracking-wider	 font-normal px-6 py-3 whitespace-nowrap rounded-0400">
           {transaction.value} FIL
         </td>
       </tr>
       <tr
         className={
-          "min-w-full bg-slate rounded-4 rounded-t-0  transform -translate-y-2"
+          "min-w-full bg-body_opacity-50 rounded-0044 transform -translate-y-2"
         }
       >
         <td colSpan={7} className="px-6 pt-4 pb-3">
-          <div className="flex items-center text-14 font-normal text-white">
+          <div className="flex items-center text-14 font-medium text-white">
             <div
               onClick={toggle}
               className={
@@ -85,7 +96,7 @@ export const ContractTransactionRow = ({
       {open && (
         <tr
           className={
-            "min-w-full bg-slate rounded-4 rounded-t-0  transform -translate-y-4"
+            "min-w-full bg-body_opacity-50 rounded-0044 transform -translate-y-4"
           }
         >
           <td colSpan={7}>
