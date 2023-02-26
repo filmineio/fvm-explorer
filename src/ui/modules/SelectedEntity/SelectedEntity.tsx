@@ -5,7 +5,6 @@ import { SearchFeedback } from "@/ui/components/SearchFeedback";
 
 import { BlockPage } from "@/ui/modules/SelectedEntity/components/BlockPage/BlockPage";
 import { ContractPage } from "@/ui/modules/SelectedEntity/components/ContractPage/ContractPage";
-import { ProjectPage } from "@/ui/modules/SelectedEntity/components/ProjectPage/ProjectPage";
 import { TransactionPage } from "@/ui/modules/SelectedEntity/components/TransactionPage/TransactionPage";
 
 import { DataResult } from "@/types/DataResult";
@@ -24,8 +23,8 @@ export const SelectedEntity = ({ data }: ResultsProps) => {
         return BlockPage;
       case Entity.Transaction:
         return TransactionPage;
-      case Entity.Project:
-        return ProjectPage;
+      default:
+        return () => null;
     }
   }, [data.kind]);
 

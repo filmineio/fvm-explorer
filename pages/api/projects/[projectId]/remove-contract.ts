@@ -57,14 +57,27 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   );
 
   try {
+    console.log(
+      projectContracts,
+      projectContracts.filter(
+        (c) =>
+          !(
+            c.contractAddress === body.contractAddress &&
+            c.network === body.network
+          )
+      )
+    );
+
     await ctx.database.ch.data.users.raw(
       `ALTER TABLE ${
         getModel(Entity.Project).table
       } UPDATE Contracts='${JSON.stringify(
         projectContracts.filter(
           (c) =>
-            c.contractAddress !== body.contractAddress &&
-            c.network !== body.network
+            !(
+              c.contractAddress === body.contractAddress &&
+              c.network === body.network
+            )
         )
       )}' where Id='${projectId}' AND Owner='${data.email}'`
     );

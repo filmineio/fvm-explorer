@@ -1,7 +1,6 @@
 import { Entity } from "@/enums/Entity";
 import { Network } from "@/enums/Network";
-import { pluck } from "ramda";
-import { ReactElement, useEffect, useMemo } from "react";
+import { ReactElement, useCallback, useEffect, useMemo } from "react";
 
 import {
   MyDataKind,
@@ -19,8 +18,8 @@ import { Project } from "@/types/data/Project";
 
 
 export default function SingleProject({
-  projectId,
-}: {
+                                        projectId,
+                                      }: {
   projectId: string;
 }): ReactElement {
   const {
@@ -44,30 +43,19 @@ export default function SingleProject({
     return [];
   }, [project]);
 
-  useEffect(() => {
+  const getData = useCallback(() => {
     !!user &&
-      getProject(Entity.Project, {
-        network: Network.HyperSpace,
-        order: ["id", "ASC"],
-        query: { id: { is: projectId }, owner: { is: user.email } },
-      });
-  }, [!!user, projectId]);
 
-  useEffect(() => {
-    if (!contractsList.length) return;
-
-    getContracts(Entity.Contract, {
+    getProject(Entity.Project, {
       network: Network.HyperSpace,
-      query: {
-        contractAddress: {
-          in: pluck(["contractAddress"] as never, contractsList),
-        },
-      },
-      order: ["contractAddress", "ASC"],
-      pagination: { limit: 1000, offset: 0 },
-      selection: [],
+      order: ["id", "ASC"],
+      query: { id: { is: projectId }, owner: { is: user.email } },
     });
-  }, [contractsList]);
+  }, [user, projectId])
+
+
+  useEffect(getData, [!!user, projectId]);
+
 
   if (projectLoading || !project) {
     return (
@@ -95,12 +83,14 @@ export default function SingleProject({
               <div className="py-2 inline-block">
                 <table className=" rwd-table min-w-full text-center border-0 border-separate border-spacing-y-[20px]	">
                   <tbody>
-                    {contracts.map((contract) => (
-                      <ProjectContractRow
-                        key={contract.contractAddress}
-                        contract={contract}
-                      />
-                    ))}
+                  {contractsList.map((contract) => (
+                    <ProjectContractRow
+                      key={contract.contractAddress}
+                      contract={contract}
+                      projectId={project.id}
+                      onRemove={getData}
+                    />
+                  ))}
                   </tbody>
                 </table>
               </div>
@@ -113,8 +103,8 @@ export default function SingleProject({
 }
 
 export async function getServerSideProps({
-  params,
-}: {
+                                           params,
+                                         }: {
   params: { project: string };
 }) {
   return {
