@@ -58,4 +58,4 @@ jobs:
             echo -n ${{ secrets.env_file_encoded_content }} > b64env
             echo -n ${{ secrets.env_file_encoded_content }} | base64 -d > .env
             source .env
-            yarn build:custom && yarn start:custom
+            yarn && yarn build:custom && systemctl restart explorer-server.service
