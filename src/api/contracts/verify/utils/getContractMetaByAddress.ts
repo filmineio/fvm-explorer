@@ -12,21 +12,10 @@ export const getContractMetaByAddress = async (
 ): Promise<(ContractMeta & Record<"total", number>) | undefined> => {
   const [contractMeta] = await ctx.database.ch.data.chain[network].query({
     fieldName: Entity.ContractMeta,
-    selection: [
-      "contractAddress",
-      "abiCid",
-      "mainCid",
-      "name",
-      "compilerVersion",
-      "fileMap",
-      "sigCid",
-      "binCid",
-      "isPublic",
-      "owner",
-    ],
+    selection: [],
     query: [
       {
-        ContractAddress: {
+        contractAddress: {
           is: contractAddress,
         },
       },

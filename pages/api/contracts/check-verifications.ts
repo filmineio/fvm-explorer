@@ -26,35 +26,24 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const result = await ctx.database.ch.data.chain[network].query({
       fieldName: Entity.ContractMeta,
-      selection: [
-        "contractAddress",
-        "abiCid",
-        "mainCid",
-        "name",
-        "compilerVersion",
-        "fileMap",
-        "sigCid",
-        "binCid",
-        "isPublic",
-        "owner",
-      ],
+      selection: [],
       query: [
         {
-          ContractAddress: {
+          contractAddress: {
             in: contractAddresses,
           },
-          Owner: {
+          owner: {
             is: user.email,
           },
-          IsPublic: {
+          isPublic: {
             is: false,
           },
         },
         {
-          ContractAddress: {
+          contractAddress: {
             in: contractAddresses,
           },
-          IsPublic: {
+          isPublic: {
             is: true,
           },
         },

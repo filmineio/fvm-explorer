@@ -26,12 +26,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         selection: ["contractId", "contractAddress"],
         query: [
           {
-            ContractId: {
+            contractId: {
               is: contractId,
             },
           },
         ],
-        order: ["ContractId", "ASC"],
+        order: ["contractId", "ASC"],
         pagination: {
           limit: 1,
           offset: 0,

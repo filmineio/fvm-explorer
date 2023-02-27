@@ -35,7 +35,7 @@ export const handle = async (
   const contractMeta = await getContractMetaByAddress(
     ctx,
     verifyReq.network,
-    contract["contractAddress"]
+    contract.contractAddress
   );
 
   if (contractMeta) {
@@ -47,7 +47,7 @@ export const handle = async (
   await downloadFile(ctx, verifyReq.contractsZipCID, filePath);
   const contracts = await readContractsFromZip(filePath);
   const onChainBytecode = await ctx.lotus.chain[verifyReq.network].ethGetCode(
-    contract["ethAddress"],
+    contract.ethAddress,
     "latest"
   );
 

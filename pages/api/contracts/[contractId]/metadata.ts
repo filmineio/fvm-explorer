@@ -25,12 +25,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         selection: ["contractId", "contractAddress"],
         query: [
           {
-            ContractId: {
+            contractId: {
               is: contractId,
             },
           },
         ],
-        order: ["ContractId", "ASC"],
+        order: ["contractId", "ASC"],
         pagination: {
           limit: 1,
           offset: 0,
@@ -44,35 +44,24 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const [contractMeta]: (ContractMeta & Record<"total", number>)[] =
       await ctx.database.ch.data.chain[network].query({
         fieldName: Entity.ContractMeta,
-        selection: [
-          "contractAddress",
-          "abiCid",
-          "mainCid",
-          "name",
-          "compilerVersion",
-          "fileMap",
-          "sigCid",
-          "binCid",
-          "isPublic",
-          "owner",
-        ],
+        selection: [],
         query: [
           {
-            ContractAddress: {
+            contractAddress: {
               is: contract.contractAddress,
             },
-            Owner: {
+            owner: {
               is: user.email,
             },
-            IsPublic: {
+            isPublic: {
               is: false,
             },
           },
           {
-            ContractAddress: {
+            contractAddress: {
               is: contract.contractAddress,
             },
-            IsPublic: {
+            isPublic: {
               is: true,
             },
           },

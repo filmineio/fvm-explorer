@@ -12,22 +12,15 @@ export const getContractById = async (
 ): Promise<(Contract & Record<"total", number>) | undefined> => {
   const [contract] = await ctx.database.ch.data.chain[network].query({
     fieldName: Entity.Contract,
-    selection: [
-      "contractAddress",
-      "contractId",
-      "contractActorAddress",
-      "ethAddress",
-      "ownerAddress",
-      "ownerId",
-    ],
+    selection: [],
     query: [
       {
-        ContractId: {
+        contractId: {
           is: contractId,
         },
       },
     ],
-    order: ["ethAddress", "ASC"],
+    order: ["contractId", "ASC"],
     pagination: {
       limit: 1,
       offset: 0,
