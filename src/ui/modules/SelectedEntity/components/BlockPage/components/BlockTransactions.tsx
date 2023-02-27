@@ -27,7 +27,7 @@ export const BlockTransactions = ({
 }) => {
   return (
     <div className=" py-2.5 mt-8 relative">
-      <p className="text-white mt-0 lg:mt-7 font-bold leading-5 text-2xl">
+      <p className="text-white mt-0 lg:mt-7 mb-7 font-bold leading-5 text-2xl">
         Block transactions
       </p>
       <div className="flex flex-col">

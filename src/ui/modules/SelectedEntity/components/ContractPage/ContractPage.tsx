@@ -106,22 +106,25 @@ export const ContractPage = ({ data }: Props) => {
           totalTransactions={total}
           metadata={metadata}
         />
-        <ul className="nav nav-tabs flex justify-end  md:flex-row flex-wrap list-none border-b-0 pl-0">
-          <TabHeader
-            tabIndex={0}
-            activeTab={activeTab}
-            toggle={setActiveTab}
-            label={"Transactions"}
-          />
-          {metadata && (
+        <div className="flex items-center justify-between mb-5">
+          <h3 className="text-24 text-white">Details</h3>
+          <ul className="nav nav-tabs flex justify-end  md:flex-row flex-wrap list-none border-b-0 pl-0">
             <TabHeader
-              tabIndex={1}
+              tabIndex={0}
               activeTab={activeTab}
               toggle={setActiveTab}
-              label={"Source Code"}
+              label={"Transactions"}
             />
-          )}
-        </ul>
+            {metadata && (
+              <TabHeader
+                tabIndex={1}
+                activeTab={activeTab}
+                toggle={setActiveTab}
+                label={"Source Code"}
+              />
+            )}
+          </ul>
+        </div>
         <div className="tab-content">
           <div className="tab-pane fade show active">
             {activeTab === 0 && (

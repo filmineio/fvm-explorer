@@ -11,11 +11,9 @@ import { useStore } from "@/ui/state/Store";
 import { Contract } from "@/types/data/Contract";
 import { ContractMeta } from "@/types/data/ContractMeta";
 
-import { capitalize } from "@/utils/capitalize";
 import FileEyeIcon from "@/ui/components/Common/Icons/FileEyeIcon";
 import BookmarkCodeIcon from "@/ui/components/Common/Icons/BookmarkCodeIcon";
-import LinkIcon from "@/ui/components/Common/Icons/LinkIcon";
-import FileCopyIcon from "@/ui/components/Common/Icons/FileCopyIcon";
+import Link from "next/link";
 
 
 export const ContractBaseInfo = ({
@@ -60,13 +58,22 @@ export const ContractBaseInfo = ({
                 { showEth ? "Hide ETH" : "View ETH" }
               </span>
             </button>
-            {!!user && (
+            {!!user ? (
               <button className="flex items-center" type="button" onClick={toggleAddToProject}>
                 <div className="w-6 h-6 flex mr-2.5 rounded-3 bg-label_opacity-30 items-center justify-center">
                   <BookmarkCodeIcon/>
                 </div>
                 <span className="text-blue-400 font-bold text-14 leading-4">Save to project</span>
               </button>
+            ) : (
+              <Link href="/auth">
+                <button className="flex items-center" type="button">
+                  <div className="w-6 h-6 flex mr-2.5 rounded-3 bg-label_opacity-30 items-center justify-center">
+                    <BookmarkCodeIcon/>
+                  </div>
+                  <span className="text-blue-400 font-bold text-14 leading-4">Save to project</span>
+                </button>
+              </Link>
             )}
           </div>
         </div>
