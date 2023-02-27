@@ -1,4 +1,4 @@
-name: Deploy Staging
+name: deploy server
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
     with:
       project_path: /root/explorer-server
     secrets:
-      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY_DEV }}
-      SSH_HOST: ${{ secrets.SSH_HOST_DEV }}
-      SSH_USER: ${{ secrets.SSH_USER_DEV }}
-      compose_file_encoded_content: ${{ secrets.ENV_COMPOSE_DEV_B64 }}
+      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      SSH_HOST: ${{ secrets.SSH_HOST }}
+      SSH_USER: ${{ secrets.SSH_USER }}
+      env_file_encoded_content: ${{ secrets.ENV_B64 }}

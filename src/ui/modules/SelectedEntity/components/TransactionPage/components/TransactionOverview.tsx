@@ -35,7 +35,7 @@ export const TransactionOverview = ({
           <div className="overflow-x-auto ">
             <div className="mt-4 inline-block min-w-full">
               <pre>
-                <code className="font-roboto text-14 leading-normal text-label">{transaction.params}</code>
+                <code className="font-roboto text-14 leading-normal text-label whitespace-normal break-all">{transaction.params}</code>
               </pre>
             </div>
           </div>

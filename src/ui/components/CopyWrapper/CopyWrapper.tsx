@@ -23,14 +23,14 @@ export const CopyWrapper = ({
           onCopy={cb(toast.info, "Copied to clipboard", {})}
         >
           <div
-            className="absolute right-1 -top-0.5 cursor-pointer"
+            className="absolute -right-3 -top-0.5 cursor-pointer"
             onClick={(event) => {
               event.preventDefault();
               event.stopPropagation();
               return false;
             }}
           >
-            <span className="bg-slate text-blue-400 font-bold text-14 font-roboto z-10 bg-label p-2 rounded">
+            <span className="bg-body text-blue-400 font-bold text-14 font-roboto z-10 p-2 rounded-4">
               Copy
             </span>
           </div>
