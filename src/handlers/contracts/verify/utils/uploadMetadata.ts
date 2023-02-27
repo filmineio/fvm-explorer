@@ -1,6 +1,6 @@
 import { File } from "web3.storage";
 
-import { VerificationResult } from "@/api/contracts/verify/types/VerificationResult";
+import { VerificationResult } from "src/handlers/contracts/verify/types/VerificationResult";
 import { ApiCtx } from "@/api/ctx/apiCtx";
 
 type UploadMetadata = (

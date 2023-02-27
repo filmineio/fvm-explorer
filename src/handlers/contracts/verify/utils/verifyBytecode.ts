@@ -1,5 +1,5 @@
 import { ContractVerificationStatus } from "@/enums/ContractVerificationStatus";
-import { extractMetadata } from "@/api/contracts/verify/utils/extractMetadata";
+import { extractMetadata } from "src/handlers/contracts/verify/utils/extractMetadata";
 
 export const verifyBytecode = (
   onChainBytecode: string,
