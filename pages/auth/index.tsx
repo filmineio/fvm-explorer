@@ -89,30 +89,30 @@ const Home: NextPage = () => {
         <Modal>
           <div
             className={
-              "modal-content shadow-lg relative flex flex-col w-full pointer-events-auto bg-[#B7006E] bg-clip-padding rounded-4 outline-none text-current py-28"
+              "modal-content shadow-lg relative flex flex-col w-full pointer-events-auto bg-blue-500 bg-clip-padding rounded-10 outline-none text-current py-28"
             }
           >
             <div className="modal-header flex flex-shrink-0 items-center justify-center p-4  rounded-t-md ">
               <h5
-                className="text-5xl  leading-normal text-white"
+                className="text-4xl leading-compact text-white"
                 id="exampleModalScrollableLabel "
               >
                 Check your email
               </h5>
               <button
                 type="button"
-                className=" absolute top-5 right-5 box-content w-4 h-4 p-1 text-white border-none rounded-none  focus:shadow-none focus:outline-none focus:opacity-100 hover:text-white hover:opacity-75 hover:no-underline"
+                className=" absolute top-4 right-4 box-content w-5 h-5 p-1 text-white border-none rounded-none  focus:shadow-none focus:outline-none focus:opacity-100 hover:text-white hover:opacity-75 hover:no-underline"
                 onClick={cb(change, false)}
               >
                 <img src="/images/Close.svg" alt={"close-icon"} />
               </button>
             </div>
 
-            <div className="modal-body relative p-4 text-center text-white font-light font-mono text-xl">
+            <div className="text-16 modal-body relative p-8 text-center leading-normal text-white font-normal text-xl">
               <p>
                 We emailed a magic link to
                 <br />
-                <span className="font-mono font-semibold ">{state.email}</span>
+                <span className="font-bold">{state.email}</span>
                 <br />
                 Click the link to log in or sign up.
               </p>
