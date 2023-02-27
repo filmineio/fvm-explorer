@@ -49,7 +49,7 @@ export const TransactionPage = ({ data }: Props) => {
                 </h3>
               </div>
               <div className="flex items-center h-6 gap-2">
-                <div className={classNames("w-3 h-3 rounded-2 mt-1", {
+                <div className={classNames("w-3 h-3 rounded-2 mt-0.5", {
                   "bg-blue-500": exitCode === 0,
                   "bg-label": exitCode !== 0
                 })}/>
