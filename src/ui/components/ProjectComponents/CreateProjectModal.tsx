@@ -46,7 +46,7 @@ export const CreateProjectModal = ({
               SAVE PROJECT
             </button>
             <button
-              className="btn link flex items-center text-label"
+              className="btn link flex items-center text-label hover:text-placeholder transition-all"
               onClick={compose(cb(change, ""), cb(toggle, false))}
             >
               Cancel

@@ -10,7 +10,7 @@ export const Footer: FC = () => {
           <LogoDevStorageWhite />
         </Link>
         <p className="text-gray-text text-xs font-medium leading-4 font-space">
-          © Filexplore 2023.
+          © Dev.storage 2023.
         </p>
       </div>
     </footer>

@@ -62,7 +62,7 @@ export const ProjectEditModal = ({
                 YES, DELETE PROJECT
               </button>
               <button
-                className="btn link flex items-center text-label"
+                className="btn link flex items-center text-label hover:text-placeholder transition-all"
                 onClick={cb(setConfirm, false)}
               >
                 Cancel
@@ -106,7 +106,7 @@ export const ProjectEditModal = ({
               SAVE PROJECT
             </button>
             <button
-              className="btn link flex items-center text-red ml-auto"
+              className="btn link flex items-center text-red ml-auto hover:text-red_opacity-80 transition-all"
               onClick={cb(setConfirm, true)}
             >
               <div className="bg-label_opacity-30 mr-5 rounded-3 flex items-center justify-center w-8 h-8">
