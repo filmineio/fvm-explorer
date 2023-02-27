@@ -15,7 +15,7 @@ export const TransactionPresenter = ({
   const value = useMemo(() => attoFilToFil(transaction), [transaction.value]);
 
   return (
-    <div className="px-6 py-3 bg-body_opacity-50 flex rounded-4 text-left items-center">
+    <div className="px-10 py-5 bg-body_opacity-50 flex rounded-4 text-left items-center">
       <div className={"flex-1 -mt-3"}>
         <TransactionActors transaction={transaction} />
       </div>

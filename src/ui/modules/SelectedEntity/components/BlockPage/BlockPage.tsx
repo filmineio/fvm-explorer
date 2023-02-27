@@ -16,6 +16,7 @@ import { Block } from "@/types/data/Block";
 import { Transaction } from "@/types/data/Transaction";
 
 import { getZeroIndexOffset } from "@/utils/getZeroIndexOffset";
+import BlockIcon from "@/ui/components/Common/Icons/BlockIcon";
 
 
 type Props = { data: BlockResults };
@@ -56,29 +57,29 @@ export const BlockPage = ({ data }: Props) => {
   return (
     <div className=" pt-7">
       <div className="w-full">
-        <div className="project relative p-7 min-w-0 break-words bg-slate border-2 border-label rounded-4 shadow-lg ">
-          <div className="absolute bg-label py-1 px-2 -top-3 left-0">
-            <p className="text-xs text-white font-normal ">BLOCK</p>
+        <div className="project relative bg-body_opacity-50 p-7.5 mb-15 rounded-6 break-words">
+          <div className="absolute bg-label py-1.25 px-2 -top-3 left-0 rounded-1110">
+            <p className="text-white text-12 font-bold leading-compact uppercase">BLOCK</p>
           </div>
           <div className="md:lex-wrap flex items-center">
             <div className="relative pr-4 ">
-              <div className="bg-bglight w-24 h-24 rounded-4 py-3 px-3 flex justify-center items-center ">
-                <img src="/images/block-icon.svg" alt={"block-icon"} />
+              <div className="bg-label_opacity-30 w-24 h-24 rounded-4 py-3 px-3 flex justify-center items-center ">
+                <BlockIcon/>
               </div>
             </div>
 
-            <div className="pl-1">
-              <h3 className="text-2xl font-bold text-white mb-2 relative">
+            <div className="pl-1 overflow-hidden">
+              <h3 className="inline-flex w-auto break-all text-2xl font-bold text-white mb-2 relative">
                 <CopyWrapper data={block.cid}>{block.cid}</CopyWrapper>
               </h3>
-              <div className=" flex md:flex-wrap gap-1 items-center">
-                <p className="text-white font-space font-normal text-14 pr-3 w-9/12 truncate">
-                  <span className="text-label font-space font-normal text-14">
-                    Block signature:{" "}
+              <div className="flex md:flex-wrap gap-5 items-center mt-3">
+                <p className="relative text-white font-normal text-14 pr-3 w-9/12 truncate">
+                  <span className="text-label font-medium text-14 mr-5">
+                    Block signature
                   </span>
                   {chainBlock.BlockSig?.Data}
                 </p>
-                <button className="bg-bglight rounded-4 py-1 px-3 font-normal font-space	text-xs	leading-5 text-white tracking-wider lg:w-2/12">
+                <button className="bg-label_opacity-30 rounded-4 py-1 px-3 font-normal text-14 leading-normal text-white tracking-wider lg:w-2/12">
                   TYPE {chainBlock.BlockSig?.Type}
                 </button>
               </div>

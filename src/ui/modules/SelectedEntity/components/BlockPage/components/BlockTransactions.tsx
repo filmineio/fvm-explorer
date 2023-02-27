@@ -37,31 +37,31 @@ export const BlockTransactions = ({
               <tr className="bg-body border-0  ">
                 <th
                   scope="col"
-                  className=" w-1/6 rounded-l-lg text-left border-0 text-xs font-bold text-white px-6 py-4"
+                  className=" w-1/6 rounded-4004 text-left border-0 text-xs font-bold text-white px-10 py-5"
                 >
                   TRANSACTION HASH
                 </th>
                 <th
                   scope="col"
-                  className="w-1/6 border-0 text-left text-xs font-bold text-white px-6 py-4"
+                  className="w-1/6 border-0 text-left text-xs font-bold text-white px-10 py-5"
                 >
                   METHOD
                 </th>
                 <th
                   scope="col"
-                  className="w-1/6 border-0 text-left text-xs font-bold text-white px-6 py-4"
+                  className="w-1/6 border-0 text-left text-xs font-bold text-white px-10 py-5"
                 >
                   STATUS
                 </th>
                 <th
                   scope="col"
-                  className="w-1/6 border-0 text-left text-xs font-bold text-white px-6 py-4"
+                  className="w-1/6 border-0 text-left text-xs font-bold text-white px-10 py-5"
                 >
                   GAS COST
                 </th>
                 <th
                   scope="col"
-                  className="w-1/6  border-0 text-left rounded-r-lg text-xs font-bold text-white px-6 py-4"
+                  className="w-1/6  border-0 text-left rounded-r-lg text-xs font-bold text-white px-10 py-5"
                 >
                   VALUE
                 </th>
