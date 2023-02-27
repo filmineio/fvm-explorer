@@ -28,7 +28,7 @@ export default function Queries(): ReactElement {
   return (
     <MyDataWrapper kind={MyDataKind.Queries}>
       <div className="max-w-1xl mx-auto p-10 relative">
-        <div className={"text-2xl text-white mb-4"}>My Queries</div>
+        <div className={"text-2xl text-white mb-4"}>My queries</div>
         <GraphQLEditor />
       </div>
     </MyDataWrapper>

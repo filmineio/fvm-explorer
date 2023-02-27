@@ -89,7 +89,7 @@ export const MyDataHeader = ({
                     strokeLinejoin="round"
                   />
                 </svg>
-                {kind === MyDataKind.Projects ? "My Projects" : "My Queries"}
+                {kind === MyDataKind.Projects ? "My projects" : "My queries"}
               </div>
             </li>
             {activeEntity && (

@@ -47,7 +47,7 @@ export const UserMenu = ({ user }: { user: User }) => {
             onClick={cb(push, "/me/projects")}
           >
             <div className={classNames("absolute inline-block top-0 left-0 h-full w-[3px] rounded-0330", {"bg-blue-400": selected === 1})}/>
-            <span>My Projects</span>
+            <span>My projects</span>
           </div>
           <div
             className="relative px-4 py-4 cursor-pointer hover:text-blue-400 hover:bg-body"
@@ -56,7 +56,7 @@ export const UserMenu = ({ user }: { user: User }) => {
             onClick={cb(push, "/me/queries")}
           >
             <div className={classNames("absolute inline-block top-0 left-0 h-full w-[3px] rounded-0330", {"bg-blue-400": selected === 2})}></div>
-            <span>My Queries</span>
+            <span>My queries</span>
           </div>
           <div
             className="relative px-4 py-4 cursor-pointer hover:text-blue-400 hover:bg-body"
