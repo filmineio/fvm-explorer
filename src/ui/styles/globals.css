@@ -337,6 +337,7 @@ a.customr.textnone span.onespan {
   position: relative;
   transition: all 160ms ease-in-out;
   cursor: pointer;
+  font-size: 14px;
 }
 
 .react-select .react-select__menu .react-select__menu-list .react-select__option:before {

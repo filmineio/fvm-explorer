@@ -20,9 +20,11 @@ export type APIConfig = {
   web3Storage: Web3StorageConfig;
 };
 
-export const apiConfig: APIConfig = {
-  clickhouse: clickhouseConfig,
-  auth: authConfig,
-  lotus: lotusConfig,
-  web3Storage: web3StorageConfig,
-};
+export const apiConfig: (env?: typeof process.env) => APIConfig = (
+  env = process.env
+) => ({
+  clickhouse: clickhouseConfig(env),
+  auth: authConfig(env),
+  lotus: lotusConfig(env),
+  web3Storage: web3StorageConfig(env),
+});
