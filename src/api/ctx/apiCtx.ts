@@ -22,22 +22,22 @@ export type ApiCtx = {
 };
 
 let ctx: ApiCtx;
-export const getCtx = async (): Promise<ApiCtx> => {
+export const getCtx = async (config = apiConfig()): Promise<ApiCtx> => {
   console.log("CTX Exists: ", !!ctx);
 
   if (ctx) return ctx;
   ctx = {
     version: process.env.VERSION as string,
     database: {
-      ch: initClient(apiConfig.clickhouse),
+      ch: initClient(config.clickhouse),
     },
-    // lotus: initLotus(apiConfig.lotus),
+    // lotus: initLotus(config.lotus),
     auth: {
-      sealer: initSealer(apiConfig.auth),
-      magic: initMagicClient(apiConfig.auth),
+      sealer: initSealer(config.auth),
+      magic: initMagicClient(config.auth),
       utils: authUtils,
     },
-    web3storage: new Web3Storage({ token: apiConfig.web3Storage.token }),
+    web3storage: new Web3Storage({ token: config.web3Storage.token }),
   } as never;
 
   return ctx;

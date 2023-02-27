@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest"
+    "test": "jest",
+    "dev:custom": "nodemon",
+    "build:custom": "next build && tsc --project tsconfig.server.json",
+    "start:custom": "cross-env NODE_ENV=production node dist/server.js"
   },
   "dependencies": {
     "@clickhouse/client": "^0.0.11",
@@ -28,6 +31,7 @@
     "axios": "^0.27.2",
     "babel-plugin-macros": "^3.1.0",
     "classnames": "^2.3.2",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.0.3",
     "graphiql": "^2.2.0",
     "graphql": "^16.6.0",
@@ -60,10 +64,14 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@trivago/prettier-plugin-sort-imports": "^3.3.0",
+    "@types/body-parser": "^1.19.2",
     "@types/classnames": "^2.3.1",
     "@types/cookie": "^0.5.1",
+    "@types/cors": "^2.8.13",
     "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.17",
     "@types/jest": "^29.2.4",
+    "@types/morgan": "^1.9.4",
     "@types/node": "18.14.1",
     "@types/ramda": "^0.28.20",
     "@types/randomstring": "^1.1.8",
@@ -71,12 +79,32 @@
     "@types/react-dom": "18.0.5",
     "@types/unzipper": "^0.10.5",
     "babel-plugin-transform-typescript-metadata": "^0.3.2",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
     "eslint": "8.18.0",
     "eslint-config-next": "12.1.6",
+    "express": "^4.18.2",
     "jest": "^29.3.1",
     "jest-environment-jsdom": "^29.3.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.20",
     "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "tsconfig-paths": "^3.14.2",
     "typescript": "4.7.4"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "**/*.test.ts",
+      "**/*.spec.ts",
+      ".git",
+      "node_modules"
+    ],
+    "watch": [
+      "src"
+    ],
+    "exec": "node -r tsconfig-paths/register -r ts-node/register ./server.ts",
+    "ext": "ts, js"
   }
 }
