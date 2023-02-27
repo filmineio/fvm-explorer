@@ -44,6 +44,10 @@
         visibility: visible;
       }
 
+      &:hover .sidebar-item {
+        background: #292E42;
+      }
+
       &:hover,
       &.active {
         .sidebar-item {
@@ -73,13 +77,13 @@
       }
 
       .sidebar-item {
-        background: #292E42;
         border-radius: 6px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
         padding: 10px;
         cursor: pointer;
+        transition: all 160ms ease-in-out;
 
         &:before {
           content: '';
