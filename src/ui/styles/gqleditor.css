@@ -2,7 +2,7 @@
   min-height: calc(100vh - 10rem);
   flex-direction: row-reverse;
   position: relative;
-  overflow: visible;
+  overflow: visible !important;
 }
 
 body .graphiql-container .graphiql-query-editor {
@@ -139,7 +139,7 @@ button.graphiql-execute-button svg path {
   top: -70px !important;
   display: flex !important;
   flex-direction: row !important;
-  right: 260px;
+  right: -35px;
   gap: 3rem;
   background-color: transparent;
 }
@@ -150,6 +150,9 @@ button.graphiql-execute-button svg path {
   gap: 1rem !important;
 }
 
+.graphiql-container .graphiql-sidebar button.active {
+  background: rgba(89, 169, 255, 0.14);
+}
 
 .graphiql-sidebar > div > button {
   width: fit-content !important;
@@ -171,6 +174,10 @@ button.graphiql-execute-button svg path {
 
 .graphiql-sidebar > div:nth-child(1) > button:nth-child(2) {
   transform: translateY(-.2rem);
+}
+
+body .graphiql-container .graphiql-sidebar {
+  width: auto !important;
 }
 
 button {
