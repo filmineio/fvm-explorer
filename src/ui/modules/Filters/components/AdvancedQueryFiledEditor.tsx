@@ -132,7 +132,7 @@ export const AdvancedQueryFiledEditor = ({
           </button>
         </div>
         <button
-          className="btn link flex items-center text-label ml-4"
+          className="btn link flex items-center text-label ml-4 hover:text-placeholder transition-all"
           onClick={onClear}
         >
           Clear
