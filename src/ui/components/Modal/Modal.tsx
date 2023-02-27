@@ -14,7 +14,7 @@ const Modal: FC<ModalProps> = ({ children }) => {
     >
       <div
         className={classNames(
-          "py-10 transition-all max-w-6xl h-screen container px-0 relative items-center justify-center flex"
+          "py-10 transition-all max-w-3xl h-screen container px-0 relative items-center justify-center flex"
         )}
       >
         <div className="relative flex flex-col mx-auto w-full rounded-lg">

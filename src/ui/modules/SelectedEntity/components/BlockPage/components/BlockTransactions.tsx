@@ -31,7 +31,7 @@ export const BlockTransactions = ({
         Block transactions
       </p>
       <div className="flex flex-col">
-        <div className="w-full overflow-auto">
+        <div className="w-full overflow-y-auto">
           <table className="min-w-full text-center border-0 border-separate border-spacing-y-3.5	">
             <thead>
               <tr className="bg-body border-0  ">
