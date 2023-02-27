@@ -10,6 +10,7 @@ import { TransactionStateDiff } from "@/ui/modules/SelectedEntity/components/Con
 
 import { Contract } from "@/types/data/Contract";
 import { Transaction } from "@/types/data/Transaction";
+import { CopyWrapper } from "@/ui/components/CopyWrapper/CopyWrapper";
 
 export const ContractTransactionRow = ({
   contract,
@@ -31,13 +32,17 @@ export const ContractTransactionRow = ({
           <Link
             href={`/explore/${Entity.Transaction}/${transaction.cid}?network=${network}`}
           >
-            {transaction.cid}
+            <div className="relative">
+              <CopyWrapper data={transaction.cid}>
+                {transaction.cid}
+              </CopyWrapper>
+            </div>
           </Link>
         </td>
-        <td className="w-1/6  text-left text-14	italic  text-white font-space tracking-wider	 font-normal px-10 pt-5 pb-3 whitespace-nowrap">
+        <td className="w-1/6  text-left text-14	italic  text-white tracking-wider	 font-normal px-10 pt-5 pb-3 whitespace-nowrap">
           {transaction.method}
         </td>
-        <td className="w-1/6  text-left text-14	italic  text-white font-space tracking-wider	 font-normal px-10 pt-5 pb-3 whitespace-nowrap">
+        <td className="w-1/6  text-left text-14	italic  text-white tracking-wider	 font-normal px-10 pt-5 pb-3 whitespace-nowrap">
           {transaction.height}
         </td>
         <td className="w-1/6  text-left text-14	text-white tracking-wider	 font-bold px-10 pt-5 pb-3 whitespace-nowrap">

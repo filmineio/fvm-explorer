@@ -30,7 +30,7 @@ export const ContractTransactions = ({
   return (
     <div className="flex flex-col">
       <div className="w-full overflow-y-auto">
-        <table className="text-center border-0 border-separate border-spacing-y-2">
+        <table className="text-center border-0 border-separate border-spacing-y-2 min-w-full">
           <thead>
             <tr className="bg-body border-0">
               <th
