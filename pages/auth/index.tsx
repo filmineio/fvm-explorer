@@ -67,8 +67,7 @@ const Home: NextPage = () => {
                   <Input
                     handleChange={change}
                     placeholder="Email"
-                    className="block bg-slate min-h-sm w-80 pl-11 border-2 border-body rounded-4 text-white placeholder-label caret-white text-14 outline-none leading-4 hover:border-label
-                        focus:border-label focus:ring-body focus:ring-2"
+                    className="block bg-slate min-h-sm w-96 pl-11 border-2 border-body rounded-4 text-white placeholder-label caret-white text-14 outline-none leading-4 hover:border-label hover:ring-body hover:ring focus:border-label focus:ring-body focus:ring"
                     valid={state.emailValid}
                     icon={<MailIcon/>}
                   />
