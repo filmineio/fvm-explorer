@@ -30,8 +30,8 @@ export const FiltersHeader = ({
 
       <div className="flex flex-1 justify-end items-center flex-wrap gap-5">
         <div className="flex gap-3 mr-5 items-center">
-          <span className="inline-block text-label form-check-label text-14">
-            Search in
+          <span className="inline-block text-label form-check-label text-14 font-medium">
+            search in
           </span>
           <div className="w-36">
             <CustomSelect
@@ -44,8 +44,8 @@ export const FiltersHeader = ({
         </div>
 
         <div className="flex gap-3 mr-5 items-center">
-          <span className="inline-block text-label form-check-label text-14">
-            Network
+          <span className="inline-block text-label form-check-label text-14 font-medium">
+            network
           </span>
           <div className="w-32">
             <CustomSelect
@@ -60,7 +60,7 @@ export const FiltersHeader = ({
         <AdvancedFilterToggle
           checked={checked}
           toggle={cb(toggle, !checked)}
-          label={"Advanced Search"}
+          label={"advanced search"}
         />
       </div>
     </div>

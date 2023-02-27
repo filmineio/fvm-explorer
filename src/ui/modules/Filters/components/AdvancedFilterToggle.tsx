@@ -13,7 +13,7 @@ export const AdvancedFilterToggle = ({
     <div className={"md:w-full sm:w-full"}>
       <div className="flex justify-center items-center">
         <div className="flex gap-2 items-center form-check form-switch pl-2.5">
-          <span className="inline-block text-label form-check-label text-14 mr-4">{label}</span>
+          <span className="inline-block text-label form-check-label text-14 mr-4 font-medium">{label}</span>
           <label className="relative inline-flex items-center cursor-pointer">
             <input
               type="checkbox"

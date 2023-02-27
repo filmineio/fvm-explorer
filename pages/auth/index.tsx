@@ -18,6 +18,7 @@ import LogoName from "@/ui/components/Common/Icons/LogoName";
 import AuthIllustrationTop from "@/ui/components/Common/Icons/AuthIllustrationTop";
 import AuthIllustrationBottom from "@/ui/components/Common/Icons/AuthIllustrationBottom";
 import MailIcon from "@/ui/components/Common/Icons/MailIcon";
+import X from "@/ui/components/Common/Icons/X";
 
 
 const Home: NextPage = () => {
@@ -43,13 +44,13 @@ const Home: NextPage = () => {
       <Page>
         <div className="flex h-full">
           <div className="flex relative w-11/25 items-center justify-center bg-line_opacity-80">
-            <div className="absolute self-end top-0 right-0">
+            <div className="absolute self-end top-0 right-0 3xl:w-[380px] 2xl:max-w-[300px] w-[529px]">
               <AuthIllustrationTop/>
             </div>
             <div className="flex items-center justify-center z-10">
               <LogoName/>
             </div>
-            <div className="absolute self-start bottom-0 left-0">
+            <div className="absolute self-start bottom-0 left-0 3xl:w-[380px] 2xl:max-w-[300px] w-[529px]">
               <AuthIllustrationBottom/>
             </div>
           </div>
@@ -87,32 +88,28 @@ const Home: NextPage = () => {
       </Page>
       {state.modalVisible && (
         <Modal>
-          <div
-            className={
-              "modal-content shadow-lg relative flex flex-col w-full pointer-events-auto bg-[#B7006E] bg-clip-padding rounded-4 outline-none text-current py-28"
-            }
-          >
-            <div className="modal-header flex flex-shrink-0 items-center justify-center p-4  rounded-t-md ">
+          <div className="modal-content border-none shadow-none relative flex flex-col w-[590px] mx-auto pointer-events-auto bg-blue-500 rounded-10">
+            <div className="modal-header flex flex-shrink-0 items-center">
+              <button
+                type="button"
+                className="btn-close absolute right-7 top-7 z-10 hover:opacity-50 transition-all [transition:opacity_.0.16s_ease_in_out]"
+                onClick={cb(change, false)}
+              >
+                <X />
+              </button>
+            </div>
+
+            <div className="modal-body relative p-[70px] text-center">
               <h5
-                className="text-5xl  leading-normal text-white"
+                className="text-[36px] leading-normal text-white mb-12"
                 id="exampleModalScrollableLabel "
               >
                 Check your email
               </h5>
-              <button
-                type="button"
-                className=" absolute top-5 right-5 box-content w-4 h-4 p-1 text-white border-none rounded-none  focus:shadow-none focus:outline-none focus:opacity-100 hover:text-white hover:opacity-75 hover:no-underline"
-                onClick={cb(change, false)}
-              >
-                <img src="/images/Close.svg" alt={"close-icon"} />
-              </button>
-            </div>
-
-            <div className="modal-body relative p-4 text-center text-white font-light font-mono text-xl">
-              <p>
+              <p className="text-white leading-[1.5rem]">
                 We emailed a magic link to
                 <br />
-                <span className="font-mono font-semibold ">{state.email}</span>
+                <span className="font-space font-bold ">{state.email}idjlaksjdlkas</span>
                 <br />
                 Click the link to log in or sign up.
               </p>
