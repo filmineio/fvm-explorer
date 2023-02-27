@@ -1,3 +1,4 @@
+// @ts-ignore
 import { NodejsProvider } from "@filecoin-shipyard/lotus-client-provider-nodejs";
 import { LotusRPC } from "@filecoin-shipyard/lotus-client-rpc";
 
