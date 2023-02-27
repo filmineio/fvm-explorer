@@ -9,7 +9,7 @@
     "lint": "next lint",
     "test": "jest",
     "dev:custom": "nodemon",
-    "build:custom": "next build && tsc --project tsconfig.server.json",
+    "build:custom": "next build && tsc -p tsconfig.server.json && tsc-alias -p tsconfig.server.json",
     "start:custom": "cross-env NODE_ENV=production node dist/server.js"
   },
   "dependencies": {
@@ -91,6 +91,7 @@
     "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
+    "tsc-alias": "^1.8.2",
     "tsconfig-paths": "^3.14.2",
     "typescript": "4.7.4"
   },

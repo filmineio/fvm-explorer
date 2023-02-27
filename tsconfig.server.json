@@ -8,7 +8,7 @@
     ],
     "target": "es2019",
     "isolatedModules": false,
-    "noEmit": false
+    "noEmit": false,
   },
   "include": [
     "server.ts"
