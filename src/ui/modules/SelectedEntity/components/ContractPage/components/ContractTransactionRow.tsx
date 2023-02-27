@@ -27,20 +27,20 @@ export const ContractTransactionRow = ({
   return (
     <>
       <tr className="min-w-full rounded rounded-b-0 bg-body_opacity-50">
-        <td className="w-1/6 px-10 py-5 text-left truncate text-blue-400 underline cursor-pointer rounded-4000">
+        <td className="w-1/6 px-10 pt-5 pb-3 text-left truncate text-blue-400 underline cursor-pointer rounded-4000">
           <Link
             href={`/explore/${Entity.Transaction}/${transaction.cid}?network=${network}`}
           >
             {transaction.cid}
           </Link>
         </td>
-        <td className="w-1/6  text-left text-14	italic  text-white font-space tracking-wider	 font-normal px-10 py-5 whitespace-nowrap">
+        <td className="w-1/6  text-left text-14	italic  text-white font-space tracking-wider	 font-normal px-10 pt-5 pb-3 whitespace-nowrap">
           {transaction.method}
         </td>
-        <td className="w-1/6  text-left text-14	italic  text-white font-space tracking-wider	 font-normal px-10 py-5 whitespace-nowrap">
+        <td className="w-1/6  text-left text-14	italic  text-white font-space tracking-wider	 font-normal px-10 pt-5 pb-3 whitespace-nowrap">
           {transaction.height}
         </td>
-        <td className="w-1/6  text-left text-14	text-white tracking-wider	 font-bold px-10 py-5 whitespace-nowrap">
+        <td className="w-1/6  text-left text-14	text-white tracking-wider	 font-bold px-10 pt-5 pb-3 whitespace-nowrap">
           <div className="flex items-center gap-1.5">
             <div className={classNames("w-3 h-3 rounded-2 mt-0.5", {
               "bg-blue-500": exitCode === 0,
@@ -51,10 +51,10 @@ export const ContractTransactionRow = ({
             </span>
           </div>
         </td>
-        <td className="w-1/6  text-left text-14	  text-white tracking-wider	 font-normal  px-10 py-5 whitespace-nowrap">
+        <td className="w-1/6  text-left text-14	  text-white tracking-wider	 font-normal  px-10 pt-5 pb-3 whitespace-nowrap">
           {transaction.messageRctGasUsed} attoFIL
         </td>
-        <td className="w-1/6  text-left text-14	  text-white tracking-wider	 font-normal px-10 py-5 whitespace-nowrap rounded-0400">
+        <td className="w-1/6  text-left text-14	  text-white tracking-wider	 font-normal px-10 pt-5 pb-3 whitespace-nowrap rounded-0400">
           {transaction.value} FIL
         </td>
       </tr>
@@ -63,7 +63,7 @@ export const ContractTransactionRow = ({
           "min-w-full bg-body_opacity-50 transform -translate-y-2"
         }
       >
-        <td colSpan={7} className="px-6 pt-4 pb-3 rounded-0044">
+        <td colSpan={7} className={classNames("px-10 pt-3 pb-5", {"rounded-0044": !open, "rounded-0": open})}>
           <div className="flex items-center text-14 font-medium text-white">
             <div
               onClick={toggle}

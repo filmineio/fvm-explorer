@@ -35,37 +35,37 @@ export const ContractTransactions = ({
             <tr className="bg-body border-0">
               <th
                 scope="col"
-                className="w-1/6 rounded-4004 border-0 text-left text-14 leading-4 font-bold text-white px-6 py-5"
+                className="w-1/6 rounded-4004 border-0 text-left text-14 leading-4 font-bold text-white px-10 py-5"
               >
                 TRANSACTION HASH
               </th>
               <th
                 scope="col"
-                className="w-1/6 border-0 text-left text-14 leading-4 font-bold text-white px-6 py-5"
+                className="w-1/6 border-0 text-left text-14 leading-4 font-bold text-white px-10 py-5"
               >
                 METHOD
               </th>
               <th
                 scope="col"
-                className="w-1/6 border-0 text-left text-14 leading-4 font-bold text-white px-6 py-5"
+                className="w-1/6 border-0 text-left text-14 leading-4 font-bold text-white px-10 py-5"
               >
                 EPOCH
               </th>
               <th
                 scope="col"
-                className="w-1/6 border-0 text-left text-14 leading-4 font-bold text-white px-6 py-5"
+                className="w-1/6 border-0 text-left text-14 leading-4 font-bold text-white px-10 py-5"
               >
                 STATUS
               </th>
               <th
                 scope="col"
-                className="w-1/6 border-0 text-left text-14 leading-4 font-bold text-white px-6 py-5"
+                className="w-1/6 border-0 text-left text-14 leading-4 font-bold text-white px-10 py-5"
               >
                 GAS COST
               </th>
               <th
                 scope="col"
-                className="w-1/6 rounded-0440 border-0 text-left text-14 leading-4 font-bold text-white px-6 py-5"
+                className="w-1/6 rounded-0440 border-0 text-left text-14 leading-4 font-bold text-white px-10 py-5"
               >
                 VALUE
               </th>
