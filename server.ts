@@ -3,6 +3,7 @@ import cors from "cors";
 import * as dotenv from "dotenv";
 import express from "express";
 import morgan from "morgan";
+import { handle as handleVerifyContract } from "src/handlers/contracts/verify/handler";
 
 import { getCtx } from "@/api/ctx/apiCtx";
 import { apiConfig } from "@/api/ctx/config/config";
@@ -20,6 +21,11 @@ const config = apiConfig(process.env);
 app.get("/", async (req, res) => {
   const ctx = await getCtx(config);
   res.send("Hello World!");
+});
+
+app.post("/api/contracts/:contractId/verify", async (req, res) => {
+  const ctx = await getCtx(config);
+  handleVerifyContract(ctx, req, res);
 });
 
 app.listen(port, async () => {

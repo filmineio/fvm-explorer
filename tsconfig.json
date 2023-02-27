@@ -44,7 +44,11 @@
       ],
       "@/schema/utils/*": [
         "src/data-models/utils/*"
+      ],
+      "@/handlers/*": [
+        "src/handlers/*"
       ]
+
     },
     "target": "es2020",
     "lib": [

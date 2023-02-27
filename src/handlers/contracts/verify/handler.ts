@@ -2,15 +2,15 @@ import { ContractVerificationStatus } from "@/enums/ContractVerificationStatus";
 import { v4 } from "@lukeed/uuid";
 import { Request, Response } from "express";
 import fs from "fs";
-import { createContractMetadata } from "src/handlers/contracts/verify/utils/createContractMetadata";
-import { downloadFile } from "src/handlers/contracts/verify/utils/downloadFile";
-import { getContractById } from "src/handlers/contracts/verify/utils/getContractById";
-import { getContractMetaByAddress } from "src/handlers/contracts/verify/utils/getContractMetaByAddress";
-import { newSolcStandardInput } from "src/handlers/contracts/verify/utils/newSolcStandardInput";
-import { processRequestBody } from "src/handlers/contracts/verify/utils/processRequestBody";
-import { readContractsFromZip } from "src/handlers/contracts/verify/utils/readContractsFromZip";
-import { uploadMetadata } from "src/handlers/contracts/verify/utils/uploadMetadata";
-import { verify } from "src/handlers/contracts/verify/verify";
+import { createContractMetadata } from "@/handlers/contracts/verify/utils/createContractMetadata";
+import { downloadFile } from "@/handlers/contracts/verify/utils/downloadFile";
+import { getContractById } from "@/handlers/contracts/verify/utils/getContractById";
+import { getContractMetaByAddress } from "@/handlers/contracts/verify/utils/getContractMetaByAddress";
+import { newSolcStandardInput } from "@/handlers/contracts/verify/utils/newSolcStandardInput";
+import { processRequestBody } from "@/handlers/contracts/verify/utils/processRequestBody";
+import { readContractsFromZip } from "@/handlers/contracts/verify/utils/readContractsFromZip";
+import { uploadMetadata } from "@/handlers/contracts/verify/utils/uploadMetadata";
+import { verify } from "@/handlers/contracts/verify/utils/verify";
 
 import { OperationStatus } from "@/types/ApiResponse";
 
