@@ -1,0 +1,17 @@
+name: Deploy Staging
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/deploy.yml
+    with:
+      project_path: /root/explorer-server
+    secrets:
+      SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY_DEV }}
+      SSH_HOST: ${{ secrets.SSH_HOST_DEV }}
+      SSH_USER: ${{ secrets.SSH_USER_DEV }}
+      compose_file_encoded_content: ${{ secrets.ENV_COMPOSE_DEV_B64 }}
