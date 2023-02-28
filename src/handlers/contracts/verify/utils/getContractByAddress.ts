@@ -26,6 +26,11 @@ export const getContractByAddress = async (
           is: contractAddress,
         },
       },
+      {
+        ethAddress: {
+          is: contractAddress,
+        },
+      },
     ],
     order: ["ethAddress", "ASC"],
     pagination: {

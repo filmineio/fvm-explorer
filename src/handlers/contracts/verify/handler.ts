@@ -1,7 +1,7 @@
 import { ContractVerificationStatus } from "@/enums/ContractVerificationStatus";
 import { createContractMetadata } from "@/handlers/contracts/verify/utils/createContractMetadata";
 import { downloadFile } from "@/handlers/contracts/verify/utils/downloadFile";
-import { getContractByAddress } from "@/handlers/contracts/verify/utils/getContractById";
+import { getContractByAddress } from "@/handlers/contracts/verify/utils/getContractByAddress";
 import { getContractMetaByAddress } from "@/handlers/contracts/verify/utils/getContractMetaByAddress";
 import { newSolcStandardInput } from "@/handlers/contracts/verify/utils/newSolcStandardInput";
 import { processRequestBody } from "@/handlers/contracts/verify/utils/processRequestBody";
@@ -24,12 +24,15 @@ export const handle = async (ctx: ApiCtx, req: Request, res: Response) => {
     if (user === OperationStatus.Error) return res.status(401).end();
 
     const { contractAddress } = req.params;
-    const verifyReq = processRequestBody(req);
 
+    if (!contractAddress || !contractAddress.trim())
+      return res.status(400).json({ exception: "INVALID_REQUEST_PARAMS" });
+
+    const verifyReq = processRequestBody(req);
     const contract = await getContractByAddress(
       ctx,
       verifyReq.network,
-      contractAddress as string
+      (contractAddress as string).toLowerCase()
     );
     if (!contract) {
       throw new Error("Contract not found");
