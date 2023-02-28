@@ -1,10 +1,10 @@
+import { Request } from "express";
 import { NextApiRequest } from "next";
 
 import { Maybe } from "@/types/Maybe";
 
-
 export type AuthUtils = {
-  extractAuthToken: (req: NextApiRequest) => Maybe<string>;
+  extractAuthToken: (req: NextApiRequest | Request) => Maybe<string>;
 };
 export const authUtils: AuthUtils = {
   extractAuthToken: (req) => {

@@ -4,7 +4,7 @@ import { MagicUserMetadata } from "magic-sdk";
 import { OperationStatus } from "@/types/ApiResponse";
 import { Contract } from "@/types/data/Contract";
 
-import { VerificationRequest } from "@/api/contracts/verify/types/VerificationRequest";
+import { VerificationRequest } from "@/handlers/contracts/verify/types/VerificationRequest";
 import { ApiCtx } from "@/api/ctx/apiCtx";
 
 type CreateContractMetadata = (

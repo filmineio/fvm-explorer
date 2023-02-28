@@ -1,12 +1,12 @@
 import { ContractVerificationStatus } from "@/enums/ContractVerificationStatus";
 import { SolidityVersion } from "@/enums/SolidityVersion";
 
-import { SolcStandardJSONInput } from "@/api/contracts/verify/types/SolcStandardJSONInput";
-import { VerificationResult } from "@/api/contracts/verify/types/VerificationResult";
-import { filterSolcOutputErrors } from "@/api/contracts/verify/utils/filterSolcOutputErrors";
-import { findContractPath } from "@/api/contracts/verify/utils/findContractPath";
-import { loadSolc } from "@/api/contracts/verify/utils/loadSolc";
-import { verifyBytecode } from "@/api/contracts/verify/utils/verifyBytecode";
+import { SolcStandardJSONInput } from "src/handlers/contracts/verify/types/SolcStandardJSONInput";
+import { VerificationResult } from "src/handlers/contracts/verify/types/VerificationResult";
+import { filterSolcOutputErrors } from "src/handlers/contracts/verify/utils/filterSolcOutputErrors";
+import { findContractPath } from "src/handlers/contracts/verify/utils/findContractPath";
+import { loadSolc } from "src/handlers/contracts/verify/utils/loadSolc";
+import { verifyBytecode } from "src/handlers/contracts/verify/utils/verifyBytecode";
 
 type Verify = (
   contractName: string,
