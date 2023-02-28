@@ -26,19 +26,18 @@ export const TransactionStateDiff = ({
 
   const stateDiff = useMemo(() => {
     return transactions
-      .slice(
-        0,
-        findIndex((c) => c.cid === transaction.cid, transactions)
-      )
+      .slice(0, findIndex((c) => c.cid === transaction.cid, transactions) + 1)
       .reduce((p, d) => {
         const value = attoFilToFil(d).toNumber();
+        let l = p;
         if (
           d.from === contract.contractId ||
           d.robustFrom === contract.contractAddress
         ) {
           return p - value;
+        } else {
+          return p + value;
         }
-        return p + value;
       }, 0);
   }, [transactions, transaction]);
 
@@ -66,10 +65,7 @@ export const TransactionStateDiff = ({
       <table className="min-w-full">
         <tbody>
           <tr>
-            <td
-              colSpan={2}
-              className="text-14 text-white font-bold pb-5 pl-1"
-            >
+            <td colSpan={2} className="text-14 text-white font-bold pb-5 pl-1">
               actor
             </td>
             <td className="px-4 pb-5" colSpan={5}>
