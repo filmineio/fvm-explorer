@@ -81,11 +81,11 @@ export const AdvancedQueryFiledEditor = ({
     change("value")("");
   }, [editorType]);
 
-  const setSelectedValue = (inheritedValue: string, options: string[]) => {
+  const setSelectedValue = (inheritedValue: string, options: string[], onChange: (v: string) => void) => {
     const exist = options.some((option) => option === inheritedValue);
+    if (exist) return inheritedValue;
 
-    if (exist) return inheritedValue
-
+    onChange(options[0]);
     return options[0];
   }
 
@@ -95,7 +95,7 @@ export const AdvancedQueryFiledEditor = ({
         <div className="flex justify-center md:w-1/2 w-40 mr-4">
           <div className="w-40 md:w-ful">
             <CustomSelect
-              value={setSelectedValue(selectedField.field, fields)}
+              value={setSelectedValue(selectedField.field, fields, change("field"))}
               onChange={change("field")}
               values={fields.map((str) => ({ label: str, value: str }))}
             />
