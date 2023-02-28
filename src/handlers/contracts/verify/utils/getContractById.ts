@@ -5,10 +5,10 @@ import { Contract } from "@/types/data/Contract";
 
 import { ApiCtx } from "@/api/ctx/apiCtx";
 
-export const getContractById = async (
+export const getContractByAddress = async (
   ctx: ApiCtx,
   network: Network,
-  contractId: string
+  contractAddress: string
 ): Promise<(Contract & Record<"total", number>) | undefined> => {
   const [contract] = await ctx.database.ch.data.chain[network].query({
     fieldName: Entity.Contract,
@@ -23,7 +23,7 @@ export const getContractById = async (
     query: [
       {
         contractAddress: {
-          is: contractId,
+          is: contractAddress,
         },
       },
     ],
