@@ -39,13 +39,13 @@ export const ContractTransactionRow = ({
             </div>
           </Link>
         </td>
-        <td className="w-1/6  text-left text-14	italic  text-white tracking-wider	 font-normal px-10 pt-5 pb-3 whitespace-nowrap">
+        <td className="w-1/6  text-left text-14	italic  text-white  font-normal px-10 pt-5 pb-3 whitespace-nowrap">
           {transaction.method}
         </td>
-        <td className="w-1/6  text-left text-14	italic  text-white tracking-wider	 font-normal px-10 pt-5 pb-3 whitespace-nowrap">
+        <td className="w-1/6  text-left text-14	italic  text-white  font-normal px-10 pt-5 pb-3 whitespace-nowrap">
           {transaction.height}
         </td>
-        <td className="w-1/6  text-left text-14	text-white tracking-wider	 font-bold px-10 pt-5 pb-3 whitespace-nowrap">
+        <td className="w-1/6  text-left text-14	text-white  font-bold px-10 pt-5 pb-3 whitespace-nowrap">
           <div className="flex items-center gap-1.5">
             <div className={classNames("w-3 h-3 rounded-2 mt-0.5", {
               "bg-blue-500": exitCode === 0,
@@ -56,10 +56,10 @@ export const ContractTransactionRow = ({
             </span>
           </div>
         </td>
-        <td className="w-1/6  text-left text-14	  text-white tracking-wider	 font-normal  px-10 pt-5 pb-3 whitespace-nowrap">
+        <td className="w-1/6  text-left text-14	  text-white  font-normal  px-10 pt-5 pb-3 whitespace-nowrap">
           {transaction.messageRctGasUsed} attoFIL
         </td>
-        <td className="w-1/6  text-left text-14	  text-white tracking-wider	 font-normal px-10 pt-5 pb-3 whitespace-nowrap rounded-0400">
+        <td className="w-1/6  text-left text-14	  text-white  font-normal px-10 pt-5 pb-3 whitespace-nowrap rounded-0400">
           {transaction.value} FIL
         </td>
       </tr>

@@ -23,8 +23,6 @@ export const TransactionCard = ({ data, network }: TransactionCardProps) => {
     [data.value]
   );
 
-  console.log(data);
-
   return (
     <div className="w-full sm:min-w-full max-w-xs md:w-1/2 lg:w-1/3 sm:pr-5 px-0 cursor-pointer">
       <Link

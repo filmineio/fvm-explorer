@@ -19,10 +19,10 @@ export const TransactionPresenter = ({
       <div className={"flex-1 -mt-3"}>
         <TransactionActors transaction={transaction} />
       </div>
-      <div className="text-center text-white text-14 font-normal leading-normal tracking-wider whitespace-nowrap w-48">
+      <div className="text-center text-white text-14 font-normal leading-normal  whitespace-nowrap w-48">
         {value.toFixed()} FIL
       </div>
-      <div className="text-14 text-right text-white font-normal leading-normal  tracking-wider whitespace-nowrap w-48">
+      <div className="text-14 text-right text-white font-normal leading-normal   whitespace-nowrap w-48">
         {transaction.messageRctGasUsed} attoFIL
       </div>
     </div>

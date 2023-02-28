@@ -24,10 +24,10 @@ export const TransactionOverview = ({
             </h5>
 
             <span className="flex text-justify items-center mt-3 sm:mt-0	">
-              <p className="text-14 font-normal italic	text-white pr-3">
+              <p className="text-14 font-normal italic text-white pr-3">
                 MethodId
               </p>
-              <button className="bg-bglight rounded-4 py-2 px-5 font-medium text-14 leading-5 text-white tracking-wider">
+              <button className="bg-bglight rounded-4 py-2 px-5 font-medium text-14 leading-5 text-white">
                 {transaction.method}
               </button>
             </span>
@@ -48,7 +48,7 @@ export const TransactionOverview = ({
           </h5>
 
           <div className="mt-5">
-            <h5 className="text-left font-medium text-14 tracking-wider text-label leading-4">
+            <h5 className="text-left font-medium text-14  text-label leading-4">
               CID
             </h5>
             <div className={"relative"}>
@@ -59,7 +59,7 @@ export const TransactionOverview = ({
               </CopyWrapper>
             </div>
 
-            <h5 className="mt-5 text-left font-medium text-14 tracking-wider text-label leading-4 lowercase">
+            <h5 className="mt-5 text-left font-medium text-14  text-label leading-4 lowercase">
               TIPSETS (BLOCKS)
             </h5>
 
@@ -81,22 +81,22 @@ export const TransactionOverview = ({
           </h5>
 
           <div className="mt-5">
-            <h5 className="text-left font-medium text-14 tracking-wider text-label leading-4 lowercase">
+            <h5 className="text-left font-medium text-14  text-label leading-4 lowercase">
               GAS FEE CAP
             </h5>
             <p className="mt-1.25 text-left font-normal text-14 text-white leading-normal">
               {transaction.gasFeeCap}
             </p>
-            <h5 className="mt-5 text-left font-medium text-14 tracking-wider	 text-label leading-4 lowercase">
+            <h5 className="mt-5 text-left font-medium text-14  text-label leading-4 lowercase">
               GAS LIMIT
             </h5>
             <p className="mt-1.25 text-left font-normal text-14 text-white leading-normal">
               {transaction.gasLimit}
             </p>
-            <h5 className="mt-5 text-left font-medium text-14 tracking-wider	text-label leading-4 lowercase">
+            <h5 className="mt-5 text-left font-medium text-14 text-label leading-4 lowercase">
               GAS PREMIUM
             </h5>
-            <p className="mt-1.25 text-left font-normal  text-14 tracking-wider	text-white">
+            <p className="mt-1.25 text-left font-normal  text-14 text-white">
               {transaction.gasPremium}
             </p>
           </div>

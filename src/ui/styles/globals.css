@@ -282,10 +282,10 @@ a.customr.textnone span.onespan {
   opacity: 0;
 }
 
-.react-select [class$='-placeholder'] {
+.react-select .react-select__placeholder {
   font-size: 14px;
   font-weight: 500;
-  color: white;
+  color: #596184;
   margin: 0;
 }
 

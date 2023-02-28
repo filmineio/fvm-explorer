@@ -16,7 +16,7 @@ export const ContractMetaInfo = ({
 
       <div className="xs:flex flex-wrap ">
         <div className="w-full mt-2 sm:w-6/12 mt-0 w-5/12 ">
-          <h4 className="text-label font-normal text-14	tracking-wider	leading-5	">
+          <h4 className="text-label font-normal text-14 leading-5">
             ABI
           </h4>
           <div className="flex">
@@ -66,10 +66,10 @@ export const ContractMetaInfo = ({
         </div>
 
         <div className="w-full mt-2 sm:w-6/12 mt-0 w-3/12 ">
-          <h4 className="text-label font-normal text-14	tracking-wider	leading-5	">
+          <h4 className="text-label font-normal text-14	leading-5">
             COMPILER VERSION
           </h4>
-          <h5 className="text-white font-medium text-14	tracking-wider	leading-5	">
+          <h5 className="text-white font-medium text-14	leading-5">
             {metadata.compilerVersion}
           </h5>
         </div>

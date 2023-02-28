@@ -10,7 +10,7 @@ export const EventEntryRow = ({ entry }: { entry: Entry }) => {
       </td>
       <td>
         {/* TODO Only Data can be decoded so UI must be changed */}
-        {/*<select className=" text-blue-400 select-text border-none focus:outline-none focus:border-none bg-inherit  caret-blue-400 text-14	font-semibold tracking-wide	cursor-pointer">*/}
+        {/*<select className=" text-blue-400 select-text border-none focus:outline-none focus:border-none bg-inherit caret-blue-400 text-14 font-semibold cursor-pointer">*/}
         {/*  <option className="text-slate">String</option>*/}
         {/*  <option className="text-slate">Address</option>*/}
         {/*  <option className="text-slate">UInt256</option>*/}

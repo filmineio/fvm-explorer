@@ -79,7 +79,7 @@ export const BlockPage = ({ data }: Props) => {
                   </span>
                   {chainBlock.BlockSig?.Data}
                 </p>
-                <button className="bg-label_opacity-30 rounded-4 py-1 px-3 font-normal text-14 leading-normal text-white tracking-wider lg:w-2/12">
+                <button className="bg-label_opacity-30 rounded-4 py-1 px-3 font-normal text-14 leading-normal text-white  lg:w-2/12">
                   TYPE {chainBlock.BlockSig?.Type}
                 </button>
               </div>

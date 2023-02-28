@@ -15,11 +15,13 @@ import { useQuery } from "@/ui/external/data";
 
 import { Contract } from "@/types/data/Contract";
 import { Project } from "@/types/data/Project";
+import { Page } from "@/ui/components/Page/Page";
+import { META_PAGE_TITLE_DASHBOARD } from "@/constants/global";
 
 
 export default function SingleProject({
-                                        projectId,
-                                      }: {
+  projectId,
+}: {
   projectId: string;
 }): ReactElement {
   const {
@@ -56,43 +58,46 @@ export default function SingleProject({
 
   useEffect(getData, [!!user, projectId]);
 
-
-  if (projectLoading || !project) {
-    return (
+  const pageContent = () => {
+    return (projectLoading || !project) ? (
       <MyDataWrapper kind={MyDataKind.Projects}>
-        <div className=" all px-0 max-w-2xl justify-self-center mx-auto pt-20 pb-10  text-lightgray">
+        <div className=" all px-0 max-w-2xl justify-self-center mx-auto pt-20 pb-10 text-lightgray">
           <Spinner />
         </div>
       </MyDataWrapper>
-    );
+    ) : (
+      <MyDataWrapper kind={MyDataKind.Projects} activeEntity={project?.name}>
+        <div className="max-w-1xl mx-auto p-10">
+          <h3 className="text-24 text-white mb-4 font-space">
+            {project.name}
+          </h3>
+          <table className="rwd-table min-w-full text-center border-0 border-separate border-spacing-y-[20px]	">
+            <tbody>
+              {contractsList.map((contract) => (
+                <ProjectContractRow
+                  key={contract.contractAddress}
+                  contract={contract}
+                  projectId={project.id}
+                  onRemove={getData}
+                />
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </MyDataWrapper>
+    )
   }
 
   return (
-    <MyDataWrapper kind={MyDataKind.Projects} activeEntity={project?.name}>
-      <div className="max-w-1xl mx-auto p-10">
-        <h3 className="text-24 text-white mb-4 font-space">
-          {project.name}
-        </h3>
-        <table className="rwd-table min-w-full text-center border-0 border-separate border-spacing-y-[20px]	">
-          <tbody>
-          {contractsList.map((contract) => (
-            <ProjectContractRow
-              key={contract.contractAddress}
-              contract={contract}
-              projectId={project.id}
-              onRemove={getData}
-            />
-          ))}
-          </tbody>
-        </table>
-      </div>
-    </MyDataWrapper>
+    <Page title={META_PAGE_TITLE_DASHBOARD}>
+      {pageContent()}
+    </Page>
   );
 }
 
 export async function getServerSideProps({
-                                           params,
-                                         }: {
+  params,
+}: {
   params: { project: string };
 }) {
   return {
