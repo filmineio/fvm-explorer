@@ -118,7 +118,7 @@ export const AddToProject = ({
             Easily access the contracts you wish to monitor.
           </p>
 
-          <div className="gap-5 relative flex flex-col">
+          <div className="gap-5 relative flex flex-col max-h-64 overflow-y-auto">
             {projects.map((data) => (
               <AddToProjectRow
                 key={data.id}
