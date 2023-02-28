@@ -5,7 +5,7 @@ import { uiConfig } from "@/ui/ctx/config/config";
 import { Maybe } from "@/types/Maybe";
 
 export const getHttpClient =
-  (readToken: () => Maybe<string>): (() => Axios) =>
+  (readToken: () => Maybe<string>, baseUrl?: string): (() => Axios) =>
   () =>
     new Axios({
       transformResponse: (d) => {
@@ -16,7 +16,7 @@ export const getHttpClient =
         }
       },
       transformRequest: axios.defaults.transformRequest,
-      baseURL: uiConfig.api.url,
+      baseURL: baseUrl || uiConfig.api.url,
       headers: readToken()
         ? {
             authorization: `Bearer ${readToken()}`,

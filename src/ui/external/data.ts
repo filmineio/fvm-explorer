@@ -107,7 +107,7 @@ export const useDataClient = () => {
   return { get };
 };
 
-export const useMutation = <T = unknown>() => {
+export const useMutation = <T = unknown>(external = false) => {
   const [state, setState] = useState<{
     error: string;
     loading: boolean;
@@ -122,8 +122,7 @@ export const useMutation = <T = unknown>() => {
 
   const post = <T = unknown>(resource: Entity, path: string, data: T) => {
     setState((p) => set(lensPath(["loading"]), true)(p));
-    uiCtx
-      .client()
+    uiCtx[external ? "externalClient" : "client"]()
       .post(path, data)
       .then((response) => {
         if (response.data.exception) {

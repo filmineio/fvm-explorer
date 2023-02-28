@@ -57,7 +57,7 @@ export const VerifyContract = ({
     loading: verifying,
     error: verificationError,
     total: verificationResult,
-  } = useMutation();
+  } = useMutation(true);
 
   const change = (key: keyof State) => (val: State[typeof key]) => {
     setData((p) => set(lensPath([key]), val)(p));
@@ -195,7 +195,12 @@ export const VerifyContract = ({
               <div className={"flex flex-col gap-3"}>
                 <div className="input-wrapper flex items-center uppercase justify-between w-full mb-7">
                   <label className="mb-0">Source Code (.zip)*</label>
-                  <label htmlFor="uploadFile" className="btn bg-blue-500 text-white ml-auto mb-0 cursor-pointer hover:bg-blue-400 hover:border-blue-400 active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all">CHOOSE FILE</label>
+                  <label
+                    htmlFor="uploadFile"
+                    className="btn bg-blue-500 text-white ml-auto mb-0 cursor-pointer hover:bg-blue-400 hover:border-blue-400 active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all"
+                  >
+                    CHOOSE FILE
+                  </label>
                   <input
                     id="uploadFile"
                     className="hidden"
@@ -203,7 +208,11 @@ export const VerifyContract = ({
                     accept=".zip"
                     onChange={handleSource}
                   ></input>
-                  {uploadedFile && <span className="text-12 text-white ml-5">{uploadedFile.name}</span>}
+                  {uploadedFile && (
+                    <span className="text-12 text-white ml-5">
+                      {uploadedFile.name}
+                    </span>
+                  )}
                 </div>
 
                 <div className="input-wrapper">
@@ -257,11 +266,7 @@ export const VerifyContract = ({
               </div>
 
               {data.source && data.source.size > MAX_FILE_SIZE && (
-                <p
-                  className={
-                    "text-14 text-red pt-10"
-                  }
-                >
+                <p className={"text-14 text-red pt-10"}>
                   Maximum file size is 10 MB
                 </p>
               )}
