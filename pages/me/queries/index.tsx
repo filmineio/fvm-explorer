@@ -9,6 +9,8 @@ import { Spinner } from "@/ui/components/Spinner/Spinner";
 import { GraphQLEditor } from "@/ui/modules/GraphQl/GraphQLEditor";
 
 import { cb } from "@/utils/cb";
+import { Page } from "@/ui/components/Page/Page";
+import { META_PAGE_TITLE_DASHBOARD } from "@/constants/global";
 
 
 export default function Queries(): ReactElement {
@@ -16,21 +18,24 @@ export default function Queries(): ReactElement {
 
   useEffect(cb(setLoaded, true), []);
 
-  if (!loaded)
-    return (
-      <MyDataWrapper kind={MyDataKind.Queries}>
-        <div className=" all px-0 max-w-[90%] pl-[2%] justify-self-center mx-auto pt-20 pb-10 min-h-calc text-gray-text">
-          <Spinner />
-        </div>
-      </MyDataWrapper>
-    );
-
-  return (
-    <MyDataWrapper kind={MyDataKind.Queries}>
+  const pageContent = () => {
+    return (!loaded) ? (
+      <div className=" all px-0 max-w-[90%] pl-[2%] justify-self-center mx-auto pt-20 pb-10 min-h-calc text-gray-text">
+        <Spinner />
+      </div>
+    ) : (
       <div className="max-w-1xl mx-auto p-10 relative">
         <div className={"text-2xl text-white mb-4"}>My queries</div>
         <GraphQLEditor />
       </div>
-    </MyDataWrapper>
+    )
+  }
+
+  return (
+    <Page title={META_PAGE_TITLE_DASHBOARD}>
+      <MyDataWrapper kind={MyDataKind.Queries}>
+        {pageContent()}
+      </MyDataWrapper>
+    </Page>
   );
 }

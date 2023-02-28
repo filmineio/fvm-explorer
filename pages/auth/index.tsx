@@ -108,7 +108,7 @@ const Home: NextPage = () => {
               <p className="text-white leading-[1.5rem]">
                 We emailed a magic link to
                 <br />
-                <span className="font-space font-bold ">{state.email}idjlaksjdlkas</span>
+                <span className="font-space font-bold ">{state.email}</span>
                 <br />
                 Click the link to log in or sign up.
               </p>

@@ -81,6 +81,14 @@ export const AdvancedQueryFiledEditor = ({
     change("value")("");
   }, [editorType]);
 
+  const testing = () => {
+    console.log('dasd', selectedField);
+  }
+
+  useEffect(() => {
+    console.log('selectedField', selectedField);
+  }, [selectedField]);
+
   return (
     <div className="content">
       <div className="flex mt-3 flex-wrap items-center gap-1">
@@ -91,6 +99,7 @@ export const AdvancedQueryFiledEditor = ({
               onChange={change("field")}
               values={fields.map((str) => ({ label: str, value: str }))}
             />
+            <button onClick={testing}>dasdsad</button>
           </div>
         </div>
         <div className="flex justify-center w-1/2 w-36">

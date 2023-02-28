@@ -2,6 +2,7 @@ import { Footer } from "./Footer/Footer";
 import { HeaderComponents } from "./Header";
 import Head from "next/head";
 import React, { FC } from "react";
+import { META_PAGE_TITLE } from "@/constants/global";
 
 export type PageProps = {
   title?: string;
@@ -11,7 +12,7 @@ export type PageProps = {
 };
 
 export const Page: FC<PageProps> = ({
-  title = "DevStorage",
+  title = META_PAGE_TITLE,
   children,
   showHeader,
   showFooter,

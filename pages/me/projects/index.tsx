@@ -19,6 +19,8 @@ import { useQuery } from "@/ui/external/data";
 import { Project } from "@/types/data/Project";
 
 import { getZeroIndexOffset } from "@/utils/getZeroIndexOffset";
+import { Page } from "@/ui/components/Page/Page";
+import { META_PAGE_TITLE_DASHBOARD } from "@/constants/global";
 
 
 export default function Projects({ data }: { data: Project[] }): ReactElement {
@@ -39,47 +41,38 @@ export default function Projects({ data }: { data: Project[] }): ReactElement {
 
   useEffect(getData, [!!user]);
 
-  if (!user || loading) {
-    return (
-      <MyDataWrapper kind={MyDataKind.Projects}>
-        <div className="max-w-1xl mx-auto p-10">
-          <ProjectsHeading onCreate={getData} />
-          <div className={"text-gray-text"}>
-            <Spinner />
-          </div>
-        </div>
-      </MyDataWrapper>
-    );
+  const pageContent = () => {
+    return (!user || loading) ? (
+      <div className={"text-gray-text"}>
+        <Spinner />
+      </div>
+    ) : projects.length === 0 ? (
+      <div
+        className={
+          "justify-self-center mx-auto"
+        }
+      >
+        <SearchFeedback kind={Entity.Project} />
+      </div>
+    ) : (
+      <div
+        className="grid grid-cols-3 gap-5 relative"
+      >
+        {projects.map((data) => (
+          <ProjectCard key={data.id} data={data} reFetch={getData} />
+        ))}
+      </div>
+    )
   }
 
-  if (projects.length === 0) {
-    return (
+  return (
+    <Page title={META_PAGE_TITLE_DASHBOARD}>
       <MyDataWrapper kind={MyDataKind.Projects}>
         <div className="max-w-1xl mx-auto p-10">
           <ProjectsHeading onCreate={getData} />
-          <div
-            className={
-              "justify-self-center mx-auto"
-            }
-          >
-            <SearchFeedback kind={Entity.Project} />
-          </div>
+          {pageContent()}
         </div>
       </MyDataWrapper>
-    );
-  }
-  return (
-    <MyDataWrapper kind={MyDataKind.Projects}>
-      <div className="max-w-1xl mx-auto p-10">
-        <ProjectsHeading onCreate={getData} />
-        <div
-          className="grid grid-cols-3 gap-5 relative"
-        >
-          {projects.map((data) => (
-            <ProjectCard key={data.id} data={data} reFetch={getData} />
-          ))}
-        </div>
-      </div>
-    </MyDataWrapper>
+    </Page>
   );
 }

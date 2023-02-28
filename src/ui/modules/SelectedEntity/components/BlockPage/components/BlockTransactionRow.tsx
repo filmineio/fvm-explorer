@@ -30,10 +30,10 @@ export const BlockTransactionRow = ({
           {transaction.cid}
         </Link>
       </td>
-      <td className="w-1/6  text-left text-14	italic  text-white font-space tracking-wider font-normal px-10 py-5 whitespace-nowrap">
+      <td className="w-1/6  text-left text-14	italic  text-white font-space  font-normal px-10 py-5 whitespace-nowrap">
         {transaction.method}
       </td>
-      <td className="w-1/6  text-left text-14	  text-white tracking-wider	 font-bold px-10 py-5 whitespace-nowrap">
+      <td className="w-1/6  text-left text-14	  text-white  font-bold px-10 py-5 whitespace-nowrap">
         <div className="flex items-center gap-1.5">
           <div className={classNames("w-3 h-3 rounded-2", {
             "bg-blue-500": exitCode === 0,
@@ -44,10 +44,10 @@ export const BlockTransactionRow = ({
             </span>
         </div>
       </td>
-      <td className="w-1/6  text-right text-14	  text-white tracking-wider	 font-normal  px-10 py-5 whitespace-nowrap">
+      <td className="w-1/6  text-right text-14	  text-white  font-normal  px-10 py-5 whitespace-nowrap">
         {transaction.messageRctGasUsed} attoFIL
       </td>
-      <td className="w-1/6  text-right text-14	  text-white tracking-wider	 font-normal px-10 py-5 whitespace-nowrap rounded-0440">
+      <td className="w-1/6  text-right text-14	  text-white  font-normal px-10 py-5 whitespace-nowrap rounded-0440">
         {value.toFixed(12)} FIL
       </td>
     </tr>

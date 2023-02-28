@@ -25,7 +25,6 @@ type ProjectCardProps = {
 };
 export const ProjectCard = ({ data, reFetch }: ProjectCardProps) => {
   const { push } = useRouter();
-
   const {
     get,
     loading,
@@ -150,7 +149,7 @@ export const ProjectCard = ({ data, reFetch }: ProjectCardProps) => {
             <h4 className="text-white leading-6 text-2xl font-bold font-sans1 truncate	">
               {data.name}
             </h4>
-            <h4 className="mt-1.5 text-blue-400	tracking-wider leading-5 text-14 font-bold">
+            <h4 className="mt-1.5 text-blue-400	leading-5 text-14 font-bold">
               {contracts.length} contracts
             </h4>
           </div>

@@ -29,7 +29,7 @@ export const SearchFeedback = ({
           </div>
           {error ? (
             <div className="pr-14 ml-5">
-              <h5 className="text-white font-bold text-lg mb-4 font-space tracking-wider	">
+              <h5 className="text-white font-bold text-lg mb-4 font-space ">
                 Something Went Wrong
               </h5>
               <p className="text-label font-medium text-[16px]">
@@ -41,7 +41,7 @@ export const SearchFeedback = ({
             </div>
           ) : (
             <div className="pr-14 ml-5">
-              <h5 className="text-white font-bold text-lg mb-4 font-space tracking-wider	">
+              <h5 className="text-white font-bold text-lg mb-4 font-space ">
                 {capitalize(kind)} not found
               </h5>
               <p className="text-label font-medium text-[16px]">
