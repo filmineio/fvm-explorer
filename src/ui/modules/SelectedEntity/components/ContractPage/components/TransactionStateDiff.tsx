@@ -4,6 +4,7 @@ import { findIndex } from "ramda";
 import { useEffect, useMemo } from "react";
 
 import { CopyWrapper } from "@/ui/components/CopyWrapper/CopyWrapper";
+import { Spinner } from "@/ui/components/Spinner/Spinner";
 
 import { useQuery } from "@/ui/external/data";
 
@@ -22,7 +23,7 @@ export const TransactionStateDiff = ({
   transaction: Transaction;
   network: Network;
 }) => {
-  const { get, data: transactions } = useQuery<Transaction>();
+  const { get, data: transactions, loading } = useQuery<Transaction>();
 
   const stateDiff = useMemo(() => {
     return transactions
@@ -91,8 +92,8 @@ export const TransactionStateDiff = ({
                     ></path>
                   </svg>
                 </button>
-                <button className="bg-body px-2 py-1 rounded-4 text-yellow-500 font-bold text-14	 leading-5">
-                  {stateDiff} FIL
+                <button className="bg-body px-2 py-1 rounded-4 text-yellow-500 font-bold text-14	flex leading-5">
+                  {loading ? <Spinner inline /> : stateDiff} FIL
                 </button>
               </div>
             </td>
