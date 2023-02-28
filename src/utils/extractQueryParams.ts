@@ -24,7 +24,7 @@ export const extractQueryParams = <T>(search: string, dry = false): T => {
 
       if (v === "null") return { ...data, [k]: null };
 
-      if (!Number.isNaN(+v)) return { ...data, [k]: +v };
+      if (!Number.isNaN(+v) && !v.startsWith("0")) return { ...data, [k]: +v };
 
       return { ...data, [k]: v };
     }, {} as T);
