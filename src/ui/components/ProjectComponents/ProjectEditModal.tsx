@@ -106,10 +106,10 @@ export const ProjectEditModal = ({
               SAVE PROJECT
             </button>
             <button
-              className="btn link flex items-center text-red ml-auto hover:text-red_opacity-80 transition-all"
+              className="btn link flex items-center text-red ml-auto hover:text-red_opacity-80 cursor-pointer transition-color group"
               onClick={cb(setConfirm, true)}
             >
-              <div className="bg-label_opacity-30 mr-5 rounded-3 flex items-center justify-center w-8 h-8">
+              <div className="bg-label_opacity-30 mr-5 rounded-3 flex items-center justify-center w-8 h-8 border border-transparent group-hover:border-label group-active:border-red transition-all">
                 <Delete />
               </div>
               Delete Project
