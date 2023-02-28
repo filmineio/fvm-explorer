@@ -120,8 +120,8 @@ export const ProjectCard = ({ data, reFetch }: ProjectCardProps) => {
         <div className="absolute bg-label py-1.5 px-2.5 -top-4 -left-[1.875px]">
           <p className="text-xs text-white font-normal ">PROJECT</p>
         </div>
-        <div className="block cursor-pointer" onClick={cb(setShowEdit, true)}>
-          <div className="absolute right-2 top-2 bg-label_opacity-30 rounded-3 flex items-center justify-center w-8 h-8">
+        <div className="block cursor-pointer group" onClick={cb(setShowEdit, true)}>
+          <div className="absolute right-2 top-2 bg-label_opacity-30 rounded-3 flex items-center justify-center w-8 h-8 border border-transparent group-hover:border-label group-active:bg-label transition-all">
             <svg
               width="12"
               height="12"
@@ -163,13 +163,13 @@ export const ProjectCard = ({ data, reFetch }: ProjectCardProps) => {
         />
         {!!contracts.length && (
           <div
-            className="mt-8 flex items-center text-blue-400 text-14 font-bold cursor-pointer hover:text-blue-600 transition-colors"
+            className="mt-8 flex items-center text-blue-400 text-14 font-bold cursor-pointer hover:text-blue-500 transition-colors group"
             onClick={cb(push, `/me/projects/${data.id}`)}
           >
-            <div className="bg-label_opacity-30 mr-5 rounded-3 flex items-center justify-center w-6 h-6">
+            <div className="bg-label_opacity-30 mr-5 rounded-3 flex items-center justify-center w-6 h-6 border border-transparent group-hover:border-label group-active:border-blue-500 transition-all">
               <Share />
             </div>
-            View Contracts
+            View contracts
           </div>
         )}
       </div>

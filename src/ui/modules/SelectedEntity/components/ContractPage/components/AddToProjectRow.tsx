@@ -50,11 +50,18 @@ export function AddToProjectRow({
           {contracts.length} contracts
         </div>
       </div>
+      {/*state={included ? "none" : checked ? "none" : "none"}*/}
 
       <div>
-        <CheckIndicator
-          state={included ? "disabled" : checked ? "checked" : "none"}
-        />
+        <div className={classNames('w-8 h-8 flex items-center justify-center rounded-3 border transition-all', {
+            'bg-blue-500': !included && checked,
+            'bg-body_opacity-50 border-label_opacity-30 [&>svg>path]:stroke-label': included,
+            'border-label': !included && !checked,
+            'border-blue-500': !included && checked,
+          })}
+        >
+          <CheckIndicator />
+        </div>
       </div>
     </div>
   );

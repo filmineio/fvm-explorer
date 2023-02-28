@@ -37,6 +37,7 @@
         transition: all 250ms ease-in-out;
         opacity: 0;
         visibility: hidden;
+        z-index: 4;
       }
 
       &:hover > label {

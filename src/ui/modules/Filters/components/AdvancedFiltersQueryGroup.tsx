@@ -91,7 +91,7 @@ export const AdvancedFiltersQueryGroup = ({
     >
       {removable && (
         <button
-          className="bg-body rounded-3 flex items-center justify-center w-8 h-8 absolute top-[-18px] right-[-18px]"
+          className="bg-body rounded-3 flex items-center justify-center w-8 h-8 absolute top-[-18px] right-[-18px] border border-transparent hover:border-label active:bg-label transition-all"
           onClick={onRemove}
         >
           <Garbage />

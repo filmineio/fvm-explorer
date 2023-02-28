@@ -114,19 +114,19 @@ export const ProjectContractRow = ({
         </p>
       </td>
 
-      <td className="py-5 px-2 bg-body_opacity-50 text-left text-14  whitespace-nowrap">
+      <td className="py-5 px-2 bg-body_opacity-50 text-left text-14 whitespace-nowrap">
         <Link href={`/explore/contract/${contract.contractAddress}`} passHref>
-          <div className="flex items-center text-blue-400 text-14 font-bold hover:text-blue-600 transition-colors cursor-pointer">
-            <div className="bg-label_opacity-30 mr-5 rounded-3 flex items-center justify-center w-8 h-8">
+          <div className="flex items-center text-blue-400 text-14 font-bold cursor-pointer hover:text-blue-500 transition-colors group">
+            <div className="bg-label_opacity-30 mr-5 rounded-3 flex items-center justify-center w-8 h-8 border border-transparent group-hover:border-label group-active:border-blue-500 transition-all">
               <Share />
             </div>
             View contract
           </div>
         </Link>
       </td>
-      <td className="py-5 pr-5 pl-2 bg-body_opacity-50 text-left text-14  whitespace-nowrap rounded-tr-6 rounded-br-6 w-8">
+      <td className="py-5 pr-5 pl-2 bg-body_opacity-50 text-left text-14 whitespace-nowrap rounded-tr-6 rounded-br-6 w-8">
         <div className="cursor-pointer" onClick={submit}>
-          <div className="bg-label_opacity-30 ml-auto rounded-3 flex items-center justify-center w-8 h-8">
+          <div className="bg-label_opacity-30 ml-auto rounded-3 flex items-center justify-center w-8 h-8 border border-transparent hover:border-label active:bg-label transition-all">
             {removing ? (
               <div
                 className={"w-[32px] h-[32px] flex items-center justify-center"}

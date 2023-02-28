@@ -49,29 +49,29 @@ export const ContractBaseInfo = ({
             </h3>
           </div>
           <div className="flex items-center justify-start">
-            <button className="flex items-center mr-10" type="button" onClick={toggle}>
-              <div className="w-6 h-6 flex mr-2.5 rounded-3 bg-label_opacity-30 items-center justify-center">
+            <button className="flex items-center mr-10 text-blue-400 hover:text-blue-500 transition-colors group" type="button" onClick={toggle}>
+              <div className="w-6 h-6 flex mr-2.5 rounded-3 bg-label_opacity-30 items-center justify-center border border-transparent group-hover:border-label group-active:border-blue-500 transition-all">
                 <FileEyeIcon/>
               </div>
-              <span className="text-blue-400 font-bold text-14 leading-4">
+              <span className="font-bold text-14 leading-4">
                 { " " }
                 { showEth ? "Hide ETH" : "View ETH" }
               </span>
             </button>
             {!!user ? (
-              <button className="flex items-center" type="button" onClick={toggleAddToProject}>
-                <div className="w-6 h-6 flex mr-2.5 rounded-3 bg-label_opacity-30 items-center justify-center">
+              <button className="flex items-center text-blue-400 hover:text-blue-500 transition-colors group" type="button" onClick={toggleAddToProject}>
+                <div className="w-6 h-6 flex mr-2.5 rounded-3 bg-label_opacity-30 items-center justify-center border border-transparent group-hover:border-label group-active:border-blue-500 transition-all">
                   <BookmarkCodeIcon/>
                 </div>
-                <span className="text-blue-400 font-bold text-14 leading-4">Save to project</span>
+                <span className="font-bold text-14 leading-4">Save to project</span>
               </button>
             ) : (
               <Link href="/auth">
-                <button className="flex items-center" type="button">
-                  <div className="w-6 h-6 flex mr-2.5 rounded-3 bg-label_opacity-30 items-center justify-center">
+                <button className="flex items-center text-blue-400 hover:text-blue-500 transition-colors group" type="button">
+                  <div className="w-6 h-6 flex mr-2.5 rounded-3 bg-label_opacity-30 items-center justify-center border border-transparent group-hover:border-label group-active:border-blue-500 transition-all">
                     <BookmarkCodeIcon/>
                   </div>
-                  <span className="text-blue-400 font-bold text-14 leading-4">Save to project</span>
+                  <span className="font-bold text-14 leading-4">Save to project</span>
                 </button>
               </Link>
             )}
