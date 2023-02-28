@@ -10,7 +10,7 @@ export const mapOperatorToSQL = (q: Record<string, unknown>) => {
   return Object.entries(q).reduce((p, [k, v]) => {
     switch (k) {
       case CHMBaseOperator.Is:
-        return `= ${mapValueToSQL(v)}`;
+        return `${typeof v === "string" ? "ilike" : "="} ${mapValueToSQL(v)}`;
       case CHMBaseOperator.Not:
         return `<> ${mapValueToSQL(v)}`;
       case CHMBaseOperator.IsNull:
