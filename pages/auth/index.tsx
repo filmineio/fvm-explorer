@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import { useCallback, useEffect, useReducer } from "react";
 
 import Button from "@/ui/components/Button";
@@ -20,13 +20,13 @@ import AuthIllustrationBottom from "@/ui/components/Common/Icons/AuthIllustratio
 import MailIcon from "@/ui/components/Common/Icons/MailIcon";
 import X from "@/ui/components/Common/Icons/X";
 
-
 const Home: NextPage = () => {
   const [state, change] = useReducer(authPageReducer, initialAuthPageState);
   const { login } = uiApiClient.auth();
   const {
     state: { user },
   } = useStore();
+  const router = useRouter();
 
   const initLogin = useCallback(() => {
     if (state.email && state.emailValid) {
@@ -35,8 +35,15 @@ const Home: NextPage = () => {
     }
   }, [login, state]);
 
+  const resolveRedirectParam = (param: string | undefined) => {
+    switch (param) {
+      case 'queries': return '/me/queries';
+      default: return '/';
+    }
+  }
+
   useEffect(() => {
-    !!user && Router.push("/");
+    !!user && Router.push(resolveRedirectParam(router.query.redirect?.toString()));
   }, [user]);
 
   return (

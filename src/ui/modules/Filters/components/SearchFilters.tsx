@@ -12,7 +12,7 @@ export const SearchFilters = ({
   onClick: () => void;
 }) => {
   return (
-    <div className="flex justify-between gap-5 py-5">
+    <div className="flex justify-between gap-5 pt-5 pb-8">
       <div className="flex items-center flex-1 justify-center bg-slate rounded-4">
         <div className="input-group relative flex md:flex-wrap gap-4 items-stretch w-full rounded-4 border-none"> {/* border-2 border-transparent hover:border-label focus:border-blue-400 */}
           <Input
