@@ -1,6 +1,10 @@
-import clickhouseConfig, { ClickhouseConfig } from "./clickhouse.config";
+import { KafkaConfig } from "kafkajs";
 
 import authConfig, { AuthConfig } from "@/api/ctx/config/auth.config";
+import clickhouseConfig, {
+  ClickhouseConfig,
+} from "@/api/ctx/config/clickhouse.config";
+import kafkaConfig from "@/api/ctx/config/kafka.config";
 import lotusConfig, { LotusConfig } from "@/api/ctx/config/lotus.config";
 import web3StorageConfig, {
   Web3StorageConfig,
@@ -18,6 +22,7 @@ export type APIConfig = {
   };
   auth: AuthConfig;
   web3Storage: Web3StorageConfig;
+  kafka: KafkaConfig;
 };
 
 export const apiConfig: (env?: typeof process.env) => APIConfig = (
@@ -27,4 +32,5 @@ export const apiConfig: (env?: typeof process.env) => APIConfig = (
   auth: authConfig(env),
   lotus: lotusConfig(env),
   web3Storage: web3StorageConfig(env),
+  kafka: kafkaConfig(env),
 });

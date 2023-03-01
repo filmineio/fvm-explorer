@@ -1,3 +1,5 @@
+import { initKafka } from "./kafka";
+import { Kafka } from "kafkajs";
 import { Web3Storage } from "web3.storage";
 
 import { MagicClient, initMagicClient } from "@/api/ctx/auth/magic";
@@ -19,6 +21,7 @@ export type ApiCtx = {
     utils: AuthUtils;
   };
   web3storage: Web3Storage;
+  kafka: Kafka;
 };
 
 let ctx: ApiCtx;
@@ -38,6 +41,7 @@ export const getCtx = async (config = apiConfig()): Promise<ApiCtx> => {
       utils: authUtils,
     },
     web3storage: new Web3Storage({ token: config.web3Storage.token }),
+    kafka: initKafka(config.kafka),
   } as never;
 
   return ctx;

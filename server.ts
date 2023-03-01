@@ -1,3 +1,5 @@
+import { newKafkaConsumer } from "@/consumers/kafka";
+import { KafkaEventMap } from "@/subscribers/eventMaps";
 import { handle as handleVerifyContract } from "@/handlers/contracts/verify/handler";
 import bodyParser from "body-parser";
 import cors from "cors";
@@ -7,6 +9,7 @@ import morgan from "morgan";
 
 import { getCtx } from "@/api/ctx/apiCtx";
 import { apiConfig } from "@/api/ctx/config/config";
+import { newContractKafkaSubscriber } from "./src/subscribers";
 
 dotenv.config();
 
@@ -29,5 +32,12 @@ app.post("/api/contracts/:contractAddress/verify", async (req, res) => {
 });
 
 app.listen(port, async () => {
+  const ctx = await getCtx(config);
+
   console.log(`Server running at http://localhost:${port}; `);
+
+  const { startConsumer, subscribe } = await newKafkaConsumer<KafkaEventMap>(ctx);
+
+  await subscribe(newContractKafkaSubscriber);
+  await startConsumer();
 });
