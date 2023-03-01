@@ -3,10 +3,9 @@ import { Network } from "@/enums/Network";
 import Link from "next/link";
 import { useMemo } from "react";
 
-import { CopyWrapper } from "@/ui/components/CopyWrapper/CopyWrapper";
-
 import { Block } from "@/types/data/Block";
 import BlockIcon from "@/ui/components/Common/Icons/BlockIcon";
+import CopyText from "@/ui/components/CopyText/CopyText";
 
 
 type BlockCardProps = {
@@ -31,11 +30,11 @@ export const BlockCard = ({ data, network }: BlockCardProps) => {
                 </div>
               </div>
               <div className="relative w-8/12">
-                <CopyWrapper data={data.cid}>
+                <CopyText text={data.cid}>
                   <h4 className="font-space text-white text-lg font-bold leading-compact truncate">
                     {data.cid}
                   </h4>
-                </CopyWrapper>
+                </CopyText>
                 <p className="text-blue-400 text-xs font-bold leading-compact mt-1.5">
                   {data.height} transactions
                 </p>

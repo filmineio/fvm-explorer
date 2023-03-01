@@ -4,13 +4,12 @@ import classNames from "classnames";
 import Link from "next/link";
 import {useMemo, useReducer} from "react";
 
-import { TransactionStatus } from "@/ui/components/TransactionStatus";
-
 import { TransactionStateDiff } from "@/ui/modules/SelectedEntity/components/ContractPage/components/TransactionStateDiff";
 
 import { Contract } from "@/types/data/Contract";
 import { Transaction } from "@/types/data/Transaction";
-import { CopyWrapper } from "@/ui/components/CopyWrapper/CopyWrapper";
+import ArrowChevronDown from "@/ui/components/Common/Icons/ArrowChevronDown";
+import CopyText from "@/ui/components/CopyText/CopyText";
 
 export const ContractTransactionRow = ({
   contract,
@@ -28,16 +27,14 @@ export const ContractTransactionRow = ({
   return (
     <>
       <tr className="min-w-full rounded rounded-b-0 bg-body_opacity-50">
-        <td className="w-1/6 px-10 pt-5 pb-3 text-left truncate text-blue-400 underline cursor-pointer rounded-4000">
-          <Link
-            href={`/explore/${Entity.Transaction}/${transaction.cid}?network=${network}`}
-          >
-            <div className="relative">
-              <CopyWrapper data={transaction.cid}>
-                {transaction.cid}
-              </CopyWrapper>
-            </div>
-          </Link>
+        <td className="w-1/6 px-10 pt-5 pb-3 text-left truncate text-blue-400 cursor-pointer rounded-4000">
+          <CopyText text={transaction.cid}>
+            <Link
+              href={`/explore/${Entity.Transaction}/${transaction.cid}?network=${network}`}
+            >
+              {transaction.cid}
+            </Link>
+          </CopyText>
         </td>
         <td className="w-1/6  text-left text-14	italic  text-white  font-normal px-10 pt-5 pb-3 whitespace-nowrap">
           {transaction.method}
@@ -51,7 +48,7 @@ export const ContractTransactionRow = ({
               "bg-blue-500": exitCode === 0,
               "bg-label": exitCode !== 0
             })}></div>
-            <span className="text-14 font-normal leading-compact">
+            <span className="text-14 font-bold leading-compact">
               {exitCode === 0 ? "successful" : "reverted"}
             </span>
           </div>
@@ -73,25 +70,16 @@ export const ContractTransactionRow = ({
             <div
               onClick={toggle}
               className={
-                "state bg-body rounded-4 w-6 h-6 mr-2 flex items-center justify-center cursor-pointer"
+                "bg-label_opacity-30 mr-3 rounded-3 flex items-center justify-center w-6 h-6 cursor-pointer border border-transparent hover:border-label transition-all"
               }
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-                stroke="currentColor"
-                className={classNames("w-4 h-4", {
-                  "transform rotate-90": open,
+              <div
+                className={classNames("w-4 h-4 transform transition-transform duration-200", {
+                  "-rotate-90": !open,
                 })}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                ></path>
-              </svg>
+                <ArrowChevronDown />
+              </div>
             </div>
             STATE DIFFERENCE
           </div>

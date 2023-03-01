@@ -3,8 +3,6 @@ import { Entity } from "@/enums/Entity";
 import { Network } from "@/enums/Network";
 import { useEffect, useMemo, useState } from "react";
 
-import { CopyWrapper } from "@/ui/components/CopyWrapper/CopyWrapper";
-
 import { BlockTransactions } from "@/ui/modules/SelectedEntity/components/BlockPage/components/BlockTransactions";
 
 import { useLocationQuery } from "@/ui/hooks/useLocationQuery";
@@ -17,6 +15,7 @@ import { Transaction } from "@/types/data/Transaction";
 
 import { getZeroIndexOffset } from "@/utils/getZeroIndexOffset";
 import BlockIcon from "@/ui/components/Common/Icons/BlockIcon";
+import CopyText from "@/ui/components/CopyText/CopyText";
 
 
 type Props = { data: BlockResults };
@@ -68,10 +67,12 @@ export const BlockPage = ({ data }: Props) => {
               </div>
             </div>
 
-            <div className="pl-1 overflow-hidden">
-              <h3 className="inline-flex w-auto break-all text-2xl font-bold text-white mb-2 relative">
-                <CopyWrapper data={block.cid}>{block.cid}</CopyWrapper>
-              </h3>
+            <div className="pl-1 overflow-hidden pr-2">
+              <CopyText text={block.cid}>
+                <h3 className="w-auto break-all text-2xl font-bold text-white mb-2 relative overflow-hidden truncate max-w-fit">
+                  {block.cid}{block.cid}
+                </h3>
+              </CopyText>
               <div className="flex md:flex-wrap gap-5 items-center mt-3">
                 <p className="relative text-white font-normal text-14 pr-3 w-9/12 truncate">
                   <span className="text-label font-medium text-14 mr-5">

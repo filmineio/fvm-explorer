@@ -3,7 +3,6 @@ import { Network } from "@/enums/Network";
 import { findIndex } from "ramda";
 import { useEffect, useMemo } from "react";
 
-import { CopyWrapper } from "@/ui/components/CopyWrapper/CopyWrapper";
 import { Spinner } from "@/ui/components/Spinner/Spinner";
 
 import { useQuery } from "@/ui/external/data";
@@ -12,6 +11,7 @@ import { Contract } from "@/types/data/Contract";
 import { Transaction } from "@/types/data/Transaction";
 
 import { attoFilToFil } from "@/utils/attoFilToFil";
+import CopyText from "@/ui/components/CopyText/CopyText";
 
 
 export const TransactionStateDiff = ({
@@ -71,11 +71,11 @@ export const TransactionStateDiff = ({
             </td>
             <td className="px-4 pb-5" colSpan={5}>
               <div className="flex justify-start ">
-                <button className="bg-body  px-2 py-1 rounded-4 text-purple-400 font-bold text-14  leading-5 relative">
-                  <CopyWrapper data={contract.contractAddress}>
+                <CopyText text={contract.contractAddress}>
+                  <button className="bg-body  px-2 py-1 rounded-4 text-purple-400 font-bold text-14 leading-5 relative">
                     {contract.contractAddress}
-                  </CopyWrapper>
-                </button>
+                  </button>
+                </CopyText>
                 <button className="px-2 py-1  ">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -92,7 +92,7 @@ export const TransactionStateDiff = ({
                     ></path>
                   </svg>
                 </button>
-                <button className="bg-body px-2 py-1 rounded-4 text-yellow-500 font-bold text-14	flex leading-5">
+                <button className="bg-body px-2 py-1 rounded-4 text-yellow-500 font-bold text-14 flex leading-5">
                   {loading ? <Spinner inline /> : stateDiff} FIL
                 </button>
               </div>

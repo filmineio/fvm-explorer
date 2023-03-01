@@ -4,13 +4,11 @@ import BigNumber from "bignumber.js";
 import Link from "next/link";
 import { useMemo } from "react";
 
-import { CopyWrapper } from "@/ui/components/CopyWrapper/CopyWrapper";
 import { TransactionStatus } from "@/ui/components/TransactionStatus";
 
 import { Transaction } from "@/types/data/Transaction";
 
-import { capitalize } from "@/utils/capitalize";
-
+import CopyText from "@/ui/components/CopyText/CopyText";
 
 type TransactionCardProps = {
   data: Transaction;
@@ -32,11 +30,11 @@ export const TransactionCard = ({ data, network }: TransactionCardProps) => {
           <div className="flex-auto p-5">
             <div className="flex flex-wrap items-center">
               <div className="relative w-full">
-                <CopyWrapper data={data.cid}>
+                <CopyText text={data.cid}>
                   <h4 className="font-space text-white text-lg font-bold leading-compact truncate">
                     {data.cid}
                   </h4>
-                </CopyWrapper>
+                </CopyText>
               </div>
               <TransactionStatus exitCode={data.messageRctExitCode} />
             </div>

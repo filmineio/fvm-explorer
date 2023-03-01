@@ -3,8 +3,6 @@ import { TransactionEvents } from "./components/TransactionEvents";
 import { TransactionOverview } from "./components/TransactionOverview";
 import { useMemo, useState } from "react";
 
-import { CopyWrapper } from "@/ui/components/CopyWrapper/CopyWrapper";
-
 import {
   TransactionPageTabHeaders
 } from "@/ui/modules/SelectedEntity/components/TransactionPage/components/TransactionPageTabHeaders";
@@ -16,6 +14,7 @@ import { Transaction } from "@/types/data/Transaction";
 
 import { attoFilToFil } from "@/utils/attoFilToFil";
 import classNames from "classnames";
+import CopyText from "@/ui/components/CopyText/CopyText";
 
 
 type Props = { data: TransactionResults };
@@ -43,9 +42,9 @@ export const TransactionPage = ({ data }: Props) => {
             <div className="flex flex-wrap items-center justify-between">
               <div className="flex items-center justify-start mr-15">
                 <h3 className="relative font-space text-24 leading-compact font-bold text-white">
-                  <CopyWrapper data={ transaction.cid }>
-                    { transaction.cid }
-                  </CopyWrapper>
+                  <CopyText text={transaction.cid}>
+                    <span>{ transaction.cid }</span>
+                  </CopyText>
                 </h3>
               </div>
               <div className="flex items-center h-6 gap-2">
