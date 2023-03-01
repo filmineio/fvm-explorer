@@ -31,7 +31,7 @@ export const CreateProjectModal = ({
             Create new project
           </h3>
           <div className="input-wrapper">
-            <label>PROJECT NAME</label>
+            <label>Project name</label>
             <input
               className="w-full"
               placeholder="Project name..."

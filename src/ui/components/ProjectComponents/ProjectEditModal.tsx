@@ -90,7 +90,7 @@ export const ProjectEditModal = ({
             Edit {value} project
           </h3>
           <div className="input-wrapper">
-            <label>Change Name</label>
+            <label>Change name</label>
             <input
               className="w-full"
               placeholder="Project name..."

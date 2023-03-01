@@ -42,7 +42,7 @@ export const ProjectsHeading = ({ onCreate }: { onCreate: () => void }) => {
   return (
     <>
       <div className="flex flex-wrap items-center justify-between mb-20">
-        <div className="textheading">
+        <div>
           <h3 className="text-24 text-white mb-4 font-space">
             My projects
           </h3>

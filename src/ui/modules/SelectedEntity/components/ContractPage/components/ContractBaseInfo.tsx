@@ -38,7 +38,7 @@ export const ContractBaseInfo = ({
     <div className="w-full">
       <div className="relative bg-body_opacity-50 p-7.5 mb-15 rounded-6 break-words">
         <div className="absolute bg-label py-1.25 px-2 -top-3 left-0 rounded-1110">
-          <p className="text-white text-12 font-bold leading-compact uppercase">CONTRACT</p>
+          <p className="text-white text-12 leading-compact">CONTRACT</p>
         </div>
         <div className="flex flex-wrap items-center justify-between">
           <div className="flex items-center justify-start mr-15">

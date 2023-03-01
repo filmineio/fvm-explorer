@@ -11,9 +11,9 @@ export const SearchFeedback = ({
 }) => {
   if (!kind) {
     return (
-      <div className="border-solid border-2 border-label  rounded-4lg ">
+      <div className="border-solid border-2 border-label rounded-4">
         <div className="h-full min-h-[57vh] min-h-[47vh] flex justify-center items-center ">
-          <h3 className=" text-3xl   font-bold leading-8 text-white">
+          <h3 className="text-3xl font-bold leading-8 text-white">
             No data found
           </h3>
         </div>
@@ -22,10 +22,10 @@ export const SearchFeedback = ({
   }
   return (
     <div className="container mx-auto 2xls:px-20">
-      <div className="border-solid border-2  mt-10 border-label  rounded-4lg ">
-        <div className="h-full min-h-[57vh] flex justify-center items-center px-8  xs:flex-wrap">
-          <div className="border-solid border-2 border-label  rounded-4lg p-6">
-            <img src="/images/text-ped.png" alt={"filexplore"} />
+      <div className="border-solid border-2 my-10 border-label rounded-4">
+        <div className="h-full min-h-[57vh] flex justify-center items-center px-8 xs:flex-wrap">
+          <div className="border-solid border-2 border-label rounded-4 p-6">
+            <img src="/images/text-ped.png" alt={"Dev Storage"} />
           </div>
           {error ? (
             <div className="pr-14 ml-5">
@@ -47,7 +47,7 @@ export const SearchFeedback = ({
               <p className="text-label font-medium text-[16px]">
                 It may take up to 2 minutes for the new {kind}
                 <br />
-                to appear in FilExplore.
+                to appear in DevStorage.
               </p>
             </div>
           )}

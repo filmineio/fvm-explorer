@@ -38,7 +38,7 @@ export const TransactionPage = ({ data }: Props) => {
         <div className="w-full lg:mr-5 md:mr-0">
           <div className="project relative bg-body_opacity-50 p-7.5 min-w-0 rounded-6 mb-15 shadow-lg break-words">
             <div className="absolute bg-label py-1.25 px-2 -top-3 left-0 rounded-1110">
-              <p className="text-white text-12 font-bold leading-compact uppercase">transaction</p>
+              <p className="text-white text-12 leading-compact">TRANSACTION</p>
             </div>
             <div className="flex flex-wrap items-center justify-between">
               <div className="flex items-center justify-start mr-15">
@@ -53,7 +53,7 @@ export const TransactionPage = ({ data }: Props) => {
                   "bg-blue-500": exitCode === 0,
                   "bg-label": exitCode !== 0
                 })}/>
-                <span className="text-14 font-normal leading-compact text-white">
+                <span className="text-14 leading-compact text-white font-bold">
                   {exitCode === 0 ? "successful" : "reverted"}
                 </span>
               </div>

@@ -59,7 +59,7 @@ export const BlockPage = ({ data }: Props) => {
       <div className="w-full">
         <div className="project relative bg-body_opacity-50 p-7.5 mb-15 rounded-6 break-words">
           <div className="absolute bg-label py-1.25 px-2 -top-3 left-0 rounded-1110">
-            <p className="text-white text-12 font-bold leading-compact uppercase">BLOCK</p>
+            <p className="text-white text-12 leading-compact">BLOCK</p>
           </div>
           <div className="md:lex-wrap flex items-center">
             <div className="relative pr-4 ">
