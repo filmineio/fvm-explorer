@@ -397,5 +397,5 @@ body .copy-animate-width > span {
 }
 
 body .copy-animate-width:hover > span {
-  width: calc(100% - 52px);
+  width: calc(100% - 50px);
 }
