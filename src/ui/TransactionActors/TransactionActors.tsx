@@ -1,6 +1,5 @@
-import { CopyWrapper } from "@/ui/components/CopyWrapper/CopyWrapper";
-
 import { Transaction } from "@/types/data/Transaction";
+import CopyText from "@/ui/components/CopyText/CopyText";
 
 export const TransactionActors = ({
   transaction,
@@ -8,20 +7,20 @@ export const TransactionActors = ({
   transaction: Transaction;
 }) => {
   return (
-    <div className="xs:flex mt-5 flex-wrap justify-center sm:justify-start items-center">
-      <button className="bg-body mb-2 py-2 px-3 rounded-4 text-purple-400 font-bold text-14	leading-5 relative">
-        <CopyWrapper data={transaction.robustFrom || transaction.from}>
-          {transaction.robustFrom || transaction.from}
-        </CopyWrapper>
+    <div className="flex mt-5 flex-wrap items-center gap-2">
+      <button className="relative">
+        <CopyText text={transaction.robustFrom || transaction.from}>
+          <span className="bg-body py-2 px-3 rounded-4 text-yellow-500 font-bold text-14 leading-5 overflow-hidden truncate max-w-[250px]">{transaction.robustFrom || transaction.from}</span>
+        </CopyText>
       </button>
-      <button className="px-2 mb-2 ">
+      <button className="px-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="white"
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="white"
-          className="w-6 h-6 transform translate-y-2"
+          className="w-6 h-6"
         >
           <path
             strokeLinecap="round"
@@ -31,10 +30,10 @@ export const TransactionActors = ({
         </svg>
       </button>
 
-      <button className="bg-body mb-2  py-2 px-3 rounded-4 text-yellow-500 font-bold text-14 leading-5 relative">
-        <CopyWrapper data={transaction.robustTo || transaction.to}>
-          {transaction.robustTo || transaction.to}
-        </CopyWrapper>
+      <button className="relative ml-12">
+        <CopyText text={transaction.robustTo || transaction.to}>
+          <span className="bg-body py-2 px-3 rounded-4 text-yellow-500 font-bold text-14 leading-5 overflow-hidden truncate max-w-[250px]">{transaction.robustTo || transaction.to}</span>
+        </CopyText>
       </button>
     </div>
   );

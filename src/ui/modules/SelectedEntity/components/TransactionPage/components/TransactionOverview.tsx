@@ -1,9 +1,8 @@
 import { Network } from "@/enums/Network";
 import Link from "next/link";
 
-import { CopyWrapper } from "@/ui/components/CopyWrapper/CopyWrapper";
-
 import { Transaction } from "@/types/data/Transaction";
+import CopyText from "@/ui/components/CopyText/CopyText";
 
 export const TransactionOverview = ({
   network,
@@ -52,11 +51,11 @@ export const TransactionOverview = ({
               CID
             </h5>
             <div className={"relative"}>
-              <CopyWrapper data={transaction.cid}>
+              <CopyText text={transaction.cid}>
                 <p className="mt-1.25 text-left font-normal text-14 text-white leading-normal relative truncate cursor-pointer">
                   {transaction.cid}
                 </p>
-              </CopyWrapper>
+              </CopyText>
             </div>
 
             <h5 className="mt-5 text-left font-medium text-14  text-label leading-4 lowercase">

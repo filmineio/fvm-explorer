@@ -2,6 +2,7 @@ import { CHMFieldQuery } from "@/schema/types/CHMQuery";
 import { useMemo } from "react";
 
 import { toHumanReadable } from "@/utils/toHumanReadable";
+import X from "@/ui/components/Common/Icons/X";
 
 export const AdvancedFilterRule = ({
   field,
@@ -58,10 +59,12 @@ export const AdvancedFilterRule = ({
         </div>
         <div className="flex gap-3">
           <button
-            className="box-content w-4 h-4 p-2 text-center text-white border-none bg-body rounded-4 focus:shadow-none focus:outline-none flex justify-center items-center"
+            className="bg-body rounded-3 flex items-center justify-center w-8 h-8 border border-transparent hover:border-label active:bg-label transition-all"
             onClick={onRemove}
           >
-            <img className="w-auto" src="/images/close.png" alt={""} />
+            <div className="w-5 h-5 flex items-center justify-center">
+              <X />
+            </div>
           </button>
         </div>
       </div>

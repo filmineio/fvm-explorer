@@ -25,7 +25,7 @@ export default function Queries(): ReactElement {
       </div>
     ) : (
       <div className="max-w-1xl mx-auto p-10 relative">
-        <div className={"text-2xl text-white mb-4"}>My queries</div>
+        <h3 className="text-24 text-white mb-4 font-space">My queries</h3>
         <GraphQLEditor />
       </div>
     )

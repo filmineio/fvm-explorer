@@ -116,7 +116,7 @@ export const ProjectCard = ({ data, reFetch }: ProjectCardProps) => {
 
   return (
     <>
-      <div className="relative flex flex-col break-words bg-body_opacity-50 border-2 border-transparent hover:border-label rounded-9 shadow-lg pt-10 px-8 pb-8">
+      <div className="relative flex flex-col break-words bg-body_opacity-50 border-2 border-transparent hover:border-label rounded-9 shadow-lg pt-10 px-8 pb-8 transition-all">
         <div className="absolute bg-label py-1.5 px-2.5 -top-4 -left-[1.875px]">
           <p className="text-xs text-white font-normal ">PROJECT</p>
         </div>

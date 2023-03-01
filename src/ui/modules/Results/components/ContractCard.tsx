@@ -4,7 +4,6 @@ import Link from "next/link";
 import { uniqBy } from "ramda";
 import { useEffect, useMemo } from "react";
 
-import { CopyWrapper } from "@/ui/components/CopyWrapper/CopyWrapper";
 import { Spinner } from "@/ui/components/Spinner/Spinner";
 
 import { useQuery } from "@/ui/external/data";
@@ -12,8 +11,8 @@ import { useQuery } from "@/ui/external/data";
 import { Contract } from "@/types/data/Contract";
 import { Transaction } from "@/types/data/Transaction";
 
-import { capitalize } from "@/utils/capitalize";
 import ContractIcon from "@/ui/components/Common/Icons/ContractIcon";
+import CopyText from "@/ui/components/CopyText/CopyText";
 
 
 type ContractCardProps = {
@@ -108,11 +107,11 @@ export const ContractCard = ({ data, network }: ContractCardProps) => {
                 </div>
               </div>
               <div className="relative w-8/12">
-                <CopyWrapper data={data.contractAddress}>
+                <CopyText text={data.contractAddress}>
                   <h4 className="font-space text-white text-lg font-bold leading-compact truncate">
                     {data.contractAddress}
                   </h4>
-                </CopyWrapper>
+                </CopyText>
                 { data.verified ?
                     <p className="text-blue-400 text-xs font-bold leading-compact mt-1.5">
                       verified

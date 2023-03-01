@@ -3,8 +3,6 @@ import { TransactionEvents } from "./components/TransactionEvents";
 import { TransactionOverview } from "./components/TransactionOverview";
 import { useMemo, useState } from "react";
 
-import { CopyWrapper } from "@/ui/components/CopyWrapper/CopyWrapper";
-
 import {
   TransactionPageTabHeaders
 } from "@/ui/modules/SelectedEntity/components/TransactionPage/components/TransactionPageTabHeaders";
@@ -16,6 +14,7 @@ import { Transaction } from "@/types/data/Transaction";
 
 import { attoFilToFil } from "@/utils/attoFilToFil";
 import classNames from "classnames";
+import CopyText from "@/ui/components/CopyText/CopyText";
 
 
 type Props = { data: TransactionResults };
@@ -38,14 +37,14 @@ export const TransactionPage = ({ data }: Props) => {
         <div className="w-full lg:mr-5 md:mr-0">
           <div className="project relative bg-body_opacity-50 p-7.5 min-w-0 rounded-6 mb-15 shadow-lg break-words">
             <div className="absolute bg-label py-1.25 px-2 -top-3 left-0 rounded-1110">
-              <p className="text-white text-12 font-bold leading-compact uppercase">transaction</p>
+              <p className="text-white text-12 leading-compact">TRANSACTION</p>
             </div>
             <div className="flex flex-wrap items-center justify-between">
               <div className="flex items-center justify-start mr-15">
                 <h3 className="relative font-space text-24 leading-compact font-bold text-white">
-                  <CopyWrapper data={ transaction.cid }>
-                    { transaction.cid }
-                  </CopyWrapper>
+                  <CopyText text={transaction.cid}>
+                    <span>{ transaction.cid }</span>
+                  </CopyText>
                 </h3>
               </div>
               <div className="flex items-center h-6 gap-2">
@@ -53,7 +52,7 @@ export const TransactionPage = ({ data }: Props) => {
                   "bg-blue-500": exitCode === 0,
                   "bg-label": exitCode !== 0
                 })}/>
-                <span className="text-14 font-normal leading-compact text-white">
+                <span className="text-14 leading-compact text-white font-bold">
                   {exitCode === 0 ? "successful" : "reverted"}
                 </span>
               </div>
