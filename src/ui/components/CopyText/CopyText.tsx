@@ -8,11 +8,13 @@ type Props = {
   text: string;
   disabled?: boolean;
   children?: ReactElement;
+  additionalClass?: string;
 };
 const CopyText: FC<Props> = ({
   text,
   disabled = false,
   children,
+  additionalClass = '',
 }) => {
   const [copied, setCopied] = useState(false);
 
@@ -26,7 +28,7 @@ const CopyText: FC<Props> = ({
   }, [setCopied, disabled]);
 
   return (
-    <div className={clsx(styles['copy-text-wrapper'])} onClick={e => e.stopPropagation()}>
+    <div className={clsx(styles['copy-text-wrapper'], additionalClass)} onClick={e => e.stopPropagation()}>
       <>{children}</>
       <CopyToClipboard text={text} onCopy={onCopyCallback}>
         <div
