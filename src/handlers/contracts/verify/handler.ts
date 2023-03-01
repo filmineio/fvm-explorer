@@ -1,16 +1,16 @@
 import { ContractVerificationStatus } from "@/enums/ContractVerificationStatus";
-import { v4 } from "@lukeed/uuid";
-import { Request, Response } from "express";
-import fs from "fs";
 import { createContractMetadata } from "@/handlers/contracts/verify/utils/createContractMetadata";
 import { downloadFile } from "@/handlers/contracts/verify/utils/downloadFile";
-import { getContractById } from "@/handlers/contracts/verify/utils/getContractById";
+import { getContractByAddress } from "@/handlers/contracts/verify/utils/getContractByAddress";
 import { getContractMetaByAddress } from "@/handlers/contracts/verify/utils/getContractMetaByAddress";
 import { newSolcStandardInput } from "@/handlers/contracts/verify/utils/newSolcStandardInput";
 import { processRequestBody } from "@/handlers/contracts/verify/utils/processRequestBody";
 import { readContractsFromZip } from "@/handlers/contracts/verify/utils/readContractsFromZip";
 import { uploadMetadata } from "@/handlers/contracts/verify/utils/uploadMetadata";
 import { verify } from "@/handlers/contracts/verify/utils/verify";
+import { v4 } from "@lukeed/uuid";
+import { Request, Response } from "express";
+import fs from "fs";
 
 import { OperationStatus } from "@/types/ApiResponse";
 
@@ -23,16 +23,16 @@ export const handle = async (ctx: ApiCtx, req: Request, res: Response) => {
 
     if (user === OperationStatus.Error) return res.status(401).end();
 
-    const { contractId } = req.params;
+    const { contractAddress } = req.params;
+
+    if (!contractAddress || !contractAddress.trim())
+      return res.status(400).json({ exception: "INVALID_REQUEST_PARAMS" });
+
     const verifyReq = processRequestBody(req);
-
-    console.log(verifyReq);
-    console.log(contractId);
-
-    const contract = await getContractById(
+    const contract = await getContractByAddress(
       ctx,
       verifyReq.network,
-      contractId as string
+      (contractAddress as string).toLowerCase()
     );
     if (!contract) {
       throw new Error("Contract not found");
@@ -41,7 +41,7 @@ export const handle = async (ctx: ApiCtx, req: Request, res: Response) => {
     const contractMeta = await getContractMetaByAddress(
       ctx,
       verifyReq.network,
-      contract["contractAddress"]
+      contractAddress
     );
 
     if (contractMeta) {
@@ -49,13 +49,12 @@ export const handle = async (ctx: ApiCtx, req: Request, res: Response) => {
     }
 
     // download and read contracts
-    const filePath = `/tmp/${Buffer.from(v4()).toString("hex")}`;
+    const filePath = `/tmp/${Buffer.from(v4()).toString("hex")}.zip`;
     await downloadFile(ctx, verifyReq.contractsZipCID, filePath);
     const contracts = await readContractsFromZip(filePath);
-    const onChainBytecode = await ctx.lotus.chain[verifyReq.network].ethGetCode(
-      contract["ethAddress"],
-      "latest"
-    );
+    const onChainBytecode = await ctx.lotus?.chain[
+      verifyReq.network
+    ].ethGetCode(contract.ethAddress, "latest");
 
     // remove downloaded contracts
     fs.rmSync(filePath);

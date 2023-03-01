@@ -1,4 +1,4 @@
-import { SolcStandardJSONInput } from "src/handlers/contracts/verify/types/SolcStandardJSONInput";
+import { SolcStandardJSONInput } from "@/handlers/contracts/verify/types/SolcStandardJSONInput";
 
 // findContract finds the contract path in the input
 export const findContractPath = (input: SolcStandardJSONInput, contractName: string) => {
