@@ -3,8 +3,6 @@ import { Network } from "@/enums/Network";
 import Link from "next/link";
 import { useMemo } from "react";
 
-import { TransactionStatus } from "@/ui/components/TransactionStatus";
-
 import { Transaction } from "@/types/data/Transaction";
 
 import { attoFilToFil } from "@/utils/attoFilToFil";
@@ -33,21 +31,21 @@ export const BlockTransactionRow = ({
       <td className="w-1/6  text-left text-14	italic  text-white font-space  font-normal px-10 py-5 whitespace-nowrap">
         {transaction.method}
       </td>
-      <td className="w-1/6  text-left text-14	  text-white  font-bold px-10 py-5 whitespace-nowrap">
+      <td className="w-1/6  text-left text-14 text-white font-bold px-10 py-5 whitespace-nowrap">
         <div className="flex items-center gap-1.5">
           <div className={classNames("w-3 h-3 rounded-2", {
             "bg-blue-500": exitCode === 0,
             "bg-label": exitCode !== 0
           })}></div>
-          <span className="text-14 font-normal leading-compact">
+          <span className="text-14 font-bold leading-compact">
               {exitCode === 0 ? "successful" : "reverted"}
             </span>
         </div>
       </td>
-      <td className="w-1/6  text-right text-14	  text-white  font-normal  px-10 py-5 whitespace-nowrap">
+      <td className="w-1/6 text-left text-14 text-white font-normal px-10 py-5 whitespace-nowrap">
         {transaction.messageRctGasUsed} attoFIL
       </td>
-      <td className="w-1/6  text-right text-14	  text-white  font-normal px-10 py-5 whitespace-nowrap rounded-0440">
+      <td className="w-1/6 text-right text-14 text-white font-normal px-10 py-5 whitespace-nowrap rounded-0440">
         {value.toFixed(12)} FIL
       </td>
     </tr>

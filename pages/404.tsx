@@ -7,7 +7,7 @@ export default function Error404Route(): ReactElement {
   return (
     <Page showHeader showFooter>
       <div
-        className={"w-full min-h-calc flex  justify-center items-center gap-24"}
+        className="w-full min-h-calc flex justify-center py-10 items-center gap-24"
       >
         <div className={"flex flex-col gap-8"}>
           <h1 className={"text-white text-3xl font-semibold"}>

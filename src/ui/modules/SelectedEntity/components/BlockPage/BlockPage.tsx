@@ -3,8 +3,6 @@ import { Entity } from "@/enums/Entity";
 import { Network } from "@/enums/Network";
 import { useEffect, useMemo, useState } from "react";
 
-import { CopyWrapper } from "@/ui/components/CopyWrapper/CopyWrapper";
-
 import { BlockTransactions } from "@/ui/modules/SelectedEntity/components/BlockPage/components/BlockTransactions";
 
 import { useLocationQuery } from "@/ui/hooks/useLocationQuery";
@@ -17,6 +15,7 @@ import { Transaction } from "@/types/data/Transaction";
 
 import { getZeroIndexOffset } from "@/utils/getZeroIndexOffset";
 import BlockIcon from "@/ui/components/Common/Icons/BlockIcon";
+import CopyText from "@/ui/components/CopyText/CopyText";
 
 
 type Props = { data: BlockResults };
@@ -59,7 +58,7 @@ export const BlockPage = ({ data }: Props) => {
       <div className="w-full">
         <div className="project relative bg-body_opacity-50 p-7.5 mb-15 rounded-6 break-words">
           <div className="absolute bg-label py-1.25 px-2 -top-3 left-0 rounded-1110">
-            <p className="text-white text-12 font-bold leading-compact uppercase">BLOCK</p>
+            <p className="text-white text-12 leading-compact">BLOCK</p>
           </div>
           <div className="md:lex-wrap flex items-center">
             <div className="relative pr-4 ">
@@ -68,10 +67,12 @@ export const BlockPage = ({ data }: Props) => {
               </div>
             </div>
 
-            <div className="pl-1 overflow-hidden">
-              <h3 className="inline-flex w-auto break-all text-2xl font-bold text-white mb-2 relative">
-                <CopyWrapper data={block.cid}>{block.cid}</CopyWrapper>
-              </h3>
+            <div className="pl-1 overflow-hidden pr-2">
+              <CopyText text={block.cid}>
+                <h3 className="w-auto break-all text-2xl font-bold text-white mb-2 relative overflow-hidden truncate max-w-fit">
+                  {block.cid}{block.cid}
+                </h3>
+              </CopyText>
               <div className="flex md:flex-wrap gap-5 items-center mt-3">
                 <p className="relative text-white font-normal text-14 pr-3 w-9/12 truncate">
                   <span className="text-label font-medium text-14 mr-5">

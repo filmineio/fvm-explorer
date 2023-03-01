@@ -2,8 +2,6 @@ import { ContractMetaInfo } from "./ContractMetaInfo";
 import { Network } from "@/enums/Network";
 import { useReducer } from "react";
 
-import { CopyWrapper } from "@/ui/components/CopyWrapper/CopyWrapper";
-
 import { AddToProject } from "@/ui/modules/SelectedEntity/components/ContractPage/components/AddToProject";
 
 import { useStore } from "@/ui/state/Store";
@@ -14,6 +12,7 @@ import { ContractMeta } from "@/types/data/ContractMeta";
 import FileEyeIcon from "@/ui/components/Common/Icons/FileEyeIcon";
 import BookmarkCodeIcon from "@/ui/components/Common/Icons/BookmarkCodeIcon";
 import Link from "next/link";
+import CopyText from "@/ui/components/CopyText/CopyText";
 
 
 export const ContractBaseInfo = ({
@@ -38,14 +37,14 @@ export const ContractBaseInfo = ({
     <div className="w-full">
       <div className="relative bg-body_opacity-50 p-7.5 mb-15 rounded-6 break-words">
         <div className="absolute bg-label py-1.25 px-2 -top-3 left-0 rounded-1110">
-          <p className="text-white text-12 font-bold leading-compact uppercase">CONTRACT</p>
+          <p className="text-white text-12 leading-compact">CONTRACT</p>
         </div>
         <div className="flex flex-wrap items-center justify-between">
           <div className="flex items-center justify-start mr-15">
             <h3 className="relative font-space text-24 leading-compact font-bold text-white">
-              <CopyWrapper data={ showEth ? contract.ethAddress : contract.contractAddress }>
-                {showEth ? contract.ethAddress : contract.contractAddress}
-              </CopyWrapper>
+              <CopyText text={ showEth ? contract.ethAddress : contract.contractAddress }>
+                <span>{showEth ? contract.ethAddress : contract.contractAddress}</span>
+              </CopyText>
             </h3>
           </div>
           <div className="flex items-center justify-start">
