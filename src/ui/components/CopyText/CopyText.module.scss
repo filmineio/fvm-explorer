@@ -33,6 +33,7 @@
       .label {
         transition: opacity 160ms ease-in-out;
         text-decoration: unset;
+        white-space:nowrap;
 
         @media (min-width: 1024px) {
           opacity: 0;
@@ -45,6 +46,7 @@
         top: 0;
         left: -8px;
         text-decoration: unset;
+        white-space: nowrap;
 
         @keyframes moveUp {
           0% {

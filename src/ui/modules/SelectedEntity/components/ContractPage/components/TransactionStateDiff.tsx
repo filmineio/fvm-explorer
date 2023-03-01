@@ -66,17 +66,21 @@ export const TransactionStateDiff = ({
       <table className="min-w-full">
         <tbody>
           <tr>
-            <td colSpan={2} className="text-14 text-white font-bold pb-5 pl-1">
-              actor
+            <td className="w-36">
+              <div className="text-14 text-white font-bold pb-5 pl-10 text-left block">actor</div>
             </td>
-            <td className="px-4 pb-5" colSpan={5}>
+            <td className="px-4 pb-5">
               <div className="flex justify-start ">
-                <CopyText text={contract.contractAddress}>
-                  <button className="bg-body  px-2 py-1 rounded-4 text-purple-400 font-bold text-14 leading-5 relative">
-                    {contract.contractAddress}
-                  </button>
-                </CopyText>
-                <button className="px-2 py-1  ">
+                <button className="relative min-w-[140px] overflow-hidden">
+                  <CopyText text={contract.contractAddress} additionalClass="copy-animate-width">
+                  <span className="bg-body py-2 px-3 rounded-4 text-yellow-500 font-bold text-14 leading-5 flex justify-center">
+                    <span className="text-left block truncate max-w-[250px]">
+                      {contract.contractAddress}
+                    </span>
+                  </span>
+                  </CopyText>
+                </button>
+                <button className="px-2 py-1">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="white"
@@ -92,7 +96,7 @@ export const TransactionStateDiff = ({
                     ></path>
                   </svg>
                 </button>
-                <button className="bg-body px-2 py-1 rounded-4 text-yellow-500 font-bold text-14 flex leading-5">
+                <button className="bg-body px-2 py-1 rounded-4 text-yellow-500 font-bold text-14 flex leading-5 flex items-center">
                   {loading ? <Spinner inline /> : stateDiff} FIL
                 </button>
               </div>

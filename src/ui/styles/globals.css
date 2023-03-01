@@ -386,3 +386,16 @@ a.customr.textnone span.onespan {
   padding: 2px;
   background-color: transparent;
 }
+
+body .copy-animate-width > div {
+  width: 0;
+}
+
+body .copy-animate-width > span {
+  width: 100%;
+  transition: width 300ms ease-in-out !important;
+}
+
+body .copy-animate-width:hover > span {
+  width: calc(100% - 50px);
+}
