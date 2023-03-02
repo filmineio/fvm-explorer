@@ -209,7 +209,7 @@ export const VerifyContract = ({
                     onChange={handleSource}
                   ></input>
                   {uploadedFile && (
-                    <span className="text-12 text-white ml-5">
+                    <span className="text-12 text-white ml-5 max-w-[150px] truncate">
                       {uploadedFile.name}
                     </span>
                   )}
