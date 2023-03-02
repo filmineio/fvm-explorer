@@ -1,32 +1,23 @@
 import fs from "fs";
 import { Writable } from "stream";
 
-import { ApiCtx } from "@/api/ctx/apiCtx";
-
 // downloadFile downloads single file from web3.storage
 export const downloadFile = async (
-  ctx: ApiCtx,
   cid: string,
-  filePath: string
+  filePath: string,
+  fileName?: string
 ): Promise<string> => {
-  const response = await ctx.web3storage.get(cid);
+  // NOTE: Downloads file from w3s.link instead of using web3.storage client
+  const url = fileName
+    ? `https://w3s.link/ipfs/${cid}/${fileName}`
+    : `https://w3s.link/ipfs/${cid}`;
+
+  const response = await fetch(url);
   if (!response?.ok) {
-    console.log(response);
     throw new Error("Failed to fetch file from web3.storage");
   }
 
-  const responseFiles = await response?.files();
-
-  if (!responseFiles || responseFiles.length === 0) {
-    throw new Error("No files found in response");
-  }
-
-  // assume we only have one file uploaded to web3.storage per cid
-  if (responseFiles.length > 1) {
-    throw new Error("Too many files found in response");
-  }
-
-  const blob = responseFiles[0];
+  const blob = await response.blob();
 
   // TODO: Make this limit configurable (currently 100MB)
   if (blob.size > 1e8) {

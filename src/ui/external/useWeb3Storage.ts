@@ -16,8 +16,12 @@ export const useWeb3Storage = <T = unknown>() => {
     progress: 0,
   });
 
-  const upload = (file: File) => {
+  const upload = (inputFile: File, fileNameOverride?: string) => {
     setState((p) => set(lensPath(["loading"]), true)(p));
+
+    let file = new File([inputFile], fileNameOverride || inputFile.name, {
+      type: inputFile.type,
+    });
 
     let uploaded = 0;
 

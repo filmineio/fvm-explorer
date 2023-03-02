@@ -87,7 +87,7 @@ export const VerifyContract = ({
       );
     }
 
-    upload(data.source);
+    upload(data.source, "contracts.zip");
   }, [valid, data]);
 
   useEffect(() => {
