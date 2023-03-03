@@ -1,4 +1,3 @@
-import fs from 'fs';
 import { ContractVerificationStatus } from "@/enums/ContractVerificationStatus";
 import { createContractMetadata } from "@/handlers/contracts/verify/utils/createContractMetadata";
 import { downloadFile } from "@/handlers/contracts/verify/utils/downloadFile";
@@ -11,6 +10,7 @@ import { uploadMetadata } from "@/handlers/contracts/verify/utils/uploadMetadata
 import { verify } from "@/handlers/contracts/verify/utils/verify";
 import { v4 } from "@lukeed/uuid";
 import { Request, Response } from "express";
+import fs from "fs";
 
 import { OperationStatus } from "@/types/ApiResponse";
 
@@ -52,9 +52,10 @@ export const handle = async (ctx: ApiCtx, req: Request, res: Response) => {
     const filePath = `/tmp/${Buffer.from(v4()).toString("hex")}.zip`;
     await downloadFile(verifyReq.contractsZipCID, filePath, "contracts.zip");
     const contracts = await readContractsFromZip(filePath);
-    const onChainBytecode = await ctx.lotus?.chain[
-      verifyReq.network
-    ].ethGetCode(contract.ethAddress, "latest");
+    const onChainBytecode = await ctx.lotus[verifyReq.network].ethGetCode(
+      contract.ethAddress,
+      "latest"
+    );
 
     // remove downloaded contracts
     fs.rmSync(filePath);

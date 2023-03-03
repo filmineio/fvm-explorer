@@ -1,6 +1,6 @@
-import { Subscriber } from "src/temp/types/Subscriber";
-import { Topic } from "src/temp/types/Topic";
+import { Subscriber } from "@/types/Subscriber";
+import { SubscriptionTopic } from "@/types/SubscriptionTopic";
 
 export type Subscribers<T> = {
-  [key in Topic<T>]: Subscriber<T>[];
+  [key in SubscriptionTopic<T>]: Subscriber<T>[];
 };

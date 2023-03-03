@@ -1,5 +1,3 @@
-import { initKafka } from "./kafka";
-import { Kafka } from "kafkajs";
 import { Web3Storage } from "web3.storage";
 
 import { MagicClient, initMagicClient } from "@/api/ctx/auth/magic";
@@ -7,6 +5,7 @@ import { Sealer, initSealer } from "@/api/ctx/auth/sealer";
 import { AuthUtils, authUtils } from "@/api/ctx/auth/utils";
 import { apiConfig } from "@/api/ctx/config/config";
 import { ClickhouseDB, initClient } from "@/api/ctx/database/clickhouse";
+import { Kafka, initKafka } from "@/api/ctx/kafka";
 import { Lotus, initLotus } from "@/api/ctx/lotus";
 
 export type ApiCtx = {

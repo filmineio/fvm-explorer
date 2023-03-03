@@ -4,6 +4,10 @@ import { EventHandler } from "@/types/EventHandler";
 import { EventMap } from "@/types/EventMap";
 import { Subscriber } from "@/types/Subscriber";
 import { SubscriptionTopic } from "@/types/SubscriptionTopic";
+import { Contract } from "@/types/chain/Contract";
+import { ContractTransaction } from "@/types/chain/ContractTransaction";
+
+import { ApiCtx } from "@/api/ctx/apiCtx";
 
 export const newSubscriber = <T extends EventMap>(
   topic: SubscriptionTopic<T>,
@@ -13,11 +17,19 @@ export const newSubscriber = <T extends EventMap>(
   handler,
 });
 
-const newContractHandler = async (message: {}) => {
-  console.log("New contract: ", message);
-};
+const newContractHandler =
+  (ctx: ApiCtx) => async (contractTx: ContractTransaction) => {
+    console.log("New contract: ", contractTx);
 
-export const newContractKafkaSubscriber = newSubscriber<KafkaEventMap>(
-  "new_contract",
-  newContractHandler as EventHandler<KafkaEventMap>
-);
+    if (!contractTx.message_rct_return) {
+      return;
+    }
+
+    Contract.resolveEFVM(ctx, contractTx);
+  };
+
+export const newContractKafkaSubscriber = (ctx: ApiCtx) =>
+  newSubscriber<KafkaEventMap>(
+    "new_contract",
+    newContractHandler(ctx) as EventHandler<KafkaEventMap>
+  );

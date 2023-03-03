@@ -1,4 +1,4 @@
 export enum ContractType {
-  FVM = "FVM",
-  EVM = " EVM",
+  WASM = "WASM",
+  FEVM = "FEVM",
 }

@@ -1,7 +1,7 @@
 import { EventHandler } from "@/types/EventHandler";
-import { Topic } from "src/temp/types/Topic";
+import { SubscriptionTopic } from "@/types/SubscriptionTopic";
 
 export type Subscriber<T> = {
-  topic: Topic<T>;
+  topic: SubscriptionTopic<T>;
   handler: EventHandler<T>;
 };

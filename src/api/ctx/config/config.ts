@@ -22,7 +22,10 @@ export type APIConfig = {
   };
   auth: AuthConfig;
   web3Storage: Web3StorageConfig;
-  kafka: KafkaConfig;
+  kafka: {
+    hyperspace: KafkaConfig;
+    wallaby?: KafkaConfig;
+  };
 };
 
 export const apiConfig: (env?: typeof process.env) => APIConfig = (
