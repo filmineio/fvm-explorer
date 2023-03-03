@@ -49,7 +49,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Page>
-        <div className="flex h-full">
+        <div className="flex h-full ">
           <div className="flex relative w-11/25 items-center justify-center bg-line_opacity-80">
             <div className="absolute self-end top-0 right-0 3xl:w-[380px] 2xl:max-w-[300px] w-[529px]">
               <AuthIllustrationTop/>
