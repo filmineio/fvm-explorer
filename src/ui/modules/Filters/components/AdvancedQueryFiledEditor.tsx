@@ -133,14 +133,14 @@ export const AdvancedQueryFiledEditor = ({
         </div>
         <div className="ml-2 xs:mt-4 sm:mt-0">
           <button
-            className="btn border-2 border-blue-500 text-blue-500 hover:text-blue-400 hover:border-blue-400 active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all"
+            className="btn border-2 border-blue-400 text-blue-400 hover:text-blue-500 hover:border-blue-500 active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all"
             onClick={handleAdd}
           >
             ADD RULE
           </button>
         </div>
         <button
-          className="btn link flex items-center text-label ml-4 hover:text-placeholder transition-all"
+          className="btn link flex items-center text-blue-400 ml-4 hover:text-blue-500 transition-all"
           onClick={onClear}
         >
           Clear

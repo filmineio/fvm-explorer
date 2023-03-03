@@ -56,6 +56,7 @@ module.exports = {
         "placeholder": "#A0A3BD",
         "label": "#596184",
         "label_opacity-30": "#5961844d",
+        "blue-300": "#BFDEFF",
         "blue-400": "#59A9FF",
         "blue-400_opacity-30": "#59A9FF4d",
         "blue-500": "#0576F0",

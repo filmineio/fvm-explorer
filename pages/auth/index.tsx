@@ -80,7 +80,7 @@ const Home: NextPage = () => {
                     icon={<MailIcon/>}
                   />
                   <Button
-                    type="button"
+                    type="submit"
                     className="btn bg-blue-500 text-white hover:bg-blue-400 hover:border-blue-400 active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all whitespace-nowrap ml-5"
                     onClick={initLogin}
                   >
