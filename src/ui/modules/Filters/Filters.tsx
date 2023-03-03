@@ -71,11 +71,11 @@ export const Filters = ({ search }: { search: () => void }) => {
             <Button className="btn border-2 bg-blue-500 border-blue-500 text-white hover:bg-blue-400 hover:border-blue-400 active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all" onClick={toggleAdvancedSearchActive}>QUERY BUILDER</Button>
             {user ? (
               <Link href="/me/queries">
-                <Button className="btn border-2 bg-slate border-blue-500 text-blue-500 hover:text-blue-400 hover:border-blue-400 active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all">GRAPHQL SEARCH</Button>
+                <Button className="btn border-2 bg-slate border-blue-400 text-blue-400 hover:text-blue-500 hover:border-blue-500 active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all">GRAPHQL SEARCH</Button>
               </Link>
               ) : (
               <Link href="/auth?redirect=queries">
-                <Button className="btn border-2 bg-slate border-blue-500 text-blue-500 hover:text-blue-400 hover:border-blue-400 active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all">GRAPHQL SEARCH</Button>
+                <Button className="btn border-2 bg-slate border-blue-400 text-blue-400 hover:text-blue-500 hover:border-blue-500 active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all">GRAPHQL SEARCH</Button>
               </Link>
             )}
           </div>
