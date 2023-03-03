@@ -18,14 +18,52 @@ export type Contract = Record<
   Record<"contract_type", ContractType>;
 
 export namespace Contract {
-  export const resolveEFVM = async (
+  /**
+   *
+   * Resolves the contract information from the contract transaction
+   *
+   * @param ctx
+   * @param contractTx
+   * @returns
+   */
+  export const resolveContract = async (
+    ctx: ApiCtx,
+    contractTx: ContractTransaction
+  ): Promise<ContractTransaction> => {
+    switch (contractTx.contract_type) {
+      case ContractType.FEVM:
+        return resolveEFVMContract(ctx, contractTx);
+      case ContractType.WASM:
+        return resolveFVMContract(ctx, contractTx);
+      default:
+        throw new Error("Contract type not supported");
+    }
+  };
+
+  /**
+   *
+   * Resolves the EFVM contract information from the contract transaction
+   *
+   * @param ctx
+   * @param contractTx
+   * @returns
+   */
+  export const resolveEFVMContract = async (
     ctx: ApiCtx,
     contractTx: ContractTransaction
   ): Promise<ContractTransaction> => {
     return contractTx;
   };
 
-  export const resolveFVM = async (
+  /**
+   *
+   * Resolves the FVM contract information from the contract transaction
+   *
+   * @param ctx
+   * @param contractTx
+   * @returns
+   */
+  export const resolveFVMContract = async (
     ctx: ApiCtx,
     contractTx: ContractTransaction
   ): Promise<ContractTransaction> => {

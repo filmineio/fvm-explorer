@@ -1,3 +1,4 @@
+import { Network } from "@/enums/Network";
 import { newSubscriber } from "@/subscribers/index";
 import { Consumer, Kafka } from "kafkajs";
 
@@ -7,10 +8,17 @@ import { Subscriber } from "@/types/Subscriber";
 import { Subscribers } from "@/types/Subscribers";
 import { SubscriptionTopic } from "@/types/SubscriptionTopic";
 
-export const newKafkaConsumer = async <T extends EventMap>(kafka: Kafka) => {
+import { ApiCtx } from "@/api/ctx/apiCtx";
+
+export const newKafkaConsumer = async <T extends EventMap>(
+  ctx: ApiCtx,
+  network: Network
+) => {
   const subscribers: Subscribers<T> = {} as Subscribers<T>;
 
-  const consumer = kafka.consumer({ groupId: "flow" }) as Consumer;
+  const consumer = ctx.kafka[network]?.consumer({
+    groupId: "flow",
+  }) as Consumer;
 
   const subscribe = async (
     sub: SubscriptionTopic<T> | Subscriber<T>,
@@ -42,7 +50,7 @@ export const newKafkaConsumer = async <T extends EventMap>(kafka: Kafka) => {
         ) as T[keyof T];
 
         subscribers[topic].forEach((subscriber: Subscriber<T>) =>
-          subscriber.handler(parsedMessage, topic, partition)
+          subscriber.handler(parsedMessage, network, topic, partition)
         );
       },
     });

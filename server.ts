@@ -1,5 +1,6 @@
 import { newContractKafkaSubscriber } from "./src/subscribers";
 import { newKafkaConsumer } from "@/consumers/kafka";
+import { Network } from "@/enums/Network";
 import { handle as handleVerifyContract } from "@/handlers/contracts/verify/handler";
 import { KafkaEventMap } from "@/subscribers/eventMaps";
 import bodyParser from "body-parser";
@@ -37,7 +38,8 @@ app.listen(port, async () => {
   console.log(`Server running at http://localhost:${port}; `);
 
   const hyperspaceKafkaConsumer = await newKafkaConsumer<KafkaEventMap>(
-    ctx.kafka.hyperspace
+    ctx,
+    Network.HyperSpace
   );
 
   await hyperspaceKafkaConsumer.subscribe(newContractKafkaSubscriber(ctx));

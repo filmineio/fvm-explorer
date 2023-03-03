@@ -8,6 +8,7 @@ import { Contract } from "@/types/chain/Contract";
 import { ContractTransaction } from "@/types/chain/ContractTransaction";
 
 import { ApiCtx } from "@/api/ctx/apiCtx";
+import { Network } from "@/enums/Network";
 
 export const newSubscriber = <T extends EventMap>(
   topic: SubscriptionTopic<T>,
@@ -18,14 +19,21 @@ export const newSubscriber = <T extends EventMap>(
 });
 
 const newContractHandler =
-  (ctx: ApiCtx) => async (contractTx: ContractTransaction) => {
-    console.log("New contract: ", contractTx);
+  (ctx: ApiCtx) => async (contractTx: ContractTransaction, network: Network) => {
+    try {
+      if (!contractTx.message_rct_return) {
+        return;
+      }
 
-    if (!contractTx.message_rct_return) {
-      return;
+      const contract = Contract.resolveContract(ctx, contractTx);
+
+
+      // ctx.database.ch.data.chain[network].create()
+
+    } catch (e) {
+      // TODO: Add proper logger
+      console.error(e);
     }
-
-    Contract.resolveEFVM(ctx, contractTx);
   };
 
 export const newContractKafkaSubscriber = (ctx: ApiCtx) =>
