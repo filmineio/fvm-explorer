@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import { useCallback, useEffect, useReducer } from "react";
 
 import Button from "@/ui/components/Button";
@@ -20,13 +20,13 @@ import AuthIllustrationBottom from "@/ui/components/Common/Icons/AuthIllustratio
 import MailIcon from "@/ui/components/Common/Icons/MailIcon";
 import X from "@/ui/components/Common/Icons/X";
 
-
 const Home: NextPage = () => {
   const [state, change] = useReducer(authPageReducer, initialAuthPageState);
   const { login } = uiApiClient.auth();
   const {
     state: { user },
   } = useStore();
+  const router = useRouter();
 
   const initLogin = useCallback(() => {
     if (state.email && state.emailValid) {
@@ -35,14 +35,21 @@ const Home: NextPage = () => {
     }
   }, [login, state]);
 
+  const resolveRedirectParam = (param: string | undefined) => {
+    switch (param) {
+      case 'queries': return '/me/queries';
+      default: return '/';
+    }
+  }
+
   useEffect(() => {
-    !!user && Router.push("/");
+    !!user && Router.push(resolveRedirectParam(router.query.redirect?.toString()));
   }, [user]);
 
   return (
     <>
       <Page>
-        <div className="flex h-full">
+        <div className="flex h-full ">
           <div className="flex relative w-11/25 items-center justify-center bg-line_opacity-80">
             <div className="absolute self-end top-0 right-0 3xl:w-[380px] 2xl:max-w-[300px] w-[529px]">
               <AuthIllustrationTop/>
@@ -73,7 +80,7 @@ const Home: NextPage = () => {
                     icon={<MailIcon/>}
                   />
                   <Button
-                    type="button"
+                    type="submit"
                     className="btn bg-blue-500 text-white hover:bg-blue-400 hover:border-blue-400 active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all whitespace-nowrap ml-5"
                     onClick={initLogin}
                   >
