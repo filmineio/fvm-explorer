@@ -59,6 +59,10 @@ export const VerifyContract = ({
     total: verificationResult,
   } = useMutation(true);
 
+  // useEffect(() => {
+  //   console.log('upload, sourceCid, uploading, error', upload, sourceCid, uploading, error);
+  // }, [upload, sourceCid, uploading, error]);
+
   const change = (key: keyof State) => (val: State[typeof key]) => {
     setData((p) => set(lensPath([key]), val)(p));
   };
@@ -87,7 +91,9 @@ export const VerifyContract = ({
       );
     }
 
+    // console.log('start');
     upload(data.source, "contracts.zip");
+    // console.log('end');
   }, [valid, data]);
 
   useEffect(() => {
@@ -106,6 +112,7 @@ export const VerifyContract = ({
   }, [verificationResult]);
 
   useEffect(() => {
+    // console.log('yes');
     if (!sourceCid) return;
 
     toast.info("Upload completed. Verification process started...");
@@ -122,7 +129,7 @@ export const VerifyContract = ({
   useEffect(() => {
     const header = document.querySelector("header");
     if (header) {
-      header.style.marginTop = "50px";
+      header.style.marginTop = "64px";
     }
 
     return () => {
