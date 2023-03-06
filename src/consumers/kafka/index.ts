@@ -32,7 +32,10 @@ export const newKafkaConsumer = async <T extends EventMap>(
       subscriber = newSubscriber(sub, handler as EventHandler<T>);
     }
 
-    await consumer.subscribe({ topic: subscriber.topic as string });
+    await consumer.subscribe({
+      topic: subscriber.topic as string,
+      fromBeginning: true,
+    });
 
     if (subscribers[subscriber.topic]) {
       subscribers[subscriber.topic].push(subscriber);
@@ -49,8 +52,11 @@ export const newKafkaConsumer = async <T extends EventMap>(
           message.value?.toString() as string
         ) as T[keyof T];
 
-        subscribers[topic].forEach((subscriber: Subscriber<T>) =>
-          subscriber.handler(parsedMessage, network, topic, partition)
+
+        await Promise.all(
+          subscribers[topic].map(async (subscriber: Subscriber<T>) =>
+            subscriber.handler(parsedMessage, network, topic, partition)
+          )
         );
       },
     });

@@ -4,8 +4,7 @@ import { KafkaConfig, logLevel } from "kafkajs";
 const kafkaHyperspaceConfig: (env?: typeof process.env) => KafkaConfig = (
   env = process.env
 ) => ({
-  clientId: env.KAFKA_CLIENT_ID as string,
-  brokers: [env.KAFKA_CONNECTION_STRING as string],
+  brokers: [env.HYPERSPACE_KAFKA_CONNECTION_STRING as string],
   logLevel: logLevel.INFO,
 });
 

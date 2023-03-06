@@ -1,4 +1,4 @@
 export enum ContractType {
   WASM = "WASM",
-  FEVM = "FEVM",
+  FEVM = "EFVM", // TODO: Replace this with FEVM and update all db entities
 }

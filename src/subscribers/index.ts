@@ -1,3 +1,5 @@
+import { Network } from "@/enums/Network";
+import { contractChm } from "@/schema/entities/contract.chm";
 import { KafkaEventMap } from "@/subscribers/eventMaps";
 
 import { EventHandler } from "@/types/EventHandler";
@@ -8,7 +10,6 @@ import { Contract } from "@/types/chain/Contract";
 import { ContractTransaction } from "@/types/chain/ContractTransaction";
 
 import { ApiCtx } from "@/api/ctx/apiCtx";
-import { Network } from "@/enums/Network";
 
 export const newSubscriber = <T extends EventMap>(
   topic: SubscriptionTopic<T>,
@@ -18,26 +19,4 @@ export const newSubscriber = <T extends EventMap>(
   handler,
 });
 
-const newContractHandler =
-  (ctx: ApiCtx) => async (contractTx: ContractTransaction, network: Network) => {
-    try {
-      if (!contractTx.message_rct_return) {
-        return;
-      }
 
-      const contract = Contract.resolveContract(ctx, contractTx);
-
-
-      // ctx.database.ch.data.chain[network].create()
-
-    } catch (e) {
-      // TODO: Add proper logger
-      console.error(e);
-    }
-  };
-
-export const newContractKafkaSubscriber = (ctx: ApiCtx) =>
-  newSubscriber<KafkaEventMap>(
-    "new_contract",
-    newContractHandler(ctx) as EventHandler<KafkaEventMap>
-  );

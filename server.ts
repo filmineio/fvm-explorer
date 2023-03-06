@@ -1,7 +1,7 @@
-import { newContractKafkaSubscriber } from "./src/subscribers";
 import { newKafkaConsumer } from "@/consumers/kafka";
 import { Network } from "@/enums/Network";
 import { handle as handleVerifyContract } from "@/handlers/contracts/verify/handler";
+import { newContractKafkaSubscriber } from "@/subscribers/contracts";
 import { KafkaEventMap } from "@/subscribers/eventMaps";
 import bodyParser from "body-parser";
 import cors from "cors";
