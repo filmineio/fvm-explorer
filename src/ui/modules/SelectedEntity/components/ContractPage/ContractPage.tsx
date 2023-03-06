@@ -85,7 +85,7 @@ export const ContractPage = ({ data }: Props) => {
     if (showClaim) {
       const header = document.querySelector("header");
       if (header) {
-        header.style.marginTop = "50px";
+        header.style.marginTop = "64px";
       }
     }
   }, [showClaim]);
