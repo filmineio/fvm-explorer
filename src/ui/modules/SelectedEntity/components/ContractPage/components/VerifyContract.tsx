@@ -60,6 +60,10 @@ export const VerifyContract = ({
     total: verificationResult,
   } = useMutation(true);
 
+  // useEffect(() => {
+  //   console.log('upload, sourceCid, uploading, error', upload, sourceCid, uploading, error);
+  // }, [upload, sourceCid, uploading, error]);
+
   const change = (key: keyof State) => (val: State[typeof key]) => {
     setData((p) => set(lensPath([key]), val)(p));
   };
