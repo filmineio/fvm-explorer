@@ -8,12 +8,12 @@ export const useWeb3Storage = <T = unknown>() => {
     error: string;
     loading: boolean;
     data?: T;
-    progress: number;
+    progress: string;
   }>({
     error: "",
     loading: false,
     data: undefined,
-    progress: 0,
+    progress: '',
   });
 
   const upload = (inputFile: File, fileNameOverride?: string) => {
