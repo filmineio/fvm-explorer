@@ -8,7 +8,7 @@ export const CheckIndicator = () => (
   >
     <path
       d="M8 12L11 15L16 9"
-      stroke="#fff"
+      stroke="#000"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
