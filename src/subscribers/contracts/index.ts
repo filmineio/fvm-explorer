@@ -1,10 +1,10 @@
 import { Network } from "@/enums/Network";
 import { contractChm } from "@/schema/entities/contract.chm";
+import { resolveContract } from "@/subscribers/contracts/util";
 import { KafkaEventMap } from "@/subscribers/eventMaps";
 import { newSubscriber } from "@/subscribers/index";
 
 import { EventHandler } from "@/types/EventHandler";
-import { Contract } from "@/types/chain/Contract";
 import { ContractTransaction } from "@/types/chain/ContractTransaction";
 
 import { ApiCtx } from "@/api/ctx/apiCtx";
@@ -17,7 +17,7 @@ const newContractHandler =
         return;
       }
 
-      const contract = await Contract.resolveContract(ctx, network, contractTx);
+      const contract = await resolveContract(ctx, network, contractTx);
 
       await ctx.database.ch.data.chain[network].create(
         contractChm,
