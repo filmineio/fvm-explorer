@@ -8,6 +8,7 @@ import { uiCtx } from "@/ui/ctx/uiCtx";
 import { cb } from "@/utils/cb";
 import ArrowChevronDown from "@/ui/components/Common/Icons/ArrowChevronDown";
 import classNames from "classnames";
+import { ConnectWallet } from "@thirdweb-dev/react";
 
 
 export const UserMenu = ({ user }: { user: User }) => {
@@ -33,6 +34,7 @@ export const UserMenu = ({ user }: { user: User }) => {
       onMouseLeave={cb(setExpanded, false)}
     >
       <div className="py-4 text-white text-14 focus:outline-none flex items-center gap-4 mr-6">
+        {user && <ConnectWallet />}
         {user && <div className="flex w-8 h-8 rounded-40 bg-purple items-center justify-center text-white text-16 font-bold leading-normal">{user.email?.charAt(0).toUpperCase()}</div>}
         {user?.email}
         {user && <ArrowChevronDown />}
