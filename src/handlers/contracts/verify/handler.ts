@@ -1,4 +1,3 @@
-import fs from 'fs';
 import { ContractVerificationStatus } from "@/enums/ContractVerificationStatus";
 import { createContractMetadata } from "@/handlers/contracts/verify/utils/createContractMetadata";
 import { downloadFile } from "@/handlers/contracts/verify/utils/downloadFile";
@@ -11,6 +10,7 @@ import { uploadMetadata } from "@/handlers/contracts/verify/utils/uploadMetadata
 import { verify } from "@/handlers/contracts/verify/utils/verify";
 import { v4 } from "@lukeed/uuid";
 import { Request, Response } from "express";
+import fs from "fs";
 
 import { OperationStatus } from "@/types/ApiResponse";
 
@@ -73,6 +73,13 @@ export const handle = async (ctx: ApiCtx, req: Request, res: Response) => {
     if (verificationResult.status !== ContractVerificationStatus.Unverified) {
       const meta = await uploadMetadata(ctx, verificationResult);
       await createContractMetadata(ctx, meta, contract, verifyReq, user);
+    }
+
+    if (verificationResult.errors.length > 0) {
+      return res.status(400).json({
+        ...verificationResult,
+        exception: "CONTRACT_VERIFICATION_FAILED",
+      });
     }
 
     return res.json(verificationResult);
