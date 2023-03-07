@@ -51,6 +51,7 @@ export const VerifyContract = ({
     data: sourceCid,
     loading: uploading,
     error,
+    progress,
   } = useWeb3Storage();
   const {
     post: verify,
@@ -58,10 +59,6 @@ export const VerifyContract = ({
     error: verificationError,
     total: verificationResult,
   } = useMutation(true);
-
-  // useEffect(() => {
-  //   console.log('upload, sourceCid, uploading, error', upload, sourceCid, uploading, error);
-  // }, [upload, sourceCid, uploading, error]);
 
   const change = (key: keyof State) => (val: State[typeof key]) => {
     setData((p) => set(lensPath([key]), val)(p));
@@ -91,9 +88,7 @@ export const VerifyContract = ({
       );
     }
 
-    // console.log('start');
     upload(data.source, "contracts.zip");
-    // console.log('end');
   }, [valid, data]);
 
   useEffect(() => {
@@ -101,8 +96,8 @@ export const VerifyContract = ({
   }, [error]);
 
   useEffect(() => {
-    if (!!verificationError) toast.error(verificationError);
-  }, [verificationError]);
+    if (!!verificationError && !verifying) toast.error(verificationError);
+  }, [verificationError, verifying]);
 
   useEffect(() => {
     if (!!verificationResult) {
@@ -112,8 +107,7 @@ export const VerifyContract = ({
   }, [verificationResult]);
 
   useEffect(() => {
-    // console.log('yes');
-    if (!sourceCid) return;
+    if (!sourceCid || uploading || progress !== '100.00') return;
 
     toast.info("Upload completed. Verification process started...");
 
@@ -124,7 +118,7 @@ export const VerifyContract = ({
       optimise: data.optimized,
       isPublic: !data.private,
     });
-  }, [sourceCid, data]);
+  }, [sourceCid, uploading, progress]);
 
   useEffect(() => {
     const header = document.querySelector("header");
@@ -144,7 +138,7 @@ export const VerifyContract = ({
     <>
       <div
         className={
-          "absolute top-0 left-0 w-full h-16 bg-label flex justify-between items-center  px-10"
+          "absolute top-0 left-0 w-full h-16 bg-label flex justify-between items-center px-10"
         }
       >
         <div className={"text-white"}>
@@ -161,10 +155,10 @@ export const VerifyContract = ({
       {uploading && (
         <Modal>
           <div className="modal-content border-none shadow-none relative justify-center items-center flex w-full pointer-events-auto bg-slate rounded-10 h-96">
-            <p className={"flex gap-5 text-white text-lg"}>
-              Uploading...
+            <div className="flex items-center gap-5">
+              <p className="text-white text-lg">Uploading...</p>
               <Spinner inline />
-            </p>
+            </div>
           </div>
         </Modal>
       )}
@@ -172,10 +166,10 @@ export const VerifyContract = ({
       {verifying && (
         <Modal>
           <div className="modal-content border-none shadow-none relative justify-center items-center flex w-full pointer-events-auto bg-slate rounded-10 h-96">
-            <p className={"flex gap-5 text-white text-lg"}>
-              Verifying...
+            <div className="flex items-center gap-5">
+              <p className="text-white text-lg">Verifying...</p>
               <Spinner inline />
-            </p>
+            </div>
           </div>
         </Modal>
       )}

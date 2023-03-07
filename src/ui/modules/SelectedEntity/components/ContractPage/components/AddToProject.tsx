@@ -93,7 +93,7 @@ export const AddToProject = ({
   if (loading || adding) {
     return (
       <Modal>
-        <div className={"text-gray-text"}>
+        <div className="bg-slate text-gray-text">
           <Spinner />
         </div>
       </Modal>
