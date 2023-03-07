@@ -12,7 +12,7 @@ export const SearchFilters = ({
   onClick: () => void;
 }) => {
   return (
-    <div className="flex justify-between gap-5 py-5">
+    <div className="flex justify-between gap-5 pt-5 pb-8">
       <div className="flex items-center flex-1 justify-center bg-slate rounded-4">
         <div className="input-group relative flex md:flex-wrap gap-4 items-stretch w-full rounded-4 border-none"> {/* border-2 border-transparent hover:border-label focus:border-blue-400 */}
           <Input
@@ -24,7 +24,7 @@ export const SearchFilters = ({
         </div>
       </div>
       <button
-        className="border-2 border-blue-400 px-7 py-3.75 font-bold text-blue-400 uppercase rounded-4 ml-3"
+        className="btn border-2 border-blue-400 text-blue-400 hover:text-blue-500 hover:border-blue-500 active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all"
         onClick={onClick}
       >
         SEARCH

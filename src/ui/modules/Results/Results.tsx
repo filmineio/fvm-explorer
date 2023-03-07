@@ -41,7 +41,7 @@ export const Results = ({
   }, [kind]);
 
   return (
-    <div className="pt-5 flex-col">
+    <div className="flex-col">
       <div
         className={"grid grid-cols-4 relative gap-7"}
       >

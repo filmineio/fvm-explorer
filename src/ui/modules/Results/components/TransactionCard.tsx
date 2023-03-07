@@ -26,7 +26,7 @@ export const TransactionCard = ({ data, network }: TransactionCardProps) => {
       <Link
         href={`/explore/${Entity.Transaction}/${data.cid}?network=${network}`}
       >
-        <div className="relative flex flex-col w-full break-words bg-body_opacity-50 border-2 border-transparent hover:border-label rounded-9  shadow-lg">
+        <div className="relative flex flex-col w-full break-words bg-body_opacity-50 border-2 border-transparent hover:border-label rounded-9 shadow-lg">
           <div className="flex-auto p-5">
             <div className="flex flex-wrap items-center">
               <div className="relative w-full">

@@ -8,7 +8,7 @@ export const AdvancedQueryActions = ({
   return (
     <div
       className={
-        "flex justify-between transform -translate-y-12 max-w-2xl w-full px-10"
+        "flex justify-between transform -translate-y-12 max-w-2xl w-full"
       }
     >
       {/*<button className="w-52 border-2 border-blue-400 text-blue-400 uppercase rounded  bg-black px-2 py-1">*/}
@@ -17,16 +17,16 @@ export const AdvancedQueryActions = ({
       <span />
       <div className={"flex gap-5"}>
         <button
-          className="btn border-2 bg-slate border-blue-500 text-blue-500 hover:text-blue-400 hover:border-blue-400 active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all uppercase"
+          className="btn border-2 bg-slate border-blue-400 text-blue-400 hover:text-blue-500 hover:border-blue-500 active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all"
           onClick={addGroup}
         >
-          Add group
+          ADD GROUP
         </button>
         <button
-          className="btn bg-blue-500 text-white uppercase hover:bg-blue-400 hover:border-blue-400 active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all"
+          className="btn bg-blue-500 text-white hover:bg-blue-400 hover:border-blue-400 active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all"
           onClick={search}
         >
-          Search
+          SEARCH
         </button>
       </div>
     </div>

@@ -60,7 +60,7 @@ export const FiltersHeader = ({
         <AdvancedFilterToggle
           checked={checked}
           toggle={cb(toggle, !checked)}
-          label={"advanced search"}
+          label="advanced search"
         />
       </div>
     </div>
