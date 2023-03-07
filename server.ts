@@ -1,4 +1,8 @@
+import { newKafkaConsumer } from "@/consumers/kafka";
+import { Network } from "@/enums/Network";
 import { handle as handleVerifyContract } from "@/handlers/contracts/verify/handler";
+import { newContractKafkaSubscriber } from "@/subscribers/contracts";
+import { KafkaEventMap } from "@/subscribers/eventMaps";
 import bodyParser from "body-parser";
 import cors from "cors";
 import * as dotenv from "dotenv";
@@ -29,5 +33,15 @@ app.post("/api/contracts/:contractAddress/verify", async (req, res) => {
 });
 
 app.listen(port, async () => {
+  const ctx = await getCtx(config);
+
   console.log(`Server running at http://localhost:${port}; `);
+
+  const hyperspaceKafkaConsumer = await newKafkaConsumer<KafkaEventMap>(
+    ctx,
+    Network.HyperSpace
+  );
+
+  await hyperspaceKafkaConsumer.subscribe(newContractKafkaSubscriber(ctx));
+  await hyperspaceKafkaConsumer.startConsumer();
 });

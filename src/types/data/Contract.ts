@@ -1,10 +1,14 @@
 export type Contract = Record<
+  | "cid"
   | "contractAddress"
   | "contractId"
   | "contractActorAddress"
+  | "contractType"
   | "ethAddress"
   | "ownerAddress"
-  | "ownerId",
+  | "ownerId"
+  | "bytecode"
+  | "compiler",
   string
 > &
   Partial<Record<"okTransactionCount" | "revertedTransactionCount", number>> &

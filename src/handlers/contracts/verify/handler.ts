@@ -52,9 +52,10 @@ export const handle = async (ctx: ApiCtx, req: Request, res: Response) => {
     const filePath = `/tmp/${Buffer.from(v4()).toString("hex")}.zip`;
     await downloadFile(verifyReq.contractsZipCID, filePath, "contracts.zip");
     const contracts = await readContractsFromZip(filePath);
-    const onChainBytecode = await ctx.lotus?.chain[
-      verifyReq.network
-    ].ethGetCode(contract.ethAddress, "latest");
+    const onChainBytecode = await ctx.lotus[verifyReq.network].ethGetCode(
+      contract.ethAddress,
+      "latest"
+    );
 
     // remove downloaded contracts
     fs.rmSync(filePath);

@@ -1,6 +1,13 @@
 {
   "watch": [
-    "server.ts"
+    "server.ts",
+    "src/types/**/*",
+    "src/consumers/**/*",
+    "src/handlers/**/*",
+    "src/subscribers/**/*",
+    "src/enums/**/*",
+    "src/utils/**/*",
+    "src/constants/**/*"
   ],
   "exec": "ts-node --project tsconfig.server.json  -r tsconfig-paths/register ./server.ts",
   "ext": "js ts"

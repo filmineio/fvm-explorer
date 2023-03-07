@@ -47,8 +47,16 @@
       ],
       "@/handlers/*": [
         "src/handlers/*"
-      ]
-
+      ],
+      "@/consumers/*": [
+        "src/consumers/*"
+      ],
+      "@/subscribers/*": [
+        "src/subscribers/*"
+      ],
+      "@/subscribers/contracts/*": [
+        "src/subscribers/contracts/*"
+      ],
     },
     "target": "es2020",
     "lib": [
