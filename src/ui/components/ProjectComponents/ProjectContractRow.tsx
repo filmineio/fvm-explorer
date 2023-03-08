@@ -1,7 +1,7 @@
 import { Entity } from "@/enums/Entity";
 import { Network } from "@/enums/Network";
 import { uniqBy } from "ramda";
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { toast } from "react-toastify";
 
 import { Spinner } from "@/ui/components/Spinner/Spinner";
@@ -17,6 +17,10 @@ import Link from "next/link";
 import Share from "@/ui/components/Common/Icons/Share";
 import Contract from "@/ui/components/Common/Icons/Contract";
 import Garbage from "@/ui/components/Common/Icons/Garbage";
+import clsx from "clsx";
+import { cb } from "@/utils/cb";
+import X from "@/ui/components/Common/Icons/X";
+import Modal from "@/ui/components/Modal/Modal";
 
 
 export const ProjectContractRow = ({
@@ -36,6 +40,7 @@ export const ProjectContractRow = ({
     error,
     total: removeResult,
   } = useMutation<Project>();
+  const [confirm, setConfirm] = useState(false);
 
   const { ok, reverted } = useMemo(() => {
     return uniqBy((m) => m.cid, transactions).reduce(
@@ -49,7 +54,7 @@ export const ProjectContractRow = ({
     );
   }, [transactions]);
 
-  const submit = useCallback(() => {
+  const removeContract = useCallback(() => {
     remove(Entity.Project, `/projects/${projectId}/remove-contract`, contract);
   }, [contract, projectId]);
 
@@ -125,11 +130,11 @@ export const ProjectContractRow = ({
         </Link>
       </td>
       <td className="py-5 pr-5 pl-2 bg-body_opacity-50 text-left text-14 whitespace-nowrap rounded-tr-6 rounded-br-6 w-8">
-        <div className="cursor-pointer" onClick={submit}>
+        <div className={clsx("cursor-pointer", {['pointer-events-none']: confirm})} onClick={cb(setConfirm, true)}>
           <div className="bg-label_opacity-30 ml-auto rounded-3 flex items-center justify-center w-8 h-8 border border-transparent hover:border-label active:bg-label transition-all">
             {removing ? (
               <div
-                className={"w-[32px] h-[32px] flex items-center justify-center"}
+                className="w-[32px] h-[32px] flex items-center justify-center [&>*>svg]:m-auto"
               >
                 <Spinner inline />
               </div>
@@ -138,6 +143,42 @@ export const ProjectContractRow = ({
             )}
           </div>
         </div>
+        {confirm && (
+          <Modal>
+            <div className="modal-content border-none shadow-none relative flex flex-col w-[590px] mx-auto pointer-events-auto bg-slate rounded-10">
+              <div className="modal-header flex flex-shrink-0 items-center">
+                <button
+                  className="btn-close absolute right-7 top-7 z-10 hover:opacity-50 transition-all [transition:opacity_.0.16s_ease_in_out]"
+                  onClick={cb(setConfirm, false)}
+                >
+                  <X />
+                </button>
+              </div>
+              <div className="modal-body relative p-[70px]">
+                <h3 className="font-space text-white text-24 mb-5">
+                  Remove contract
+                </h3>
+                <p className="mb-0 text-white">
+                  Are you sure you want to remove contract?
+                </p>
+                <div className="flex items-center gap-5 mt-[70px]">
+                  <button
+                    onClick={removeContract}
+                    className={clsx("btn bg-red text-white", {['pointer-events-none']: removing})}
+                  >
+                    YES, REMOVE CONTRACT
+                  </button>
+                  <button
+                    className="btn link flex items-center text-label hover:text-placeholder transition-all"
+                    onClick={cb(setConfirm, false)}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          </Modal>
+        )}
       </td>
     </tr>
   );
