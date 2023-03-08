@@ -10,6 +10,7 @@ import { ContractTransaction } from "@/types/chain/ContractTransaction";
 import { ApiCtx } from "@/api/ctx/apiCtx";
 
 import { getNetworkPrefix } from "@/utils/getAddressNetworkPrefix";
+import { setAddressNetworkPrefix } from "@/utils/setAddressNetworkPrefix";
 
 /**
  *
@@ -51,9 +52,15 @@ export const resolveEFVMContract = async (
   const contractReciept = decode(
     Buffer.from(contractTx.MessageRctReturn as string, "base64")
   );
-  const contractActorId = newIDAddress(contractReciept[0], networkPrefix).toString();
+  const contractActorId = newIDAddress(
+    contractReciept[0],
+    networkPrefix
+  ).toString();
   console.log("contractActorId", contractActorId);
-  const contractActorAddress = newIDAddress(contractReciept[1], networkPrefix).toString();
+  const contractActorAddress = newIDAddress(
+    contractReciept[1],
+    networkPrefix
+  ).toString();
   console.log("contractActorAddress", contractActorAddress);
   const contractActorEthAddress = `0x${contractReciept[2].toString("hex")}`;
   console.log("contractActorEthAddress", contractActorEthAddress);
@@ -63,6 +70,8 @@ export const resolveEFVMContract = async (
     []
   )) as Actor & { Address: string };
 
+  const actorAddress = setAddressNetworkPrefix(actor.Address, networkPrefix);
+
   return {
     Cid: contractTx.Cid,
     Compiler: "unknown",
@@ -71,7 +80,7 @@ export const resolveEFVMContract = async (
     OwnerAddress: contractTx.RobustFrom,
     Bytecode: contractTx.Params,
     ContractId: contractActorId,
-    ContractAddress: actor.Address,
+    ContractAddress: actorAddress,
     ContractActorAddress: contractActorAddress,
     EthAddress: contractActorEthAddress,
   } as Contract;
