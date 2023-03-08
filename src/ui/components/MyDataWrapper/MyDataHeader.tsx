@@ -89,12 +89,14 @@ export const MyDataHeader = ({
                     strokeLinejoin="round"
                   />
                 </svg>
-                {kind === MyDataKind.Projects ? "My projects" : "My queries"}
+                <Link href={kind === MyDataKind.Projects ? "/me/projects" : "/me/queries"}>
+                  {kind === MyDataKind.Projects ? "My projects" : "My queries"}
+                </Link>
               </div>
             </li>
             {activeEntity && (
               <li className="mr-2 flex items-center relative">
-                <div className="inline-flex items-center py-4 px-0 gap-2 text-blue-400">
+                <div className="inline-flex items-center py-4 px-0 gap-2 text-blue-400 text-12">
                   <svg
                     width="8"
                     height="8"
