@@ -49,8 +49,12 @@ export const resolveEFVMContract = async (
     Buffer.from(contractTx.MessageRctReturn as string, "base64")
   );
   const contractActorId = newIDAddress(contractReciept[0]).toString();
+  console.log("contractActorId", contractActorId);
   const contractActorAddress = newIDAddress(contractReciept[1]).toString();
+  console.log("contractActorAddress", contractActorAddress);
   const contractActorEthAddress = `0x${contractReciept[2].toString("hex")}`;
+  console.log("contractActorEthAddress", contractActorEthAddress);
+
   const actor = (await ctx.lotus[network].stateGetActor(
     contractActorId,
     []
