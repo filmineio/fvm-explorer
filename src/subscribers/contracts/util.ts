@@ -1,15 +1,13 @@
 import { ContractType } from "@/enums/ContractType";
 import { Network } from "@/enums/Network";
 import { Actor } from "@filecoin-shipyard/lotus-client-rpc";
-import { CoinType, newIDAddress } from "@glif/filecoin-address";
+import { newIDAddress } from "@glif/filecoin-address";
 import { decode } from "cbor";
 
 import { Contract } from "@/types/chain/Contract";
 import { ContractTransaction } from "@/types/chain/ContractTransaction";
 
 import { ApiCtx } from "@/api/ctx/apiCtx";
-
-import { getNetworkPrefix } from "@/utils/getAddressNetworkPrefix";
 
 /**
  *
@@ -47,13 +45,12 @@ export const resolveEFVMContract = async (
   network: Network,
   contractTx: ContractTransaction
 ): Promise<Contract> => {
-  const networkPrefix = getNetworkPrefix(network) as CoinType;
   const contractReciept = decode(
     Buffer.from(contractTx.MessageRctReturn as string, "base64")
   );
-  const contractActorId = newIDAddress(contractReciept[0], networkPrefix).toString();
+  const contractActorId = newIDAddress(contractReciept[0]).toString();
   console.log("contractActorId", contractActorId);
-  const contractActorAddress = newIDAddress(contractReciept[1], networkPrefix).toString();
+  const contractActorAddress = newIDAddress(contractReciept[1]).toString();
   console.log("contractActorAddress", contractActorAddress);
   const contractActorEthAddress = `0x${contractReciept[2].toString("hex")}`;
   console.log("contractActorEthAddress", contractActorEthAddress);
