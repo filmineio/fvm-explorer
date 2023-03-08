@@ -85,6 +85,7 @@ export const handle = async (ctx: ApiCtx, req: Request, res: Response) => {
 
     return res.json(verificationResult);
   } catch (e) {
+    console.error(e);
     return res.status(400).json({ exception: e });
   }
 };
