@@ -6,6 +6,7 @@ export type VerificationResult = {
   warnings: any[];
   contractBytecode: string;
   contractCode: string;
+  solidityVersion: string;
   abi?: unknown;
   solcOutput?: unknown;
 };
