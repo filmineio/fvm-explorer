@@ -13,6 +13,7 @@
     "start:custom": "cross-env NODE_ENV=production node dist/server.js"
   },
   "dependencies": {
+    "@adobe/node-fetch-retry": "^2.2.0",
     "@clickhouse/client": "^0.0.11",
     "@filecoin-shipyard/lotus-client-provider-nodejs": "^1.1.1",
     "@filecoin-shipyard/lotus-client-rpc": "^1.2.0",

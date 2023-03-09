@@ -7,6 +7,14 @@
   resolved "https://registry.yarnpkg.com/@adobe/css-tools/-/css-tools-4.2.0.tgz#e1a84fca468f4b337816fcb7f0964beb620ba855"
   integrity sha512-E09FiIft46CmH5Qnjb0wsW54/YQd69LsxeKUOWawmws1XWvyFGURnAChH0mlr7YPFR1ofwvUQfcL0J3lMxXqPA==
 
+"@adobe/node-fetch-retry@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@adobe/node-fetch-retry/-/node-fetch-retry-2.2.0.tgz#08fe9cc1885de8c0ac4b9157ed26ea07691dd90d"
+  integrity sha512-4sNIVGL26G2vzFA+O/CC2Y5dBG6P7QCTuNr/3pRpo1vJUlPt6aiyhlE/wPYR7WF/MSK+y6hkqqjnRMk5/Myfhg==
+  dependencies:
+    abort-controller "^3.0.0"
+    node-fetch "^2.6.7"
+
 "@ampproject/remapping@^2.1.0", "@ampproject/remapping@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@ampproject/remapping/-/remapping-2.2.0.tgz#56c133824780de3174aed5ab6834f3026790154d"
