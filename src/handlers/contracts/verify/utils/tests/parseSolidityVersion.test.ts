@@ -48,10 +48,15 @@ describe("parseSolidityVersion", () => {
     );
   });
 
-  it("should return undefined when no versions satisfy the version specifier", () => {
-    const fileContents = "pragma solidity <0.5.0;";
+  it("should return null when no versions satisfy the version specifier", () => {
+    const fileContents = "pragma solidity <0.0.0;";
+    expect(parseSolidityVersion(fileContents)).toBeNull();
+  });
+
+  it("should return highest version number between the range", () => {
+    const fileContents = "pragma solidity >=0.8.1 <0.8.19;";
     expect(parseSolidityVersion(fileContents)).toEqual(
-      "v0.4.26+commit.4563c3fc"
+      "v0.8.18+commit.87f61d96"
     );
   });
 });
