@@ -28,7 +28,7 @@ export const ContractAbi = ({
       <div className="modal-body relative p-[70px]">
         <h3 className="font-space text-white text-24 mb-8">Contract ABI</h3>
 
-        <div className="gap-5 relative flex flex-col gap-4 max-h-[60rem] overflow-y-auto">
+        <div className="gap-5 relative flex flex-col gap-4">
           {(data || []).map((item, i) => (
             <ContractAbiItem item={item} key={i} />
           ))}
