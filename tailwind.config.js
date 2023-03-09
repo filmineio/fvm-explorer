@@ -93,6 +93,8 @@ module.exports = {
         "2xl": "1440px",
         calc2: "calc(100% - 440px)",
         lg: "calc(100% - 120px)",
+        "1520": "1520px",
+        "1113": "1113px"
       },
       tablewidth: {
         tbw: "16%",
@@ -105,6 +107,7 @@ module.exports = {
         xl: { max: "1024px" },
         "2xl": { max: "1336px" },
         "3xl": { max: "1920px" },
+        "sc-1400": { max: "1399px"}
       },
 
       width: {
