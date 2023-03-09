@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { TabHeader } from "@/ui/components/TabHeader/TabHeader";
 
+import { ContractSourceCode } from "@/ui/modules/SelectedEntity/components/ContractPage/ContractSourceCode";
 import { ContractBaseInfo } from "@/ui/modules/SelectedEntity/components/ContractPage/components/ContractBaseInfo";
 import { ContractTransactions } from "@/ui/modules/SelectedEntity/components/ContractPage/components/ContractTransactions";
 import { VerifyContract } from "@/ui/modules/SelectedEntity/components/ContractPage/components/VerifyContract";
@@ -34,7 +35,6 @@ export const ContractPage = ({ data }: Props) => {
     get: getVerification,
     loading: checkingVerification,
     data: verifications,
-    total: verificationCount,
   } = useGet<ContractMeta>();
 
   const [page, paginate] = useState<number>(1);
@@ -68,12 +68,11 @@ export const ContractPage = ({ data }: Props) => {
       Entity.ContractMeta,
       `contracts/${contract.contractAddress}/metadata?network=${data.network}`
     );
-  }, [contract, data])
+  }, [contract, data]);
 
   useEffect(() => {
     if (!contract) return;
-    fetchVerification()
-
+    fetchVerification();
   }, [contract]);
 
   const showClaim = useMemo(
@@ -85,7 +84,7 @@ export const ContractPage = ({ data }: Props) => {
     if (showClaim) {
       const header = document.querySelector("header");
       if (header) {
-        header.style.marginTop = "50px";
+        header.style.marginTop = "64px";
       }
     }
   }, [showClaim]);
@@ -105,6 +104,7 @@ export const ContractPage = ({ data }: Props) => {
           network={data.network}
           totalTransactions={total}
           metadata={metadata}
+          abi={metadata?.abiCid}
         />
         <div className="flex items-center justify-between mb-5">
           <h3 className="text-24 text-white">Details</h3>
@@ -138,7 +138,9 @@ export const ContractPage = ({ data }: Props) => {
                 loading={loading}
               />
             )}
-            {/*{activeTab === 1 && TODO*/}
+            {activeTab === 1 && (
+              <ContractSourceCode sourceCid={metadata.mainCid} />
+            )}
           </div>
         </div>
       </div>

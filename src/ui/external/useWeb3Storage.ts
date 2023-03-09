@@ -1,3 +1,4 @@
+import axios from "axios";
 import { lensPath, set } from "ramda";
 import { useState } from "react";
 
@@ -8,16 +9,20 @@ export const useWeb3Storage = <T = unknown>() => {
     error: string;
     loading: boolean;
     data?: T;
-    progress: number;
+    progress: string;
   }>({
     error: "",
     loading: false,
     data: undefined,
-    progress: 0,
+    progress: "",
   });
 
-  const upload = (file: File) => {
+  const upload = (inputFile: File, fileNameOverride?: string) => {
     setState((p) => set(lensPath(["loading"]), true)(p));
+
+    let file = new File([inputFile], fileNameOverride || inputFile.name, {
+      type: inputFile.type,
+    });
 
     let uploaded = 0;
 
@@ -42,19 +47,21 @@ export const useWeb3Storage = <T = unknown>() => {
 
   const retrieve = (fileCid: string) => {
     setState((p) => set(lensPath(["loading"]), true)(p));
-    uiCtx
-      .w3s()
-      .get(fileCid)
+    axios
+      .get(
+        `https://${fileCid.slice(
+          0,
+          fileCid.indexOf("/")
+        )}.ipfs.dweb.link/${fileCid.slice(fileCid.indexOf("/") + 1)}`
+      )
       .then((res) => {
-        if (!res || !res.ok) {
+        if (!res || res.status >= 300) {
           return setState((p) =>
             set(lensPath(["error"]), "Something Went Wrong")(p)
           );
         }
 
-        res.files().then((v) => {
-          setState((p) => set(lensPath(["data"]), v)(p));
-        });
+        setState((p) => set(lensPath(["data"]), res.data)(p));
       })
       .catch((e) => {
         console.log(e);

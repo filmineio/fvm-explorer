@@ -17,7 +17,6 @@ import { getModel } from "@/api/ctx/database/clickhouse/utils/getModel";
 
 import { cb } from "@/utils/cb";
 
-
 export const InnerGroupWrapper = ({ children }: PropsWithChildren) => {
   return (
     <>
@@ -38,8 +37,6 @@ export const AdvancedFilters = ({
   state: FilterState;
   onClick: () => void;
 }) => {
-  console.log(state);
-
   const model = useMemo(cb(getModel, state.filteredBy), [state.filteredBy]);
   const fields = useMemo(cb(getModelQueryFields, model.kind), [model]);
 
@@ -102,7 +99,7 @@ export const AdvancedFilters = ({
   const restOfTheGroups = useMemo(() => queryGroups.slice(1), [queryGroups]);
 
   return (
-    <div className="flex flex-col justify-center gap-5">
+    <div className="flex flex-col justify-center gap-5 mt-8">
       <AdvancedFiltersQueryGroup
         removable={!hasMultipleGroups}
         group={firstGroup}

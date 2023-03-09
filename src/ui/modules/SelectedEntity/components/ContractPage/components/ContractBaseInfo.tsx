@@ -1,6 +1,11 @@
 import { ContractMetaInfo } from "./ContractMetaInfo";
 import { Network } from "@/enums/Network";
+import Link from "next/link";
 import { useReducer } from "react";
+
+import BookmarkCodeIcon from "@/ui/components/Common/Icons/BookmarkCodeIcon";
+import FileEyeIcon from "@/ui/components/Common/Icons/FileEyeIcon";
+import CopyText from "@/ui/components/CopyText/CopyText";
 
 import { AddToProject } from "@/ui/modules/SelectedEntity/components/ContractPage/components/AddToProject";
 
@@ -9,22 +14,19 @@ import { useStore } from "@/ui/state/Store";
 import { Contract } from "@/types/data/Contract";
 import { ContractMeta } from "@/types/data/ContractMeta";
 
-import FileEyeIcon from "@/ui/components/Common/Icons/FileEyeIcon";
-import BookmarkCodeIcon from "@/ui/components/Common/Icons/BookmarkCodeIcon";
-import Link from "next/link";
-import CopyText from "@/ui/components/CopyText/CopyText";
-
 
 export const ContractBaseInfo = ({
   contract,
   network,
   totalTransactions,
   metadata,
+  abi,
 }: {
   contract: Contract;
   network: Network;
   totalTransactions: number;
   metadata?: ContractMeta;
+  abi: string;
 }) => {
   const {
     state: { user },
@@ -42,35 +44,54 @@ export const ContractBaseInfo = ({
         <div className="flex flex-wrap items-center justify-between">
           <div className="flex items-center justify-start mr-15">
             <h3 className="relative font-space text-24 leading-compact font-bold text-white">
-              <CopyText text={ showEth ? contract.ethAddress : contract.contractAddress }>
-                <span>{showEth ? contract.ethAddress : contract.contractAddress}</span>
+              <CopyText
+                text={showEth ? contract.ethAddress : contract.contractAddress}
+              >
+                <span>
+                  {showEth ? contract.ethAddress : contract.contractAddress}
+                </span>
               </CopyText>
             </h3>
           </div>
           <div className="flex items-center justify-start">
-            <button className="flex items-center mr-10 text-blue-400 hover:text-blue-500 transition-colors group" type="button" onClick={toggle}>
+            <button
+              className="flex items-center mr-10 text-blue-400 hover:text-blue-500 transition-colors group"
+              type="button"
+              onClick={toggle}
+            >
               <div className="w-6 h-6 flex mr-2.5 rounded-3 bg-label_opacity-30 items-center justify-center border border-transparent group-hover:border-label group-active:border-blue-500 transition-all">
-                <FileEyeIcon/>
+                <FileEyeIcon />
               </div>
               <span className="font-bold text-14 leading-4">
-                { " " }
-                { showEth ? "Hide ETH" : "View ETH" }
+                {" "}
+                {showEth ? "Hide ETH" : "View ETH"}
               </span>
             </button>
             {!!user ? (
-              <button className="flex items-center text-blue-400 hover:text-blue-500 transition-colors group" type="button" onClick={toggleAddToProject}>
+              <button
+                className="flex items-center text-blue-400 hover:text-blue-500 transition-colors group"
+                type="button"
+                onClick={toggleAddToProject}
+              >
                 <div className="w-6 h-6 flex mr-2.5 rounded-3 bg-label_opacity-30 items-center justify-center border border-transparent group-hover:border-label group-active:border-blue-500 transition-all">
-                  <BookmarkCodeIcon/>
+                  <BookmarkCodeIcon />
                 </div>
-                <span className="font-bold text-14 leading-4">Save to project</span>
+                <span className="font-bold text-14 leading-4">
+                  Save to project
+                </span>
               </button>
             ) : (
               <Link href="/auth">
-                <button className="flex items-center text-blue-400 hover:text-blue-500 transition-colors group" type="button">
+                <button
+                  className="flex items-center text-blue-400 hover:text-blue-500 transition-colors group"
+                  type="button"
+                >
                   <div className="w-6 h-6 flex mr-2.5 rounded-3 bg-label_opacity-30 items-center justify-center border border-transparent group-hover:border-label group-active:border-blue-500 transition-all">
-                    <BookmarkCodeIcon/>
+                    <BookmarkCodeIcon />
                   </div>
-                  <span className="font-bold text-14 leading-4">Save to project</span>
+                  <span className="font-bold text-14 leading-4">
+                    Save to project
+                  </span>
                 </button>
               </Link>
             )}
@@ -99,39 +120,20 @@ export const ContractBaseInfo = ({
               NETWORK
             </h4>
             <div className="flex items-center mt-1.5">
-              <div className="bg-pink p-1 w-2.5 h-2.5 mr-2 rounded-2 flex items-center justify-center"/>
-              <span className="font-bold text-white text-14 leading-normal capitalize">{network}</span>
+              <div className="bg-pink p-1 w-2.5 h-2.5 mr-2 rounded-2 flex items-center justify-center" />
+              <span className="font-bold text-white text-14 leading-normal capitalize">
+                {network}
+              </span>
             </div>
           </div>
         </div>
 
-        {/*<span className="flex font-space font-bold text-white text-18 leading-compact mt-10">ABI & Compiler</span>*/}
-
-        {/*<div className="flex flex-wrap items-center justify-start mt-5">*/}
-        {/*  <button className="flex items-center mr-10" type="button" onClick={() => 0 /*TODO*!/>*/}
-        {/*    <div className="w-6 h-6 flex mr-2.5 rounded-3 bg-label_opacity-30 items-center justify-center">*/}
-        {/*      <LinkIcon/>*/}
-        {/*    </div>*/}
-        {/*    <span className="text-blue-400 font-bold text-14 leading-4">View ABI</span>*/}
-        {/*  </button>*/}
-        {/*  <button className="flex items-center mr-10" type="button" onClick={() => 0 /*TODO*!/>*/}
-        {/*    <div className="w-6 h-6 flex mr-2.5 rounded-3 bg-label_opacity-30 items-center justify-center">*/}
-        {/*      <FileCopyIcon/>*/}
-        {/*    </div>*/}
-        {/*    <span className="text-blue-400 font-bold text-14 leading-4">Copy ABI</span>*/}
-        {/*  </button>*/}
-        {/*  <div className="flex items-center">*/}
-        {/*    <h4 className="font-medium text-label text-14 leading-4 lowercase mr-5">*/}
-        {/*      compiler v.*/}
-        {/*    </h4>*/}
-        {/*    <h5 className="bg-label_opacity-30 px-3.5 py-2.5 rounded-4 font-normal text-white text-14 italic leading-4 lowercase">*/}
-        {/*      gcc 4.8*/}
-        {/*    </h5>*/}
-        {/*  </div>*/}
-        {/*</div>*/}
+        <span className="flex font-space font-bold text-white text-18 leading-compact mt-10">
+          ABI & Compiler
+        </span>
 
         {!!metadata && (
-          <ContractMetaInfo contract={contract} metadata={metadata} />
+          <ContractMetaInfo contract={contract} metadata={metadata} abi={abi} />
         )}
       </div>
 

@@ -5,6 +5,7 @@ import { Sealer, initSealer } from "@/api/ctx/auth/sealer";
 import { AuthUtils, authUtils } from "@/api/ctx/auth/utils";
 import { apiConfig } from "@/api/ctx/config/config";
 import { ClickhouseDB, initClient } from "@/api/ctx/database/clickhouse";
+import { Kafka, initKafka } from "@/api/ctx/kafka";
 import { Lotus, initLotus } from "@/api/ctx/lotus";
 
 export type ApiCtx = {
@@ -19,6 +20,7 @@ export type ApiCtx = {
     utils: AuthUtils;
   };
   web3storage: Web3Storage;
+  kafka: Kafka;
 };
 
 let ctx: ApiCtx;
@@ -38,6 +40,7 @@ export const getCtx = async (config = apiConfig()): Promise<ApiCtx> => {
       utils: authUtils,
     },
     web3storage: new Web3Storage({ token: config.web3Storage.token }),
+    kafka: initKafka(config.kafka),
   } as never;
 
   return ctx;

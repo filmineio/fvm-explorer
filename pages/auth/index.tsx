@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
-import Router from "next/router";
-import { useCallback, useEffect, useReducer } from "react";
+import Router, { useRouter } from "next/router";
+import { FormEvent, useCallback, useEffect, useReducer, useState } from "react";
 
 import Button from "@/ui/components/Button";
 import Input from "@/ui/components/Input/Input";
@@ -19,30 +19,47 @@ import AuthIllustrationTop from "@/ui/components/Common/Icons/AuthIllustrationTo
 import AuthIllustrationBottom from "@/ui/components/Common/Icons/AuthIllustrationBottom";
 import MailIcon from "@/ui/components/Common/Icons/MailIcon";
 import X from "@/ui/components/Common/Icons/X";
-
+import clsx from "clsx";
 
 const Home: NextPage = () => {
   const [state, change] = useReducer(authPageReducer, initialAuthPageState);
+  const [error, setError] = useState(false);
   const { login } = uiApiClient.auth();
   const {
     state: { user },
   } = useStore();
+  const router = useRouter();
 
   const initLogin = useCallback(() => {
     if (state.email && state.emailValid) {
       change(true);
+      setError(false);
       login(state.email).finally(cb(change, false));
+    } else {
+      setError(true);
     }
   }, [login, state]);
 
+  const resolveRedirectParam = (param: string | undefined) => {
+    switch (param) {
+      case 'queries': return '/me/queries';
+      default: return '/';
+    }
+  }
+
   useEffect(() => {
-    !!user && Router.push("/");
+    !!user && Router.push(resolveRedirectParam(router.query.redirect?.toString()));
   }, [user]);
+
+  const submitted = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    initLogin();
+  };
 
   return (
     <>
       <Page>
-        <div className="flex h-full">
+        <div className="flex h-full ">
           <div className="flex relative w-11/25 items-center justify-center bg-line_opacity-80">
             <div className="absolute self-end top-0 right-0 3xl:w-[380px] 2xl:max-w-[300px] w-[529px]">
               <AuthIllustrationTop/>
@@ -57,25 +74,28 @@ const Home: NextPage = () => {
 
           <div className="w-14/25 lg:w-8/12 flex items-center justify-center md:w-full">
             <div className="md:text-center md:text-left md:p-5 mr-[12%]">
-              <form>
+              <form onSubmit={(e) => submitted(e)}>
                 <h1 className="font-space text-white text-36 font-bold leading-compact">
                   Log in/Sign up
                 </h1>
                 <p className="font-roboto text-white font-normal text-16 leading-normal mt-4">
                   Authenticate with your email to use the app.
                 </p>
-                <div className="flex md:flex-wrap items-end mt-12 gap-0">
+                <div className="flex md:flex-wrap items-end mt-12 gap-0 relative">
                   <Input
                     handleChange={change}
                     placeholder="Email"
-                    className="block bg-slate min-h-sm w-96 pl-11 border-2 border-body rounded-4 text-white placeholder-label caret-white text-14 outline-none leading-4 hover:border-label hover:ring-body hover:ring focus:border-label focus:ring-body focus:ring"
+                    className={clsx("block bg-slate min-h-sm w-96 pl-11 border-2 border-body rounded-4 text-white placeholder-label caret-white text-14 outline-none leading-4 hover:border-label focus:border-label focus:ring-body", {
+                      ['focus:ring']: !error,
+                      ['border-red hover:border-red focus:border-red focus:shadow-[0px_0px_0px_3px_rgba(211,47,64,0.3)]']: error
+                    })}
                     valid={state.emailValid}
                     icon={<MailIcon/>}
                   />
+                  {error && <div className="absolute left-0 -bottom-5 text-12 text-red ml-3">Invalid email</div>}
                   <Button
-                    type="button"
+                    type="submit"
                     className="btn bg-blue-500 text-white hover:bg-blue-400 hover:border-blue-400 active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all whitespace-nowrap ml-5"
-                    onClick={initLogin}
                   >
                     SIGN IN
                   </Button>

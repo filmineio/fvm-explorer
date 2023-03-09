@@ -100,6 +100,12 @@ body .graphiql-container .graphiql-editor-tools {
   background-color: #141620;
 }
 
+/*.graphiql-main > div:nth-child(1) {*/
+/*  position: fixed;*/
+/*  top: 50px;*/
+/*  bottom: 0;*/
+/*}*/
+
 .graphiql-query-editor, .graphiql-query-editor-wrapper, .graphiql-editor, .graphiql-session, .CodeMirror.cm-s-graphiql, .CodeMirror-gutters *, .graphiql-editor-tools, .graphiql-editor-tool {
   background-color: #141620;
 }

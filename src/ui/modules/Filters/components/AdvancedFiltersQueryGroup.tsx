@@ -87,7 +87,7 @@ export const AdvancedFiltersQueryGroup = ({
 
   return (
     <div
-      className={"relative p-5 border-[3px] border-label rounded-3 pb-8 relative"}
+      className={"relative p-5 border-[3px] border-label rounded-3 pb-8 relative -mr-5 -ml-5"}
     >
       {removable && (
         <button

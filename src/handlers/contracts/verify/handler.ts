@@ -35,7 +35,7 @@ export const handle = async (ctx: ApiCtx, req: Request, res: Response) => {
       (contractAddress as string).toLowerCase()
     );
     if (!contract) {
-      throw new Error("Contract not found");
+      return res.status(404).json({ exception: "ENTITY_NOT_FOUND" });
     }
 
     const contractMeta = await getContractMetaByAddress(
@@ -45,16 +45,17 @@ export const handle = async (ctx: ApiCtx, req: Request, res: Response) => {
     );
 
     if (contractMeta) {
-      throw new Error("Contract meta already exists");
+      return res.status(400).json({ exception: "CONTRACT_META_EXISTS" });
     }
 
     // download and read contracts
     const filePath = `/tmp/${Buffer.from(v4()).toString("hex")}.zip`;
-    await downloadFile(ctx, verifyReq.contractsZipCID, filePath);
+    await downloadFile(verifyReq.contractsZipCID, filePath, "contracts.zip");
     const contracts = await readContractsFromZip(filePath);
-    const onChainBytecode = await ctx.lotus?.chain[
-      verifyReq.network
-    ].ethGetCode(contract.ethAddress, "latest");
+    const onChainBytecode = await ctx.lotus[verifyReq.network].ethGetCode(
+      contract.ethAddress,
+      "latest"
+    );
 
     // remove downloaded contracts
     fs.rmSync(filePath);
@@ -75,8 +76,16 @@ export const handle = async (ctx: ApiCtx, req: Request, res: Response) => {
       await createContractMetadata(ctx, meta, contract, verifyReq, user);
     }
 
+    if (verificationResult.errors.length > 0) {
+      return res.status(400).json({
+        ...verificationResult,
+        exception: "CONTRACT_VERIFICATION_FAILED",
+      });
+    }
+
     return res.json(verificationResult);
   } catch (e) {
+    console.error(e);
     return res.status(400).json({ exception: e });
   }
 };

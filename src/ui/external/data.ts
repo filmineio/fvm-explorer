@@ -125,10 +125,22 @@ export const useMutation = <T = unknown>(external = false) => {
     uiCtx[external ? "externalClient" : "client"]()
       .post(path, data)
       .then((response) => {
+        if (Array.isArray(response.data.errors)) {
+          return setState((p) =>
+            set(
+              lensPath(["error"]),
+              typeof response.data.errors[0] === "string"
+                ? response.data.errors[0]
+                : response.data.errors[0]?.message || "Something Went Wrong"
+            )(p)
+          );
+        }
+
         if (response.data.exception) {
           setState((p) => set(lensPath(["error"]), "Something Went Wrong")(p));
           return;
         }
+
         const data = processResponse(response, resource);
         if (data.status === OperationStatus.Error) {
           setState((p) => set(lensPath(["error"]), data.data.exception)(p));
@@ -141,7 +153,7 @@ export const useMutation = <T = unknown>(external = false) => {
           );
         }
       })
-      .catch(() => {
+      .catch((err) => {
         setState((p) => set(lensPath(["error"]), "Something Went Wrong")(p));
       })
       .finally(() => {

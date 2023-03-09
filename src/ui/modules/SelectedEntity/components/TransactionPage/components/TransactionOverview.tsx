@@ -1,8 +1,25 @@
+import { Entity } from "@/enums/Entity";
 import { Network } from "@/enums/Network";
 import Link from "next/link";
+import { useEffect, useMemo } from "react";
+import JSONPretty from "react-json-pretty";
+
+import CopyText from "@/ui/components/CopyText/CopyText";
+import { Spinner } from "@/ui/components/Spinner/Spinner";
+
+import { useMutation } from "@/ui/external/data";
 
 import { Transaction } from "@/types/data/Transaction";
-import CopyText from "@/ui/components/CopyText/CopyText";
+
+
+const isJson = (str: string) => {
+  try {
+    JSON.parse(str);
+  } catch (e) {
+    return false;
+  }
+  return true;
+};
 
 export const TransactionOverview = ({
   network,
@@ -13,6 +30,19 @@ export const TransactionOverview = ({
   data: Transaction[];
   transaction: Transaction;
 }) => {
+  const { post, data: paramsRes, error, loading } = useMutation<string>();
+
+  useEffect(() => {
+    post(Entity.Transaction, `transactions/decode-params?network=${network}`, {
+      actorId: transaction.to || transaction.robustTo,
+      method: transaction.method,
+      params: transaction.params,
+      block: transaction.block,
+    });
+  }, [transaction]);
+
+  const params = useMemo(() => paramsRes[0], [paramsRes]);
+
   return (
     <div className="mt-5 flex-wrap flex justify-between">
       <div className="w-4/6	 md:w-full">
@@ -32,10 +62,21 @@ export const TransactionOverview = ({
             </span>
           </div>
           <div className="overflow-x-auto ">
-            <div className="mt-4 inline-block min-w-full">
-              <pre>
-                <code className="font-roboto text-14 leading-normal text-label whitespace-normal break-all">{transaction.params}</code>
-              </pre>
+            <div className="mt-4 inline-block min-w-full max-h-[600px] min-h-[200px] h-[50vh] overflow-y-auto">
+              {loading ? (
+                <Spinner />
+              ) : (
+                <div className={"text-sm text-secondary "}>
+                  {params ? (
+                    <JSONPretty
+                      data={params}
+                      keyStyle={"color:rgb(59 130 246 / 0.5)"}
+                    />
+                  ) : (
+                    transaction.params
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>
