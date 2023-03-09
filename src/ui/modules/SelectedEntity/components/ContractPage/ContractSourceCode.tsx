@@ -19,18 +19,50 @@ export const ContractSourceCode = ({ sourceCid }: { sourceCid: string }) => {
       </div>
     );
   }
+
   return (
-    <div className={"flex flex-col"}>
+    <div id="container">
       <Editor
-        language={"sol"}
-        theme={"vs-dark"}
-        value={data || ""}
-        height={600}
+        language="sol"
+        theme="vs-dark"
+        value={data?.replaceAll('    ', ' ') || ""}
+        // height="300"
         options={{
           readOnly: true,
-          minimap: {
-            autohide: true,
+          contextmenu: false,
+          scrollbar: {
+            useShadows: false,
+            horizontalScrollbarSize: 0,
+            verticalScrollbarSize: 0,
           },
+          minimap: {
+            enabled: false,
+            autohide: false,
+          },
+          tabSize: 2,
+          autoIndent: "full",
+          detectIndentation: true,
+          formatOnType: true,
+          formatOnPaste: true,
+          automaticLayout: true,
+          scrollBeyondLastLine: false,
+          scrollPredominantAxis: false,
+          wordWrap: 'on',
+          wrappingStrategy: 'advanced',
+          overviewRulerLanes: 0,
+          padding: {
+            top: 15,
+            bottom: 10,
+          },
+        }}
+        editorDidMount={(newValue) => {
+          const container = document.getElementById('container');
+          const contentHeight = Math.min(10000, newValue.getContentHeight());
+          if (container?.style.width) container.style.width = '100%';
+          if (container?.style.height) container.style.height = `${contentHeight}px`;
+          try {
+            newValue.layout({ width: 400, height: contentHeight });
+          } catch (e) {}
         }}
       />
     </div>

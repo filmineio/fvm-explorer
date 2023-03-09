@@ -399,3 +399,30 @@ body .copy-animate-width > span {
 body .copy-animate-width:hover > span {
   width: calc(100% - 52px);
 }
+
+body .monaco-editor .margin,
+body .monaco-editor-background {
+  background-color: #292E42;
+}
+
+body .monaco-editor .lines-content .core-guide-indent-active,
+body .monaco-editor .lines-content .core-guide-indent {
+  box-shadow: none;
+  border-left: 1px solid #596184;
+}
+
+body .monaco-editor .view-overlays .current-line {
+  border: none;
+}
+
+body .monaco-editor .line-numbers {
+  color: #596184;
+}
+
+body .monaco-editor .line-numbers.active-line-number {
+  color: #596184;
+}
+
+body .monaco-editor {
+  pointer-events: none;
+}

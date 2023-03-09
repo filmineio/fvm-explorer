@@ -33,36 +33,37 @@ export const ContractMetaInfo = ({
   }, [abi]);
 
   return (
-    <div className="project relative p-7  min-w-0 break-words  border-2 border-label rounded-4 mt-6  ">
-      <div className="absolute bg-label p-1 -top-3 left-0">
-        <p className="text-14 text-white font-normal ">ABI &amp; COMPILER</p>
+    <div className="project relative p-7 min-w-0 break-words border-2 border-label rounded-4 mt-6 ">
+      <div className="absolute bg-label py-1.25 px-2 -top-3 -left-[2px] rounded-1110">
+        <p className="text-white text-12 leading-compact">ABI &amp; COMPILER</p>
       </div>
 
-      <div className="xs:flex flex-wrap ">
-        <div className="w-full mt-2 sm:w-6/12 mt-0 w-5/12 ">
+      <div className="flex flex-wrap ">
+        <div className="mt-0 mr-14">
           <h4 className="text-label font-normal text-14 leading-5">ABI</h4>
           <div className="flex">
             <button
-              className="flex items-center justify-between text-xs font-bold text-white pr-4"
+              className="flex items-center mr-10 text-blue-400 hover:text-blue-500 transition-colors group"
+              type="button"
               onClick={cb(setViewAbi, true)}
             >
-              <div className="bg-blue-400_opacity-30 p-1 mr-2 rounded-4 flex items-center justify-center w-8">
+              <div className="w-6 h-6 flex mr-2.5 rounded-3 bg-label_opacity-30 items-center justify-center border border-transparent group-hover:border-label group-active:border-blue-500 transition-all">
                 {loading ? <Spinner inline /> : <LinkIcon />}
               </div>
-              <div className="text-blue-400 font-bold text-14 ">View ABI</div>
+              <span className="font-bold text-14 leading-4">View ABI</span>
             </button>
             <CopyToClipboard text={JSON.stringify(data)}>
-              <button className="flex items-center justify-between text-xs font-bold text-white">
-                <div className="bg-blue-400 p-1 mr-2 rounded-4 flex items-center justify-center w-8">
+              <button className="flex items-center mr-10 text-blue-400 hover:text-blue-500 transition-colors group" type="button">
+                <div className="w-6 h-6 flex mr-2.5 rounded-3 bg-label_opacity-30 items-center justify-center border border-transparent group-hover:border-label group-active:border-blue-500 transition-all">
                   {loading ? <Spinner inline /> : <CopyIcon />}
                 </div>
-                <h5 className="text-blue-400 font-bold text-14 ">Copy ABI</h5>
+                <span className="font-bold text-14 leading-4">Copy ABI</span>
               </button>
             </CopyToClipboard>
           </div>
         </div>
 
-        <div className="w-full mt-2 sm:w-6/12 mt-0 w-3/12 ">
+        <div className="mt-0">
           <h4 className="text-label font-normal text-14	leading-5">
             COMPILER VERSION
           </h4>
