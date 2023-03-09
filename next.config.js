@@ -28,9 +28,6 @@ module.exports = withTM({
     }
 
     // Add TypeScript support for the UI directory
-    if (!isServer) {
-      config.resolve.alias["~"] = path.join(__dirname, "src/ui");
-    }
 
     const rule = config.module.rules
       .find((rule) => rule.oneOf)
@@ -47,12 +44,15 @@ module.exports = withTM({
       ];
     }
 
-    config.plugins.push(
-      new MonacoWebpackPlugin({
-        languages: ["json", "solidity"],
-        filename: "static/[name].worker.js",
-      })
-    );
+    if (!isServer) {
+      config.resolve.alias["~"] = path.join(__dirname, "src/ui");
+      config.plugins.push(
+        new MonacoWebpackPlugin({
+          languages: ["json", "solidity"],
+          filename: "static/[name].worker.js",
+        })
+      );
+    }
 
     return config;
   },
