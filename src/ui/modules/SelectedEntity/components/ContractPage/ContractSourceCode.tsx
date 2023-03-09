@@ -27,6 +27,7 @@ export const ContractSourceCode = ({ sourceCid }: { sourceCid: string }) => {
         value={data || ""}
         height={600}
         options={{
+          readOnly: true,
           minimap: {
             autohide: true,
           },
