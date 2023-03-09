@@ -92,22 +92,32 @@ export const VerifyContract = ({
   }, [valid, data]);
 
   useEffect(() => {
-    if (!!error) toast.error(error);
+    if (!!error) {
+      setData(defaultState);
+      toast.error(error);
+      setShowVerify(false);
+    }
   }, [error]);
 
   useEffect(() => {
-    if (!!verificationError && !verifying) toast.error(verificationError);
+    if (!!verificationError && !verifying) {
+      setData(defaultState);
+      toast.error(verificationError);
+      setShowVerify(false);
+    }
   }, [verificationError, verifying]);
 
   useEffect(() => {
     if (!!verificationResult) {
       toast.success(`Contract ${contractAddress} Verified!`);
       onVerify();
+      setData(defaultState);
+      setShowVerify(false);
     }
   }, [verificationResult]);
 
   useEffect(() => {
-    if (!sourceCid || uploading || progress !== '100.00') return;
+    if (!sourceCid || uploading || progress !== "100.00") return;
 
     toast.info("Upload completed. Verification process started...");
 
