@@ -87,6 +87,7 @@ module.exports = {
       minHeight: {
         sm: "50px",
         calc: "calc(100vh - 150px)",
+        "fit-vertically": "calc(100vh - 163px)",
       },
       maxWidth: {
         "1xl": "1370px",
