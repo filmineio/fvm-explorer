@@ -9,7 +9,16 @@ import { LotusClient } from "@/api/ctx/lotus/client/typings/lotus-client-rpc";
 
 export const getLotusClient = (config: LotusConfig): LotusClient => {
   const fetchRetry: typeof fetch = (url, init) =>
-    fetch(url, { ...init, retryOptions: config.retryOptions });
+    fetch(url, {
+      ...init,
+      retryOptions: {
+        ...config.retryOptions,
+        retryOnHttpError: (e) => true,
+        retryOnHttpResponse: (response) => {
+          return response.error ? true : false;
+        },
+      },
+    });
 
   const provider = new NodejsProvider(config.url, {
     token: config.token,
