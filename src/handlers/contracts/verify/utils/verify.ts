@@ -1,6 +1,5 @@
+import { parseSolidityVersion } from "./parseSolidityVersion";
 import { ContractVerificationStatus } from "@/enums/ContractVerificationStatus";
-import { SolidityVersion } from "@/enums/SolidityVersion";
-
 import { SolcStandardJSONInput } from "@/handlers/contracts/verify/types/SolcStandardJSONInput";
 import { VerificationResult } from "@/handlers/contracts/verify/types/VerificationResult";
 import { filterSolcOutputErrors } from "@/handlers/contracts/verify/utils/filterSolcOutputErrors";
@@ -10,18 +9,12 @@ import { verifyBytecode } from "@/handlers/contracts/verify/utils/verifyBytecode
 
 type Verify = (
   contractName: string,
-  solidityVersion: SolidityVersion,
   onChainBytecode: string,
   input: SolcStandardJSONInput
 ) => Promise<VerificationResult>;
 
 // verify compiles the contract and compares the bytecode with the on-chain bytecode
-export const verify: Verify = async (
-  contractName,
-  solidityVersion,
-  onChainBytecode,
-  input
-) => {
+export const verify: Verify = async (contractName, onChainBytecode, input) => {
   // initial status is unverified
   const contractPath = findContractPath(input, contractName);
   if (!contractPath) {
@@ -31,12 +24,27 @@ export const verify: Verify = async (
       warnings: [],
       contractCode: "",
       contractBytecode: "",
+      solidityVersion: "unknown",
       abi: {},
       solcOutput: {},
     };
   }
 
   const contractCode = input.sources[contractPath].content;
+  const solidityVersion = parseSolidityVersion(contractCode);
+  if (!solidityVersion) {
+    return {
+      status: ContractVerificationStatus.Unverified,
+      errors: ["Failed to load solidity version. ${solidityVersion}"],
+      warnings: [],
+      contractCode: "",
+      solidityVersion: "unknown",
+      contractBytecode: "",
+      abi: {},
+      solcOutput: {},
+    };
+  }
+
   const solc = await loadSolc(solidityVersion);
   // @ts-ignore
   const solcOutput = await JSON.parse(solc.compile(JSON.stringify(input)));
@@ -48,6 +56,7 @@ export const verify: Verify = async (
       status: ContractVerificationStatus.Unverified,
       errors,
       warnings,
+      solidityVersion,
       contractCode,
       contractBytecode: "",
     };
@@ -63,6 +72,7 @@ export const verify: Verify = async (
     errors,
     warnings,
     contractCode,
+    solidityVersion,
     contractBytecode,
     abi,
     solcOutput,

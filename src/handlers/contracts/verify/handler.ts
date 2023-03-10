@@ -66,14 +66,20 @@ export const handle = async (ctx: ApiCtx, req: Request, res: Response) => {
 
     const verificationResult = await verify(
       verifyReq.contractName,
-      verifyReq.solidityVersion,
       onChainBytecode,
       input
     );
 
     if (verificationResult.status !== ContractVerificationStatus.Unverified) {
       const meta = await uploadMetadata(ctx, verificationResult);
-      await createContractMetadata(ctx, meta, contract, verifyReq, user);
+      await createContractMetadata(
+        ctx,
+        meta,
+        contract,
+        verifyReq,
+        verificationResult.solidityVersion,
+        user
+      );
     }
 
     if (verificationResult.errors.length > 0) {
