@@ -33,29 +33,29 @@ const TransactionCounters = ({
   error: boolean;
 }) => {
   return (
-      <div className="flex mt-5">
-        <div className="w-14/25 xs:w-1/2 lg:w-7/12 pr-2.5">
-          <div className="bg-label_opacity-30 p-2.5 rounded-3">
-            <h4 className="font-space text-white text-lg font-bold leading-compact">
-              {loading ? <Spinner inline /> : error ? "--" : ok}
-            </h4>
-            <p className="text-white text-xs font-normal leading-normal">
-              successful txns
-            </p>
-          </div>
-        </div>
-
-        <div className="w-11/25 xs:w-1/2 lg:w-5/12 mt-0">
-          <div className="bg-label_opacity-30 p-2.5 rounded-3">
-            <h4 className="font-space text-white text-lg font-bold leading-compact">
-              {loading ? <Spinner inline /> : error ? "--" : reverted}
-            </h4>
-            <p className="text-white text-xs font-normal leading-normal">
-              failed txns
-            </p>
-          </div>
+    <div className="flex mt-5 gap-2.5">
+      <div className="w-14/25">
+        <div className="bg-label_opacity-30 p-2.5 rounded-3">
+          <h4 className="font-space text-white text-18 font-bold leading-compact">
+            {loading ? <Spinner inline/> : error ? "--" : ok}
+          </h4>
+          <p className="text-white text-12 font-normal leading-normal">
+            successful txns
+          </p>
         </div>
       </div>
+
+      <div className="w-11/25">
+        <div className="bg-label_opacity-30 p-2.5 rounded-3">
+          <h4 className="font-space text-white text-18 font-bold leading-compact">
+            {loading ? <Spinner inline/> : error ? "--" : reverted}
+          </h4>
+          <p className="text-white text-12 font-normal leading-normal">
+            failed txns
+          </p>
+        </div>
+      </div>
+    </div>
   );
 };
 
@@ -104,19 +104,17 @@ export const ContractCard = ({ data, network }: ContractCardProps) => {
                 <ContractIcon/>
               </div>
               <div className="ml-5 min-w-0 flex-1 overflow-hidden">
-                <div className="w-full">
-                  <CopyText text={data.contractAddress} additionalClass="copy-animate-width">
-                    <span className="auto font-space text-white text-lg font-bold leading-compact truncate">
-                      {data.contractAddress}
-                    </span>
-                  </CopyText>
-                </div>
-                <span className={classNames("text-xs font-bold leading-compact mt-1.5", {
+                <CopyText text={data.contractAddress} additionalClass="copy-animate-width">
+                  <span className="font-space text-white text-18 font-bold leading-compact truncate">
+                    {data.contractAddress}
+                  </span>
+                </CopyText>
+                <p className={classNames("text-12 font-bold leading-compact mt-1.5", {
                   "text-blue-400": data.verified,
                   "text-label": !data.verified
                 })}>
                   {data.verified ? "verified" : "unverified"}
-                </span>
+                </p>
               </div>
             </div>
 
@@ -127,8 +125,8 @@ export const ContractCard = ({ data, network }: ContractCardProps) => {
               error={!!error}
             />
 
-            <div className="flex mt-5">
-              <div className="w-14/25 lg:w-8/12 pr-0 lg:pr-3">
+            <div className="flex mt-5 gap-2.5">
+              <div className="w-14/25">
                 <h3 className="text-label text-14 font-normal leading-4 lowercase">
                   NETWORK
                 </h3>
@@ -136,8 +134,8 @@ export const ContractCard = ({ data, network }: ContractCardProps) => {
                   {network}
                 </h5>
               </div>
-              <div className="w-11/25 lg:w-4/12 mt-2 lg:mt-0">
-                <button className="block ml-auto mr-0 bg-label_opacity-30 rounded-3 py-2.5 px-5 text-blue-400 text-14 font-medium leading-4">
+              <div className="w-11/25">
+                <button className="block ml-auto py-2.5 px-5 rounded-3 bg-label_opacity-30 text-blue-400 text-14 font-medium leading-4">
                   {data.ethAddress ? "EVM" : "FVM"}
                 </button>
               </div>
