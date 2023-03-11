@@ -39,16 +39,18 @@ export const TransactionPage = ({ data }: Props) => {
             <div className="absolute bg-label py-1.25 px-2 -top-3 left-0 rounded-1110">
               <p className="text-white text-12 leading-compact">TRANSACTION</p>
             </div>
-            <div className="flex flex-wrap items-center justify-between">
-              <div className="flex items-center justify-start mr-15">
-                <h3 className="relative font-space text-24 leading-compact font-bold text-white">
-                  <CopyText text={transaction.cid}>
-                    <span>{ transaction.cid }</span>
+            <div className="flex w-full justify-between sc-1400:flex-col sc-1400:items-start sc-1400:gap-1.5">
+              <div className="w-full">
+                <div className="w-fit overflow-hidden sc-1400:w-auto">
+                  <CopyText text={transaction.cid} additionalClass="copy-animate-width">
+                    <span className="font-space text-24 leading-compact font-bold text-white truncate">
+                      {transaction.cid}
+                    </span>
                   </CopyText>
-                </h3>
+                </div>
               </div>
               <div className="flex items-center h-6 gap-2">
-                <div className={classNames("w-3 h-3 rounded-2 mt-0.5", {
+                <div className={classNames("w-2.5 h-2.5 rounded-2 mt-0.5", {
                   "bg-blue-500": exitCode === 0,
                   "bg-label": exitCode !== 0
                 })}/>

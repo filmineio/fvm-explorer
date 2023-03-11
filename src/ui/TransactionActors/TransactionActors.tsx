@@ -7,10 +7,10 @@ export const TransactionActors = ({
   transaction: Transaction;
 }) => {
   return (
-    <div className="flex mt-5 flex-wrap items-center gap-2">
+    <div className="flex mt-2.5 flex-wrap items-center gap-2">
       <button className="relative min-w-[140px] overflow-hidden">
         <CopyText text={transaction.robustFrom || transaction.from} additionalClass="copy-animate-width">
-          <span className="bg-body py-2 px-3 rounded-4 text-yellow-500 font-bold text-14 leading-5 flex justify-center">
+          <span className="bg-body py-2 px-3 rounded-4 text-purple-400 font-bold text-14 leading-5 flex justify-center">
             <span className="text-left block truncate max-w-[250px]">
               {transaction.robustFrom || transaction.from}
             </span>
