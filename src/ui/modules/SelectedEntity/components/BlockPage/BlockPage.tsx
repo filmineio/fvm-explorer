@@ -68,10 +68,10 @@ export const BlockPage = ({ data }: Props) => {
             </div>
 
             <div className="pl-1 overflow-hidden pr-2">
-              <CopyText text={block.cid}>
-                <h3 className="w-auto break-all text-2xl font-bold text-white mb-2 relative overflow-hidden truncate max-w-fit">
+              <CopyText text={block.cid} additionalClass="copy-animate-width">
+                <span className="w-auto break-all text-2xl font-bold text-white mb-2 relative overflow-hidden truncate max-w-fit">
                   {block.cid}{block.cid}
-                </h3>
+                </span>
               </CopyText>
               <div className="flex md:flex-wrap gap-5 items-center mt-3">
                 <p className="relative text-white font-normal text-14 pr-3 w-9/12 truncate">

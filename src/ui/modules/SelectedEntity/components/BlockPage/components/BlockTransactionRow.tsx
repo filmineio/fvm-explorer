@@ -32,8 +32,8 @@ export const BlockTransactionRow = ({
         {transaction.method}
       </td>
       <td className="w-1/6  text-left text-14 text-white font-bold px-10 py-5 whitespace-nowrap">
-        <div className="flex items-center gap-1.5">
-          <div className={classNames("w-3 h-3 rounded-2", {
+        <div className="flex items-center gap-2">
+          <div className={classNames("w-2.5 h-2.5 rounded-2", {
             "bg-blue-500": exitCode === 0,
             "bg-label": exitCode !== 0
           })}></div>
