@@ -1,0 +1,98 @@
+name: "Deploy Service to GKE "
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+        default: stage
+      target_service:
+        required: true
+        type: string
+      helm_target:
+        required: true
+        type: string
+      helm_image_tag_env_var_name:
+        required: true
+        type: string
+      helm_env:
+        required: true
+        type: string
+      runs_on_labels:
+        required: true
+        type: string
+      gcr_image_path:
+        required: true
+        type: string
+    secrets:
+      gcr_service_account_id:
+        required: true
+      vault_token:
+        required: true
+      vault_connection_string:
+        required: true
+      gke_service_account_id:
+        required: true
+      gke_cluster_name:
+        required: true
+      gcr_region:
+        required: true
+      gke_region:
+        required: true
+      gc_project_id:
+        required: true
+      gcr_project_id:
+        required: true
+      iam_workload_identity_pool_provider_id:
+        required: true
+      deploy_private_key:
+        required: true
+
+
+jobs:
+  build:
+    name: Build Sealing API
+    uses: ./.github/workflows/_build.yml
+    with:
+      environment: ${{ inputs.environment }}
+      gcr_image_path: ${{ inputs.gcr_image_path }}
+      build_target: runner
+      build_args: |
+        TARGET_SERVICE=${{ inputs.target_service }}
+      service_name: ${{ inputs.target_service }}
+    secrets:
+      gcr_service_account_id: ${{ secrets.gcr_service_account_id}}
+      gcr_region: ${{ secrets.gcr_region }}
+      gcr_project_id: ${{ secrets.gcr_project_id }}
+      iam_workload_identity_pool_provider_id: ${{ secrets.iam_workload_identity_pool_provider_id }}
+  inspect:
+    # hack: https://github.com/community/community/discussions/11692#discussioncomment-3541856
+    runs-on: ${{ fromJson(inputs.runs_on_labels) }}
+    needs: [build]
+    steps:
+      - name: Inspect Build Outputs
+        run: |
+          echo "Build outputs: ${{ needs.build.outputs }}"
+          echo "Build outputs: ${{ toJSON(needs.build.outputs) }}"
+  deploy:
+    needs: [build]
+    name: Deploy Sealing API
+    uses: ./.github/workflows/_deploy_gke.yml
+    with:
+      helm_image_tag: ${{ needs.build.outputs.image_tag }}
+      helm_image_tag_env_var_name: ${{ inputs.helm_image_tag_env_var_name }}
+      helm_env: ${{ inputs.helm_env }}
+      helm_target: ${{ inputs.helm_target }}
+      runs_on_labels: ${{ inputs.runs_on_labels }}
+    secrets:
+      gcr_service_account_id: ${{ secrets.gcr_service_account_id }}
+      gke_service_account_id: ${{ secrets.gke_service_account_id }}
+      gcr_region: ${{ secrets.gcr_region }}
+      gke_region: ${{ secrets.gke_region }}
+      gc_project_id: ${{ secrets.gc_project_id }}
+      iam_workload_identity_pool_provider_id: ${{ secrets.iam_workload_identity_pool_provider_id }}
+      deploy_private_key: ${{ secrets.deploy_private_key }}
+      cluster_name: ${{ secrets.gke_cluster_name }}
+      vault_connection_string: ${{ secrets.vault_connection_string }}
+      vault_token: ${{ secrets.vault_token }}
