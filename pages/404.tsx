@@ -9,7 +9,7 @@ export default function Error404Route(): ReactElement {
   return (
     <Page showHeader showFooter>
       <div className="w-full min-h-fit-vertically flex justify-center">
-        <div className="flex flex-col justify-center mb-[6%]">
+        <div className="flex flex-col justify-center mb-10%">
           <PageNotFoundIcon/>
           <span className="mt-16 font-space text-white text-center text-28 font-bold">
             Page not found
