@@ -8,8 +8,8 @@ import PageNotFoundIcon from "@/ui/components/Common/Icons/PageNotFoundIcon";
 export default function Error404Route(): ReactElement {
   return (
     <Page showHeader showFooter>
-      <div className="w-full min-h-fit-vertically flex justify-center">
-        <div className="flex flex-col justify-center mb-10%">
+      <div className="flex flex-grow justify-center items-center">
+        <div className="flex flex-col justify-center items-center mb-10%">
           <PageNotFoundIcon/>
           <span className="mt-16 font-space text-white text-center text-28 font-bold">
             Page not found
