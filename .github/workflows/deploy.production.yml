@@ -14,7 +14,7 @@ jobs:
           - target_service: api
             helm_target: fvm-explorer-api
             helm_image_tag_env_var_name: FVM_EXPLORER_API_IMAGE_TAG
-            gcr_image_path: "filmine/fvm-explorer-api"
+            gcr_image_path: "fvm-explorer/fvm-explorer-api"
     name: Build FVM Explorer API
     uses: ./.github/workflows/_deploy_gke_service.yml
     with:
