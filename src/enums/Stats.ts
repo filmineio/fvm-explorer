@@ -1,4 +1,4 @@
-export enum Stat {
+export enum Stats {
   RichList = "richList",
   Overview = "overview",
   TopMiners = "topMiners",
