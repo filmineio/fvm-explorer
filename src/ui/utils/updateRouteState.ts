@@ -8,7 +8,7 @@ export const updateRouteState = (
   filters: FilterState
 ) => {
   push(
-    "/explore",
+    "/explore/",
     { query: filters as unknown as ParsedUrlQueryInput },
     { shallow: true }
   );
