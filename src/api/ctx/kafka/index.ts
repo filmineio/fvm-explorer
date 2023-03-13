@@ -4,9 +4,10 @@ import { APIConfig } from "../config/config";
 
 export type Kafka = {
   [Network.HyperSpace]: KafkaClient;
-  [Network.Wallaby]?: KafkaClient;
+  [Network.Mainnet]: KafkaClient;
 };
 
 export const initKafka = (config: APIConfig["kafka"]): Kafka => ({
+  [Network.Mainnet]: new KafkaClient(config.mainnet),
   [Network.HyperSpace]: new KafkaClient(config.hyperspace),
 });

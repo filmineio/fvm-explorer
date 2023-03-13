@@ -35,13 +35,22 @@ app.post("/api/contracts/:contractAddress/verify", async (req, res) => {
 app.listen(port, async () => {
   const ctx = await getCtx(config);
 
-  console.log(`Server running at http://localhost:${port}; `);
+  console.log(`Server running at http://localhost:${ port }; `);
 
+
+  const mainnetKafkaConsumer = await newKafkaConsumer<KafkaEventMap>(
+    ctx,
+    Network.Mainnet
+  );
   const hyperspaceKafkaConsumer = await newKafkaConsumer<KafkaEventMap>(
     ctx,
     Network.HyperSpace
   );
 
   await hyperspaceKafkaConsumer.subscribe(newContractKafkaSubscriber(ctx));
-  await hyperspaceKafkaConsumer.startConsumer();
+  await mainnetKafkaConsumer.subscribe(newContractKafkaSubscriber(ctx));
+  await Promise.all([
+    mainnetKafkaConsumer.startConsumer(),
+    hyperspaceKafkaConsumer.startConsumer(),
+  ])
 });

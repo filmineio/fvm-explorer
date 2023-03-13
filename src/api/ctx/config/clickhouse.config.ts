@@ -7,13 +7,13 @@ export type ClickhouseConfig = {
   password: string;
 };
 
-const clickhouseWallabyConfig: (
+const clickhouseMainnetConfig: (
   env?: typeof process.env
 ) => ClickhouseConfig = (env = process.env) => ({
-  host: env.WALLABY_CLICKHOUSE_HOST as string,
-  username: env.WALLABY_CLICKHOUSE_USER as string,
-  password: env.WALLABY_CLICKHOUSE_PASSWORD as string,
-  database: env.WALLABY_CLICKHOUSE_DATABASE as string,
+  host: env.MAINNET_CLICKHOUSE_HOST as string,
+  username: env.MAINNET_CLICKHOUSE_USER as string,
+  password: env.MAINNET_CLICKHOUSE_PASSWORD as string,
+  database: env.MAINNET_CLICKHOUSE_DATABASE as string,
 });
 
 const clickhouseHyperspaceConfig: (
@@ -35,7 +35,7 @@ const userdataConfig: (env?: typeof process.env) => ClickhouseConfig = (
 });
 
 export default (env = process.env) => ({
-  [Network.Wallaby]: clickhouseWallabyConfig(env),
+  [Network.Mainnet]: clickhouseMainnetConfig(env),
   [Network.HyperSpace]: clickhouseHyperspaceConfig(env),
   userdata: userdataConfig(env),
 });

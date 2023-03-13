@@ -8,7 +8,15 @@ const kafkaHyperspaceConfig: (env?: typeof process.env) => KafkaConfig = (
   logLevel: logLevel.INFO,
 });
 
+
+const kafkaMainnetConfig: (env?: typeof process.env) => KafkaConfig = (
+  env = process.env
+) => ({
+  brokers: [env.MAINNET_KAFKA_CONNECTION_STRING as string],
+  logLevel: logLevel.INFO,
+});
+
 export default (env = process.env) => ({
+  [Network.Mainnet]: kafkaMainnetConfig(env),
   [Network.HyperSpace]: kafkaHyperspaceConfig(env),
-  [Network.Wallaby]: undefined,
 });

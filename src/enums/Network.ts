@@ -1,4 +1,4 @@
 export enum Network {
-  Wallaby = "wallaby",
+  Mainnet = "mainnet",
   HyperSpace = "hyperspace",
 }
