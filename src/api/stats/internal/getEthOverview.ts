@@ -30,6 +30,6 @@ export const getEthOverview = async (ntwk: Network, ctx: ApiCtx) => {
   return (
     (await (
       await ctx.database.ch.data.chain[ntwk].raw(ALL_ETH(ntwk))
-    ).json()) as Record<"data", unknown>
-  ).data;
+    ).json()) as Record<"data", unknown[]>
+  ).data[0];
 };
