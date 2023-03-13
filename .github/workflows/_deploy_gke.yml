@@ -1,0 +1,118 @@
+name: Deploy (GKE)
+
+on:
+  workflow_call:
+    secrets:
+      gcr_service_account_id:
+        required: true
+      gke_service_account_id:
+        required: true
+      gcr_region:
+        required: true
+      gke_region:
+        required: true
+      gc_project_id:
+        required: true
+      iam_workload_identity_pool_provider_id:
+        required: true
+      deploy_private_key:
+        required: true
+      cluster_name:
+        required: true
+      vault_connection_string:
+        required: true
+      vault_token:
+        required: true
+    inputs:
+      helm_image_tag:
+        type: string
+        required: true
+      helm_image_tag_env_var_name:
+        type: string
+        required: true
+      helm_env:
+        type: string
+        required: true
+      helm_target:
+        type: string
+        required: true
+      runs_on_labels:
+        type: string
+        required: false
+        default: "['self-hosted']"
+      infra_cm_git_version:
+        type: string
+        required: false
+        default: main
+
+jobs:
+  deploy:
+    permissions:
+      contents: read
+      id-token: write
+    runs-on: ${{ fromJson(inputs.runs_on_labels) }}
+    env:
+      # sockets for multiple ssh agents (1 per key)
+      SSH_AUTH_SOCK_FIRST: /tmp/ssh_agent_first.sock
+      VAULT_CONNECTION_STRING: ${{ secrets.vault_connection_string }}
+    steps:
+      -
+        name: Inspect Inputs
+        run: |
+          echo "Helm Image Tag: ${{ inputs.helm_image_tag }}"
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.deploy_private_key }}
+
+      - name: Clone Deploy Charts
+        run: |
+          git clone git@github.com:filmineio/filmine-infra-cm.git
+          cd filmine-infra-cm
+          git checkout ${{ inputs.infra_cm_git_version }}
+
+      - name: Setup helmfile
+        uses: mamezou-tech/setup-helmfile@v1.0.0
+
+      - name: Test
+        run: |
+          helmfile --version
+          helm version
+          kubectl version --client
+
+      - id: auth
+        name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v0
+        with:
+          token_format: access_token
+          workload_identity_provider: ${{ secrets.iam_workload_identity_pool_provider_id }}
+          service_account: ${{ secrets.gke_service_account_id }}
+          access_token_lifetime: '300s'
+
+      - id: 'get-credentials'
+        uses: 'google-github-actions/get-gke-credentials@v0'
+        with:
+          cluster_name: ${{ secrets.cluster_name }}
+          location: ${{ secrets.gke_region }}
+          project_id: ${{ secrets.gc_project_id }}
+
+      - name: Set Environment Variables
+        run: |
+          echo "${{ inputs.helm_image_tag_env_var_name }}=${{ inputs.helm_image_tag }}" >> $GITHUB_ENV
+          echo "VAULT_TOKEN=${{ secrets.vault_token }} >> $GITHUB_ENV"
+
+      - name: Helm Status
+        run: |
+          cd filmine-infra-cm/k8s/helmfile.d
+          helmfile -e ${{ inputs.helm_env }} -f ${{ inputs.helm_env }}-service.yaml -l name=${{ inputs.helm_target }} status
+
+      # The KUBECONFIG env var is automatically exported and picked up by kubectl.
+      - name: Helm Deploy
+        id: helm_deploy
+        run: |
+          cd filmine-infra-cm/k8s/helmfile.d
+          helmfile -e ${{ inputs.helm_env }} -f ${{ inputs.helm_env }}-service.yaml -l name=${{ inputs.helm_target }} apply
+          helmfile -e ${{ inputs.helm_env }} -f ${{ inputs.helm_env }}-service.yaml -l name=${{ inputs.helm_target }} status
