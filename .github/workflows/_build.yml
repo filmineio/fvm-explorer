@@ -1,0 +1,127 @@
+name: Build/Push Image
+
+on:
+  workflow_call:
+    secrets:
+      gcr_project_id:
+        required: true
+      gcr_service_account_id:
+        required: true
+      gcr_region:
+        required: true
+      iam_workload_identity_pool_provider_id:
+        required: true
+    inputs:
+      gcr_image_path: # eg. filmine/fap-api
+        type: string
+        required: true
+      environment:
+        default: pilot
+        type: string
+        required: false
+      build_target:
+        required: false
+        default: production
+        type: string
+      service_name:
+        required: false
+        default: api
+        type: string
+      docker_file:
+        required: false
+        default: Dockerfile
+        type: string
+      build_args:
+        required: false
+        type: string
+        default: |
+          TARGET_SERVICE=api
+      runs_on_labels:
+        type: string
+        required: false
+        default: "['self-hosted']"
+    outputs:
+      image_tag:
+        description: "Image Tag"
+        value: ${{ jobs.docker.outputs.image_tag }}
+
+jobs:
+  docker:
+    runs-on: ${{ fromJson(inputs.runs_on_labels) }}
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      -
+        name: Inspect builder
+        run: |
+          echo "Name:      ${{ steps.buildx.outputs.name }}"
+          echo "Endpoint:  ${{ steps.buildx.outputs.endpoint }}"
+          echo "Status:    ${{ steps.buildx.outputs.status }}"
+          echo "Flags:     ${{ steps.buildx.outputs.flags }}"
+          echo "Platforms: ${{ steps.buildx.outputs.platforms }}"
+
+      - id: auth
+        name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v0
+        with:
+          token_format: access_token
+          workload_identity_provider: ${{ secrets.iam_workload_identity_pool_provider_id }}
+          service_account: ${{ secrets.gcr_service_account_id }}
+          access_token_lifetime: '3600s'
+
+      - name: Login to Artifact Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ secrets.gcr_region }}-docker.pkg.dev
+          username: oauth2accesstoken
+          password: ${{ steps.auth.outputs.access_token }}
+
+      -
+        name: Docker Image Metadata
+        id: image_meta
+        uses: docker/metadata-action@v3
+        with:
+          images: |
+            ${{ secrets.gcr_region }}-docker.pkg.dev/${{ secrets.gcr_project_id }}/${{ inputs.gcr_image_path }}
+          tags: |
+            type=raw,value=${{ inputs.environment }}-${{ inputs.service_name }}-latest,priority=100
+            type=raw,value=${{ inputs.environment }}-${{ inputs.service_name }}-{{sha}},priority=200
+      -
+        name: Build/Push Image
+        uses: docker/build-push-action@v2
+        with:
+          tags: ${{ steps.image_meta.outputs.tags }}
+          labels: ${{ steps.image_meta.outputs.labels }}
+          context: .
+          push: true
+
+          target: ${{ inputs.build_target }} # Dockerfile multistage build target
+          file: ${{ inputs.docker_file }} # path to docker file from context e.g. docker/Docker.server
+
+          build-args: |
+            ${{ inputs.build_args }}
+            BUILDTIME=${{ fromJSON(steps.image_meta.outputs.json).labels['org.opencontainers.image.created'] }}
+            VERSION=${{ fromJSON(steps.image_meta.outputs.json).labels['org.opencontainers.image.version'] }}
+            REVISION=${{ fromJSON(steps.image_meta.outputs.json).labels['org.opencontainers.image.revision'] }}
+
+      - name: set TAG
+        run: |
+          echo "TAG=${{ fromJSON(steps.image_meta.outputs.json).labels['org.opencontainers.image.version'] }}" >> $GITHUB_ENV
+
+      - name: Inspect Action Outputs
+        run: |
+          echo "API Image Tags:      ${{ steps.image_meta.outputs.tags }}"
+          echo "API Image Labels:    ${{ steps.image_meta.outputs.labels }}"
+          echo "API Image JSON:      ${{ steps.image_meta.outputs.json }}"
+          echo "API Image Version:   ${{ env.TAG }}"
+
+    outputs:
+      image_tag: ${{ env.TAG }}
