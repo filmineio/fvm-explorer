@@ -1,61 +1,40 @@
-name: deploy
+name: Production Deploy
 
 on:
-  workflow_call:
-    inputs:
-      project_path:
-        required: true
-        type: string
-    secrets:
-      SSH_PRIVATE_KEY:
-        required: true
-      SSH_HOST:
-        required: true
-      SSH_USER:
-        required: true
-      env_file_encoded_content:
-        required: true
+  push:
+    branches:
+      - main
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    env:
-      PROJECT_PATH: ${{ inputs.project_path }}
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Install SSH Key
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          known_hosts: "just-a-placeholder-so-we-dont-get-errors"
-
-      - name: Add Known Hosts
-        run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
-
-      - name: Ensure dir exists and is in clean state
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            mkdir -p ${{ inputs.project_path }}
-            cd ${{ inputs.project_path }}
-            git checkout 2>/dev/null || true
-
-      - name: Copy the code with rsync
-        run: rsync -avz --progress . ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:$PROJECT_PATH
-
-      - name: Build and Run
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            cd ${{ inputs.project_path }}
-            echo -n ${{ secrets.env_file_encoded_content }} > b64env
-            echo -n ${{ secrets.env_file_encoded_content }} | base64 -d > .env
-            source .env
-            yarn && yarn build:custom && systemctl restart explorer-server.service
+  cd:
+    strategy:
+      matrix:
+        target_service: [api]
+        include:
+          - target_service: api
+            helm_target: fvm-explorer-api
+            helm_image_tag_env_var_name: FVM_EXPLORER_API_IMAGE_TAG
+            gcr_image_path: "fvm-explorer/fvm-explorer-api"
+    name: Build FVM Explorer API
+    uses: ./.github/workflows/_deploy_gke_service.yml
+    with:
+      target_service: ${{ matrix.target_service }}
+      helm_target: ${{ matrix.helm_target }}
+      helm_image_tag_env_var_name: ${{ matrix.helm_image_tag_env_var_name }}
+      environment: production
+      helm_env: production
+      runs_on_labels: '["self-hosted", "production-runner"]'
+      gcr_image_path: ${{ matrix.gcr_image_path }}
+      docker_file: docker/Dockerfile.server
+    secrets:
+      gcr_service_account_id: ${{ secrets.GCR_SERVICE_ACCOUNT_ID }}
+      gke_service_account_id: ${{ secrets.GKE_SERVICE_ACCOUNT_ID_PRODUCTION }}
+      gcr_region: ${{ secrets.GCR_REGION }}
+      gke_region: ${{ secrets.GKE_REGION }}
+      gc_project_id: ${{ secrets.GC_PROJECT_ID_PRODUCTION }}
+      gcr_project_id: ${{ secrets.GCR_PROJECT_ID }}
+      iam_workload_identity_pool_provider_id: ${{ secrets.IAM_GKE_WORKLOAD_IDENTITY_POOL_PROVIDER_ID }}
+      deploy_private_key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
+      gke_cluster_name: ${{ secrets.CLUSTER_NAME_PRODUCTION }}
+      vault_connection_string: ${{ secrets.VAULT_CONNECTION_STRING_PRODUCTION }}
+      vault_token: ${{ secrets.VAULT_TOKEN_PRODUCTION }}
