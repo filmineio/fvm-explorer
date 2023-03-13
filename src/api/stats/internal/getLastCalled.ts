@@ -5,7 +5,6 @@ import { Transaction } from "@/types/data/Transaction";
 
 import { ApiCtx } from "@/api/ctx/apiCtx";
 
-
 export const getLastCalled = async (nwk: Network, ctx: ApiCtx) => {
   const data = await ctx.database.ch.data.chain[nwk].query<Transaction>({
     pagination: { limit: 50, offset: 0 },
