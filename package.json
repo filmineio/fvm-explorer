@@ -9,7 +9,7 @@
     "lint": "next lint",
     "test": "jest",
     "dev:custom": "nodemon",
-    "build:custom": "next build && tsc -p tsconfig.server.json && tsc-alias -p tsconfig.server.json",
+    "build:custom": "tsc -p tsconfig.server.json && tsc-alias -p tsconfig.server.json",
     "start:custom": "cross-env NODE_ENV=production node dist/server.js"
   },
   "dependencies": {
