@@ -1,30 +1,26 @@
 import { KafkaConfig } from "kafkajs";
 
 import authConfig, { AuthConfig } from "@/api/ctx/config/auth.config";
-import clickhouseConfig, {
-  ClickhouseConfig,
-} from "@/api/ctx/config/clickhouse.config";
+import clickhouseConfig, { ClickhouseConfig, } from "@/api/ctx/config/clickhouse.config";
 import kafkaConfig from "@/api/ctx/config/kafka.config";
 import lotusConfig, { LotusConfig } from "@/api/ctx/config/lotus.config";
-import web3StorageConfig, {
-  Web3StorageConfig,
-} from "@/api/ctx/config/web3.config";
+import web3StorageConfig, { Web3StorageConfig, } from "@/api/ctx/config/web3.config";
 
 export type APIConfig = {
   clickhouse: {
-    wallaby: ClickhouseConfig;
+    mainnet: ClickhouseConfig;
     hyperspace: ClickhouseConfig;
     userdata: ClickhouseConfig;
   };
   lotus: {
-    wallaby: LotusConfig;
+    mainnet: LotusConfig;
     hyperspace: LotusConfig;
   };
   auth: AuthConfig;
   web3Storage: Web3StorageConfig;
   kafka: {
     hyperspace: KafkaConfig;
-    wallaby?: KafkaConfig;
+    mainnet: KafkaConfig;
   };
 };
 

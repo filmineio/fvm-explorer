@@ -8,7 +8,7 @@ export type Lotus = Record<Network, LotusClient>;
 
 export const initLotus = (config: APIConfig["lotus"]): Lotus => {
   return {
-    [Network.Wallaby]: getLotusClient(config.wallaby),
+    [Network.Mainnet]: getLotusClient(config.wallaby),
     [Network.HyperSpace]: getLotusClient(config.hyperspace),
   };
 };

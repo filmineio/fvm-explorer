@@ -7,11 +7,11 @@ export type LotusConfig = {
   retryOptions?: Pick<RetryOptions, "socketTimeout" | "retryMaxDuration">;
 };
 
-const lotusWallabyConfig: (env?: typeof process.env) => LotusConfig = (
+const lotusMainnetConfig: (env?: typeof process.env) => LotusConfig = (
   env = process.env
 ) => ({
-  url: process.env.WALLABY_LOTUS_URL as string,
-  token: process.env.WALLABY_LOTUS_TOKEN as string,
+  url: process.env.MAINNET_LOTUS_URL as string,
+  token: process.env.MAINNET_LOTUS_TOKEN as string,
   retryOptions: {
     socketTimeout: +(process.env.LOTUS_SOCKET_TIMEOUT || 180000),
     // Without retryMaxDuration defined it will default to 60000ms and socketTimeout
@@ -38,6 +38,6 @@ const lotusHyperspaceConfig: (env?: typeof process.env) => LotusConfig = (
 });
 
 export default (env = process.env) => ({
-  [Network.Wallaby]: lotusWallabyConfig(env),
+  [Network.Mainnet]: lotusMainnetConfig(env),
   [Network.HyperSpace]: lotusHyperspaceConfig(env),
 });

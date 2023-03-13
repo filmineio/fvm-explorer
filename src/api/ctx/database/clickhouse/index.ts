@@ -23,7 +23,7 @@ export const initClient = (config: APIConfig["clickhouse"]): ClickhouseDB => {
   return {
     data: {
       chain: {
-        [Network.Wallaby]: getWriteClient(config.wallaby),
+        [Network.Mainnet]: getWriteClient(config.mainnet),
         [Network.HyperSpace]: getWriteClient(config.hyperspace),
       },
       users: getWriteClient(config.userdata),
