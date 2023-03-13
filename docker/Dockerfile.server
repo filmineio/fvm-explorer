@@ -6,8 +6,6 @@ COPY . .
 RUN yarn run build:custom
 
 FROM node:18.14.2 as runner
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
 WORKDIR /usr/src/app
 COPY package*.json yarn.lock ./
 RUN yarn
