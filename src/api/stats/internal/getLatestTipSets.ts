@@ -25,7 +25,7 @@ export const getLatestTipSets = async (nwk: Network, ctx: ApiCtx) => {
 
   return Object.keys(v)
     .sort((a, b) => +b - +a)
-    .slice(0, 5)
+    .slice(0, 1)
     .map((z) => ({
       height: z,
       blocks: v[z].map(pickAll(["cid", "miner"])),

@@ -36,5 +36,5 @@ export const getLastCalled = async (nwk: Network, ctx: ApiCtx) => {
       contractAddress: z,
       timestamp: v[z] * 1000,
     }))
-    .slice(0, 5);
+    .slice(0, 1);
 };

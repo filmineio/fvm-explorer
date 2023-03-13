@@ -22,13 +22,13 @@ const resolveSingle = (ctx: ApiCtx, ntwk: Network) => async (stat: Stats) => {
     case Stats.RichList:
       return (
         await get(ntwk, "rich-list?pageSize=10&page=0", { richList: [] })
-      ).richList.slice(0, 5);
+      ).richList.slice(0, 1);
     case Stats.Overview:
       return get(ntwk, "overview", {});
     case Stats.TopMiners:
       return (
         await get(ntwk, "miner/top-miners/power?count=20", { miners: [] })
-      ).miners.slice(0, 5);
+      ).miners.slice(0, 1);
     case Stats.LatestCalledContracts:
       return getLastCalled(ntwk, ctx);
     case Stats.LatestTipSets:
@@ -53,9 +53,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(400).json({ exception: "INVALID_NETWORK" });
   }
 
-  let stats: Stats[] = (req.query.stats as string).split(",") as Stats[];
+  let stats: Stats[] = ((req.query.stats as string) || "")
+    .split(",")
+    .filter(Boolean) as Stats[];
   const invalid = stats.filter((s) => !isEnum(Stats, s));
 
+  console.log(stats, invalid);
   if (invalid.length) {
     return res.status(400).json({
       exception: "INVALID_STATISTICS_REQUESTED",
