@@ -48,6 +48,7 @@ module.exports = {
         analogous: "#B7006E",
         rgbaanalogous: "rgba(183, 0, 110, 0.3)",
         popupbg: "rgba(41, 46, 66, 60%)",
+        'grayscale_opacity-50': 'rgba(41, 46, 66, 0.5)',
         Crusta: "#F89358",
         newdarck: "#D9DBE9",
         colorcod: "#FCFCFC",
