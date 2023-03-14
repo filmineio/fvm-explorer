@@ -18,7 +18,7 @@ export const uiCtx: UiCtx = {
   client: getHttpClient(() => localStorage.getItem("token")),
   externalClient: getHttpClient(
     () => localStorage.getItem("token"),
-    "https://hyper-api.lotus-node.dev/api"
+    "https://fvm-explorer-api.filmine.io/api" // TODO: move to config
   ),
   w3s: () => makeStorageClient(uiConfig.w3s),
 };
