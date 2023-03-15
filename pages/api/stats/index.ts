@@ -12,7 +12,6 @@ import { getLatestTipSets } from "@/api/stats/internal/getLatestTipSets";
 
 import { isEnum } from "@/utils/isEnum";
 
-
 const __CACHE: Record<string, unknown> = {};
 
 const ALL_STATS = Object.values(Stats);
@@ -20,15 +19,11 @@ const ALL_STATS = Object.values(Stats);
 const resolveSingle = (ctx: ApiCtx, ntwk: Network) => async (stat: Stats) => {
   switch (stat) {
     case Stats.RichList:
-      return (
-        await get(ntwk, "rich-list?pageSize=10&page=0", { richList: [] })
-      ).richList.slice(0, 1);
+      return await get(ntwk, "rich-list?pageSize=10&page=0", { richList: [] });
     case Stats.Overview:
       return get(ntwk, "overview", {});
     case Stats.TopMiners:
-      return (
-        await get(ntwk, "miner/top-miners/power?count=20", { miners: [] })
-      ).miners.slice(0, 1);
+      return await get(ntwk, "miner/top-miners/power?count=20", { miners: [] });
     case Stats.LatestCalledContracts:
       return getLastCalled(ntwk, ctx);
     case Stats.LatestTipSets:
