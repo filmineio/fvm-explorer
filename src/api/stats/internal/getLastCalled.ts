@@ -13,15 +13,17 @@ export const getLastCalled = async (nwk: Network, ctx: ApiCtx) => {
     selection: ["robustFrom", "robustTo"],
     query: [
       {
-        robustFrom: { startsWith: nwk === Network.HyperSpace ? "t4" : "f4" },
+        to: { startsWith: nwk === Network.HyperSpace ? "t04" : "f04" },
       },
       {
-        robustTo: { startsWith: nwk === Network.HyperSpace ? "t4" : "f4" },
+        from: { startsWith: nwk === Network.HyperSpace ? "t04" : "f04" },
       },
     ],
   });
 
   const v = data.reduce((p, c) => {
+    if (!c.robustFrom || !c.robustTo) return p;
+
     if (!p[c.robustTo]) {
       p[c.robustTo] = c.timestamp;
     } else if (!p[c.robustFrom]) {
@@ -31,10 +33,8 @@ export const getLastCalled = async (nwk: Network, ctx: ApiCtx) => {
     return p;
   }, {} as Record<string, number>);
 
-  return Object.keys(v)
-    .map((z) => ({
-      contractAddress: z,
-      timestamp: v[z] * 1000,
-    }))
-    .slice(0, 1);
+  return Object.keys(v).map((z) => ({
+    contractAddress: z,
+    timestamp: v[z] * 1000,
+  }));
 };
