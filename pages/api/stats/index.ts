@@ -19,11 +19,15 @@ const ALL_STATS = Object.values(Stats);
 const resolveSingle = (ctx: ApiCtx, ntwk: Network) => async (stat: Stats) => {
   switch (stat) {
     case Stats.RichList:
-      return await get(ntwk, "rich-list?pageSize=10&page=0", { richList: [] });
+      return (
+        await get(ntwk, "rich-list?pageSize=10&page=0", { richList: [] })
+      ).richList.slice(0, 5);
     case Stats.Overview:
       return get(ntwk, "overview", {});
     case Stats.TopMiners:
-      return await get(ntwk, "miner/top-miners/power?count=20", { miners: [] });
+      return (
+        await get(ntwk, "miner/top-miners/power?count=20", { miners: [] })
+      ).miners.slice(0, 5);
     case Stats.LatestCalledContracts:
       return getLastCalled(ntwk, ctx);
     case Stats.LatestTipSets:

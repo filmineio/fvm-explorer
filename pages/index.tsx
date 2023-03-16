@@ -68,7 +68,7 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
       </Page>
     );
   }
-  console.log(data.data);
+  console.log('hh', data.data);
 
   return (
     <Page showHeader showFooter>
@@ -109,8 +109,8 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
               <p className="text-12 mb-0 text-label">interactions per contract</p>
             </div>
             <div className="bg-grayscale_opacity-50 rounded-10 p-4">
-              <h6 className="text-[28px] text-white mb-2">{roundNumber(data.data.ethOverview.avgGasUsagePerContract, 2) || <Spinner inline />}</h6>
-              <p className="text-12 mb-0 text-label">gas usage per contract</p>
+              <h6 className="text-[28px] text-white mb-2">{roundNumber(data.data.ethOverview.avgGasUsagePerContract, 0) || <Spinner inline />}</h6>
+              <p className="text-12 mb-0 text-label">avg. gas usage per contract</p>
             </div>
             <div className="bg-grayscale_opacity-50 rounded-10 p-4">
               <h6 className="text-[28px] text-white mb-2">1527 FIL</h6>
@@ -243,8 +243,12 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
                         <span className="ml-2">{index < 3 && <Crown />}</span>
                       </span>
                     </td>
-                    <td className="bg-body text-14 text-white font-bold px-5 py-4">{truncateString(item.address, 20)}</td>
-                    <td className="bg-body text-14 text-white font-bold px-5 py-4 rounded-0440">{item.balance}</td>
+                    <td className="bg-body text-14 text-white font-bold px-5 py-4">
+                      <CopyText text={item.address}>
+                        <span>{truncateString(item.address, 20)}</span>
+                      </CopyText>
+                    </td>
+                    <td className="bg-body text-14 text-white font-bold px-5 py-4 rounded-0440">{item.balance.substring(0, item.balance.length-18)} Fil</td>
                   </tr>
                 ))}
               </tbody>
