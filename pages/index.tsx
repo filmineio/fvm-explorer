@@ -21,11 +21,10 @@ import { ApplicationStats } from "@/types/stats";
 import { isEnum } from "@/utils/isEnum";
 import { Spinner } from "@/ui/components/Spinner/Spinner";
 import Link from "next/link";
-import React from "react";
+import Big from 'big.js';
 import { humanReadableSize, roundNumber, timePassFromTimestamp, truncateString } from "@/ui/utils/general";
 import CopyText from "@/ui/components/CopyText/CopyText";
 import Crown from "@/ui/components/Common/Icons/Crown";
-
 
 type ApplicationData = {
   data:
@@ -85,7 +84,7 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
               <p className="text-12 mb-0 text-label">eth accounts</p>
             </div>
             <div className="bg-grayscale_opacity-50 rounded-10 p-4">
-              <h6 className="text-[28px] text-white mb-2">19.185 EiB</h6>
+              <h6 className="text-[28px] text-white mb-2">{humanReadableSize(parseInt(data.data.overview.totalQualityAdjPower, 10), true, 2, 'B')}</h6>
               <p className="text-12 mb-0 text-label">storage power</p>
             </div>
             <div className="bg-grayscale_opacity-50 rounded-10 p-4">
@@ -200,8 +199,9 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
                   </td>
                   <td className="bg-body text-14 text-white font-bold px-5 py-4">{item.address}</td>
                   <td className="bg-body text-14 text-white font-bold px-5 py-4">{humanReadableSize(parseInt(item.rawBytePower, 10), false, 2, 'B')}</td>
-                  <td className="bg-body text-14 text-white font-bold px-5 py-4">{item.rawBytePowerDelta}</td>
-                  <td className="bg-body text-14 text-white font-bold px-5 py-4 rounded-0440">{item.rawBytePower}</td>
+                  <td className="bg-body text-14 text-white font-bold px-5 py-4">{item.totalRewards ? roundNumber(+new Big(item.totalRewards).div(10 ** 18)) : <Spinner inline />}</td>
+                  <td className="bg-body text-14 text-white font-bold px-5 py-4 rounded-0440">{
+                    item.totalRewards && item.qualityAdjPower && item.weightedBlocksMined ? (+new Big(item.totalRewards) / (+new Big(item.qualityAdjPower).times(item.weightedBlocksMined))) : <Spinner inline />}</td>
                 </tr>
               ))}
             </tbody>
