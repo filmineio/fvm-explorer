@@ -76,51 +76,51 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
         <div>
           <div className="grid grid-cols-6 gap-5">
             <div className="bg-grayscale_opacity-50 rounded-10 p-4">
-              <h6 className="text-[28px] text-white mb-2">{data.data.ethOverview.numContractsDeployed || <Spinner inline />}</h6>
+              <h6 className="text-[24px] text-white mb-2">{data.data.ethOverview.numContractsDeployed || <Spinner inline />}</h6>
               <p className="text-12 mb-0 text-label">contracts deployed</p>
             </div>
             <div className="bg-grayscale_opacity-50 rounded-10 p-4">
-              <h6 className="text-[28px] text-white mb-2">{data.data.ethOverview.numEthAccounts || <Spinner inline />}</h6>
+              <h6 className="text-[24px] text-white mb-2">{data.data.ethOverview.numEthAccounts || <Spinner inline />}</h6>
               <p className="text-12 mb-0 text-label">eth accounts</p>
             </div>
             <div className="bg-grayscale_opacity-50 rounded-10 p-4">
-              <h6 className="text-[28px] text-white mb-2">{humanReadableSize(parseInt(data.data.overview.totalQualityAdjPower, 10), true, 2, 'B')}</h6>
+              <h6 className="text-[24px] text-white mb-2">{humanReadableSize(parseInt(data.data.overview.totalQualityAdjPower, 10), true, 2, 'B')}</h6>
               <p className="text-12 mb-0 text-label">storage power</p>
             </div>
             <div className="bg-grayscale_opacity-50 rounded-10 p-4">
-              <h6 className="text-[28px] text-white mb-2">17.68 FIL</h6>
+              <h6 className="text-[24px] text-white mb-2">{data.data.overview.averageRewardPerByte ? roundNumber(data.data.overview.averageRewardPerByte, 2) : <Spinner inline />}</h6>
               <p className="text-12 mb-0 text-label">avg. mining reward</p>
             </div>
             <div className="bg-grayscale_opacity-50 rounded-10 p-4">
-              <h6 className="text-[28px] text-white mb-2">13556</h6>
-              <p className="text-12 mb-0 text-label">placeholders</p>
+              <h6 className="text-[24px] text-white mb-2">{data.data.overview.averageTipsetBlocks ? roundNumber(data.data.overview.averageTipsetBlocks, 2) : <Spinner inline />}</h6>
+              <p className="text-12 mb-0 text-label">avg. tipset blocks</p>
             </div>
             <div className="bg-grayscale_opacity-50 rounded-10 p-4">
-              <h6 className="text-[28px] text-white mb-2">1527</h6>
-              <p className="text-12 mb-0 text-label">contracts deployed</p>
+              <h6 className="text-[24px] text-white mb-2">{data.data.overview.dailyMessages ? data.data.overview.dailyMessages : <Spinner inline />}</h6>
+              <p className="text-12 mb-0 text-label">Daily messages</p>
             </div>
             <div className="bg-grayscale_opacity-50 rounded-10 p-4">
-              <h6 className="text-[28px] text-white mb-2">{roundNumber(data.data.ethOverview.avgNumUniqueAddressesInteractingWithContract, 7) || <Spinner inline />}</h6>
+              <h6 className="text-[24px] text-white mb-2">{roundNumber(data.data.ethOverview.avgNumUniqueAddressesInteractingWithContract, 7) || <Spinner inline />}</h6>
               <p className="text-12 mb-0 text-label">unique addresses interacting per contract</p>
             </div>
             <div className="bg-grayscale_opacity-50 rounded-10 p-4">
-              <h6 className="text-[28px] text-white mb-2">{roundNumber(data.data.ethOverview.avgNumInteractionsPerContract, 2) || <Spinner inline />}</h6>
+              <h6 className="text-[24px] text-white mb-2">{roundNumber(data.data.ethOverview.avgNumInteractionsPerContract, 2) || <Spinner inline />}</h6>
               <p className="text-12 mb-0 text-label">interactions per contract</p>
             </div>
             <div className="bg-grayscale_opacity-50 rounded-10 p-4">
-              <h6 className="text-[28px] text-white mb-2">{roundNumber(data.data.ethOverview.avgGasUsagePerContract, 0) || <Spinner inline />}</h6>
+              <h6 className="text-[24px] text-white mb-2">{roundNumber(data.data.ethOverview.avgGasUsagePerContract, 0) || <Spinner inline />}</h6>
               <p className="text-12 mb-0 text-label">avg. gas usage per contract</p>
             </div>
             <div className="bg-grayscale_opacity-50 rounded-10 p-4">
-              <h6 className="text-[28px] text-white mb-2">1527 FIL</h6>
-              <p className="text-12 mb-0 text-label">total value locked</p>
+              <h6 className="text-[24px] text-white mb-2">{data.data.overview.totalPledgeCollateral ? `${roundNumber(+new Big(data.data.overview.totalPledgeCollateral).div(Math.pow(10, 21)), 0)} k Fil` : <Spinner inline />}</h6>
+              <p className="text-12 mb-0 text-label">total pledge collateral</p>
             </div>
             <div className="bg-grayscale_opacity-50 rounded-10 p-4">
-              <h6 className="text-[28px] text-white mb-2">{data.data.ethOverview.filTransferredFromContracts ? `${roundNumber(parseInt(data.data.ethOverview.filTransferredFromContracts) / Math.pow(10, 12), 0)} tn` : <Spinner inline />}</h6>
+              <h6 className="text-[24px] text-white mb-2">{data.data.ethOverview.filTransferredFromContracts ? `${roundNumber(+new Big(data.data.ethOverview.filTransferredFromContracts).div(Math.pow(10, 12)), 0)} tn` : <Spinner inline />}</h6>
               <p className="text-12 mb-0 text-label">Fil transferred from contracts</p>
             </div>
             <div className="bg-grayscale_opacity-50 rounded-10 p-4">
-              <h6 className="text-[28px] text-white mb-2">{data.data.ethOverview.filTransferredToContracts ? `${roundNumber(parseInt(data.data.ethOverview.filTransferredToContracts.substring(1)) / Math.pow(10, 12), 0)} tn` : <Spinner inline />}</h6>
+              <h6 className="text-[24px] text-white mb-2">{data.data.ethOverview.filTransferredToContracts ? `${roundNumber(parseInt(data.data.ethOverview.filTransferredToContracts.substring(1)) / Math.pow(10, 12), 0)} tn` : <Spinner inline />}</h6>
               <p className="text-12 mb-0 text-label">Fil transferred to contracts</p>
             </div>
           </div>
