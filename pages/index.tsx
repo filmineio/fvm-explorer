@@ -1,4 +1,3 @@
-import { defaultNetwork } from "../src/filters/defaultNetwork";
 import { Network } from "@/enums/Network";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
@@ -21,7 +20,7 @@ import { ApplicationStats } from "@/types/stats";
 import { isEnum } from "@/utils/isEnum";
 import { Spinner } from "@/ui/components/Spinner/Spinner";
 import Link from "next/link";
-import Big from 'big.js';
+import Big from "big.js";
 import { humanReadableSize, roundNumber, timePassFromTimestamp, truncateString } from "@/ui/utils/general";
 import CopyText from "@/ui/components/CopyText/CopyText";
 import Crown from "@/ui/components/Common/Icons/Crown";
@@ -159,7 +158,7 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
           </div>
           <div className="bg-grayscale_opacity-50 rounded-4 p-12">
             <h2 className="text-[24px] text-white mb-7">Latest called contracts</h2>
-            {data.data.latestCalledContracts.map((item) => (
+            {data.data.latestCalledContracts.slice(0, 5).map((item) => (
               <div key={`${item.contractAddress}-lcc`} className="bg-grayscale_opacity-50 rounded-10 p-4 flex items-start justify-between mb-4 last:mb-0">
                 <div>
                   <h6 className="text-[18px] text-white mb-2">{truncateString(item.contractAddress, 14)}</h6>
@@ -210,7 +209,7 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
         <div className="grid grid-cols-2 gap-5 my-7">
           <div className="bg-grayscale_opacity-50 rounded-4 p-12">
             <h2 className="text-[24px] text-white mb-7">Latest transactions</h2>
-            {data.data.latestCalledContracts.map((item) => (
+            {data.data.latestCalledContracts.slice(0, 5).map((item) => (
               <div key={`${item.contractAddress}-lcc`} className="bg-grayscale_opacity-50 rounded-10 p-4 flex items-start justify-between mb-4 last:mb-0">
                 <div>
                   <h6 className="text-[18px] text-white mb-2">{truncateString(item.contractAddress, 20)}</h6>
@@ -266,7 +265,7 @@ export async function getServerSideProps({
   locale: string;
   query: AppQuery;
 }) {
-  const network = query.network || defaultNetwork();
+  const network = query.network || Network.HyperSpace;
 
   if (!isEnum(Network, network)) {
     return {
