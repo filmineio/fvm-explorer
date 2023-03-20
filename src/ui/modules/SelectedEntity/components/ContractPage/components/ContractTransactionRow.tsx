@@ -60,46 +60,34 @@ export const ContractTransactionRow = ({
           {transaction.value} FIL
         </td>
       </tr>
-      <tr
-        className={
-          "min-w-full bg-body_opacity-50 transform -translate-y-2"
-        }
-      >
-        <td colSpan={7} className={classNames("px-10 pt-3 pb-5", {"rounded-0044": !open, "rounded-0": open})}>
-          <div className="flex items-center text-14 font-medium text-white">
-            <div
-              onClick={toggle}
-              className={
-                "bg-label_opacity-30 mr-3 rounded-3 flex items-center justify-center w-6 h-6 cursor-pointer border border-transparent hover:border-label transition-all"
-              }
-            >
+      <tr className="min-w-full bg-body_opacity-50 transform -translate-y-2">
+        <td colSpan={7} className="px-10 pt-3 pb-5 rounded-0044">
+          <div className="">
+            <div className="flex items-center text-14 font-medium text-white">
               <div
-                className={classNames("w-4 h-4 transform transition-transform duration-200", {
-                  "-rotate-90": !open,
-                })}
+                onClick={toggle}
+                className="bg-label_opacity-30 mr-3 rounded-3 flex items-center justify-center w-6 h-6 cursor-pointer border border-transparent hover:border-label transition-all"
               >
-                <ArrowChevronDown />
+                <div className={classNames("w-4 h-4 transform transition-transform duration-300", { "-rotate-90": !open })}>
+                  <ArrowChevronDown/>
+                </div>
               </div>
+              STATE DIFFERENCE
             </div>
-            STATE DIFFERENCE
+            {open && (
+              <div className="min-w-full transform">
+                <div className="rounded-0044">
+                  <TransactionStateDiff
+                    transaction={transaction}
+                    contract={contract}
+                    network={network}
+                  />
+                </div>
+              </div>
+            )}
           </div>
         </td>
       </tr>
-      {open && (
-        <tr
-          className={
-            "min-w-full bg-body_opacity-50 transform -translate-y-4"
-          }
-        >
-          <td colSpan={7} className="rounded-0044">
-            <TransactionStateDiff
-              transaction={transaction}
-              contract={contract}
-              network={network}
-            />
-          </td>
-        </tr>
-      )}
     </>
   );
 };

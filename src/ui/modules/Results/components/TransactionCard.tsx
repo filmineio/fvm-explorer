@@ -22,30 +22,28 @@ export const TransactionCard = ({ data, network }: TransactionCardProps) => {
   );
 
   return (
-    <div className="w-full sm:min-w-full max-w-xs md:w-1/2 lg:w-1/3 sm:pr-5 px-0 cursor-pointer">
-      <Link
-        href={`/explore/${Entity.Transaction}/${data.cid}?network=${network}`}
-      >
-        <div className="relative flex flex-col w-full break-words bg-body_opacity-50 border-2 border-transparent hover:border-label rounded-9 shadow-lg">
+    <div className="w-full cursor-pointer">
+      <Link href={`/explore/${Entity.Transaction}/${data.cid}?network=${network}`}>
+        <div className="relative flex flex-col break-words bg-body_opacity-50 border-2 border-transparent rounded-9 hover:border-label">
           <div className="flex-auto p-5">
             <div className="flex flex-wrap items-center">
-              <div className="relative w-full">
-                <CopyText text={data.cid}>
-                  <h4 className="font-space text-white text-lg font-bold leading-compact truncate">
+              <div className="w-full">
+                <CopyText text={data.cid} additionalClass="copy-animate-width">
+                  <span className="font-space text-white text-18 font-bold leading-compact truncate">
                     {data.cid}
-                  </h4>
+                  </span>
                 </CopyText>
               </div>
               <TransactionStatus exitCode={data.messageRctExitCode} />
             </div>
 
-            <div className="flex mt-5">
-              <div className="w-14/25 pr-2.5">
+            <div className="flex mt-5 gap-2.5">
+              <div className="w-14/25">
                 <div className="bg-label_opacity-30 p-2.5 rounded-3">
-                  <h4 className="font-space text-white text-lg font-bold leading-compact">
+                  <h4 className="font-space text-white text-18 font-bold leading-compact">
                     {value.toFixed(2)} FIL
                   </h4>
-                  <p className="text-white text-xs font-normal leading-normal">
+                  <p className="text-white text-12 font-normal leading-normal">
                     value
                   </p>
                 </div>
@@ -53,18 +51,18 @@ export const TransactionCard = ({ data, network }: TransactionCardProps) => {
 
               <div className="w-11/25">
                 <div className="bg-label_opacity-30 p-2.5 rounded-3">
-                  <h4 className="font-space text-white text-lg font-bold leading-compact">
+                  <h4 className="font-space text-white text-18 font-bold leading-compact">
                     {data.height}
                   </h4>
-                  <p className="text-white text-xs font-normal leading-normal">
+                  <p className="text-white text-12 font-normal leading-normal">
                     epoch
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="flex mt-5">
-              <div className="w-14/25 lg:w-5/12 pr-0 lg:pr-3">
+            <div className="flex mt-5 gap-2.5">
+              <div className="w-14/25">
                 <h3 className="text-label text-14 font-medium leading-4 lowercase">
                   method type
                 </h3>
@@ -72,7 +70,7 @@ export const TransactionCard = ({ data, network }: TransactionCardProps) => {
                   {data.method}
                 </h5>
               </div>
-              <div className="w-11/25 lg:w-5/12 pr-0 lg:pr-3">
+              <div className="w-11/25">
                 <h3 className="text-label text-14 font-medium leading-4 lowercase">
                   GAS
                 </h3>

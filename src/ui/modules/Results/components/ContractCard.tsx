@@ -13,6 +13,7 @@ import { Transaction } from "@/types/data/Transaction";
 
 import ContractIcon from "@/ui/components/Common/Icons/ContractIcon";
 import CopyText from "@/ui/components/CopyText/CopyText";
+import classNames from "classnames";
 
 
 type ContractCardProps = {
@@ -32,24 +33,24 @@ const TransactionCounters = ({
   error: boolean;
 }) => {
   return (
-    <div className="flex mt-5">
-      <div className="w-14/25 xs:w-1/2 lg:w-7/12 pr-2.5">
+    <div className="flex mt-5 gap-2.5">
+      <div className="w-14/25">
         <div className="bg-label_opacity-30 p-2.5 rounded-3">
-          <h4 className="font-space text-white text-lg font-bold leading-compact">
-            {loading ? <Spinner inline /> : error ? "--" : ok}
+          <h4 className="font-space text-white text-18 font-bold leading-compact">
+            {loading ? <Spinner inline/> : error ? "--" : ok}
           </h4>
-          <p className="text-white text-xs font-normal leading-normal">
+          <p className="text-white text-12 font-normal leading-normal">
             successful txns
           </p>
         </div>
       </div>
 
-      <div className="w-11/25 xs:w-1/2 lg:w-5/12 mt-0">
+      <div className="w-11/25">
         <div className="bg-label_opacity-30 p-2.5 rounded-3">
-          <h4 className="font-space text-white text-lg font-bold leading-compact">
-            {loading ? <Spinner inline /> : error ? "--" : reverted}
+          <h4 className="font-space text-white text-18 font-bold leading-compact">
+            {loading ? <Spinner inline/> : error ? "--" : reverted}
           </h4>
-          <p className="text-white text-xs font-normal leading-normal">
+          <p className="text-white text-12 font-normal leading-normal">
             failed txns
           </p>
         </div>
@@ -68,13 +69,13 @@ export const ContractCard = ({ data, network }: ContractCardProps) => {
 
   const { ok, reverted } = useMemo(() => {
     return uniqBy((m) => m.cid, transactions).reduce(
-      (p, c) => {
-        if (+c.messageRctExitCode === 0) p.ok += 1;
-        else p.reverted += 1;
+        (p, c) => {
+          if (+c.messageRctExitCode === 0) p.ok += 1;
+          else p.reverted += 1;
 
-        return p;
-      },
-      { ok: 0, reverted: 0 }
+          return p;
+        },
+        { ok: 0, reverted: 0 }
     );
   }, [transactions]);
 
@@ -94,32 +95,26 @@ export const ContractCard = ({ data, network }: ContractCardProps) => {
   }, []);
 
   return (
-    <div className="w-full sm:min-w-full max-w-xs sm:w-5/12 md:w-1/2 lg:w-1/3 sm:pr-5 px-0 cursor-pointer">
-      <Link
-        href={`/explore/${Entity.Contract}/${data.contractAddress}?network=${network}`}
-      >
-        <div className="relative flex flex-col break-words bg-body_opacity-50 border-2 border-transparent hover:border-label rounded-9 shadow-lg">
+    <div className="w-full cursor-pointer">
+      <Link href={`/explore/${Entity.Contract}/${data.contractAddress}?network=${network}`}>
+        <div className="relative flex flex-col break-words bg-body_opacity-50 border-2 border-transparent rounded-9 hover:border-label">
           <div className="flex-auto p-5">
             <div className="flex flex-wrap items-center">
-              <div className="relative pr-4 w-4/12">
-                <div className="flex bg-label_opacity-30 rounded-6 py-3 px-3 justify-center items-center w-20 h-20">
-                  <ContractIcon/>
-                </div>
+              <div className="w-20 h-20 flex bg-label_opacity-30 rounded-6 justify-center items-center">
+                <ContractIcon/>
               </div>
-              <div className="relative w-8/12">
-                <CopyText text={data.contractAddress}>
-                  <h4 className="font-space text-white text-lg font-bold leading-compact truncate">
+              <div className="ml-5 min-w-0 flex-1 overflow-hidden">
+                <CopyText text={data.contractAddress} additionalClass="copy-animate-width">
+                  <span className="font-space text-white text-18 font-bold leading-compact truncate">
                     {data.contractAddress}
-                  </h4>
+                  </span>
                 </CopyText>
-                { data.verified ?
-                    <p className="text-blue-400 text-xs font-bold leading-compact mt-1.5">
-                      verified
-                    </p> :
-                    <p className="text-label text-xs font-bold leading-compact mt-1.5">
-                      unverified
-                    </p>
-                }
+                <p className={classNames("text-12 font-bold leading-compact mt-1.5", {
+                  "text-blue-400": data.verified,
+                  "text-label": !data.verified
+                })}>
+                  {data.verified ? "verified" : "unverified"}
+                </p>
               </div>
             </div>
 
@@ -130,8 +125,8 @@ export const ContractCard = ({ data, network }: ContractCardProps) => {
               error={!!error}
             />
 
-            <div className="flex mt-5">
-              <div className="w-14/25 lg:w-8/12 pr-0 lg:pr-3">
+            <div className="flex mt-5 gap-2.5">
+              <div className="w-14/25">
                 <h3 className="text-label text-14 font-normal leading-4 lowercase">
                   NETWORK
                 </h3>
@@ -139,8 +134,8 @@ export const ContractCard = ({ data, network }: ContractCardProps) => {
                   {network}
                 </h5>
               </div>
-              <div className="w-11/25 lg:w-4/12 mt-2 lg:mt-0">
-                <button className="block ml-auto mr-0 bg-label_opacity-30 rounded-3 py-2.5 px-5 text-blue-400 text-14 font-medium leading-4">
+              <div className="w-11/25">
+                <button className="block ml-auto py-2.5 px-5 rounded-3 bg-label_opacity-30 text-blue-400 text-14 font-medium leading-4">
                   {data.ethAddress ? "EVM" : "FVM"}
                 </button>
               </div>

@@ -42,9 +42,7 @@ export const Results = ({
 
   return (
     <div className="flex-col">
-      <div
-        className={"grid grid-cols-4 relative gap-7"}
-      >
+      <div className="grid grid-cols-4 relative gap-7 sc-1400:grid-cols-3">
         {rows.map((r) => (
           <Card
             data={r as never}

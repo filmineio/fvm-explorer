@@ -61,7 +61,7 @@ export const BlockTransactions = ({
                 </th>
                 <th
                   scope="col"
-                  className="w-1/6  border-0 text-left rounded-r-lg text-xs font-bold text-white px-10 py-5"
+                  className="w-1/6 rounded-0440 border-0 text-left text-xs font-bold text-white px-10 py-5"
                 >
                   VALUE
                 </th>

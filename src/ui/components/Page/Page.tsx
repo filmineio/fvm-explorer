@@ -23,7 +23,7 @@ export const Page: FC<PageProps> = ({
 
   return (
     <div
-      className={"h-screen w-full"}
+      className="min-h-screen w-full flex flex-col"
       style={{ animation: "fadeInAnimation .4s ease-in" }}
     >
       <Head>

@@ -44,19 +44,19 @@ export const TransactionOverview = ({
   const params = useMemo(() => paramsRes[0], [paramsRes]);
 
   return (
-    <div className="mt-5 flex-wrap flex justify-between">
-      <div className="w-4/6	 md:w-full">
+    <div className="mt-5 flex gap-5 justify-between">
+      <div className="w-2/3">
         <div className="bg-body_opacity-50 rounded-6 p-7.5">
           <div className="flex flex-wrap  text-justify justify-between items-center	">
             <h5 className="font-bold text-18 leading-compact text-white font-space">
               Method & Params
             </h5>
 
-            <span className="flex text-justify items-center mt-3 sm:mt-0	">
+            <span className="flex text-justify items-center">
               <p className="text-14 font-normal italic text-white pr-3">
                 MethodId
               </p>
-              <button className="bg-bglight rounded-4 py-2 px-5 font-medium text-14 leading-5 text-white">
+              <button className="bg-label bg-opacity-20 rounded-4 py-2 px-5 font-medium text-14 leading-5 text-white">
                 {transaction.method}
               </button>
             </span>
@@ -81,7 +81,7 @@ export const TransactionOverview = ({
           </div>
         </div>
       </div>
-      <div className="w-[430px] md:w-full ml-0 md:mt-4">
+      <div className="w-1/3 gap-5">
         <div className="bg-body_opacity-50 rounded-6 p-7.5">
           <h5 className="text-18 font-bold text-white leading-compact">
             Transaction overview
@@ -92,10 +92,10 @@ export const TransactionOverview = ({
               CID
             </h5>
             <div className={"relative"}>
-              <CopyText text={transaction.cid}>
-                <p className="mt-1.25 text-left font-normal text-14 text-white leading-normal relative truncate cursor-pointer">
+              <CopyText text={transaction.cid} additionalClass="copy-animate-width">
+                <span className="mt-1.25 text-left font-normal text-14 text-white leading-normal relative truncate cursor-pointer">
                   {transaction.cid}
-                </p>
+                </span>
               </CopyText>
             </div>
 

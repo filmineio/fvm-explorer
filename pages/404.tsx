@@ -3,23 +3,23 @@ import { ReactElement } from "react";
 
 import { Page } from "@/ui/components/Page/Page";
 
+import PageNotFoundIcon from "@/ui/components/Common/Icons/PageNotFoundIcon";
+
 export default function Error404Route(): ReactElement {
   return (
     <Page showHeader showFooter>
-      <div
-        className="w-full min-h-calc flex justify-center py-10 items-center gap-24"
-      >
-        <div className={"flex flex-col gap-8"}>
-          <h1 className={"text-white text-3xl font-semibold"}>
-            Error 404 - Page Not Found
-          </h1>
+      <div className="flex flex-grow justify-center items-center">
+        <div className="flex flex-col justify-center items-center mb-10%">
+          <PageNotFoundIcon/>
+          <span className="mt-16 font-space text-white text-center text-28 font-bold">
+            Page not found
+          </span>
           <Link href={"/"}>
-            <span className={"text-white text-blue-400 cursor-pointer"}>
+            <span className="mt-7.5 text-blue-400 text-center text-16 leading-none cursor-pointer">
               Back to Homepage
             </span>
           </Link>
         </div>
-        <img src="/images/404illustration2.svg" alt="" />
       </div>
     </Page>
   );

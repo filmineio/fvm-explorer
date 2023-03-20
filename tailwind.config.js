@@ -87,12 +87,15 @@ module.exports = {
       minHeight: {
         sm: "50px",
         calc: "calc(100vh - 150px)",
+        "fit-vertically": "calc(100vh - 163px)",
       },
       maxWidth: {
         "1xl": "1370px",
         "2xl": "1440px",
         calc2: "calc(100% - 440px)",
         lg: "calc(100% - 120px)",
+        "1520": "1520px",
+        "1113": "1113px"
       },
       tablewidth: {
         tbw: "16%",
@@ -105,6 +108,7 @@ module.exports = {
         xl: { max: "1024px" },
         "2xl": { max: "1336px" },
         "3xl": { max: "1920px" },
+        "sc-1400": { max: "1399px"}
       },
 
       width: {
@@ -123,6 +127,7 @@ module.exports = {
         2.25: "9px",
         7.5: "30px",
         15: "60px",
+        "10%": "10%"
       },
 
       padding: {
