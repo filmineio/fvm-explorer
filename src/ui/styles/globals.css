@@ -426,3 +426,76 @@ body .monaco-editor .line-numbers.active-line-number {
 body .monaco-editor {
   pointer-events: none;
 }
+
+body .css-sdimlt {
+  border: none;
+  background: transparent;
+}
+
+body .css-sdimlt:hover,
+body .css-sdimlt:focus {
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+body .css-sdimlt:focus:after {
+  border: none;
+}
+
+
+
+body .css-cq510v {
+  width: 320px;
+  right: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+  background: theme('colors.slate');
+  border-top: 4px solid transparent;
+  margin: 0;
+  border-radius: 9px;
+  overflow: hidden;
+  z-index: 2;
+  padding: 7px 0;
+}
+
+body .css-cq510v li {
+  font-size: 14px;
+  padding: 10px 20px 10px 20px;
+  position: relative;
+  color: #596184;
+}
+
+body .css-cq510v li:before {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0 3px 3px 0;
+  background-color: transparent;
+  height: 100%;
+  width: 3px;
+  transition: all 160ms ease-in-out;
+}
+
+body .css-cq510v li:hover {
+  background-color: rgba(89, 97, 132, 0.3);
+}
+
+body .css-cq510v li:hover:before {
+  background-color: #59A9FF;
+}
+
+body .css-cq510v:after {
+  border: none;
+}
+
+body .css-vh8qhu {
+  border: none;
+  background: transparent;
+  color: #596184;
+}
+
+body .css-vh8qhu:focus {
+  outline: none;
+}
