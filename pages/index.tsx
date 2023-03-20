@@ -25,6 +25,7 @@ import Big from "big.js";
 import { humanReadableSize, roundNumber, timePassFromTimestamp, truncateString } from "@/ui/utils/general";
 import CopyText from "@/ui/components/CopyText/CopyText";
 import Crown from "@/ui/components/Common/Icons/Crown";
+import { Entity } from "@/enums/Entity";
 
 type ApplicationData = {
   data:
@@ -47,8 +48,43 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
   } = useStore();
 
   const run = useCallback(() => {
+    console.log('aj bar ovo', filters);
     updateRouteState(push, filters);
   }, [filters]);
+
+  // const { get } = useDataClient();
+  //
+  // const getData =
+  //   (push: Router["push"], filters: FilterState) =>
+  //     (data?: number | Network | Entity) => {
+  //       if (isEnum(Network, data))
+  //         return updateRouteState(push, { ...filters, network: data as Network });
+  //       else if (isEnum(Entity, data))
+  //         return updateRouteState(push, {
+  //           ...filters,
+  //           filteredBy: data as Entity,
+  //         });
+  //
+  //       const page = typeof data === "number" ? data : filters.page;
+  //
+  //       updateRouteState(push, {
+  //         ...filters,
+  //         page,
+  //         advancedFilter: filters.advancedFilter
+  //           ? (toHex(JSON.stringify(filters.advancedFilter)) as never)
+  //           : undefined,
+  //       });
+  //     };
+  //
+  // const requestData = useCallback(getData(push, filters), [filters, get]);
+  //
+  //
+  // useEffect(() => {
+  //   if (Object.keys(router.query).length === 0) {
+  //     mod(setFiltersValueTransformer('contract'));
+  //     mod(setFiltersValueTransformer('hyperspace'));
+  //   }
+  // }, []);
 
   if (!data || data.status === OperationStatus.Error) {
     return (
@@ -67,7 +103,8 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
       </Page>
     );
   }
-  console.log('hh', data.data);
+  // console.log('hh', data.data);
+  const network = filters.network || defaultNetwork();
 
   return (
     <Page showHeader showFooter>
@@ -100,7 +137,7 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
               <p className="text-12 mb-0 text-label">Daily messages</p>
             </div>
             <div className="bg-grayscale_opacity-50 rounded-10 p-4">
-              <h6 className="text-[24px] text-white mb-2">{roundNumber(data.data.ethOverview.avgNumUniqueAddressesInteractingWithContract, 7) || <Spinner inline />}</h6>
+              <h6 className="text-[24px] text-white mb-2">{roundNumber(data.data.ethOverview.avgNumUniqueAddressesInteractingWithContract, 5) || <Spinner inline />}</h6>
               <p className="text-12 mb-0 text-label">unique addresses interacting per contract</p>
             </div>
             <div className="bg-grayscale_opacity-50 rounded-10 p-4">
@@ -179,7 +216,6 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
           <table className="w-full text-left border-separate border-spacing-y-2">
             <thead>
               <tr>
-                {/* TODO */}
                 <th className="bg-body text-14 text-white font-bold px-5 py-4 rounded-4004">RANK</th>
                 <th className="bg-body text-14 text-white font-bold px-5 py-4">MINER</th>
                 <th className="bg-body text-14 text-white font-bold px-5 py-4">RAW POWER</th>
@@ -190,7 +226,6 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
             <tbody>
               {data.data.topMiners.map((item, index) => (
                 <tr key={`${item.address}-lts-${index}`}>
-                  {/* TODO */}
                   <td className="bg-body text-14 text-white font-bold px-5 py-4 rounded-4004">
                     <span className="flex items-center">
                       {index + 1}
@@ -208,24 +243,27 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
           </table>
         </div>
         <div className="grid grid-cols-2 gap-5 my-7">
-          <div className="bg-grayscale_opacity-50 rounded-4 p-12">
+          <div className="bg-grayscale_opacity-50 rounded-10 p-12">
             <h2 className="text-[24px] text-white mb-7">Latest transactions</h2>
-            {data.data.latestCalledContracts.slice(0, 5).map((item) => (
-              <div key={`${item.contractAddress}-lcc`} className="bg-grayscale_opacity-50 rounded-10 p-4 flex items-start justify-between mb-4 last:mb-0">
+            {data.data.latestTransactions.slice(0, 4).map((item) => (
+              <div key={`${item.cid}-lts`} className="bg-grayscale_opacity-50 rounded-10 p-4 flex items-start justify-between mb-4 last:mb-0">
                 <div>
-                  <h6 className="text-[18px] text-white mb-2">{truncateString(item.contractAddress, 20)}</h6>
+                  <Link href={`/explore/${Entity.Transaction}/${item.cid}?network=${network}`}>
+                    <a>
+                      <h6 className="text-[18px] text-blue-400 mb-2">{truncateString(item.cid, 20)}</h6>
+                    </a>
+                  </Link>
                   <p className="text-12 mb-0 text-label">{item.timestamp}</p>
                 </div>
-                <Link href={`/explore/contract/${item.contractAddress}`}>
-                  <a className="text-14 font-bold text-blue-400 mt-1">
-                    View contract
-                  </a>
-                </Link>
+                <p className="text-white">
+                  {item.value && roundNumber(+new Big(item.value).div(10 ** 18))}
+                  {item.value === '0' && '0'} Fil
+                </p>
               </div>
             ))}
           </div>
           <div className="bg-grayscale_opacity-50 rounded-10 p-12">
-            <h2 className="text-[24px] text-white mb-7">Rich list</h2>
+            <h2 className="text-[24px] text-white mb-5">Rich list</h2>
             <table className="w-full text-left border-separate border-spacing-y-2">
               <thead>
                 <tr>
@@ -248,7 +286,7 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
                         <span>{truncateString(item.address, 20)}</span>
                       </CopyText>
                     </td>
-                    <td className="bg-body text-14 text-white font-bold px-5 py-4 rounded-0440">{item.balance.substring(0, item.balance.length-18)} Fil</td>
+                    <td className="bg-body text-14 text-white font-bold px-5 py-4 rounded-0440">{item.balance.substring(0, item.balance.length - 18)} Fil</td>
                   </tr>
                 ))}
               </tbody>
@@ -277,6 +315,7 @@ export async function getServerSideProps({
   const response = await getHttpClient(() => null)().get(
     `stats?network=${network}`
   );
+  console.log('network1', network, response);
 
   return {
     props: {

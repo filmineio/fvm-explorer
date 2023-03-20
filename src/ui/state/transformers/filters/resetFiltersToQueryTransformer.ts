@@ -17,7 +17,7 @@ export const resetFiltersToQueryTransformer: StateTransformer<
     return { ...s, filters: defaultFiltersState };
   }
 
-  console.trace("d", d);
+  // console.trace("d", d);
 
   let { advancedFilter, ...rest } = d;
   if (advancedFilter) {

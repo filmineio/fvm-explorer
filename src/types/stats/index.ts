@@ -81,6 +81,18 @@ export type EthOverviewStat = {
   numCreate2CallsEam: string;
 };
 
+export type LatestTransactions = {
+  cid: string;
+  from: string;
+  to: string;
+  robustFrom: string;
+  robustTo: string;
+  value: string;
+  messageRctGasUsed: string;
+  timestamp: string;
+  messageRctExitCode: string;
+};
+
 export type ApplicationStats = {
   richList: RichListEntryStat[];
   overview: OverviewStat;
@@ -88,4 +100,5 @@ export type ApplicationStats = {
   latestCalledContracts: CalledContractStat[];
   latestTipSets: LatestTipSetStat[];
   ethOverview: EthOverviewStat;
+  latestTransactions: LatestTransactions[];
 };
