@@ -1,4 +1,5 @@
 import { Network } from "@/enums/Network";
+import { defaultNetwork } from "../src/filters/defaultNetwork";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
@@ -265,7 +266,7 @@ export async function getServerSideProps({
   locale: string;
   query: AppQuery;
 }) {
-  const network = query.network || Network.HyperSpace;
+  const network = query.network || defaultNetwork();
 
   if (!isEnum(Network, network)) {
     return {
