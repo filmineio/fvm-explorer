@@ -203,7 +203,7 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
               <div key={`${item.contractAddress}-lcc`} className="bg-grayscale_opacity-50 rounded-10 p-4 flex items-start justify-between mb-4 last:mb-0">
                 <div>
                   <h6 className="text-[18px] text-white mb-2">{truncateString(item.contractAddress, 14)}</h6>
-                  <p className="text-12 mb-0 text-label">{timePassFromTimestamp(item.timestamp)}</p>
+                  <p className="text-12 mb-0 text-label">{!init && timePassFromTimestamp(item.timestamp)}</p>
                 </div>
                 <Link href={`/explore/contract/${item.contractAddress}`}>
                   <a className="text-14 font-bold text-blue-400 mt-1">
