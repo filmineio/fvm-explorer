@@ -13,7 +13,7 @@ export const queryRunner =
     const timeMark = generateAlias();
     console.time(`QueryId ${timeMark}`);
     try {
-      console.log(query);
+      // console.log(query);
       const res = await client.query({
         query: query,
       });

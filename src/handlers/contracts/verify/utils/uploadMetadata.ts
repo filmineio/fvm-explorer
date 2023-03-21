@@ -10,7 +10,7 @@ type UploadMetadata = (
 
 // uploadMetadata uploads verification result metadata
 export const uploadMetadata: UploadMetadata = async (ctx, result) => {
-  console.log(result);
+  // console.log(result);
   const abiBlob = new Blob([JSON.stringify(result.abi)], {
     type: "application/json",
   });

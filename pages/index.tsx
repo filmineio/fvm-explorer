@@ -49,7 +49,7 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
 
   const run = useCallback(() => {
     console.log('aj bar ovo', filters);
-    updateRouteState(push, filters);
+    // updateRouteState(push, filters);
   }, [filters]);
 
   console.log('network1', data.data?.latestCalledContracts.length);
