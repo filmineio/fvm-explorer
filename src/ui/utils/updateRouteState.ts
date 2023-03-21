@@ -10,11 +10,17 @@ export const updateRouteState = (
 ) => {
   // push("/explore");
   console.log('filters', filters);
-  push(
-    "/explore",
-    { query: filters as unknown as ParsedUrlQueryInput },
-    { shallow: true }
-  );
+  // push(
+  //   "/explore",
+  //   { query: filters as unknown as ParsedUrlQueryInput },
+  //   { shallow: true }
+  // );
+  push({
+      pathname: '/explore',
+      query: filters as unknown as ParsedUrlQueryInput
+    },
+    undefined, { shallow: true }
+  )
 };
 
 export const updateRouteStateSameRoute = (
