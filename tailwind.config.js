@@ -48,7 +48,6 @@ module.exports = {
         analogous: "#B7006E",
         rgbaanalogous: "rgba(183, 0, 110, 0.3)",
         popupbg: "rgba(41, 46, 66, 60%)",
-        'grayscale_opacity-50': 'rgba(41, 46, 66, 0.5)',
         Crusta: "#F89358",
         newdarck: "#D9DBE9",
         colorcod: "#FCFCFC",
@@ -119,6 +118,7 @@ module.exports = {
 
       lineHeight: {
         compact: "1.2",
+        large: "1.5",
       },
 
       margin: {
@@ -126,7 +126,10 @@ module.exports = {
         1.25: "5px",
         1.75: "7px",
         2.25: "9px",
+        2.5: "10px",
+        6.25: "25px",
         7.5: "30px",
+        12.5: "50px",
         15: "60px",
         "10%": "10%"
       },
@@ -140,6 +143,7 @@ module.exports = {
         3.25: "13px",
         3.75: "15px",
         7.5: "30px",
+        12.5: "50px",
       },
 
       boxShadow: {
