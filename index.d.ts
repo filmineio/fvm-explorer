@@ -5,3 +5,4 @@ export { get } from "@/api/stats/external/get";
 export { getLastCalled } from "@/api/stats/internal/getLastCalled";
 export { getLatestTipSets } from "@/api/stats/internal/getLatestTipSets";
 export { getEthOverview } from "@/api/stats/internal/getEthOverview";
+export { getLatestTransactions } from "@/api/stats/internal/getLatestTransactions";

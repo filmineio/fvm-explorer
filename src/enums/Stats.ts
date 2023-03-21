@@ -5,4 +5,5 @@ export enum Stats {
   LatestCalledContracts = "latestCalledContracts",
   LatestTipSets = "latestTipSets",
   EthOverview = "ethOverview",
+  LatestTransactions = "latestTransactions",
 }

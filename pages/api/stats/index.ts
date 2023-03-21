@@ -9,8 +9,10 @@ import { get } from "@/api/stats/external/get";
 import { getEthOverview } from "@/api/stats/internal/getEthOverview";
 import { getLastCalled } from "@/api/stats/internal/getLastCalled";
 import { getLatestTipSets } from "@/api/stats/internal/getLatestTipSets";
+import { getLatestTransactions } from "@/api/stats/internal/getLatestTransactions";
 
 import { isEnum } from "@/utils/isEnum";
+
 
 const __CACHE: Record<string, unknown> = {};
 
@@ -34,6 +36,8 @@ const resolveSingle = (ctx: ApiCtx, ntwk: Network) => async (stat: Stats) => {
       return getLatestTipSets(ntwk, ctx);
     case Stats.EthOverview:
       return getEthOverview(ntwk, ctx);
+    case Stats.LatestTransactions:
+      return getLatestTransactions(ntwk, ctx);
   }
 };
 
