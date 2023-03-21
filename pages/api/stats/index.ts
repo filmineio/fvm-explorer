@@ -77,15 +77,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const ctx = await getCtx();
-  const statsKey = stats.join(".");
+  // const statsKey = stats.join(".");
 
-  if (hasPath([statsKey], __CACHE)) {
-    console.log("Cache Found");
-    return res.status(200).json(__CACHE[statsKey]);
-  }
+  // if (hasPath([statsKey], __CACHE)) {
+  //   console.log("Cache Found");
+  //   return res.status(200).json(__CACHE[statsKey]);
+  // }
 
   const all = await resolveStats(network, ctx, stats);
-  __CACHE[statsKey] = all;
+  // __CACHE[statsKey] = all;
 
   res.status(200).json(all);
 };

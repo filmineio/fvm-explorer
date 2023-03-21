@@ -2,7 +2,7 @@ import { Network } from "@/enums/Network";
 import { defaultNetwork } from "../src/filters/defaultNetwork";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { Main } from "@/ui/components/Main/Main";
 import { Page } from "@/ui/components/Page/Page";
@@ -12,7 +12,7 @@ import { Filters } from "@/ui/modules/Filters/Filters";
 import { useStore } from "@/ui/state/Store";
 
 import { getHttpClient } from "@/ui/ctx/http/getHttpClient";
-import { updateRouteState } from "@/ui/utils/updateRouteState";
+import { updateRouteStateSameRoute } from "@/ui/utils/updateRouteState";
 
 import { OperationStatus } from "@/types/ApiResponse";
 import { AppQuery } from "@/types/AppQuery";
@@ -26,6 +26,12 @@ import { humanReadableSize, roundNumber, timePassFromTimestamp, truncateString }
 import CopyText from "@/ui/components/CopyText/CopyText";
 import Crown from "@/ui/components/Common/Icons/Crown";
 import { Entity } from "@/enums/Entity";
+import { setFiltersValueTransformer } from "@/ui/state/transformers/filters/setFiltersValueTransformer";
+import { useDataClient } from "@/ui/external/data";
+import { getData } from "@/ui/modules/Filters/filtersUtils";
+import { Header } from "@/ui/components/Page/Header/Header";
+import { CustomSelect } from "@/ui/components/Select/Select";
+import { availableNetworks } from "@/ui/modules/Filters/state/state";
 
 type ApplicationData = {
   data:
@@ -42,57 +48,46 @@ type ApplicationData = {
 }
 
 const Home: NextPage<ApplicationData> = ({ data}) => {
-  const { push } = useRouter();
+  const router = useRouter();
+  const { get } = useDataClient();
   const {
+    mod,
     state: { filters },
   } = useStore();
+  const requestData = useCallback(getData(router.push, filters), [filters, get]);
+  const [init, setInit] = useState(true);
 
-  const run = useCallback(() => {
-    console.log('aj bar ovo', filters);
-    updateRouteState(push, filters);
-  }, [filters]);
+  useEffect(() => {
+    if (init) {
+      setInit(false);
+    } else {
+      router.replace(router.asPath);
+    }
+  }, [router.asPath]);
 
-  console.log('network1', data.data?.latestCalledContracts.length);
+  const handleOnChange = (network: string) => {
+    mod(setFiltersValueTransformer(network));
+    updateRouteStateSameRoute(router.push, { network: network as Network })
+  }
 
-  // const { get } = useDataClient();
-  //
-  // const getData =
-  //   (push: Router["push"], filters: FilterState) =>
-  //     (data?: number | Network | Entity) => {
-  //       if (isEnum(Network, data))
-  //         return updateRouteState(push, { ...filters, network: data as Network });
-  //       else if (isEnum(Entity, data))
-  //         return updateRouteState(push, {
-  //           ...filters,
-  //           filteredBy: data as Entity,
-  //         });
-  //
-  //       const page = typeof data === "number" ? data : filters.page;
-  //
-  //       updateRouteState(push, {
-  //         ...filters,
-  //         page,
-  //         advancedFilter: filters.advancedFilter
-  //           ? (toHex(JSON.stringify(filters.advancedFilter)) as never)
-  //           : undefined,
-  //       });
-  //     };
-  //
-  // const requestData = useCallback(getData(push, filters), [filters, get]);
-  //
-  //
-  // useEffect(() => {
-  //   if (Object.keys(router.query).length === 0) {
-  //     mod(setFiltersValueTransformer('contract'));
-  //     mod(setFiltersValueTransformer('hyperspace'));
-  //   }
-  // }, []);
+  let network = '';
+  useEffect(() => {
+    network = new URLSearchParams(window.location.search).get('network') || defaultNetwork();
+    mod(setFiltersValueTransformer(network));
+  }, []);
 
   if (!data || data.status === OperationStatus.Error) {
     return (
-      <Page showHeader showFooter>
+      <Page showHeader={false} showFooter>
+        <Header filterComponent={
+          <CustomSelect
+            value={filters.network}
+            onChange={handleOnChange}
+            values={availableNetworks}
+            selectType="transparent"
+          />}
+        />
         <Main>
-          <Filters search={run} />
           <div
             className={
               "flex flex-col rounded border border-gray-text p-32 text-center gap-6"
@@ -105,13 +100,19 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
       </Page>
     );
   }
-  // console.log('hh', data.data);
-  const network = filters.network || defaultNetwork();
 
   return (
-    <Page showHeader showFooter>
+    <Page showHeader={false} showFooter>
+      <Header filterComponent={
+        <CustomSelect
+          value={network || filters.network}
+          onChange={handleOnChange}
+          values={availableNetworks}
+          selectType="transparent"
+        />}
+      />
       <Main>
-        <Filters search={run} />
+        <Filters search={requestData} />
         <div>
           <div className="grid grid-cols-6 gap-5">
             <div className="bg-body_opacity-50 rounded-10 p-5">
@@ -317,7 +318,6 @@ export async function getServerSideProps({
   const response = await getHttpClient(() => null)().get(
     `stats?network=${network}`
   );
-  console.log('network1', network, response.data.latestCalledContracts.length);
 
   return {
     props: {
