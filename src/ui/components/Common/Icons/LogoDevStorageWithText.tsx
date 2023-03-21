@@ -3,8 +3,8 @@ import { FC } from "react";
 const LogoDevStorageWithText: FC = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="145"
-    height="40"
+    width="108.75"
+    height="30"
     fill="none"
     viewBox="0 0 145 40"
   >

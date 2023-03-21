@@ -149,6 +149,10 @@ module.exports = {
       boxShadow: {
         dropdown: "0 4px 12px #000000cc",
       },
+
+      spacing: {
+        7.5: "30px",
+      },
     },
     fontFamily: {
       roboto: ["Roboto Mono", "monospace"],
