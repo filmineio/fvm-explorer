@@ -52,6 +52,8 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
     updateRouteState(push, filters);
   }, [filters]);
 
+  console.log('network1', data.data?.latestCalledContracts.length);
+
   // const { get } = useDataClient();
   //
   // const getData =
@@ -194,7 +196,7 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
               </tbody>
             </table>
           </div>
-          <div className="bg-grayscale_opacity-50 rounded-4 p-12">
+          <div className="bg-grayscale_opacity-50 rounded-10 p-12">
             <h2 className="text-[24px] text-white mb-7">Latest called contracts</h2>
             {data.data.latestCalledContracts.slice(0, 5).map((item) => (
               <div key={`${item.contractAddress}-lcc`} className="bg-grayscale_opacity-50 rounded-10 p-4 flex items-start justify-between mb-4 last:mb-0">
@@ -315,7 +317,7 @@ export async function getServerSideProps({
   const response = await getHttpClient(() => null)().get(
     `stats?network=${network}`
   );
-  console.log('network1', network, response);
+  console.log('network1', network, response.data.latestCalledContracts.length);
 
   return {
     props: {
