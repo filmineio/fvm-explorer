@@ -15,7 +15,10 @@ import Link from "next/link";
 import router from "next/router";
 
 
-export const Filters = ({ search }: { search: () => void }) => {
+export const Filters = ({ search, showOnlyNetwork = false }: {
+  search: () => void,
+  showOnlyNetwork?: boolean;
+}) => {
   const query = useLocationQuery<NextParsedUrlQuery>();
 
   const [searchSelectionActive, setSearchSelectionActive] = useState(false);
@@ -54,6 +57,18 @@ export const Filters = ({ search }: { search: () => void }) => {
   const toggleAdvancedSearchActive = () => {
     setAdvancedSearchActive(prevState => !prevState);
   };
+
+  if (showOnlyNetwork) {
+    return (
+      <FiltersHeader
+        state={state}
+        checked={searchSelectionActive}
+        toggle={setSearchSelectionActive}
+        search={search}
+        showOnlyNetwork
+      />
+    )
+  }
 
   return (
     <div className="pt-5 mt-5">

@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Router from "next/router";
-import { FC, useCallback } from "react";
+import Router, { useRouter } from "next/router";
+import { FC, ReactElement, useCallback } from "react";
 
 import Button from "@/ui/components/Button";
 import { UserMenu } from "@/ui/components/UserMenu/UserMenu";
@@ -9,38 +9,35 @@ import { useStore } from "@/ui/state/Store";
 
 import { cb } from "@/utils/cb";
 import LogoDevStorageWithText from "@/ui/components/Common/Icons/LogoDevStorageWithText";
-import { CustomSelect } from "@/ui/components/Select/Select";
-import { availableNetworks } from "@/ui/modules/Filters/state/state";
-import { AdvancedFiltersState } from "@/ui/state/types/AppState";
-import { setFiltersValueTransformer } from "@/ui/state/transformers/filters/setFiltersValueTransformer";
+import { useDataClient } from "@/ui/external/data";
+import { getData } from "@/ui/modules/Filters/filtersUtils";
+import { Filters } from "@/ui/modules/Filters/Filters";
 
-export const Header: FC = () => {
+type Props = {
+  filterComponent?: ReactElement;
+};
+
+export const Header: FC<Props> = ({ filterComponent }) => {
   const {
-    mod,
     state: { user, filters: state },
   } = useStore();
-
-  const change = useCallback(
-    (v: string | AdvancedFiltersState) => {
-      mod(setFiltersValueTransformer(v));
-    },
-    [mod]
-  );
+  const router = useRouter();
+  const { get } = useDataClient();
+  const requestData = useCallback(getData(router.push, state), [state, get]);
 
   return (
     <header className="px-4 py-4 border-b border-body">
       <div>
-        <div className="flex gap-3 mr-5 items-center">
+        <div className="flex gap-3 items-center justify-end pr-[2px] mr-5">
           <span className="inline-block text-label form-check-label text-14 font-medium">
             network
           </span>
-          <div className="w-32">
-            <CustomSelect
-              value={state.network}
-              onChange={change}
-              values={availableNetworks}
-              selectType="transparent"
-            />
+          <div>
+            {filterComponent ? (
+              filterComponent
+            ) : (
+              <Filters search={requestData} showOnlyNetwork />
+            )}
           </div>
         </div>
       </div>

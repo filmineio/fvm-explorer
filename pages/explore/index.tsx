@@ -2,7 +2,7 @@ import { defaultNetwork } from "../../src/filters/defaultNetwork";
 import { Entity } from "@/enums/Entity";
 import { Network } from "@/enums/Network";
 import type { NextPage } from "next";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { isEmpty } from "ramda";
 import { useCallback, useEffect } from "react";
 
@@ -32,9 +32,10 @@ import { ApplicationData, OperationStatus } from "@/types/ApiResponse";
 import { AppQuery } from "@/types/AppQuery";
 
 import { cb } from "@/utils/cb";
-import { fromHex, toHex } from "@/utils/hex";
+import { fromHex } from "@/utils/hex";
 import { isEnum } from "@/utils/isEnum";
 import { parse } from "@/utils/parse";
+import { getData } from "@/ui/modules/Filters/filtersUtils";
 
 
 const handleServerData =
@@ -52,28 +53,6 @@ const handleServerData =
     else mod(...common, setDataErrorTransformer(serverResponse.data.exception));
   };
 
-const getData =
-  (push: Router["push"], filters: FilterState) =>
-  (data?: number | Network | Entity) => {
-    if (isEnum(Network, data))
-      return updateRouteState(push, { ...filters, network: data as Network });
-    else if (isEnum(Entity, data))
-      return updateRouteState(push, {
-        ...filters,
-        filteredBy: data as Entity,
-      });
-
-    const page = typeof data === "number" ? data : filters.page;
-
-    updateRouteState(push, {
-      ...filters,
-      page,
-      advancedFilter: filters.advancedFilter
-        ? (toHex(JSON.stringify(filters.advancedFilter)) as never)
-        : undefined,
-    });
-  };
-
 const Home: NextPage<{ data: ApplicationData }> = ({ data: serverData }) => {
   const { push } = useRouter();
 
@@ -88,7 +67,6 @@ const Home: NextPage<{ data: ApplicationData }> = ({ data: serverData }) => {
   const query = useLocationQuery<FilterState>();
 
   const { get } = useDataClient();
-
   const requestData = useCallback(getData(push, filters), [filters, get]);
 
   const onServerData = useCallback(handleServerData(receivedServerData, mod), [
