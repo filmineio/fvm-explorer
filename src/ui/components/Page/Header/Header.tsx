@@ -29,18 +29,18 @@ export const Header: FC<Props> = ({ filterComponent }) => {
     <header className="px-4 py-4 border-b border-body">
       <div>
         <div className="flex gap-3 items-center justify-end pr-[2px] mr-5">
-          <div>
+          <>
             {filterComponent ? (
               filterComponent
             ) : (
               <>
-                <span className="inline-block text-label form-check-label text-14 font-medium">
+                <span className="inline-block text-label form-check-label text-14 font-medium ml-auto">
                   network
                 </span>
                 <Filters search={requestData} showOnlyNetwork />
               </>
             )}
-          </div>
+          </>
         </div>
       </div>
       <div className="flex flex-row justify-between items-center m-auto">
@@ -52,7 +52,7 @@ export const Header: FC<Props> = ({ filterComponent }) => {
           </Link>
         </div>
         {!user && (
-          <div className="md:basis-1/2 text-right">
+          <div className="md:basis-1/2 text-right mr-6">
             <Button
               className="btn bg-blue-500 text-white hover:bg-blue-400 hover:border-blue-400 active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all"
               onClick={cb(Router.push, "/auth")}
