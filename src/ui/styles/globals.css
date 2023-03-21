@@ -426,3 +426,6 @@ body .monaco-editor .line-numbers.active-line-number {
 body .monaco-editor {
   pointer-events: none;
 }
+html #nprogress .spinner {
+  display: none;
+}

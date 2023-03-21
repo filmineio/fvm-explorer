@@ -56,6 +56,7 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
   } = useStore();
   const requestData = useCallback(getData(router.push, filters), [filters, get]);
   const [init, setInit] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (init) {
@@ -66,6 +67,7 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
   }, [router.asPath]);
 
   const handleOnChange = (network: string) => {
+    setLoading(true);
     mod(setFiltersValueTransformer(network));
     updateRouteStateSameRoute(router.push, { network: network as Network })
   }
@@ -75,6 +77,10 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
     network = new URLSearchParams(window.location.search).get('network') || defaultNetwork();
     mod(setFiltersValueTransformer(network));
   }, []);
+
+  useEffect(() => {
+    if (loading) setLoading(false);
+  }, [data]);
 
   if (!data || data.status === OperationStatus.Error) {
     return (
@@ -104,12 +110,18 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
   return (
     <Page showHeader={false} showFooter>
       <Header filterComponent={
-        <CustomSelect
-          value={network || filters.network}
-          onChange={handleOnChange}
-          values={availableNetworks}
-          selectType="transparent"
-        />}
+        <div className="flex items-center">
+          <div className="[&>*]:flex [&>*]:flexjustify-center [&>*]:flexitems-center">{loading && <Spinner inline />}</div>
+          <span className="inline-block text-label form-check-label text-14 font-medium">
+            network
+          </span>
+          <CustomSelect
+            value={network || filters.network}
+            onChange={handleOnChange}
+            values={availableNetworks}
+            selectType="transparent"
+          />
+        </div>}
       />
       <Main>
         <Filters search={requestData} />
