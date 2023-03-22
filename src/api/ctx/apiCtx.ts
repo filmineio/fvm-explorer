@@ -33,7 +33,7 @@ export const getCtx = async (config = apiConfig()): Promise<ApiCtx> => {
     database: {
       ch: initClient(config.clickhouse),
     },
-    // lotus: initLotus(config.lotus),
+    lotus: initLotus(config.lotus),
     auth: {
       sealer: initSealer(config.auth),
       magic: initMagicClient(config.auth),
