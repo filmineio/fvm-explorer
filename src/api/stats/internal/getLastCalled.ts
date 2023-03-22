@@ -6,6 +6,7 @@ import { Transaction } from "@/types/data/Transaction";
 import { ApiCtx } from "@/api/ctx/apiCtx";
 
 export const getLastCalled = async (nwk: Network, ctx: ApiCtx) => {
+  const prefix = nwk === Network.HyperSpace ? "t04" : "f04";
   const data = await ctx.database.ch.data.chain[nwk].query<Transaction>({
     pagination: { limit: 50, offset: 0 },
     order: ["timestamp", "DESC"],
@@ -13,10 +14,10 @@ export const getLastCalled = async (nwk: Network, ctx: ApiCtx) => {
     selection: ["robustFrom", "robustTo"],
     query: [
       {
-        to: { startsWith: nwk === Network.HyperSpace ? "t04" : "f04" },
+        robustTo: { startsWith: prefix },
       },
       {
-        from: { startsWith: nwk === Network.HyperSpace ? "t04" : "f04" },
+        robustFrom: { startsWith: prefix },
       },
     ],
   });
@@ -34,7 +35,7 @@ export const getLastCalled = async (nwk: Network, ctx: ApiCtx) => {
   }, {} as Record<string, number>);
 
   return Object.keys(v)
-    .filter((z) => z.startsWith(nwk === Network.HyperSpace ? "t04" : "f04"))
+    .filter((z) => z.startsWith(prefix))
     .map((z) => ({
       contractAddress: z,
       timestamp: v[z] * 1000,
