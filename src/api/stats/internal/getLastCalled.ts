@@ -7,7 +7,7 @@ import { ApiCtx } from "@/api/ctx/apiCtx";
 
 export const getLastCalled = async (nwk: Network, ctx: ApiCtx) => {
   const prefix = nwk === Network.HyperSpace ? "t4" : "f4";
-  console.log(prefix);
+  // console.log(prefix);
   const data = await ctx.database.ch.data.chain[nwk].query<Transaction>({
     pagination: { limit: 50, offset: 0 },
     order: ["timestamp", "DESC"],
@@ -23,7 +23,7 @@ export const getLastCalled = async (nwk: Network, ctx: ApiCtx) => {
     ],
   });
 
-  console.log(data);
+  // console.log(data);
 
   const v = data.reduce((p, c) => {
     if (c.robustTo && !p[c.robustTo] && c.robustTo.startsWith(prefix)) {
