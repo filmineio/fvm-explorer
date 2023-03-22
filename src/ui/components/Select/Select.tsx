@@ -1,6 +1,8 @@
-import Select from 'react-select';
 import SelectOption from "@/ui/components/Select/SelectOption";
 import clsx from "clsx";
+import dynamic from 'next/dynamic';
+
+const Select = dynamic(() => import('react-select'), { ssr: false });
 
 export type GhostSelectT = <T extends string = string>(props: {
   value: T;

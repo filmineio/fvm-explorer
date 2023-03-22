@@ -8,13 +8,6 @@ export const updateRouteState = (
   push: Router["push"],
   filters: FilterState,
 ) => {
-  // push("/explore");
-  console.log('filters', filters);
-  // push(
-  //   "/explore",
-  //   { query: filters as unknown as ParsedUrlQueryInput },
-  //   { shallow: true }
-  // );
   push({
       pathname: '/explore',
       query: filters as unknown as ParsedUrlQueryInput

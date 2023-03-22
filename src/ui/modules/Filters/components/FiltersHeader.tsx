@@ -26,7 +26,7 @@ export const FiltersHeader = ({
 }) => {
   if (showOnlyNetwork) {
     return (
-      <div className="flex w-full">
+      <div className="flex">
         <CustomSelect
           value={state.network}
           onChange={search}
