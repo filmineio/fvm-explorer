@@ -429,3 +429,35 @@ body .monaco-editor {
 html #nprogress .spinner {
   display: none;
 }
+
+
+.bounce-in-right {
+  animation: bounce-in-right 1.6s ease-in-out forwards;
+}
+@keyframes bounce-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(2000px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-30px);
+  }
+  80% { transform: translateX(10px); }
+  100% { transform: translateX(0); }
+}
+
+.bounce-in-left {
+  animation: bounce-in-left .8s ease-in-out forwards;
+}
+@keyframes bounce-in-left {
+  0% { transform: translateX(0); }
+  20% {
+    opacity: 1;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(2000px);
+  }
+}
