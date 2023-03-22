@@ -63,16 +63,16 @@ export const Header: FC<Props> = ({ filterComponent }) => {
             </a>
           </Link>
           <div className="flex flex-row gap-10 items-center pl-7.5 border-l border-body">
-            <Link href="/">
+            <Link href="/explore">
               <span className="text-14 text-white leading-large font-normal cursor-pointer">
                 Explore
               </span>
             </Link>
-            <Link href="/">
-              <span className="text-14 text-white leading-large font-normal cursor-pointer">
-                GraphQL sandbox
-              </span>
-            </Link>
+            {/*<Link href="/">*/}
+            {/*  <span className="text-14 text-white leading-large font-normal cursor-pointer">*/}
+            {/*    GraphQL sandbox*/}
+            {/*  </span>*/}
+            {/*</Link>*/}
           </div>
         </div>
         {!user && (
