@@ -311,7 +311,7 @@ a.customr.textnone span.onespan {
 }
 
 .react-select.transparent .react-select__single-value {
-  color: #59A9FF;
+  color: theme("colors.white");
 }
 
 .react-select .react-select__dropdown-indicator {
@@ -319,11 +319,11 @@ a.customr.textnone span.onespan {
 }
 
 .react-select.transparent .react-select__dropdown-indicator svg path {
-  fill: #59A9FF;
+  fill: theme("colors.white");
 }
 
 .react-select:not(.transparent) .react-select__dropdown-indicator svg path {
-  fill: #596184;
+  fill: theme("colors.white");
 }
 
 .react-select .react-select__menu .react-select__menu-list {

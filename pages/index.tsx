@@ -127,79 +127,79 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
         <Filters search={requestData} />
         <div>
           <div className="grid grid-cols-6 gap-5">
-            <div className="bg-grayscale_opacity-50 rounded-10 p-4">
-              <h6 className="text-[24px] text-white mb-2">{data.data.ethOverview.numContractsDeployed || <Spinner inline />}</h6>
-              <p className="text-12 mb-0 text-label">contracts deployed</p>
+            <div className="bg-body_opacity-50 rounded-10 p-5">
+              <h6 className="font-space text-24 text-white leading-compact mb-2">{data.data.ethOverview.numContractsDeployed || <Spinner inline />}</h6>
+              <p className="text-12 text-label leading-large mb-0">contracts deployed</p>
             </div>
-            <div className="bg-grayscale_opacity-50 rounded-10 p-4">
-              <h6 className="text-[24px] text-white mb-2">{data.data.ethOverview.numEthAccounts || <Spinner inline />}</h6>
-              <p className="text-12 mb-0 text-label">eth accounts</p>
+            <div className="bg-body_opacity-50 rounded-10 p-5">
+              <h6 className="font-space text-24 text-white leading-compact mb-2">{data.data.ethOverview.numEthAccounts || <Spinner inline />}</h6>
+              <p className="text-12 text-label leading-large mb-0">eth accounts</p>
             </div>
-            <div className="bg-grayscale_opacity-50 rounded-10 p-4">
-              <h6 className="text-[24px] text-white mb-2">{humanReadableSize(parseInt(data.data.overview.totalQualityAdjPower, 10), true, 2, 'B')}</h6>
-              <p className="text-12 mb-0 text-label">storage power</p>
+            <div className="bg-body_opacity-50 rounded-10 p-5">
+              <h6 className="font-space text-24 text-white leading-compact mb-2">{humanReadableSize(parseInt(data.data.overview.totalQualityAdjPower, 10), true, 2, 'B')}</h6>
+              <p className="text-12 text-label leading-large mb-0">storage power</p>
             </div>
-            <div className="bg-grayscale_opacity-50 rounded-10 p-4">
-              <h6 className="text-[24px] text-white mb-2">{data.data.overview.averageRewardPerByte ? roundNumber(data.data.overview.averageRewardPerByte, 2) : <Spinner inline />}</h6>
-              <p className="text-12 mb-0 text-label">avg. mining reward</p>
+            <div className="bg-body_opacity-50 rounded-10 p-5">
+              <h6 className="font-space text-24 text-white leading-compact mb-2">{data.data.overview.averageRewardPerByte ? roundNumber(data.data.overview.averageRewardPerByte, 2) : <Spinner inline />}</h6>
+              <p className="text-12 text-label leading-large mb-0">avg. mining reward</p>
             </div>
-            <div className="bg-grayscale_opacity-50 rounded-10 p-4">
-              <h6 className="text-[24px] text-white mb-2">{data.data.overview.averageTipsetBlocks ? roundNumber(data.data.overview.averageTipsetBlocks, 2) : <Spinner inline />}</h6>
-              <p className="text-12 mb-0 text-label">avg. tipset blocks</p>
+            <div className="bg-body_opacity-50 rounded-10 p-5">
+              <h6 className="font-space text-24 text-white leading-compact mb-2">{data.data.overview.averageTipsetBlocks ? roundNumber(data.data.overview.averageTipsetBlocks, 2) : <Spinner inline />}</h6>
+              <p className="text-12 text-label leading-large mb-0">avg. tipset blocks</p>
             </div>
-            <div className="bg-grayscale_opacity-50 rounded-10 p-4">
-              <h6 className="text-[24px] text-white mb-2">{data.data.overview.dailyMessages ? data.data.overview.dailyMessages : <Spinner inline />}</h6>
-              <p className="text-12 mb-0 text-label">Daily messages</p>
+            <div className="bg-body_opacity-50 rounded-10 p-5">
+              <h6 className="font-space text-24 text-white leading-compact mb-2">{data.data.overview.dailyMessages ? data.data.overview.dailyMessages : <Spinner inline />}</h6>
+              <p className="text-12 text-label leading-large mb-0">Daily messages</p>
             </div>
-            <div className="bg-grayscale_opacity-50 rounded-10 p-4">
-              <h6 className="text-[24px] text-white mb-2">{roundNumber(data.data.ethOverview.avgNumUniqueAddressesInteractingWithContract, 5) || <Spinner inline />}</h6>
-              <p className="text-12 mb-0 text-label">unique addresses interacting per contract</p>
+            <div className="bg-body_opacity-50 rounded-10 p-5">
+              <h6 className="font-space text-24 text-white leading-compact mb-2">{roundNumber(data.data.ethOverview.avgNumUniqueAddressesInteractingWithContract, 5) || <Spinner inline />}</h6>
+              <p className="text-12 text-label leading-large mb-0">unique addresses interacting per contract</p>
             </div>
-            <div className="bg-grayscale_opacity-50 rounded-10 p-4">
-              <h6 className="text-[24px] text-white mb-2">{roundNumber(data.data.ethOverview.avgNumInteractionsPerContract, 2) || <Spinner inline />}</h6>
-              <p className="text-12 mb-0 text-label">interactions per contract</p>
+            <div className="bg-body_opacity-50 rounded-10 p-5">
+              <h6 className="font-space text-24 text-white leading-compact mb-2">{roundNumber(data.data.ethOverview.avgNumInteractionsPerContract, 2) || <Spinner inline />}</h6>
+              <p className="text-12 text-label leading-large mb-0">interactions per contract</p>
             </div>
-            <div className="bg-grayscale_opacity-50 rounded-10 p-4">
-              <h6 className="text-[24px] text-white mb-2">{roundNumber(data.data.ethOverview.avgGasUsagePerContract, 0) || <Spinner inline />}</h6>
-              <p className="text-12 mb-0 text-label">avg. gas usage per contract</p>
+            <div className="bg-body_opacity-50 rounded-10 p-5">
+              <h6 className="font-space text-24 text-white leading-compact mb-2">{roundNumber(data.data.ethOverview.avgGasUsagePerContract, 0) || <Spinner inline />}</h6>
+              <p className="text-12 text-label leading-large mb-0">avg. gas usage per contract</p>
             </div>
-            <div className="bg-grayscale_opacity-50 rounded-10 p-4">
-              <h6 className="text-[24px] text-white mb-2">{data.data.overview.totalPledgeCollateral ? `${roundNumber(+new Big(data.data.overview.totalPledgeCollateral).div(Math.pow(10, 21)), 0)} k Fil` : <Spinner inline />}</h6>
-              <p className="text-12 mb-0 text-label">total pledge collateral</p>
+            <div className="bg-body_opacity-50 rounded-10 p-5">
+              <h6 className="font-space text-24 text-white leading-compact mb-2">{data.data.overview.totalPledgeCollateral ? `${roundNumber(+new Big(data.data.overview.totalPledgeCollateral).div(Math.pow(10, 21)), 0)} k Fil` : <Spinner inline />}</h6>
+              <p className="text-12 text-label leading-large mb-0">total pledge collateral</p>
             </div>
-            <div className="bg-grayscale_opacity-50 rounded-10 p-4">
-              <h6 className="text-[24px] text-white mb-2">{data.data.ethOverview.filTransferredFromContracts ? `${roundNumber(+new Big(data.data.ethOverview.filTransferredFromContracts).div(Math.pow(10, 12)), 0)} tn` : <Spinner inline />}</h6>
-              <p className="text-12 mb-0 text-label">Fil transferred from contracts</p>
+            <div className="bg-body_opacity-50 rounded-10 p-5">
+              <h6 className="font-space text-24 text-white leading-compact mb-2">{data.data.ethOverview.filTransferredFromContracts ? `${roundNumber(+new Big(data.data.ethOverview.filTransferredFromContracts).div(Math.pow(10, 12)), 0)} tn` : <Spinner inline />}</h6>
+              <p className="text-12 text-label leading-large mb-0">Fil transferred from contracts</p>
             </div>
-            <div className="bg-grayscale_opacity-50 rounded-10 p-4">
-              <h6 className="text-[24px] text-white mb-2">{data.data.ethOverview.filTransferredToContracts ? `${roundNumber(parseInt(data.data.ethOverview.filTransferredToContracts.substring(1)) / Math.pow(10, 12), 0)} tn` : <Spinner inline />}</h6>
-              <p className="text-12 mb-0 text-label">Fil transferred to contracts</p>
+            <div className="bg-body_opacity-50 rounded-10 p-5">
+              <h6 className="font-space text-24 text-white leading-compact mb-2">{data.data.ethOverview.filTransferredToContracts ? `${roundNumber(parseInt(data.data.ethOverview.filTransferredToContracts.substring(1)) / Math.pow(10, 12), 0)} tn` : <Spinner inline />}</h6>
+              <p className="text-12 text-label leading-large mb-0">Fil transferred to contracts</p>
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-5 my-7">
-          <div className="col-span-2 bg-grayscale_opacity-50 rounded-10 p-12">
-            <h2 className="text-[24px] text-white mb-7">Latest tipsets</h2>
-            <table className="w-full text-left border-separate border-spacing-y-2">
+        <div className="grid grid-cols-3 gap-5 my-7.5">
+          <div className="col-span-2 bg-body_opacity-50 rounded-10 p-12.5">
+            <h2 className="font-space text-24 text-white leading-compact mb-7.5">Latest tipsets</h2>
+            <table className="w-full text-left border-separate border-spacing-y-2.5 -my-2.5">
               <thead>
                 <tr>
-                  <th className="bg-body text-14 text-white font-bold px-5 py-4 rounded-4004">HEIGHT</th>
-                  <th className="bg-body text-14 text-white font-bold px-5 py-4">BLOCK ID</th>
-                  <th className="bg-body text-14 text-white font-bold px-5 py-4 rounded-0440">MINER</th>
+                  <th className="bg-body text-14 text-white font-bold leading-4 px-5 py-4 rounded-4004">HEIGHT</th>
+                  <th className="bg-body text-14 text-white font-bold leading-4 px-5 py-4">BLOCK ID</th>
+                  <th className="bg-body text-14 text-white font-bold leading-4 px-5 py-4 rounded-0440">MINER</th>
                 </tr>
               </thead>
               <tbody>
                 {data.data.latestTipSets.map((item, index) => (
                   <tr key={`${item.height}-lts-${index}`}>
-                    <td className="bg-body text-14 text-white font-bold px-5 py-4 rounded-4004">{item.height}</td>
-                    <td className="bg-body text-14 text-white font-bold px-5 py-4">
+                    <td className="font-space bg-body_opacity-50 text-16 text-white font-bold leading-compact px-5 py-4 rounded-4004">{item.height}</td>
+                    <td className="bg-body_opacity-50 text-14 text-blue-500 font-bold leading-4 px-5 py-4">
                       {item.blocks.map((blockItem, index) => (
                         <CopyText key={`${blockItem.cid}-ltsbi1-${index}`} text={blockItem.cid}>
-                          <div className="text-blue-500">{truncateString(blockItem.cid, 20)}</div>
+                          <div>{truncateString(blockItem.cid, 20)}</div>
                         </CopyText>
                       ))}
                     </td>
-                    <td className="bg-body text-14 text-white font-bold px-5 py-4 rounded-0440">
+                    <td className="bg-body_opacity-50 text-14 text-white font-normal leading-large px-5 py-4 rounded-0440">
                       {item.blocks.map((blockItem, index) => (
                         <div key={`${blockItem.miner}-ltsbi2-${index}`}>{blockItem.miner}</div>
                       ))}
@@ -209,16 +209,16 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
               </tbody>
             </table>
           </div>
-          <div className="bg-grayscale_opacity-50 rounded-10 p-12">
-            <h2 className="text-[24px] text-white mb-7">Latest called contracts</h2>
+          <div className="bg-body_opacity-50 p-12.5 rounded-10">
+            <h2 className="font-space text-24 text-white leading-compact mb-7.5">Latest called contracts</h2>
             {data.data.latestCalledContracts.slice(0, 5).map((item) => (
-              <div key={`${item.contractAddress}-lcc`} className="bg-grayscale_opacity-50 rounded-10 p-4 flex items-start justify-between mb-4 last:mb-0">
+              <div key={`${item.contractAddress}-lcc`} className="flex items-start justify-between bg-body_opacity-50 p-5 mb-6.25 rounded-10 last:mb-0">
                 <div>
-                  <h6 className="text-[18px] text-white mb-2">{truncateString(item.contractAddress, 14)}</h6>
-                  <p className="text-12 mb-0 text-label">{!init && timePassFromTimestamp(item.timestamp)}</p>
+                  <h6 className="font-space text-18 text-white font-bold leading-compact mb-0">{truncateString(item.contractAddress, 14)}</h6>
+                  <p className="text-12 text-label font-normal leading-large mb-0">{timePassFromTimestamp(item.timestamp)}</p>
                 </div>
                 <Link href={`/explore/contract/${item.contractAddress}`}>
-                  <a className="text-14 font-bold text-blue-400 mt-1">
+                  <a className="text-14 text-blue-400 font-bold leading-4 mt-0.75">
                     View contract
                   </a>
                 </Link>
@@ -226,82 +226,82 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
             ))}
           </div>
         </div>
-        <div className="col-span-2 bg-grayscale_opacity-50 rounded-10 p-12">
-          <h2 className="text-[24px] text-white mb-7">Top storage providers</h2>
-          <table className="w-full text-left border-separate border-spacing-y-2">
+        <div className="bg-body_opacity-50 rounded-10 p-12.5">
+          <h2 className="font-space text-24 text-white leading-compact mb-7.5">Top storage providers</h2>
+          <table className="w-full text-left border-separate border-spacing-y-2.5 -my-2.5">
             <thead>
               <tr>
-                <th className="bg-body text-14 text-white font-bold px-5 py-4 rounded-4004">RANK</th>
-                <th className="bg-body text-14 text-white font-bold px-5 py-4">MINER</th>
-                <th className="bg-body text-14 text-white font-bold px-5 py-4">RAW POWER</th>
-                <th className="bg-body text-14 text-white font-bold px-5 py-4">24H REWARD</th>
-                <th className="bg-body text-14 text-white font-bold px-5 py-4 rounded-0440">MINING EFFICIENCY</th>
+                <th className="bg-body text-14 text-white font-bold leading-4 px-5 py-4 rounded-4004">RANK</th>
+                <th className="bg-body text-14 text-white font-bold leading-4 px-5 py-4">MINER</th>
+                <th className="bg-body text-14 text-white font-bold leading-4 px-5 py-4">RAW POWER</th>
+                <th className="bg-body text-14 text-white font-bold leading-4 px-5 py-4">24H REWARD</th>
+                <th className="bg-body text-14 text-white font-bold leading-4 px-5 py-4 rounded-0440">MINING EFFICIENCY</th>
               </tr>
             </thead>
             <tbody>
               {data.data.topMiners.map((item, index) => (
                 <tr key={`${item.address}-lts-${index}`}>
-                  <td className="bg-body text-14 text-white font-bold px-5 py-4 rounded-4004">
+                  <td className="bg-body_opacity-50 font-space text-18 text-white font-bold leading-compact px-5 py-4 rounded-4004">
                     <span className="flex items-center">
                       {index + 1}
-                      <span className="ml-2">{index < 3 && <Crown />}</span>
+                      <span className="ml-2.5 -mt-0.5">{index < 3 && <Crown />}</span>
                     </span>
                   </td>
-                  <td className="bg-body text-14 text-white font-bold px-5 py-4">{item.address}</td>
-                  <td className="bg-body text-14 text-white font-bold px-5 py-4">{humanReadableSize(parseInt(item.rawBytePower, 10), false, 2, 'B')}</td>
-                  <td className="bg-body text-14 text-white font-bold px-5 py-4">{item.totalRewards ? roundNumber(+new Big(item.totalRewards).div(10 ** 18)) : <Spinner inline />}</td>
-                  <td className="bg-body text-14 text-white font-bold px-5 py-4 rounded-0440">{
+                  <td className="bg-body_opacity-50 text-14 text-white font-normal leading-large px-5 py-4">{item.address}</td>
+                  <td className="bg-body_opacity-50 text-14 text-white font-normal leading-large px-5 py-4">{humanReadableSize(parseInt(item.rawBytePower, 10), false, 2, 'B')}</td>
+                  <td className="bg-body_opacity-50 text-14 text-white font-normal leading-large px-5 py-4">{item.totalRewards ? roundNumber(+new Big(item.totalRewards).div(10 ** 18)) : <Spinner inline />}</td>
+                  <td className="bg-body_opacity-50 text-14 text-white font-normal leading-large px-5 py-4 rounded-0440">{
                     item.totalRewards && item.qualityAdjPower && item.weightedBlocksMined ? (+new Big(item.totalRewards) / (+new Big(item.qualityAdjPower).times(item.weightedBlocksMined))) : <Spinner inline />}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-        <div className="grid grid-cols-2 gap-5 my-7">
-          <div className="bg-grayscale_opacity-50 rounded-10 p-12">
-            <h2 className="text-[24px] text-white mb-7">Latest transactions</h2>
+        <div className="grid grid-cols-2 gap-5 mt-7.5 mb-12.5">
+          <div className="bg-body_opacity-50 rounded-10 p-12.5">
+            <h2 className="text-24 text-white leading-compact mb-7.5">Latest transactions</h2>
             {data.data.latestTransactions.slice(0, 4).map((item) => (
-              <div key={`${item.cid}-lts`} className="bg-grayscale_opacity-50 rounded-10 p-4 flex items-start justify-between mb-4 last:mb-0">
+              <div key={`${item.cid}-lts`} className="flex items-start justify-between bg-body_opacity-50 rounded-4 p-5 mb-4 last:mb-0">
                 <div>
                   <Link href={`/explore/${Entity.Transaction}/${item.cid}?network=${network}`}>
                     <a>
-                      <h6 className="text-[18px] text-blue-400 mb-2">{truncateString(item.cid, 20)}</h6>
+                      <h6 className="font-space text-18 text-white leading-compact mb-0">{truncateString(item.cid, 20)}</h6>
                     </a>
                   </Link>
-                  <p className="text-12 mb-0 text-label">{item.timestamp}</p>
+                  <p className="text-12 text-label leading-large mb-0">{item.timestamp}</p>
                 </div>
-                <p className="text-white">
+                <p className="font-space text-18 text-blue-500 font-bold">
                   {item.value && roundNumber(+new Big(item.value).div(10 ** 18))}
                   {item.value === '0' && '0'} Fil
                 </p>
               </div>
             ))}
           </div>
-          <div className="bg-grayscale_opacity-50 rounded-10 p-12">
-            <h2 className="text-[24px] text-white mb-5">Rich list</h2>
-            <table className="w-full text-left border-separate border-spacing-y-2">
+          <div className="bg-body_opacity-50 rounded-10 p-12.5">
+            <h2 className="text-24 text-white leading-compact mb-7.5">Rich list</h2>
+            <table className="w-full text-left border-separate border-spacing-y-2.5 -my-2.5">
               <thead>
                 <tr>
-                  <th className="bg-body text-14 text-white font-bold px-5 py-4 rounded-4004">RANK</th>
-                  <th className="bg-body text-14 text-white font-bold px-5 py-4">ADDRESS</th>
-                  <th className="bg-body text-14 text-white font-bold px-5 py-4 rounded-0440">BALANCE</th>
+                  <th className="bg-body text-14 text-white font-bold leading-4 px-5 py-4 rounded-4004">RANK</th>
+                  <th className="bg-body text-14 text-white font-bold leading-4 px-5 py-4">ADDRESS</th>
+                  <th className="bg-body text-14 text-white font-bold leading-4 px-5 py-4 rounded-0440">BALANCE</th>
                 </tr>
               </thead>
               <tbody>
                 {data.data.richList.map((item, index) => (
                   <tr key={`${item.address}-lts-${index}`}>
-                    <td className="bg-body text-14 text-white font-bold px-5 py-4 rounded-4004">
+                    <td className="bg-body_opacity-50 font-space text-18 text-white font-bold leading-compact px-5 py-4 rounded-4004">
                       <span className="flex items-center">
                         {index + 1}
-                        <span className="ml-2">{index < 3 && <Crown />}</span>
+                        <span className="ml-2.5 -mt-0.5">{index < 3 && <Crown />}</span>
                       </span>
                     </td>
-                    <td className="bg-body text-14 text-white font-bold px-5 py-4">
+                    <td className="bg-body_opacity-50 text-14 text-white font-normal leading-large px-5 py-4">
                       <CopyText text={item.address}>
                         <span>{truncateString(item.address, 20)}</span>
                       </CopyText>
                     </td>
-                    <td className="bg-body text-14 text-white font-bold px-5 py-4 rounded-0440">{item.balance.substring(0, item.balance.length - 18)} Fil</td>
+                    <td className="bg-body_opacity-50 text-14 text-white font-normal leading-large px-5 py-4 rounded-0440">{item.balance.substring(0, item.balance.length - 18)} Fil</td>
                   </tr>
                 ))}
               </tbody>
