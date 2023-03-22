@@ -6,7 +6,7 @@ import { AuthUtils, authUtils } from "@/api/ctx/auth/utils";
 import { apiConfig } from "@/api/ctx/config/config";
 import { ClickhouseDB, initClient } from "@/api/ctx/database/clickhouse";
 import { Kafka, initKafka } from "@/api/ctx/kafka";
-import { initLotus, Lotus } from "@/api/ctx/lotus";
+import { Lotus, initLotus } from "@/api/ctx/lotus";
 
 export type ApiCtx = {
   version: string;
