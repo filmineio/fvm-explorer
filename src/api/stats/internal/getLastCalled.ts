@@ -34,10 +34,8 @@ export const getLastCalled = async (nwk: Network, ctx: ApiCtx) => {
     return p;
   }, {} as Record<string, number>);
 
-  return Object.keys(v)
-    .filter((z) => z.startsWith(prefix))
-    .map((z) => ({
-      contractAddress: z,
-      timestamp: v[z] * 1000,
-    }));
+  return Object.keys(v).map((z) => ({
+    contractAddress: z,
+    timestamp: v[z] * 1000,
+  }));
 };
