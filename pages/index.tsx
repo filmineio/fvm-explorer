@@ -22,7 +22,7 @@ import { isEnum } from "@/utils/isEnum";
 import { Spinner } from "@/ui/components/Spinner/Spinner";
 import Link from "next/link";
 import Big from "big.js";
-import { humanReadableSize, roundNumber, timePassFromTimestamp, truncateString } from "@/ui/utils/general";
+import { humanReadableSize, roundNumber, truncateString } from "@/ui/utils/general";
 import CopyText from "@/ui/components/CopyText/CopyText";
 import Crown from "@/ui/components/Common/Icons/Crown";
 import { Entity } from "@/enums/Entity";
@@ -214,7 +214,7 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
               <div key={`${item.contractAddress}-lcc`} className="flex items-start justify-between bg-body_opacity-50 p-5 mb-6.25 rounded-10 last:mb-0">
                 <div>
                   <h6 className="font-space text-18 text-white font-bold leading-compact mb-0">{truncateString(item.contractAddress, 14)}</h6>
-                  <p className="text-12 text-label font-normal leading-large mb-0">{!init && timePassFromTimestamp(item.timestamp)}</p>
+                  {/*<p className="text-12 text-label font-normal leading-large mb-0">{!init && timePassFromTimestamp(item.timestamp)}</p>*/}
                 </div>
                 <Link href={`/explore/contract/${item.contractAddress}`}>
                   <a className="text-14 text-blue-400 font-bold leading-4 mt-0.75">

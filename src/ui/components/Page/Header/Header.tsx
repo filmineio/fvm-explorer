@@ -31,12 +31,12 @@ export const Header: FC<Props> = ({ filterComponent }) => {
       <div className="">
         <div className="flex items-center justify-between px-10">
           <div className="flex items-center gap-5">
-            <span className="text-label text-12 font-bold leading-large">
-              network storage power
-            </span>
-            <span className="text-white text-12 font-normal leading-large">
-              19.165 EiB
-            </span>
+            {/*<span className="text-label text-12 font-bold leading-large">*/}
+            {/*  network storage power*/}
+            {/*</span>*/}
+            {/*<span className="text-white text-12 font-normal leading-large">*/}
+            {/*  19.165 EiB*/}
+            {/*</span>*/}
           </div>
           <div className="flex items-center">
             <div className="mr-1.5">
