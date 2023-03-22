@@ -6,7 +6,7 @@ import { AuthUtils, authUtils } from "@/api/ctx/auth/utils";
 import { apiConfig } from "@/api/ctx/config/config";
 import { ClickhouseDB, initClient } from "@/api/ctx/database/clickhouse";
 import { Kafka, initKafka } from "@/api/ctx/kafka";
-import { Lotus, initLotus } from "@/api/ctx/lotus";
+import { Lotus } from "@/api/ctx/lotus";
 
 export type ApiCtx = {
   version: string;
@@ -33,7 +33,7 @@ export const getCtx = async (config = apiConfig()): Promise<ApiCtx> => {
     database: {
       ch: initClient(config.clickhouse),
     },
-    lotus: initLotus(config.lotus),
+    // lotus: initLotus(config.lotus),
     auth: {
       sealer: initSealer(config.auth),
       magic: initMagicClient(config.auth),
