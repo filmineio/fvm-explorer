@@ -211,13 +211,13 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
           <div className="bg-body_opacity-50 p-12.5 rounded-10">
             <h2 className="font-space text-24 text-white leading-compact mb-7.5">Latest called contracts</h2>
             {data.data.latestCalledContracts.slice(0, 5).map((item) => (
-              <div key={`${item.contractAddress}-lcc`} className="flex items-start justify-between bg-body_opacity-50 p-5 mb-6.25 rounded-10 last:mb-0">
-                <div>
+              <div key={`${item.contractAddress}-lcc`} className="flex items-start flex-wrap justify-between bg-body_opacity-50 px-5 py-4 mb-6.25 rounded-10 last:mb-0">
+                <div className="py-1 w-[170px]">
                   <h6 className="font-space text-18 text-white font-bold leading-compact mb-0">{truncateString(item.contractAddress, 14)}</h6>
                   {/*<p className="text-12 text-label font-normal leading-large mb-0">{!init && timePassFromTimestamp(item.timestamp)}</p>*/}
                 </div>
                 <Link href={`/explore/contract/${item.contractAddress}`}>
-                  <a className="text-14 text-blue-400 font-bold leading-4 mt-0.75">
+                  <a className="text-14 text-blue-400 font-bold leading-4 mt-0.75 py-1">
                     View contract
                   </a>
                 </Link>
@@ -278,33 +278,35 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
           </div>
           <div className="bg-body_opacity-50 rounded-10 p-12.5">
             <h2 className="text-24 text-white leading-compact mb-7.5">Rich list</h2>
-            <table className="w-full text-left border-separate border-spacing-y-2.5 -my-2.5">
-              <thead>
-                <tr>
-                  <th className="bg-body text-14 text-white font-bold leading-4 px-5 py-4 rounded-4004">RANK</th>
-                  <th className="bg-body text-14 text-white font-bold leading-4 px-5 py-4">ADDRESS</th>
-                  <th className="bg-body text-14 text-white font-bold leading-4 px-5 py-4 rounded-0440">BALANCE</th>
-                </tr>
-              </thead>
-              <tbody>
-                {data.data.richList.map((item, index) => (
-                  <tr key={`${item.address}-lts-${index}`}>
-                    <td className="bg-body_opacity-50 font-space text-18 text-white font-bold leading-compact px-5 py-4 rounded-4004">
+            <div className="overflow-x-auto overflow-y-hidden">
+              <table className="w-full text-left border-separate border-spacing-y-2.5 -my-2.5">
+                <thead>
+                  <tr>
+                    <th className="bg-body text-14 text-white font-bold leading-4 px-5 py-4 rounded-4004">RANK</th>
+                    <th className="bg-body text-14 text-white font-bold leading-4 px-5 py-4">ADDRESS</th>
+                    <th className="bg-body text-14 text-white font-bold leading-4 px-5 py-4 rounded-0440">BALANCE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.data.richList.map((item, index) => (
+                    <tr key={`${item.address}-lts-${index}`}>
+                      <td className="bg-body_opacity-50 font-space text-18 text-white font-bold leading-compact px-5 py-4 rounded-4004">
                       <span className="flex items-center">
                         {index + 1}
                         <span className="ml-2.5 -mt-0.5">{index < 3 && <Crown />}</span>
                       </span>
-                    </td>
-                    <td className="bg-body_opacity-50 text-14 text-white font-normal leading-large px-5 py-4">
-                      <CopyText text={item.address}>
-                        <span>{truncateString(item.address, 20)}</span>
-                      </CopyText>
-                    </td>
-                    <td className="bg-body_opacity-50 text-14 text-white font-normal leading-large px-5 py-4 rounded-0440">{item.balance.substring(0, item.balance.length - 18)} Fil</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                      </td>
+                      <td className="bg-body_opacity-50 text-14 text-white font-normal leading-large px-5 py-4">
+                        <CopyText text={item.address}>
+                          <span>{truncateString(item.address, 20)}</span>
+                        </CopyText>
+                      </td>
+                      <td className="bg-body_opacity-50 text-14 text-white font-normal leading-large px-5 py-4 rounded-0440">{item.balance.substring(0, item.balance.length - 18)} Fil</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </Main>
