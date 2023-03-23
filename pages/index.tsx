@@ -33,6 +33,7 @@ import classNames from "classnames";
 import { availableFilters, availableNetworks } from "@/ui/modules/Filters/state/state";
 import Input from "@/ui/components/Input/Input";
 import { AdvancedFiltersState } from "@/ui/state/types/AppState";
+import SearchBackgroundIcon from "@/ui/components/Common/Icons/SearchBackgroundIcon";
 
 type ApplicationData = {
   data:
@@ -133,22 +134,25 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
         </div>}
       />
       <Main>
-        <div className="flex justify-between gap-5 pt-5 pb-8">
-          <div className="flex items-center flex-1 justify-center bg-slate rounded-4">
-            <div className="input-group relative flex md:flex-wrap gap-4 items-stretch w-full rounded-4 border-none"> {/* border-2 border-transparent hover:border-label focus:border-blue-400 */}
-              <Input
-                className="xl:w-96 form-control relative flex-auto bg-slate block w-full px-5 py-4 text-14 font-medium font-roboto text-white transition ease-in-out m-0 rounded-4 outline-none border-2 border-body hover:border-label focus:border-label"
-                placeholder="Search"
-                handleChange={change}
-                value={filters.filterValue}
-              />
-            </div>
+        <div className="relative bg-body_opacity-50 rounded-10 py-20 px-12.5 my-7.5 overflow-hidden">
+          <div className="absolute left-0 top-0">
+            <SearchBackgroundIcon/>
           </div>
-          <div className="flex gap-3 mr-5 items-center">
-          <span className="inline-block text-label form-check-label text-14 font-medium">
-            search in
-          </span>
-            <div className="w-36">
+          <div className="relative font-space text-white text-28 leading-compact font-bold mb-10 z-20">
+            Filecoin contracts explorer
+          </div>
+          <div className="flex justify-between gap-5">
+            <div className="flex items-center flex-1 justify-center bg-slate rounded-4">
+              <div className="input-group relative flex md:flex-wrap gap-4 items-stretch w-full rounded-4 border-none"> {/* border-2 border-transparent hover:border-label focus:border-blue-400 */}
+                <Input
+                  className="xl:w-96 form-control relative flex-auto bg-slate block w-full px-5 py-4 text-14 font-medium font-roboto text-white transition ease-in-out m-0 rounded-4 outline-none border-2 border-body hover:border-label focus:border-label"
+                  placeholder="Search by Address/Txn hash/Block..."
+                  handleChange={change}
+                  value={filters.filterValue}
+                />
+              </div>
+            </div>
+            <div className="flex items-center bg-slate rounded-4 border-2 border-body px-2.5">
               <CustomSelect
                 value={filters.filteredBy}
                 onChange={change}
@@ -156,13 +160,13 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
                 selectType="transparent"
               />
             </div>
+            <button
+              className="btn border-2 border-blue-400 text-blue-400 hover:text-blue-500 hover:border-blue-500 active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all"
+              onClick={() => requestData()}
+            >
+              SEARCH
+            </button>
           </div>
-          <button
-            className="btn border-2 border-blue-400 text-blue-400 hover:text-blue-500 hover:border-blue-500 active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all"
-            onClick={() => requestData()}
-          >
-            SEARCH
-          </button>
         </div>
         <div>
           <div className="grid grid-cols-6 gap-5">

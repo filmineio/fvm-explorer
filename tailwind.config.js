@@ -145,6 +145,7 @@ module.exports = {
         3.75: "15px",
         7.5: "30px",
         12.5: "50px",
+        37.5: "150px",
       },
 
       boxShadow: {
