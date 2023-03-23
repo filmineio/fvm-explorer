@@ -32,6 +32,7 @@ import { getData } from "@/ui/modules/Filters/filtersUtils";
 import { Header } from "@/ui/components/Page/Header/Header";
 import { CustomSelect } from "@/ui/components/Select/Select";
 import { availableNetworks } from "@/ui/modules/Filters/state/state";
+import classNames from "classnames";
 
 type ApplicationData = {
   data:
@@ -57,6 +58,7 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
   const requestData = useCallback(getData(router.push, filters), [filters, get]);
   const [init, setInit] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [hoveredTransaction, setHoveredTransaction] = useState(-1);
 
   useEffect(() => {
     if (init) {
@@ -259,20 +261,27 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
         <div className="grid grid-cols-2 gap-5 mt-7.5 mb-12.5">
           <div className="bg-body_opacity-50 rounded-10 p-12.5">
             <h2 className="text-24 text-white leading-compact mb-7.5">Latest transactions</h2>
-            {data.data.latestTransactions.slice(0, 4).map((item) => (
-              <div key={`${item.cid}-lts`} className="flex items-start justify-between bg-body_opacity-50 rounded-4 p-5 mb-4 last:mb-0">
-                <div>
-                  <Link href={`/explore/${Entity.Transaction}/${item.cid}?network=${network}`}>
-                    <a>
+            {data.data.latestTransactions.slice(0, 4).map((item, index) => (
+              <div key={`${item.cid}-lts`}
+                   className="mb-4"
+                   onMouseEnter={() => setHoveredTransaction(index)}
+                   onMouseLeave={() => setHoveredTransaction(-1)}
+              >
+                <Link href={`/explore/${Entity.Transaction}/${item.cid}?network=${network}`}>
+                  <a className={classNames("flex items-start justify-between bg-body_opacity-50 rounded-4 border p-5 last:mb-0", {
+                    "border-blue-500":    index === hoveredTransaction,
+                    "border-transparent": index !== hoveredTransaction
+                  })}>
+                    <div>
                       <h6 className="font-space text-18 text-white leading-compact mb-0">{truncateString(item.cid, 20)}</h6>
-                    </a>
-                  </Link>
-                  <p className="text-12 text-label leading-large mb-0">{item.timestamp}</p>
-                </div>
-                <p className="font-space text-18 text-blue-500 font-bold">
-                  {item.value && roundNumber(+new Big(item.value).div(10 ** 18))}
-                  {item.value === '0' && '0'} Fil
-                </p>
+                      <p className="text-12 text-label leading-large mb-0">{item.timestamp}</p>
+                    </div>
+                    <p className="font-space text-18 text-blue-500 font-bold">
+                      {item.value && roundNumber(+new Big(item.value).div(10 ** 18))}
+                      {item.value === '0' && '0'} Fil
+                    </p>
+                  </a>
+                </Link>
               </div>
             ))}
           </div>
