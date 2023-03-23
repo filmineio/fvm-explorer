@@ -132,16 +132,17 @@ export const VerifyContract = ({
   }, [sourceCid, uploading, progress]);
 
   useEffect(() => {
-    setShowClaimContract(true);
     setLoaded(true);
+    setShowClaimContract(true);
   }, []);
 
   return (
     <>
       <div className={
-        clsx("fixed right-5 z-10 bottom-5 bg-blue-500 p-10 rounded-6 w-[480px] max-w-full shadow-[-4px_-4px_16px_0px_rgba(0,0,0,0.2)] transition-all duration-75 opacity-0",
+        clsx("fixed right-5 z-10 bottom-5 bg-blue-500 p-10 rounded-6 w-[480px] max-w-full shadow-[-4px_-4px_16px_0px_rgba(0,0,0,0.2)] transform translate-y-[1000px]",
+          {['opacity-0']: !loaded},
           {['opacity-100']: loaded},
-          {['bounce-in-left']: !showClaimContract},
+          {['bounce-in-left']: loaded && !showClaimContract},
           {['bounce-in-right']: showClaimContract})
         }
       >
