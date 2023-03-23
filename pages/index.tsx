@@ -59,7 +59,6 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
   const requestData = useCallback(getData(router.push, filters), [filters, get]);
   const [init, setInit] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [hoveredContract, setHoveredContract] = useState(-1);
 
   useEffect(() => {
     if (init) {
@@ -262,25 +261,16 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
           <div className="bg-body_opacity-50 p-12.5 rounded-10">
             <h2 className="font-space text-24 text-white leading-compact mb-7.5">Latest called contracts</h2>
             {data.data.latestCalledContracts.slice(0, 5).map((item, index) => (
-              <div key={`${item.contractAddress}-lcc`}
-                   className="mb-4 last:mb-0"
-                   onMouseEnter={() => setHoveredContract(index)}
-                   onMouseLeave={() => setHoveredContract(-1)}
-              >
+              <div key={`${item.contractAddress}-lcc`} className="mb-4 last:mb-0 group">
                 <Link href={`/explore/contract/${item.contractAddress}`}>
-                  <a className={classNames("flex items-start flex-wrap justify-between bg-body_opacity-50 px-5 py-4 rounded-4 border", {
-                    "border-blue-500":    index === hoveredContract,
-                    "border-transparent": index !== hoveredContract
-                  })}>
+                  <a className="flex items-start flex-wrap justify-between bg-body_opacity-50 px-5 py-4 rounded-4 border border-transparent group-hover:border-blue-500">
                     <div className="py-1 w-[170px]">
                       <h6 className="font-space text-18 text-white font-bold leading-compact mb-0">{truncateString(item.contractAddress, 14)}</h6>
                       {/*<p className="text-12 text-label font-normal leading-large mb-0">{!init && timePassFromTimestamp(item.timestamp)}</p>*/}
                     </div>
-                    {index === hoveredContract && (
-                      <span className="text-14 text-blue-400 font-bold leading-4 mt-0.75 py-1">
-                        View contract
-                     </span>
-                    )}
+                    <span className="text-14 text-blue-400 opacity-0 font-bold leading-4 mt-0.75 py-1 group-hover:opacity-100 transition-all duration-200">
+                      View contract
+                    </span>
                   </a>
                 </Link>
               </div>
