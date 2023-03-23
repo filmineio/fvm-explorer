@@ -59,8 +59,7 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
   const requestData = useCallback(getData(router.push, filters), [filters, get]);
   const [init, setInit] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [hoveredTransaction, setHoveredTransaction] = useState(-1);
-  const [hoveredContract,    setHoveredContract]    = useState(-1);
+  const [hoveredContract, setHoveredContract] = useState(-1);
 
   useEffect(() => {
     if (init) {
@@ -322,17 +321,10 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
         <div className="grid grid-cols-2 gap-5 mt-7.5 mb-12.5">
           <div className="bg-body_opacity-50 rounded-10 p-12.5">
             <h2 className="text-24 text-white leading-compact mb-7.5">Latest transactions</h2>
-            {data.data.latestTransactions.slice(0, 4).map((item, index) => (
-              <div key={`${item.cid}-lts`}
-                   className="mb-4 last:mb-0"
-                   onMouseEnter={() => setHoveredTransaction(index)}
-                   onMouseLeave={() => setHoveredTransaction(-1)}
-              >
+            {data.data.latestTransactions.slice(0, 4).map((item) => (
+              <div key={`${item.cid}-lts`} className="mb-4 last:mb-0">
                 <Link href={`/explore/${Entity.Transaction}/${item.cid}?network=${network}`}>
-                  <a className={classNames("flex items-start justify-between bg-body_opacity-50 p-5 rounded-4 border", {
-                    "border-blue-500":    index === hoveredTransaction,
-                    "border-transparent": index !== hoveredTransaction
-                  })}>
+                  <a className="flex items-start justify-between bg-body_opacity-50 p-5 rounded-4 border border-transparent hover:border-blue-500">
                     <div>
                       <h6 className="font-space text-18 text-white leading-compact mb-0">{truncateString(item.cid, 20)}</h6>
                       <p className="text-12 text-label leading-large mb-0">{item.timestamp}</p>
