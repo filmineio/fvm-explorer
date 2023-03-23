@@ -133,8 +133,8 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
         </div>}
       />
       <Main>
-        <div className="relative bg-body_opacity-50 rounded-10 py-20 px-12.5 my-7.5 overflow-hidden">
-          <div className="absolute left-0 top-0">
+        <div className="relative bg-body_opacity-50 rounded-10 py-20 px-12.5 my-7.5">
+          <div className="absolute left-0 top-0 overflow-hidden rounded-10">
             <SearchBackgroundIcon/>
           </div>
           <div className="relative font-space text-white text-28 leading-compact font-bold mb-10 z-20">
@@ -268,7 +268,7 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
                    onMouseLeave={() => setHoveredContract(-1)}
               >
                 <Link href={`/explore/contract/${item.contractAddress}`}>
-                  <a className={classNames("flex items-start flex-wrap justify-between bg-body_opacity-50 px-5 py-4 rounded-10 border", {
+                  <a className={classNames("flex items-start flex-wrap justify-between bg-body_opacity-50 px-5 py-4 rounded-4 border", {
                     "border-blue-500":    index === hoveredContract,
                     "border-transparent": index !== hoveredContract
                   })}>
