@@ -7,8 +7,6 @@ import { useCallback, useEffect, useState } from "react";
 import { Main } from "@/ui/components/Main/Main";
 import { Page } from "@/ui/components/Page/Page";
 
-import { Filters } from "@/ui/modules/Filters/Filters";
-
 import { useStore } from "@/ui/state/Store";
 
 import { getHttpClient } from "@/ui/ctx/http/getHttpClient";
@@ -31,7 +29,9 @@ import { useDataClient } from "@/ui/external/data";
 import { getData } from "@/ui/modules/Filters/filtersUtils";
 import { Header } from "@/ui/components/Page/Header/Header";
 import { CustomSelect } from "@/ui/components/Select/Select";
-import { availableNetworks } from "@/ui/modules/Filters/state/state";
+import { availableFilters, availableNetworks } from "@/ui/modules/Filters/state/state";
+import Input from "@/ui/components/Input/Input";
+import { AdvancedFiltersState } from "@/ui/state/types/AppState";
 
 type ApplicationData = {
   data:
@@ -82,6 +82,13 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
     if (loading) setLoading(false);
   }, [data]);
 
+  const change = useCallback(
+    (v: string | AdvancedFiltersState) => {
+      mod(setFiltersValueTransformer(v));
+    },
+    [mod]
+  );
+
   if (!data || data.status === OperationStatus.Error) {
     return (
       <Page showHeader={false} showFooter>
@@ -123,7 +130,37 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
         </div>}
       />
       <Main>
-        <Filters search={requestData} />
+        <div className="flex justify-between gap-5 pt-5 pb-8">
+          <div className="flex items-center flex-1 justify-center bg-slate rounded-4">
+            <div className="input-group relative flex md:flex-wrap gap-4 items-stretch w-full rounded-4 border-none"> {/* border-2 border-transparent hover:border-label focus:border-blue-400 */}
+              <Input
+                className="xl:w-96 form-control relative flex-auto bg-slate block w-full px-5 py-4 text-14 font-medium font-roboto text-white transition ease-in-out m-0 rounded-4 outline-none border-2 border-body hover:border-label focus:border-label"
+                placeholder="Search"
+                handleChange={change}
+                value={filters.filterValue}
+              />
+            </div>
+          </div>
+          <div className="flex gap-3 mr-5 items-center">
+          <span className="inline-block text-label form-check-label text-14 font-medium">
+            search in
+          </span>
+            <div className="w-36">
+              <CustomSelect
+                value={filters.filteredBy}
+                onChange={change}
+                values={availableFilters}
+                selectType="transparent"
+              />
+            </div>
+          </div>
+          <button
+            className="btn border-2 border-blue-400 text-blue-400 hover:text-blue-500 hover:border-blue-500 active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all"
+            onClick={() => requestData()}
+          >
+            SEARCH
+          </button>
+        </div>
         <div>
           <div className="grid grid-cols-6 gap-5">
             <div className="bg-body_opacity-50 rounded-10 p-5">
