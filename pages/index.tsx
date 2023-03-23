@@ -193,17 +193,25 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
               <tbody>
                 {data.data.latestTipSets.map((item, index) => (
                   <tr key={`${item.height}-lts-${index}`}>
-                    <td className="font-space bg-body_opacity-50 text-16 text-white font-bold leading-compact px-5 py-4 rounded-4004">{item.height}</td>
+                    <td className="bg-body_opacity-50 px-5 py-4 rounded-4004">
+                      <span className="font-space text-16 text-white font-bold leading-compact">
+                        {item.height}
+                      </span>
+                    </td>
                     <td className="bg-body_opacity-50 text-14 text-blue-500 font-bold leading-4 px-5 py-4">
                       {item.blocks.map((blockItem, index) => (
-                        <CopyText key={`${blockItem.cid}-ltsbi1-${index}`} text={blockItem.cid}>
-                          <div>{truncateString(blockItem.cid, 20)}</div>
-                        </CopyText>
+                        <div key={`${blockItem.cid}-ltsbi1-${index}`} className="mb-3 last:mb-0">
+                          <CopyText text={blockItem.cid}>
+                            <div>{truncateString(blockItem.cid, 20)}</div>
+                          </CopyText>
+                        </div>
                       ))}
                     </td>
                     <td className="bg-body_opacity-50 text-14 text-white font-normal leading-large px-5 py-4 rounded-0440">
                       {item.blocks.map((blockItem, index) => (
-                        <div key={`${blockItem.miner}-ltsbi2-${index}`}>{blockItem.miner}</div>
+                        <div key={`${blockItem.miner}-ltsbi2-${index}`} className="mb-1.5 last:mb-0">
+                          {blockItem.miner}
+                        </div>
                       ))}
                     </td>
                   </tr>
