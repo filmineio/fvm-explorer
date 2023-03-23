@@ -223,7 +223,7 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
             <h2 className="font-space text-24 text-white leading-compact mb-7.5">Latest called contracts</h2>
             {data.data.latestCalledContracts.slice(0, 5).map((item, index) => (
               <div key={`${item.contractAddress}-lcc`}
-                   className="mb-6.25 last:mb-0"
+                   className="mb-4 last:mb-0"
                    onMouseEnter={() => setHoveredContract(index)}
                    onMouseLeave={() => setHoveredContract(-1)}
               >
@@ -236,7 +236,7 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
                       <h6 className="font-space text-18 text-white font-bold leading-compact mb-0">{truncateString(item.contractAddress, 14)}</h6>
                       {/*<p className="text-12 text-label font-normal leading-large mb-0">{!init && timePassFromTimestamp(item.timestamp)}</p>*/}
                     </div>
-                    {hoveredContract && (
+                    {index === hoveredContract && (
                       <span className="text-14 text-blue-400 font-bold leading-4 mt-0.75 py-1">
                         View contract
                      </span>
