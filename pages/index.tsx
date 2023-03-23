@@ -59,6 +59,7 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
   const [init, setInit] = useState(true);
   const [loading, setLoading] = useState(false);
   const [hoveredTransaction, setHoveredTransaction] = useState(-1);
+  const [hoveredContract,    setHoveredContract]    = useState(-1);
 
   useEffect(() => {
     if (init) {
@@ -212,15 +213,26 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
           </div>
           <div className="bg-body_opacity-50 p-12.5 rounded-10">
             <h2 className="font-space text-24 text-white leading-compact mb-7.5">Latest called contracts</h2>
-            {data.data.latestCalledContracts.slice(0, 5).map((item) => (
-              <div key={`${item.contractAddress}-lcc`} className="flex items-start flex-wrap justify-between bg-body_opacity-50 px-5 py-4 mb-6.25 rounded-10 last:mb-0">
-                <div className="py-1 w-[170px]">
-                  <h6 className="font-space text-18 text-white font-bold leading-compact mb-0">{truncateString(item.contractAddress, 14)}</h6>
-                  {/*<p className="text-12 text-label font-normal leading-large mb-0">{!init && timePassFromTimestamp(item.timestamp)}</p>*/}
-                </div>
+            {data.data.latestCalledContracts.slice(0, 5).map((item, index) => (
+              <div key={`${item.contractAddress}-lcc`}
+                   className="mb-6.25 last:mb-0"
+                   onMouseEnter={() => setHoveredContract(index)}
+                   onMouseLeave={() => setHoveredContract(-1)}
+              >
                 <Link href={`/explore/contract/${item.contractAddress}`}>
-                  <a className="text-14 text-blue-400 font-bold leading-4 mt-0.75 py-1">
-                    View contract
+                  <a className={classNames("flex items-start flex-wrap justify-between bg-body_opacity-50 px-5 py-4 rounded-10 border", {
+                    "border-blue-500":    index === hoveredContract,
+                    "border-transparent": index !== hoveredContract
+                  })}>
+                    <div className="py-1 w-[170px]">
+                      <h6 className="font-space text-18 text-white font-bold leading-compact mb-0">{truncateString(item.contractAddress, 14)}</h6>
+                      {/*<p className="text-12 text-label font-normal leading-large mb-0">{!init && timePassFromTimestamp(item.timestamp)}</p>*/}
+                    </div>
+                    {hoveredContract && (
+                      <span className="text-14 text-blue-400 font-bold leading-4 mt-0.75 py-1">
+                        View contract
+                     </span>
+                    )}
                   </a>
                 </Link>
               </div>
@@ -263,12 +275,12 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
             <h2 className="text-24 text-white leading-compact mb-7.5">Latest transactions</h2>
             {data.data.latestTransactions.slice(0, 4).map((item, index) => (
               <div key={`${item.cid}-lts`}
-                   className="mb-4"
+                   className="mb-4 last:mb-0"
                    onMouseEnter={() => setHoveredTransaction(index)}
                    onMouseLeave={() => setHoveredTransaction(-1)}
               >
                 <Link href={`/explore/${Entity.Transaction}/${item.cid}?network=${network}`}>
-                  <a className={classNames("flex items-start justify-between bg-body_opacity-50 rounded-4 border p-5 last:mb-0", {
+                  <a className={classNames("flex items-start justify-between bg-body_opacity-50 p-5 rounded-4 border", {
                     "border-blue-500":    index === hoveredTransaction,
                     "border-transparent": index !== hoveredTransaction
                   })}>
