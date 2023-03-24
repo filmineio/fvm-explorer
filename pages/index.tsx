@@ -155,7 +155,7 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
                 onChange={change}
                 values={availableFilters}
                 selectType="transparent"
-                additionClass="bg-slate rounded-4 border-2 border-body px-2.5 w-44"
+                additionClass="bg-slate rounded-4 border-2 border-body px-2.5 w-44 hover:border-label"
               />
             </div>
             <button
