@@ -6,7 +6,6 @@ import { FiltersHeader } from "@/ui/modules/Filters/components/FiltersHeader";
 import { SearchFilters } from "@/ui/modules/Filters/components/SearchFilters";
 
 import { useLocationQuery } from "@/ui/hooks/useLocationQuery";
-
 import { useStore } from "@/ui/state/Store";
 import { setFiltersValueTransformer } from "@/ui/state/transformers/filters/setFiltersValueTransformer";
 import { AdvancedFiltersState } from "@/ui/state/types/AppState";
