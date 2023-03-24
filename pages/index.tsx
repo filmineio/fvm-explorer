@@ -142,7 +142,7 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
             <div className="flex items-center flex-1 justify-center bg-slate rounded-4">
               <div className="input-group relative flex md:flex-wrap gap-4 items-stretch w-full rounded-4 border-none"> {/* border-2 border-transparent hover:border-label focus:border-blue-400 */}
                 <Input
-                  className="xl:w-96 form-control relative flex-auto bg-slate block w-full px-5 py-4 text-14 font-medium font-roboto text-white transition ease-in-out m-0 rounded-4 outline-none border-2 border-body hover:border-label focus:border-label"
+                  className="xl:w-96 form-control relative flex-auto bg-slate block w-full px-5 py-4 text-14 font-medium font-roboto text-white placeholder-label transition ease-in-out m-0 rounded-4 outline-none border-2 border-body hover:border-label focus:border-label"
                   placeholder="Search by Address/Txn hash/Block..."
                   handleChange={change}
                   value={filters.filterValue}
@@ -155,7 +155,7 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
                 onChange={change}
                 values={availableFilters}
                 selectType="transparent"
-                additionClass="bg-slate rounded-4 border-2 border-body px-2.5 w-44"
+                additionClass="bg-slate rounded-4 border-2 border-body px-2.5 w-44 hover:border-label"
               />
             </div>
             <button
