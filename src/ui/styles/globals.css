@@ -451,6 +451,7 @@ html #nprogress .spinner {
 .bounce-in-left {
   animation: bounce-in-left .8s ease-in-out forwards;
 }
+
 @keyframes bounce-in-left {
   0% { transform: translateX(0); }
   20% {
