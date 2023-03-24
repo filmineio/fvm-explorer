@@ -292,13 +292,12 @@ a.customr.textnone span.onespan {
 .react-select .react-select__menu {
   width: 200px;
   right: 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+  box-shadow: none;
   padding: 0;
   border-top: 4px solid transparent;
   margin: 0;
   background-color: transparent;
-  border-radius: 9px;
-  overflow: hidden;
+  border-radius: 6px;
   z-index: 2;
 }
 
@@ -329,6 +328,8 @@ a.customr.textnone span.onespan {
 .react-select .react-select__menu .react-select__menu-list {
   background: #141620;
   padding: 5px 0 6px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+  border-radius: 6px;
 }
 
 .react-select .react-select__menu .react-select__menu-list .react-select__option {

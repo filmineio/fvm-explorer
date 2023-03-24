@@ -9,6 +9,7 @@ export type GhostSelectT = <T extends string = string>(props: {
   values: { value: T; label: string }[];
   onChange: (v: string) => void;
   selectType?: 'transparent' | 'field';
+  additionClass?: string;
 }) => JSX.Element;
 
 export const CustomSelect: GhostSelectT = ({
@@ -16,6 +17,7 @@ export const CustomSelect: GhostSelectT = ({
   values,
   onChange: change,
   selectType,
+  additionClass,
 }) => {
   const handleOnChange = (e: any) => {
     change(e.value);
@@ -23,7 +25,7 @@ export const CustomSelect: GhostSelectT = ({
   return (
     <>
       <Select
-        className={clsx('react-select', {'transparent': selectType === 'transparent'})}
+        className={clsx('react-select', {'transparent': selectType === 'transparent'}, additionClass)}
         classNamePrefix="react-select"
         options={values}
         onChange={handleOnChange}

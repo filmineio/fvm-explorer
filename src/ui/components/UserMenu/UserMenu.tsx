@@ -32,14 +32,14 @@ export const UserMenu = ({ user }: { user: User }) => {
       onMouseEnter={cb(setExpanded, true)}
       onMouseLeave={cb(setExpanded, false)}
     >
-      <div className="text-white text-14 focus:outline-none flex items-center gap-3">
+      <div className="text-white text-14 focus:outline-none flex items-center gap-3 py-2">
         {user && <div className="flex w-8 h-8 rounded-40 bg-purple items-center justify-center text-white text-16 font-bold leading-normal">{user.email?.charAt(0).toUpperCase()}</div>}
         {user?.email}
         {user && <ArrowChevronDown />}
       </div>
 
       {expanded && (
-        <div className="flex absolute flex-col z-50 bg-slate py-2 h-fit w-64 right-6 top-16 text-label text-14 font-semibold rounded-9 shadow-dropdown">
+        <div className="flex absolute flex-col z-50 bg-slate py-2 h-fit w-64 top-[100%] right-0 text-label text-14 font-semibold rounded-9 shadow-dropdown">
           <div
             className="relative px-4 py-4 cursor-pointer hover:text-blue-400 hover:bg-body"
             onMouseEnter={() => setSelected(1)}

@@ -149,12 +149,13 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
                 />
               </div>
             </div>
-            <div className="flex items-center bg-slate rounded-4 border-2 border-body px-2.5">
+            <div className="flex items-center">
               <CustomSelect
                 value={filters.filteredBy}
                 onChange={change}
                 values={availableFilters}
                 selectType="transparent"
+                additionClass="bg-slate rounded-4 border-2 border-body px-2.5 w-44"
               />
             </div>
             <button
@@ -259,7 +260,7 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
           </div>
           <div className="bg-body_opacity-50 p-12.5 rounded-10">
             <h2 className="font-space text-24 text-white leading-compact mb-7.5">Latest called contracts</h2>
-            {data.data.latestCalledContracts.slice(0, 5).map((item, index) => (
+            {data.data.latestCalledContracts.slice(0, 5).map((item) => (
               <div key={`${item.contractAddress}-lcc`} className="mb-4 last:mb-0 group">
                 <Link href={`/explore/contract/${item.contractAddress}`}>
                   <a className="flex items-start flex-wrap justify-between bg-body_opacity-50 px-5 py-4 rounded-4 border border-transparent group-hover:border-blue-500">

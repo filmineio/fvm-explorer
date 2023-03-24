@@ -55,7 +55,7 @@ export const Header: FC<Props> = ({ filterComponent }) => {
           </div>
         </div>
       </div>
-      <div className="flex flex-row justify-between py-4 px-10 items-center m-auto border-y border-body">
+      <div className="flex flex-row justify-between py-1 min-h-[60px] px-10 items-center m-auto border-y border-body">
         <div className="flex flex-row gap-7.5 items-center">
           <Link href="/" passHref>
             <a>
