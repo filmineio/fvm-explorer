@@ -13,6 +13,8 @@ import { AdvancedFiltersState } from "@/ui/state/types/AppState";
 import Button from "@/ui/components/Button";
 import Link from "next/link";
 import router from "next/router";
+import { updateRouteState } from "@/ui/utils/updateRouteState";
+import { DEFAULT_FILTERS } from "@/ui/state/default";
 
 
 export const Filters = ({ search, showOnlyNetwork = false }: {
@@ -49,7 +51,7 @@ export const Filters = ({ search, showOnlyNetwork = false }: {
       setAdvancedSearchActive(false);
 
       if (existingAdvancedFilters) {
-        router.push('/');
+        updateRouteState(router.push, { ...DEFAULT_FILTERS, network: state.network, filteredBy: state.filteredBy});
       }
     }
   }, [searchSelectionActive]);

@@ -135,12 +135,12 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
           <div className="absolute left-0 top-0 overflow-hidden rounded-10">
             <SearchBackgroundIcon/>
           </div>
-          <div className="relative font-space text-white text-28 leading-compact font-bold mb-10 z-20">
+          <h1 className="relative font-space text-white text-28 leading-compact font-bold mb-10 z-20">
             Filecoin contracts explorer
-          </div>
+          </h1>
           <div className="flex justify-between gap-5">
             <div className="flex items-center flex-1 justify-center bg-slate rounded-4">
-              <div className="input-group relative flex md:flex-wrap gap-4 items-stretch w-full rounded-4 border-none"> {/* border-2 border-transparent hover:border-label focus:border-blue-400 */}
+              <div className="input-group relative flex md:flex-wrap gap-4 items-stretch w-full rounded-4 border-none">
                 <Input
                   className="xl:w-96 form-control relative flex-auto bg-slate block w-full px-5 py-4 text-14 font-medium font-roboto text-white placeholder-label transition ease-in-out m-0 rounded-4 outline-none border-2 border-body hover:border-label focus:border-label"
                   placeholder="Search by Address/Txn hash/Block..."

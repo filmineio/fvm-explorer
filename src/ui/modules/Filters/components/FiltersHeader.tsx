@@ -39,10 +39,9 @@ export const FiltersHeader = ({
 
   return (
     <div className="flex justify-between items-center">
-      <h3 className="font-space text-28 font-bold leading-compact text-white">
+      <h1 className="font-space text-28 font-bold leading-compact text-white">
         Filecoin contracts explorer
-      </h3>
-
+      </h1>
       <div className="flex flex-1 justify-end items-center flex-wrap gap-5">
         <div className="flex gap-3 mr-5 items-center">
           <span className="inline-block text-label form-check-label text-14 font-medium">
