@@ -29,7 +29,6 @@ import { useDataClient } from "@/ui/external/data";
 import { getData } from "@/ui/modules/Filters/filtersUtils";
 import { Header } from "@/ui/components/Page/Header/Header";
 import { CustomSelect } from "@/ui/components/Select/Select";
-import classNames from "classnames";
 import { availableFilters, availableNetworks } from "@/ui/modules/Filters/state/state";
 import Input from "@/ui/components/Input/Input";
 import { AdvancedFiltersState } from "@/ui/state/types/AppState";
@@ -170,51 +169,51 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
           <div className="grid grid-cols-6 gap-5">
             <div className="bg-body_opacity-50 rounded-10 p-5">
               <h6 className="font-space text-22 text-white leading-compact mb-2">{data.data.ethOverview.numContractsDeployed || <Spinner inline />}</h6>
-              <p className="text-12 text-label leading-large mb-0 lowercase">contracts deployed</p>
+              <p className="text-12 text-label leading-large mb-0">contracts deployed</p>
             </div>
             <div className="bg-body_opacity-50 rounded-10 p-5">
               <h6 className="font-space text-22 text-white leading-compact mb-2">{data.data.ethOverview.numEthAccounts || <Spinner inline />}</h6>
-              <p className="text-12 text-label leading-large mb-0 lowercase">eth accounts</p>
+              <p className="text-12 text-label leading-large mb-0">eth accounts</p>
             </div>
             <div className="bg-body_opacity-50 rounded-10 p-5">
               <h6 className="font-space text-22 text-white leading-compact mb-2">{humanReadableSize(parseInt(data.data.overview.totalQualityAdjPower, 10), true, 2, 'B')}</h6>
-              <p className="text-12 text-label leading-large mb-0 lowercase">storage power</p>
+              <p className="text-12 text-label leading-large mb-0">storage power</p>
             </div>
             <div className="bg-body_opacity-50 rounded-10 p-5">
               <h6 className="font-space text-22 text-white leading-compact mb-2">{data.data.overview.averageRewardPerByte ? roundNumber(data.data.overview.averageRewardPerByte, 2) : <Spinner inline />}</h6>
-              <p className="text-12 text-label leading-large mb-0 lowercase">avg. mining reward</p>
+              <p className="text-12 text-label leading-large mb-0">avg. mining reward</p>
             </div>
             <div className="bg-body_opacity-50 rounded-10 p-5">
               <h6 className="font-space text-22 text-white leading-compact mb-2">{data.data.overview.averageTipsetBlocks ? roundNumber(data.data.overview.averageTipsetBlocks, 2) : <Spinner inline />}</h6>
-              <p className="text-12 text-label leading-large mb-0 lowercase">avg. tipset blocks</p>
+              <p className="text-12 text-label leading-large mb-0">avg. tipset blocks</p>
             </div>
             <div className="bg-body_opacity-50 rounded-10 p-5">
               <h6 className="font-space text-22 text-white leading-compact mb-2">{data.data.overview.dailyMessages ? data.data.overview.dailyMessages : <Spinner inline />}</h6>
-              <p className="text-12 text-label leading-large mb-0 lowercase">Daily messages</p>
+              <p className="text-12 text-label leading-large mb-0">daily messages</p>
             </div>
             <div className="bg-body_opacity-50 rounded-10 p-5">
               <h6 className="font-space text-22 text-white leading-compact mb-2">{roundNumber(data.data.ethOverview.avgNumUniqueAddressesInteractingWithContract, 5) || <Spinner inline />}</h6>
-              <p className="text-12 text-label leading-large mb-0 lowercase">unique addresses interacting per contract</p>
+              <p className="text-12 text-label leading-large mb-0">unique addresses interacting per contract</p>
             </div>
             <div className="bg-body_opacity-50 rounded-10 p-5">
               <h6 className="font-space text-22 text-white leading-compact mb-2">{roundNumber(data.data.ethOverview.avgNumInteractionsPerContract, 2) || <Spinner inline />}</h6>
-              <p className="text-12 text-label leading-large mb-0 lowercase">interactions per contract</p>
+              <p className="text-12 text-label leading-large mb-0">interactions per contract</p>
             </div>
             <div className="bg-body_opacity-50 rounded-10 p-5">
               <h6 className="font-space text-22 text-white leading-compact mb-2">{roundNumber(data.data.ethOverview.avgGasUsagePerContract, 0) || <Spinner inline />}</h6>
-              <p className="text-12 text-label leading-large mb-0 lowercase">avg. gas usage per contract</p>
+              <p className="text-12 text-label leading-large mb-0">avg. gas usage per contract</p>
             </div>
             <div className="bg-body_opacity-50 rounded-10 p-5">
               <h6 className="font-space text-22 text-white leading-compact mb-2">{data.data.overview.totalPledgeCollateral ? `${roundNumber(+new Big(data.data.overview.totalPledgeCollateral).div(Math.pow(10, 21)), 0)}k Fil` : <Spinner inline />}</h6>
-              <p className="text-12 text-label leading-large mb-0 lowercase">total pledge collateral</p>
+              <p className="text-12 text-label leading-large mb-0">total pledge collateral</p>
             </div>
             <div className="bg-body_opacity-50 rounded-10 p-5">
               <h6 className="font-space text-22 text-white leading-compact mb-2">{data.data.ethOverview.filTransferredFromContracts ? `${roundNumber(+new Big(data.data.ethOverview.filTransferredFromContracts).div(Math.pow(10, 12)), 0)} tn` : <Spinner inline />}</h6>
-              <p className="text-12 text-label leading-large mb-0 lowercase">Fil transferred from contracts</p>
+              <p className="text-12 text-label leading-large mb-0">fil transferred from contracts</p>
             </div>
             <div className="bg-body_opacity-50 rounded-10 p-5">
               <h6 className="font-space text-22 text-white leading-compact mb-2">{data.data.ethOverview.filTransferredToContracts ? `${roundNumber(parseInt(data.data.ethOverview.filTransferredToContracts.substring(1)) / Math.pow(10, 12), 0)} tn` : <Spinner inline />}</h6>
-              <p className="text-12 text-label leading-large mb-0 lowercase">Fil transferred to contracts</p>
+              <p className="text-12 text-label leading-large mb-0">fil transferred to contracts</p>
             </div>
           </div>
         </div>
