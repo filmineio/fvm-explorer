@@ -80,15 +80,6 @@ export const ContractPage = ({ data }: Props) => {
     [user, metadata, checkingVerification]
   );
 
-  useEffect(() => {
-    if (showClaim) {
-      const header = document.querySelector("header");
-      if (header) {
-        header.style.marginTop = "64px";
-      }
-    }
-  }, [showClaim]);
-
   return (
     <>
       {showClaim && (

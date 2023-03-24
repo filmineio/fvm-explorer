@@ -16,12 +16,27 @@ export const FiltersHeader = ({
   checked,
   toggle,
   search,
+  showOnlyNetwork = false,
 }: {
   state: FilterState;
   checked: boolean;
   toggle: (v: boolean) => void;
   search: (v: string) => void;
+  showOnlyNetwork?: boolean;
 }) => {
+  if (showOnlyNetwork) {
+    return (
+      <div className="flex">
+        <CustomSelect
+          value={state.network}
+          onChange={search}
+          values={availableNetworks}
+          selectType="transparent"
+        />
+      </div>
+    )
+  }
+
   return (
     <div className="flex justify-between items-center">
       <h3 className="font-space text-28 font-bold leading-compact text-white">
@@ -42,21 +57,6 @@ export const FiltersHeader = ({
             />
           </div>
         </div>
-
-        <div className="flex gap-3 mr-5 items-center">
-          <span className="inline-block text-label form-check-label text-14 font-medium">
-            network
-          </span>
-          <div className="w-32">
-            <CustomSelect
-              value={state.network}
-              onChange={search}
-              values={availableNetworks}
-              selectType="transparent"
-            />
-          </div>
-        </div>
-
         <AdvancedFilterToggle
           checked={checked}
           toggle={cb(toggle, !checked)}

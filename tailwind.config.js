@@ -79,6 +79,7 @@ module.exports = {
         14: "14px",
         16: "16px",
         18: "18px",
+        22: "22px",
         24: "24px",
         28: "28px",
         32: "32px",
@@ -118,6 +119,7 @@ module.exports = {
 
       lineHeight: {
         compact: "1.2",
+        large: "1.5",
       },
 
       margin: {
@@ -125,7 +127,10 @@ module.exports = {
         1.25: "5px",
         1.75: "7px",
         2.25: "9px",
+        2.5: "10px",
+        6.25: "25px",
         7.5: "30px",
+        12.5: "50px",
         15: "60px",
         "10%": "10%"
       },
@@ -139,10 +144,15 @@ module.exports = {
         3.25: "13px",
         3.75: "15px",
         7.5: "30px",
+        12.5: "50px",
       },
 
       boxShadow: {
         dropdown: "0 4px 12px #000000cc",
+      },
+
+      spacing: {
+        7.5: "30px",
       },
     },
     fontFamily: {

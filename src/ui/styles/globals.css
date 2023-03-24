@@ -292,13 +292,12 @@ a.customr.textnone span.onespan {
 .react-select .react-select__menu {
   width: 200px;
   right: 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+  box-shadow: none;
   padding: 0;
   border-top: 4px solid transparent;
   margin: 0;
   background-color: transparent;
-  border-radius: 9px;
-  overflow: hidden;
+  border-radius: 6px;
   z-index: 2;
 }
 
@@ -311,7 +310,7 @@ a.customr.textnone span.onespan {
 }
 
 .react-select.transparent .react-select__single-value {
-  color: #59A9FF;
+  color: theme("colors.white");
 }
 
 .react-select .react-select__dropdown-indicator {
@@ -319,16 +318,18 @@ a.customr.textnone span.onespan {
 }
 
 .react-select.transparent .react-select__dropdown-indicator svg path {
-  fill: #59A9FF;
+  fill: theme("colors.white");
 }
 
 .react-select:not(.transparent) .react-select__dropdown-indicator svg path {
-  fill: #596184;
+  fill: theme("colors.white");
 }
 
 .react-select .react-select__menu .react-select__menu-list {
   background: #141620;
   padding: 5px 0 6px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+  border-radius: 6px;
 }
 
 .react-select .react-select__menu .react-select__menu-list .react-select__option {
@@ -425,4 +426,40 @@ body .monaco-editor .line-numbers.active-line-number {
 
 body .monaco-editor {
   pointer-events: none;
+}
+html #nprogress .spinner {
+  display: none;
+}
+
+
+.bounce-in-right {
+  animation: bounce-in-right 1.6s ease-in-out forwards;
+}
+@keyframes bounce-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(2000px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-30px);
+  }
+  80% { transform: translateX(10px); }
+  100% { transform: translateX(0); }
+}
+
+.bounce-in-left {
+  animation: bounce-in-left .8s ease-in-out forwards;
+}
+
+@keyframes bounce-in-left {
+  0% { transform: translateX(0); }
+  20% {
+    opacity: 1;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(2000px);
+  }
 }

@@ -15,6 +15,7 @@ import { useWeb3Storage } from "@/ui/external/useWeb3Storage";
 
 import { cb } from "@/utils/cb";
 import { onChange } from "@/utils/unpack";
+import clsx from "clsx";
 
 
 type State = {
@@ -45,6 +46,8 @@ export const VerifyContract = ({
   const [data, setData] = useState(defaultState);
   const [showVerify, setShowVerify] = useState(false);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [showClaimContract, setShowClaimContract] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   const {
     upload,
@@ -69,8 +72,7 @@ export const VerifyContract = ({
       const file = files ? files[0] : null;
       change("source")(file);
       setUploadedFile(file);
-    },
-    []
+    },[]
   );
 
   const valid = useMemo(
@@ -98,7 +100,6 @@ export const VerifyContract = ({
       setShowVerify(false);
     }
   }, [error]);
-
   useEffect(() => {
     if (!!verificationError && !verifying) {
       setData(defaultState);
@@ -131,35 +132,36 @@ export const VerifyContract = ({
   }, [sourceCid, uploading, progress]);
 
   useEffect(() => {
-    const header = document.querySelector("header");
-    if (header) {
-      header.style.marginTop = "64px";
-    }
-
-    return () => {
-      const header = document.querySelector("header");
-      if (header) {
-        header.style.marginTop = "0px";
-      }
-    };
+    setLoaded(true);
+    setShowClaimContract(true);
   }, []);
 
   return (
     <>
-      <div
-        className={
-          "absolute top-0 left-0 w-full h-16 bg-label flex justify-between items-center px-10"
+      <div className={
+        clsx("fixed right-5 z-10 bottom-5 bg-blue-500 p-10 rounded-6 w-[480px] max-w-full shadow-[-4px_-4px_16px_0px_rgba(0,0,0,0.2)] transform translate-y-[1000px]",
+          {['opacity-0']: !loaded},
+          {['opacity-100']: loaded},
+          {['bounce-in-left']: loaded && !showClaimContract},
+          {['bounce-in-right']: showClaimContract})
         }
       >
-        <div className={"text-white"}>
-          <span className={"font-bold"}>Do you own this contract?</span>{" "}
-          <span>Upload source code to claim ownership.</span>
+        <button
+          type="button"
+          className="btn-close absolute right-5 top-5 z-10 hover:opacity-50 transition-all [transition:opacity_.0.16s_ease_in_out]"
+          onClick={cb(setShowClaimContract, false)}
+        >
+          <X />
+        </button>
+        <div className="text-white">
+          <h4 className="font-bold text-18 font-space mb-4">Do you own this contract?</h4>
+          <p className="mb-8">Upload source code to claim ownership.</p>
         </div>
         <button
-          className="btn bg-blue-500 text-white hover:bg-blue-400 hover:border-blue-400 active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all"
+          className="btn bg-black text-white hover:bg-black hover:border-black active:shadow-[0px_0px_0px_3px_rgba(89,169,255,0.3)] transition-all"
           onClick={cb(setShowVerify, true)}
         >
-          VERIFY CONTRACT
+          CLAIM CONTRACT
         </button>
       </div>
       {uploading && (
