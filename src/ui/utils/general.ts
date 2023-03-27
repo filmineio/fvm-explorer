@@ -16,16 +16,16 @@ export const truncateString: TruncateString = (address, length) => {
 
 type TimePassFromTimestamp = (timestamp: number) => string;
 export const timePassFromTimestamp: TimePassFromTimestamp = (timestamp) => {
-  const timeDiff = new Date().valueOf() - new Date(timestamp).valueOf();
+  const timeDiff = (new Date().valueOf() - new Date(timestamp).valueOf()) / 1000;
 
   const days   = Math.floor(timeDiff / 86400);
   const hours   = Math.floor((timeDiff - (days * 86400)) / 3600);
   const minutes = Math.floor((timeDiff - (days * 86400) - (hours * 3600)) / 60);
   const seconds = timeDiff - (days * 86400) - (hours * 3600) - (minutes * 60);
 
-  const format = (v: number, l?: string, leadingZero = true) => {
+  const format = (v: number, l: string, leadingZero = true) => {
     if ( v === 0) return ''
-    return (v < 10 ? leadingZero ? '0' : '' : '') + v.toString() + l
+    return (v < 10 ? leadingZero ? '0' : '' : '') + Math.round(v).toString() + l
   };
 
   return format(days, 'd ', false) + format(hours, 'h ') + format(minutes, 'm ') + format(seconds, 's ago');
