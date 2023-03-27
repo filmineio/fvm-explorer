@@ -20,7 +20,7 @@ import { isEnum } from "@/utils/isEnum";
 import { Spinner } from "@/ui/components/Spinner/Spinner";
 import Link from "next/link";
 import Big from "big.js";
-import { humanReadableSize, roundNumber, truncateString } from "@/ui/utils/general";
+import { humanReadableSize, roundNumber, timePassFromTimestamp, truncateString } from "@/ui/utils/general";
 import CopyText from "@/ui/components/CopyText/CopyText";
 import Crown from "@/ui/components/Common/Icons/Crown";
 import { Entity } from "@/enums/Entity";
@@ -263,10 +263,10 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
             {data.data.latestCalledContracts.slice(0, 5).map((item) => (
               <div key={`${item.contractAddress}-lcc`} className="mb-4 last:mb-0 group">
                 <Link href={`/explore/contract/${item.contractAddress}`}>
-                  <a className="flex items-start flex-wrap justify-between bg-body_opacity-50 px-5 py-4 rounded-4 border border-transparent group-hover:border-blue-500">
+                  <a className="flex items-start flex-wrap justify-between bg-body_opacity-50 px-5 py-4 rounded-4 border border-transparent group-hover:border-blue-500 transition-all">
                     <div className="py-1 w-[170px]">
                       <h6 className="font-space text-18 text-white font-bold leading-compact mb-0">{truncateString(item.contractAddress, 14)}</h6>
-                      {/*<p className="text-12 text-label font-normal leading-large mb-0">{!init && timePassFromTimestamp(item.timestamp)}</p>*/}
+                      <p className="text-12 text-label font-normal leading-large mt-1 mb-0">{!init && timePassFromTimestamp(item.timestamp)}</p>
                     </div>
                     <span className="text-14 text-blue-400 opacity-0 font-bold leading-4 mt-0.75 py-1 group-hover:opacity-100 transition-all duration-200">
                       View contract
@@ -314,10 +314,10 @@ const Home: NextPage<ApplicationData> = ({ data}) => {
             {data.data.latestTransactions.slice(0, 4).map((item) => (
               <div key={`${item.cid}-lts`} className="mb-4 last:mb-0">
                 <Link href={`/explore/${Entity.Transaction}/${item.cid}?network=${network}`}>
-                  <a className="flex items-start justify-between bg-body_opacity-50 p-5 rounded-4 border border-transparent hover:border-blue-500">
+                  <a className="flex items-start justify-between bg-body_opacity-50 p-5 rounded-4 border border-transparent hover:border-blue-500 transition-all">
                     <div>
                       <h6 className="font-space text-18 text-white leading-compact mb-0">{truncateString(item.cid, 20)}</h6>
-                      <p className="text-12 text-label leading-large mb-0">{item.timestamp}</p>
+                      <p className="text-12 text-label leading-large mt-1 mb-0">{!init && timePassFromTimestamp(parseInt(item.timestamp))}</p>
                     </div>
                     <p className="font-space text-18 text-blue-500 font-bold">
                       {item.value && roundNumber(+new Big(item.value).div(10 ** 18))}

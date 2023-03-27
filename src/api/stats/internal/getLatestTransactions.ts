@@ -29,5 +29,7 @@ export const getLatestTransactions = async (nwk: Network, ctx: ApiCtx) => {
     ],
   });
 
-  return data.map((v) => omit(["total"], v));
+  return data.map((v) => {
+    return omit(["total"], { ...v, timestamp: v.timestamp + '000' })
+  });
 };
