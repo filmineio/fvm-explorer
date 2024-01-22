@@ -64,7 +64,7 @@ jobs:
           echo "Helm Image Tag: ${{ inputs.helm_image_tag }}"
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - uses: webfactory/ssh-agent@v0.5.4
         with:
@@ -92,7 +92,7 @@ jobs:
 
       - id: auth
         name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v0
+        uses: google-github-actions/auth@v2
         with:
           token_format: access_token
           workload_identity_provider: ${{ secrets.iam_workload_identity_pool_provider_id }}
